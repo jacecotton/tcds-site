@@ -1,0 +1,5 @@
+@use "_variables" as *;
+
+@function font-stack($font-stack) {
+  @return map-get($font-stacks, $font-stack);
+}

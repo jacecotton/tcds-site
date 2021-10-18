@@ -1,0 +1,16 @@
+<nav class="side-nav" aria-label="Category navigation">
+  <ul class="side-nav__list">
+    {% for top_level_category in content %}
+      {% if top_level_category.title == category %}
+        {% set category_route = top_level_category.route ?: top_level_category.title|clean_class %}
+        {% for page in top_level_category.pages %}
+          {% set page_route = page.route ?: "/" ~ category_route ~ "/" ~ page.title|clean_class %}
+          <li class="side-nav__item">
+            {{ request_path }}
+            <a href="{{ page_route }}" {{ page_route == route ? 'aria-current="location"' : "" }} class="side-nav__link">{{ page.menu_title ?: page.title }}</a>
+          </li>
+        {% endfor %}
+      {% endif %}
+    {% endfor %}
+  </ul>
+</nav>

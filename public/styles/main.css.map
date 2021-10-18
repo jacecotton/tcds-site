@@ -1,0 +1,1 @@
+{"version":3,"sources":["partials/_header.scss"],"names":[],"mappings":"AAAA,aACE,MAAA,KACA,SAAA,eAAA,SAAA,OACA,IAAA","file":"main.css","sourcesContent":[".site-header {\n  width: 100%;\n  position: sticky;\n  top: 0;\n}"]}

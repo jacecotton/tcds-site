@@ -1,0 +1,37 @@
+{% extends "@tch/base.twig" %}
+{% block body %}
+  <dl>
+    <div>
+      <dt>title</dt>
+      <dd>{{ title }}</dd>
+    </div>
+    <div>
+      <dt>display_title</dt>
+      <dd>{{ display_title }}</dd>
+    </div>
+    <div>
+      <dt>meta_title</dt>
+      <dd>{{ meta_title }}</dd>
+    </div>
+    <div>
+      <dt>menu_title</dt>
+      <dd>{{ menu_title }}</dd>
+    </div>
+    <div>
+      <dt>description</dt>
+      <dd>{{ description }}</dd>
+    </div>
+    <div>
+      <dt>category</dt>
+      <dd>{{ category }}</dd>
+    </div>
+    <div>
+      <dt>route</dt>
+      <dd>{{ route }}</dd>
+    </div>
+    <div>
+      <dt>request_path</dt>
+      <dd>{{ request_path }}</dd>
+    </div>
+  </dl>
+{% endblock %}

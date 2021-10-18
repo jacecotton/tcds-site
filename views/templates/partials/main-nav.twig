@@ -1,0 +1,13 @@
+<nav class="main-nav" aria-label="Main navigation">
+  <ul class="main-nav__list">
+    {% for top_level_category in content %}
+      {% set category_route = top_level_category.route ?: top_level_category.title|clean_class %}
+      {% set first_page_route = top_level_category.pages[0].route ?: "/" ~ category_route ~ "/" ~ top_level_category.pages[0].title|clean_class %}
+      <li class="main-nav__item">
+        <a href="{{ first_page_route }}" {{ top_level_category.title == category ? 'aria-current="page"' : "" }} class="main-nav__link">
+          {{ top_level_category.menu_title ?: top_level_category.title }}
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+</nav>
