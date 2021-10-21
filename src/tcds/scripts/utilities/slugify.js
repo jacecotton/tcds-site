@@ -3,18 +3,19 @@
  * path, file name, etc.
  *
  * Takes a string, trims white space, removes diacritics from the base letter,
- * lowercases all letters, and replaces all spaces with a separator (a hyphen
- * unless otherwise specified).
+ * lowercases all letters, replaces non-alphanumeric characters with a space,
+ * removes double spaces, then replaces all single spaces with a separator (a
+ * hyphen unless otherwise specified).
  *
- * Note that this does not generate unique IDs.
- * 
+ * Note that this does not generate unique IDs because it doesn't track reuse.
+ *
  * @param {string} [separator="-"] A character to insert between words (i.e.
  * replace spaces) within the slug.
  *
  * @returns {string} A slug.
  */
 
- String.prototype.slugify = function(separator = "-") {
+String.prototype.slugify = function(separator = "-") {
   return this
     // Trim leading and trailing white space.
     .trim()

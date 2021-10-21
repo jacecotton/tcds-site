@@ -6,7 +6,6 @@
         {% for page in top_level_category.pages %}
           {% set page_route = page.route ?: "/" ~ category_route ~ "/" ~ page.title|clean_class %}
           <li class="side-nav__item">
-            {{ request_path }}
             <a href="{{ page_route }}" {{ page_route == route ? 'aria-current="location"' : "" }} class="side-nav__link">{{ page.menu_title ?: page.title }}</a>
           </li>
         {% endfor %}

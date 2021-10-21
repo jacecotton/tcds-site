@@ -1,0 +1,30 @@
+@use "../../../tcds/styles/layout" as *;
+@use "../../../tcds/styles/color" as *;
+
+.main-nav {
+  /** Universal styles. */
+
+  /** Mobile-only styles. */
+  @include breakpoint-below("small") {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 400px;
+    height: 100vh;
+    background: #eee;
+    transform: translateX(100%);
+
+    &:not([hidden]) {
+      transform: translateX(0);
+    }
+  }
+
+  /** Desktop-only styles. */
+  @include breakpoint-above("small") {
+    &__close,
+    &__toggle {
+      display: none;
+    }
+  }
+}

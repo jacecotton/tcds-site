@@ -1,0 +1,11 @@
+@mixin reduced-motion() {
+  @media (prefers-reduced-motion: reduce), (update: slow) {
+    @content;
+  }
+}
+
+@mixin motion-ok() {
+  @media (prefers-reduced-motion: no-preference) and (update: fast) {
+    @content;
+  }
+}

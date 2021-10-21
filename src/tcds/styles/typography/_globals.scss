@@ -1,6 +1,22 @@
-@use "_variables" as *;
-@use "_functions" as *;
+@use "../typography" as *;
 
 body {
   font-family: font-stack("sans-serif");
+  font-size: font-size("medium");
+}
+
+h1 {
+  font-size: font-size("xx-large");
+}
+
+h2 {
+  font-size: font-size("x-large");
+}
+
+h3 {
+  font-size: font-size("large");
+}
+
+small {
+  font-size: font-size("small");
 }

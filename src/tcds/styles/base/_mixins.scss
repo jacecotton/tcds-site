@@ -1,0 +1,19 @@
+/**
+ * Hide an element visually while keeping it exposed to assistive technology.
+ *
+ * 1. Hide content by "clipping" it away entirely (including borders). Note that
+ *    `clip` is deprecated, but the new `clip-path` has less browser support, so
+ *    we'll use both.
+ * 2. Most screen readers will skip elements less than 1px by 1px.
+ * 3. Remove element from the document flow so that it does not take up a 1px
+ *    space (which even if imperceptible in most instances can still cause
+ *    otherwise nonexistent scrollbars in the containing scrollable area).
+ */
+
+@mixin visually-hidden {
+  clip: rect(0, 0, 0, 0); // 1
+  clip-path: inset(50%); // 1
+  height: 1px; // 2
+  width: 1px; // 2
+  position: absolute; // 3
+}

@@ -1,2 +1,8 @@
+@use "base/_boilerplate";
+@use "base/_utilities";
+
 @use "typography/_fonts";
 @use "typography/_globals";
+
+@use "primitives/_lists";
+@use "primitives/_tables";

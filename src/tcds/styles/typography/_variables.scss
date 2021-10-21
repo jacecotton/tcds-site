@@ -1,3 +1,13 @@
+@use "../layout" as *;
+
 $font-stacks: (
   "sans-serif": (Inter, system-ui, sans-serif),
+);
+
+$font-sizes: (
+  "small": $base-unit * 3,
+  "medium": $size-2,
+  "large": $size-3,
+  "x-large": $size-4,
+  "xx-large": $size-5,
 );

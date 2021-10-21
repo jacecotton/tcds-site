@@ -1,0 +1,76 @@
+$colors: (
+  "blue": (
+    "0": (
+      "background": #f3f6fe,
+      "foreground": #2d73bd,
+    ),
+    "100": (
+      "background": #bbd0f9,
+      "foreground": #1d5086,
+    ),
+    "200": (
+      "background": #6aa4f4,
+      "foreground": #0c2a4a,
+    ),
+    "300": (
+      "background": #2d73bd,
+      "foreground": #f3f6fe,
+    ),
+    "400": (
+      "background": #1d5086,
+      "foreground": #bbd0f9,
+    ),
+    "500": (
+      "background": #0c2a4a,
+      "foreground": #6aa4f4,
+    ),
+  ),
+
+  "gray": (
+    "0": (
+      "background": #f9f9fb, // 265.9, 31.5, 98.0
+      "foreground": #70707c,
+    ),
+    "100": (
+      "background": #cfcfd7, // 265.9, 15, 83.33
+      "foreground": #4d4d5a,
+    ),
+    "200": (
+      "background": #a1a1b1, // 265.9, 15, 66.66
+      "foreground": #292930,
+    ),
+    "300": (
+      "background": #70707c, // 265.9, 7.5, 47.6
+      "foreground": #f9f9fb,
+    ),
+    "400": (
+      "background": #4d4d5a, // 265.9, 7.5, 33.33
+      "foreground": #cfcfd7,
+    ),
+    "500": (
+      "background": #292930, // 265.9, 7.5, 16.66
+      "foreground": #a1a1b1,
+    ),
+  ),
+
+  "shade": (
+    "0": (
+      "background": hsl(0 0% 0% / 3%),
+    ),
+    "100": (
+      "background": hsl(0 0% 0% / 16.66%),
+    ),
+    "200": (
+      "background": hsl(0 0% 0% / 33.33%),
+    ),
+    "300": (
+      "background": hsl(0 0% 0% / 47.6%),
+    ),
+    "400": (
+      "background": hsl(0 0% 0% / 66.66%),
+    ),
+    "500": (
+      "background": hsl(0 0% 0% / 83.33%),
+    ),
+  ),
+);

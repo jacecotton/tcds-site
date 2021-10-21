@@ -1,4 +1,8 @@
-<nav class="main-nav" aria-label="Main navigation">
+<button class="main-nav__toggle" aria-controls="main-nav">Open menu</button>
+
+<nav id="main-nav" class="main-nav" aria-label="Main navigation">
+  <button class="main-nav__close" aria-controls="main-nav">Close menu</button>
+
   <ul class="main-nav__list">
     {% for top_level_category in content %}
       {% set category_route = top_level_category.route ?: top_level_category.title|clean_class %}

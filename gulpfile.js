@@ -1,19 +1,22 @@
-const gulp = require("gulp");
-const { src, dest, series } = require("gulp");
+import gulp from "gulp";
+const { task, watch, src, dest, series } = gulp;
 
 // Script utilites
-const babel = require("gulp-babel");
-const terser = require("gulp-terser");
-const concat = require("gulp-concat");
+import babel from "gulp-babel";
+import terser from "gulp-terser";
+import concat from "gulp-concat";
 
 // Style utilities
-const sass = require("gulp-dart-sass");
-const postcss = require("gulp-postcss");
-const autoprefixer = require("autoprefixer");
-const cleancss = require("gulp-clean-css");
+import sass from "gulp-dart-sass";
+import postcss from "gulp-postcss";
+import autoprefixer from "autoprefixer";
+import cleancss from "gulp-clean-css";
+
+// Image utilities
+import imagemin from "gulp-imagemin";
 
 // General utilities
-const sourcemaps = require("gulp-sourcemaps");
+import sourcemaps from "gulp-sourcemaps";
 
 const config = {
   export: {
@@ -41,6 +44,11 @@ const config = {
     styles: {
       src: "./src/local/styles/**/*.scss",
       dest: "./public/styles/",
+    },
+
+    images: {
+      src: "./src/local/images/**/*",
+      dest: "./public/images/",
     },
   },
 };
@@ -127,24 +135,43 @@ const tasks = {
         .pipe(dest(config.local.styles.dest));
     },
   },
+
+  images: {
+    local: () => {
+      return src(config.local.images.src)
+        .pipe(imagemin([
+          // imagemin.svgo({
+          //   plugins: [
+          //     { removeViewBox: false },
+          //     { removeTitle: false },
+          //     { inlineStyles: false },
+          //   ],
+          // }),
+        ]))
+        .pipe(dest(config.local.images.dest));
+    },
+  },
 };
 
-gulp.task("local:scripts", tasks.scripts.local);
-gulp.task("export:scripts", tasks.scripts.export);
-gulp.task("local:styles", tasks.styles.local);
-gulp.task("export:styles", tasks.styles.export);
+task("local:scripts", tasks.scripts.local);
+task("export:scripts", tasks.scripts.export);
+task("local:styles", tasks.styles.local);
+task("export:styles", tasks.styles.export);
+task("local:images", tasks.images.local);
 
-gulp.task("watch", () => {
-  gulp.watch("./src/tcds/scripts/", tasks.scripts.export);
-  gulp.watch("./src/local/scripts/", tasks.scripts.local);
-  gulp.watch("./src/tcds/styles/", tasks.styles.export);
-  gulp.watch("./src/local/styles/", tasks.styles.local);
+task("watch", function() {
+  watch("./src/tcds/scripts/", tasks.scripts.export);
+  watch("./src/tcds/styles/", tasks.styles.export);
+  watch("./src/local/scripts/", tasks.scripts.local);
+  watch("./src/local/styles/", tasks.styles.local);
+  watch("./src/local/iamges/", tasks.images.local);
 });
 
-gulp.task("default", series([
+task("default", series([
   "export:scripts",
-  "local:scripts",
   "export:styles",
+  "local:scripts",
   "local:styles",
-  "watch",
+  "local:images",
+  "watch"
 ]));

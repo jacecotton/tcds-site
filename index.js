@@ -1,12 +1,11 @@
-const express = require("express");
-const path = require("path");
+import express from "express";
+import { join, resolve } from "path";
+import { minify } from "html-minifier";
+import slugify from "slugify";
+import content from "./content.js";
 
-const app = express();
-const port = process.env.PORT || 3000;
-const host = process.env.HOST || "localhost";
-
-const { TwingEnvironment, TwingLoaderFilesystem } = require("twing");
-const TwingDrupalFilters = require("twing-drupal-filters");
+import { TwingEnvironment, TwingLoaderFilesystem } from "twing";
+import TwingDrupalFilters from "twing-drupal-filters";
 
 const loader = new TwingLoaderFilesystem("./views");
 loader.addPath("./views/templates", "tch");
@@ -14,19 +13,20 @@ const twing = new TwingEnvironment(loader);
 
 TwingDrupalFilters(twing);
 
-app.use(express.static(path.join(__dirname, "public")));
+const app = express();
+const port = process.env.PORT || 3000;
+const host = process.env.HOST || "localhost";
 
-const content = require("./content")();
-require("./src/tcds/scripts/utilities/slugify");
+app.use(express.static(join(resolve(), "public")));
 
 content.forEach((category) => {
-  let categoryRoute = category.route || category.title.slugify();
+  let categoryRoute = category.route || slugify(category.title, { lower: true });
 
   category.pages.forEach((page) => {
-    const route = page.route || `/${categoryRoute}/${page.title.slugify()}`;
+    const route = page.route || `/${categoryRoute}/${slugify(page.title, { lower: true })}`;
 
     app.get(route, (req, res) => {
-      twing.render(`pages/${page.template || route}.twig`, {
+      twing.render(`pages${page.template ? "/" + page.template : route}.twig`, {
         title: page.title,
         display_title: page.display_title !== undefined ? page.display_title : page.title,
         meta_title: page.meta_title !== undefined ? page.meta_title : page.title,
@@ -36,6 +36,15 @@ content.forEach((category) => {
         route: route,
         content: content,
       }).then((output) => {
+        output = minify(output, {
+          removeComments: true,
+          collapseWhitespace: true,
+          collapseBooleanAttributes: true,
+          removeAttributeQuotes: true,
+          useShortDoctype: true,
+          removeOptionalTags: true,
+        });
+
         res.end(output);
       }).catch((error) => {
         handle404(res);
