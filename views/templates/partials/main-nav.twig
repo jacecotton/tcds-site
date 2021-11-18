@@ -1,14 +1,26 @@
-<button class="main-nav__toggle" aria-controls="main-nav">Open menu</button>
+{{ include("@tch/components/button/button.html.twig", {
+  label: "Open main navigation",
+  icon: "hamburger",
+  controls: "main-nav",
+  modifiers: ["icon-only", "ghost", "round"],
+  custom_classes: ["main-nav__toggle"],
+}) }}
 
 <nav id="main-nav" class="main-nav" aria-label="Main navigation">
-  <button class="main-nav__close" aria-controls="main-nav">Close menu</button>
+  {{ include("@tch/components/button/button.html.twig", {
+    label: "Close main navigation",
+    icon: "x",
+    controls: "main-nav",
+    modifiers: ["icon-only", "ghost", "round"],
+    custom_classes: ["main-nav__toggle"],
+  }) }}
 
   <ul class="main-nav__list">
     {% for top_level_category in content %}
       {% set category_route = top_level_category.route ?: top_level_category.title|clean_class %}
       {% set first_page_route = top_level_category.pages[0].route ?: "/" ~ category_route ~ "/" ~ top_level_category.pages[0].title|clean_class %}
       <li class="main-nav__item">
-        <a href="{{ first_page_route }}" {{ top_level_category.title == category ? 'aria-current="page"' : "" }} class="main-nav__link">
+        <a href="{{ first_page_route }}" {{ top_level_category.title == category ? 'aria-current="page"' }} class="main-nav__link">
           {{ top_level_category.menu_title ?: top_level_category.title }}
         </a>
       </li>

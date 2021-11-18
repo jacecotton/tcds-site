@@ -1,0 +1,37 @@
+<table class="table api-table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Value</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Required?</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th colspan="5">Component-specific properties</th>
+    </tr>
+    {% for prop in properties.specific %}
+      <tr id="{{ prop.name|clean_id }}-property">
+        <td><code>{{ prop.name }}</code></td>
+        <td>{{ prop.value|raw }}</td>
+        <td><code>{{ prop.type }}</code></td>
+        <td>{{ prop.description|raw }}</td>
+        <td>{{ prop.required }}</td>
+      </tr>
+    {% endfor %}
+    <tr>
+      <th colspan="5">Global properties</th>
+    </tr>
+    {% for prop in properties.global %}
+      <tr id="{{ prop.name|clean_id }}-property">
+        <td><code>{{ prop.name }}</code></td>
+        <td>{{ prop.value|raw }}</td>
+        <td><code>{{ prop.type }}</code></td>
+        <td>{{ prop.description|raw }}</td>
+        <td>{{ prop.required }}</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>

@@ -1,0 +1,43 @@
+<div class="comparison-box">
+  <div class="comparison-box__side">
+    {% for example in positive %}
+      <div class="comparison-box__example comparison-box__example--positive">
+        <div class="comparison-box__header">
+          {{ include("@tch/components/icon/icon.html.twig", {
+            icon: "check",
+          }) }}
+          Do
+        </div>
+
+        {% if example.content %}
+          {{ example.content }}
+        {% endif %}
+
+        {% if block(example.block) is defined %}
+          {{ block(example.block) }}
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+
+  <div class="comparison-box__side">
+    {% for example in negative %}
+      <div class="comparison-box__example comparison-box__example--negative">
+        <div class="comparison-box__header">
+          {{ include("@tch/components/icon/icon.html.twig", {
+            icon: "x",
+          }) }}
+          Don't
+        </div>
+
+        {% if example.content %}
+          {{ example.content }}
+        {% endif %}
+
+        {% if block(example.block) is defined %}
+          {{ block(example.block) }}
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+</div>

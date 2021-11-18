@@ -1,0 +1,435 @@
+{# DO NOT EDIT. This file was compiled from Markdown; please edit the source .md
+file and run the gulp process to compile (either `gulp` or `npm run dev` from
+the terminal). #}
+{% extends "@tch/base.twig" %}
+{% block lead %}Buttons allow users to trigger an action with a single tap, click, or keypress. They are useful to call attention to some action, or to prompt users to make an affirmative choice.{% endblock %}
+{% block body %}
+<h2 id="best-practices">Best practices</h2>
+<p><strong>Use concise, accurate, and specific labels.</strong> Avoid vague and abstract language like &quot;Get started&quot; or &quot;Learn more&quot;. Prefer explicit labels instead, like &quot;Confirm choice&quot; or &quot;Continue reading&quot;. Accurate and specific language improves user confidence and engagement,<span data-footnote><a href="https://www.nngroup.com/articles/information-scent/#:~:text=Perhaps%20the%20most,to%20click%20it.">Information Scent: How Users Decide Where to Go Next</a> — Nielsen Norman Group</span> while overly broad calls to action can mislead, disinterest, or confuse users.<span data-footnote><a href="https://www.nngroup.com/articles/get-started/">Get Started Stops Users</a> — Nielsen Norman Group</span></p>
+<p><strong>Use sentence case.</strong> All-uppercase text is slower and more difficult to read for all users,<span data-footnote><a href="https://www.w3.org/TR/low-vision-needs/#capitalization">Accessibility Requirements for People with Low Vision § 3.3.4 Capitalization</a> — W3C</span> but particularly for those with dyslexia.<span data-footnote><a href="https://www.bdadyslexia.org.uk/advice/employers/creating-a-dyslexia-friendly-workplace/dyslexia-friendly-style-guide#:~:text=Avoid%20text%20in%20uppercase/capital%20letters%20and%20small%20caps%2C%20which%20can%20be%20less%20familiar%20to%20the%20reader%20and%20harder%20to%20read.">Creating a dyslexia friendly workplace</a> — British Dyslexia Association</span> Furthermore, screen readers sometimes interpret certain uppercased words as common initialisms (such as ADD or US), and will spell out those words letter by letter.<span data-footnote><a href="https://webaim.org/techniques/screenreader/#:~:text=Screen%20readers%20try%20to%20pronounce%20acronyms%2C%20if%20there%20are%20sufficient%20vowels/consonants%20to%20be%20pronounceable.%20Otherwise%2C%20they%20spell%20out%20the%20letters.">Designing for Screen Reader Compatibility § How Screen Readers Read Content</a> — WebAIM</span></p>
+<h3 id="when-to-use">When to use</h3>
+<p><strong>Interface control.</strong> Use buttons to allow for triggering actions and events, such as opening or closing a <a href="/components/dialog">dialog</a>, or submitting a <a href="/components/forms">form</a>.</p>
+<h3 id="when-not-to-use">When not to use</h3>
+<p><strong>Page navigation.</strong> Avoid using buttons to take users to a different page. Prefer links instead (see <a href="#buttons-vs-links">&sect; Buttons vs. links</a>).</p>
+<h2 id="examples">Examples</h2>
+<h3 id="default-button">Default button</h3>
+<p>Buttons usually have some JavaScript event associated with them. This can be done in an external script, or inline with the <a href="#onclick"><code>onclick</code> property</a>.</p>
+
+{% embed "@tch/includes/example-box/example-box.html.twig" with {
+  examples: {
+    "Twig": '{{ include("@tch/components/button/button.html.twig", {
+  label: "Default button",
+  onclick: "alert(\'Default button clicked.\')",
+}) }}',
+    "HTML": '<button class="Button" type="button" onclick="alert(\'Default button clicked.\')">
+  Default button
+</button>',
+  },
+} %}
+  {% block result %}
+    {{ include("@tch/components/button/button.html.twig", {
+      label: "Default button",
+      onclick: "alert('Default button clicked.')",
+    }) }}
+  {% endblock %}
+{% endembed %}
+
+
+<p>The <a href="#type"><code>type</code> property</a> exists to specify any valid value of the <a href="https://www.w3.org/TR/2011/WD-html5-20110525/the-button-element.html#attr-button-type"><code>type</code> HTML attribute</a>. For example, a submit button for a form:</p>
+
+{% embed "@tch/includes/example-box/example-box.html.twig" with {
+  examples: {
+    "Twig": '{{ include("@tch/components/button/button.html.twig", {
+  label: "Submit button",
+  type: "submit",
+}) }}',
+    "HTML": '<button class="Button" type="submit">
+  Submit button
+</button>',
+  },
+} %}
+  {% block result %}
+    {{ include("@tch/components/button/button.html.twig", {
+      label: "Submit button",
+      onclick: "alert('Form submitted!\n(Demonstration purposes only).')",
+    }) }}
+  {% endblock %}
+{% endembed %}
+
+
+<p>Alternatively, a button can point to a link using the <a href="#link-property"><code>link</code> property</a>. While this is possible, it should generally be avoided (see <a href="#buttons-vs-links">&sect; Buttons vs. links</a>).</p>
+
+{% embed "@tch/includes/example-box/example-box.html.twig" with {
+  examples: {
+    "Twig": '{{ include("@tch/components/button/button.html.twig", {
+  label: "Link button",
+  link: "https://texaschildrens.org/"
+}) }}',
+    "HTML": '<a class="Button" href="https://texaschildrens.org/">
+  Link button
+</a>',
+  },
+} %}
+  {% block result %}
+    {{ include("@tch/components/button/button.html.twig", {
+      label: "Link button",
+      link: "https://texaschildrens.org/",
+    }) }}
+  {% endblock %}
+{% endembed %}
+
+
+<h3 id="size-variants">Size variants</h3>
+<p>Use smaller or larger buttons to establish visual hierarchy, draw attention, or simplify the interface.</p>
+<p>Note that small buttons only decrease in height on devices with &quot;fine&quot; primary pointers, such as mice or styluses. For devices with &quot;coarse&quot; primary pointers, such as touch screens, the tappable area remains the same as a normal button (see <a href="#touch-target-size">&sect; Touch target size</a>).</p>
+
+{% embed "@tch/includes/example-box/example-box.html.twig" with {
+  examples: {
+    "Twig": '{{ include("@tch/components/button/button.html.twig", {
+  label: "Small button",
+  modifiers: ["small"],
+}) }}',
+    "HTML": '<button class="Button Button--small">
+  Small button
+</button>',
+  },
+} %}
+  {% block result %}
+    {{ include("@tch/components/button/button.html.twig", {
+      label: "Small button",
+      modifiers: ["small"],
+    }) }}
+  {% endblock %}
+{% endembed %}
+
+
+<p>Large buttons can add emphasis, attract attention, and increase efficiency (see <a href="https://www.nngroup.com/videos/fittss-law-links-buttons/" title="Using Fitts&#39;s Law to Make Links and Buttons Easier to Click (video) - Nielsen Norman Group">Fitts&#39;s law</a>).</p>
+
+{% embed "@tch/includes/example-box/example-box.html.twig" with {
+  examples: {
+    "Twig": '{{ include("@tch/components/button/button.html.twig", {
+  label: "Large button",
+  modifiers: ["large"],
+}) }}',
+    "HTML": '<button class="Button Button--large">
+  Large button
+</button>',
+  },
+} %}
+  {% block result %}
+    {{ include("@tch/components/button/button.html.twig", {
+      label: "Large button",
+      modifiers: ["large"],
+    }) }}
+  {% endblock %}
+{% endembed %}
+
+
+<p>Full-width buttons automatically fill the available space of their parent container. These should be used sparingly, as their size could potentially lead to more errant clicks.</p>
+
+{% embed "@tch/includes/example-box/example-box.html.twig" with {
+  examples: {
+    "Twig": '{{ include("@tch/components/button/button.html.twig", {
+  label: "Full-width button",
+  modifiers: ["full-width"],
+}) }}',
+    "HTML": '<button class="Button Button--full-width">
+  Full-width button
+</button>',
+  },
+} %}
+  {% block result %}
+    {{ include("@tch/components/button/button.html.twig", {
+      label: "Full-width button",
+      modifiers: ["full-width"],
+    }) }}
+  {% endblock %}
+{% endembed %}
+
+
+<h3 id="color-variants">Color variants</h3>
+<p>Use color to differentiate action types, such as primary vs. secondary, or progressive vs. destructive. You can do this by adding <a href="/design/color">color utility classes</a> to the <a href="#custom-classes-property"><code>custom_classes</code> property</a>.</p>
+<p>Additionally, the <a href="#modifiers-property"><code>ghost</code> modifier</a> can be used to visually de-emphasize a button.</p>
+
+{% embed "@tch/includes/example-box/example-box.html.twig" with {
+  examples: {
+    "Twig": '{{ include("@tch/components/button/button.html.twig", {
+  label: "Secondary action",
+  custom_classes: ["bg-secondary"],
+}) }}\n
+{{ include("@tch/components/button/button.html.twig", {
+  label: "Tertiary action",
+  modifiers: ["ghost"],
+}) }}',
+    "HTML": '<button class="Button bg-secondary">
+  Secondary action
+</button>\n
+<button class="Button Button--ghost">
+  Tertiary action
+</button>',
+  },
+} %}
+  {% block result %}
+    <div class="row gap-tight">
+      {{ include("@tch/components/button/button.html.twig", {
+        label: "Secondary action",
+        custom_classes: ["bg-secondary"],
+      }) }}
+      {{ include("@tch/components/button/button.html.twig", {
+        label: "Tertiary action",
+        modifiers: ["ghost"],
+      }) }}
+    </div>
+  {% endblock %}
+{% endembed %}
+
+
+<h3 id="icon-buttons">Icon buttons</h3>
+<p>Use <a href="/design/icons">icons</a> as complementary visual aids.</p>
+<p>Button icons should be left-aligned (default) when:</p>
+<ul>
+<li>Used purely as a decorative aid (e.g.  {{ include("@tch/components/icon/icon.html.twig", { icon: "info", label: "i inside circle" }) }} &nbsp;for info,  {{ include("@tch/components/icon/icon.html.twig", { icon: "check", label: "Checkmark" }) }} &nbsp;for success).</li>
+<li>Used to indicate a regressive or destructive action (e.g.  {{ include("@tch/components/icon/icon.html.twig", { icon: "chevron-left", label: "Left" }) }} &nbsp;for back,  {{ include("@tch/components/icon/icon.html.twig", { icon: "x", label: "X" }) }} &nbsp;for cancel).</li>
+</ul>
+
+{% embed "@tch/includes/example-box/example-box.html.twig" with {
+  examples: {
+    "Twig": '{{ include("@tch/components/button/button.html.twig", {
+  label: "Open information",
+  icon: "info",
+}) }}',
+    "HTML": '<button class="Button">
+  <!-- Icon code copied from src/tcds/icons/info.svg --\>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square">
+    <circle cx="12" cy="12" r="10"/>
+    <path d="M12 16v-4m0-4h0"/>
+  </svg>\n
+  Open information
+</button>',
+  },
+} %}
+  {% block result %}
+    {{ include("@tch/components/button/button.html.twig", {
+      label: "Open information",
+      icon: "info",
+    }) }}
+  {% endblock %}
+{% endembed %}
+
+
+<p>Button icons should be right-aligned when:</p>
+<ul>
+<li>Used to indicate a progressive action (e.g.  {{ include("@tch/components/icon/icon.html.twig", { icon: "chevron-right", label: "Right" }) }} &nbsp;for proceed,  {{ include("@tch/components/icon/icon.html.twig", { icon: "chevron-down", label: "Down" }) }} &nbsp;for dropdown).</li>
+</ul>
+
+{% embed "@tch/includes/example-box/example-box.html.twig" with {
+  examples: {
+    "Twig": '{{ include("@tch/components/button/button.html.twig", {
+  label: "Next",
+  icon: "chevron-right",
+  modifiers: ["icon-right"],
+}) }}',
+    "HTML": '<button class="Button Button--icon-right">
+  <!-- Icon code copied from src/tcds/icons/chevron-right.svg --\>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square">
+    <path d="M9 18l6-6-6-6"/>
+  </svg>\n
+  Next
+</button>',
+  },
+} %}
+  {% block result %}
+    {{ include("@tch/components/button/button.html.twig", {
+      label: "Next",
+      icon: "chevron-right",
+      modifiers: ["icon-right"],
+    }) }}
+  {% endblock %}
+{% endembed %}
+
+
+<p>To conserve space, button labels can be hidden when using an icon using the <a href="#modifiers-property"><code>icon-only</code> modifier</a>. However, the <a href="#label-property"><code>label</code> property</a> should still be specified for assistive technology (see <a href="#icon-only-buttons">&sect; Icon-only buttons</a>).</p>
+
+{% embed "@tch/includes/example-box/example-box.html.twig" with {
+  examples: {
+    "Twig": '{{ include("@tch/components/button/button.html.twig", {
+  label: "Close",
+  icon: "x",
+  modifiers: ["icon-only"],
+}) }}',
+    "HTML": '<button class="Button Button--icon-only" aria-label="Close" title="Close">
+  <!-- Icon code copied from src/tcds/icons/x.svg --\>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square">
+    <line x1="18" y1="6" x2="6" y2="18"></line>
+    <line x1="6" y1="6" x2="18" y2="18"></line>
+  </svg>
+</button>',
+  },
+} %}
+  {% block result %}
+    {{ include("@tch/components/button/button.html.twig", {
+      label: "Close (demonstration only)",
+      icon: "x",
+      modifiers: ["icon-only"],
+    }) }}
+  {% endblock %}
+{% endembed %}
+
+
+<h2 id="accessibility">Accessibility</h2>
+<h3 id="interactive-state">Interactive state</h3>
+<p>If you&#39;re using a button to control the visibility of another element, like to toggle a navigation menu, ensure that the current state is properly communicated to assistive technology. First, specify the ID of the element being manipulated in the button&#39;s <a href="#controls-property"><code>controls</code> property</a> (which corresponds to the <a href="https://www.w3.org/TR/wai-aria-1.1/#aria-controls"><code>aria-controls</code> attribute</a> in HTML).</p>
+<p>Then, specify the current state of the controlled element in, for example, the button&#39;s <a href="https://www.w3.org/TR/wai-aria-1.1/#aria-expanded"><code>aria-expanded</code> attribute</a>, using JavaScript to keep the value of this attribute and the controlled element&#39;s <code>hidden</code> attribute in sync (<code>true</code> if not <code>hidden</code>, and <code>false</code> if <code>hidden</code>).</p>
+<p>Without JavaScript, the initial state of the button should be expanded, therefore the button should have no initial <code>aria-expanded</code> attribute. Instead, JavaScript should set the attribute with <code>button.setAttribute(&quot;aria-expanded&quot;, condition)</code>. As a basic example:</p>
+
+{% embed "@tch/includes/example-box/example-box.html.twig" with {
+  examples: {
+    "Twig": '<!-- No initial [aria-expanded] state without JavaScript --\>
+{{ include("@tch/components/button/button.html.twig", {
+  label: "Toggle content",
+  controls: "example-content",
+}) }}\n
+<!-- Not [hidden] without JavaScript --\>
+<div id="example-content">Example content</div>',
+    "JavaScript": '// Make initial state hidden...
+button.setAttribute("aria-expanded", "false");
+content.hidden = true;\n
+// Toggle state on click...
+button.addEventListener("click", () => {
+  button.setAttribute("aria-expanded", content.hidden);
+  content.hidden = !content.hidden;
+});',
+  },
+} %}
+  {% block result %}
+{{ include("@tch/components/button/button.html.twig", {
+  label: "Toggle content",
+  controls: "example-content",
+  custom_attributes: { "id": "example-toggle-button" },
+}) }}
+
+<div id="example-content">Example content</div>
+
+<script>
+  (function() {
+    const button = document.getElementById("example-toggle-button");
+    const content = document.getElementById("example-content");
+
+    button.setAttribute("aria-expanded", "false");
+    content.hidden = true;
+
+    button.addEventListener("click", () => {
+      button.setAttribute("aria-expanded", content.hidden);
+      content.hidden = !content.hidden;
+    });
+  }());
+</script>
+  {% endblock %}
+{% endembed %}
+
+
+<h3 id="buttons-vs-links">Buttons vs. links</h3>
+<p><em>Buttons</em>, marked up with the <code>&lt;button&gt;</code> tag, are used to trigger on-page actions and submit forms. <em>Links</em>, marked up with the <code>&lt;a&gt;</code> tag, are used to navigate a user to a new page (or elsewhere on the current page).</p>
+<p><strong>Links should look like links, and buttons should look like buttons.</strong> Links that look like buttons should be avoided as much as possible. Beyond general usability problems,<span data-footnote><a href="http://itstiredinhere.blogspot.com/2014/08/the-anchor-button-bad-for-accessibility.html">The Anchor Button: Bad for Accessibility, Bad for Usability</a> — It&#39;s Tired in Here</span><span data-footnote><a href="https://medium.com/simple-human/but-sometimes-links-look-like-buttons-and-buttons-look-like-links-9b371c57b3d2">But sometimes links look like buttons (and buttons look like links)</a> — Adam Silver</span> they can create confusion for users of assistive technology that depends on the correspondance between semantics, functionality, and appearance. This is especially the case with <a href="https://www.w3.org/WAI/perspective-videos/voice/">dictation software</a>.</p>
+<p>If a design simply calls for a link that looks like a button, this can technically be accomplished with the <a href="#link-property"><code>link</code> property</a>. In these instances, to limit confusion, use language that unambiguously communicates what the link button will do when clicked.</p>
+<h3 id="touch-target-size">Touch target size</h3>
+<p>Research shows touch targets should be a minimum of 1cm &times; 1cm,<span data-footnote><a href="https://www.nngroup.com/articles/touch-target-size/">Touch Targets on Touch Screens</a> — Nielsen Norman Group</span> which is enforced by this component&#39;s stylesheet. Having a sufficient touch target size increases general usability for all users, but most notably accomodates users with motor function and vision impairments.</p>
+<h3 id="icon-only-buttons">Icon-only buttons</h3>
+<p>Always provide a text label for buttons, even if you only want an icon to display. The <a href="#modifiers-property"><code>icon-only</code> modifier</a> will visually hide the label, using it instead as the <a href="https://www.w3.org/TR/WCAG20-TECHS/ARIA14.html">ARIA label</a> for screen readers, and the tooltip for mouse users.</p>
+<p>While icon-only buttons are possible, try to always keep the text label visible; what an icon is supposed to represent may not be clear to users of different ages, cultural backgrounds, and cognitive abilities.</p>
+<h2 id="api">API</h2>
+
+{{ include("@tch/includes/api-table/api-table.html.twig", {
+  properties: {
+    specific: [
+      {
+        name: "label",
+        value: "—",
+        type: "string",
+        description: "The text label of the button. If <code>icon-only</code>, this is used as the button's accessible <code>aria-label</code> and tooltip.",
+        required: "yes",
+      },
+      {
+        name: "type",
+        value: "<ul>
+          <li><code>button</code> (default)</li>
+          <li><code>submit</code></li>
+          <li><code>reset</code></li>
+          <li><code>file</code></li>
+        </ul>",
+        type: "string",
+        description: "The <a href='https://www.w3.org/TR/2011/WD-html5-20110525/the-button-element.html#attr-button-type' title='4.10.8 The button element - W3C.org'>HTML button type</a>.",
+        required: "no",
+      },
+      {
+        name: "onclick",
+        value: "—",
+        type: "string",
+        description: "Inline JavaScript to execute when the button is clicked.",
+        required: "no",
+      },
+      {
+        name: "controls",
+        value: "—",
+        type: "string (id list)",
+        description: "A list of IDs referring to HTML elements that the button controls. Only use if required for ARIA purposes (see <a href='https://www.w3.org/TR/wai-aria-1.1/#aria-controls'>WAI-ARIA 1.1 &sect; aria-controls</a>).",
+        required: "no",
+      },
+      {
+        name: "link",
+        value: "—",
+        type: "string",
+        description: "The URL or path the button should point to. Note that this will convert the button from a <code>&lt;button&gt;</code> element to an <code>&lt;a&gt;</code> element.",
+        required: "no",
+      },
+      {
+        name: "icon",
+        value: "See <a href='/design/icons'>icons</a>",
+        type: "string",
+        description: "The icon slug (e.g. <code>check</code>, <code>arrow-right</code>) to add to the left side of the button (or, combine with a <a href='#modifiers'>modifier</a> of <code>icon-right</code> to add the icon to the right).",
+        required: "no",
+      },
+    ],
+    global: [
+      {
+        name: "modifiers",
+        value: "<ul>
+          <li><code>small</code></li>
+          <li><code>large</code></li>
+          <li><code>full-width</code></li>
+          <li><code>round</code></li>
+          <li><code>ghost</code></li>
+          <li><code>icon-right</code></li>
+          <li><code>icon-only</code></li>
+        </ul>",
+        type: "array",
+        description: "Modifiers specific to the button component.",
+        required: "no",
+      },
+      {
+        name: "custom_classes",
+        value: "—",
+        type: "array",
+        description: "Custom classes to add to the component's root element. This may be useful for adding global utilities or custom modifiers.",
+        required: "no",
+      },
+      {
+        name: "custom_attributes",
+        value: "—",
+        type: "array",
+        description: "Custom attributes to add to the component's root element. This may be useful for adding custom JavaScript hooks.",
+        required: "no",
+      },
+    ],
+  }
+}) }}
+
+
+<h2 id="source-code">Source code</h2>
+<ul>
+<li><strong>Stylesheet:</strong> <a href="https://github.com/jacecotton/tcds/blob/main/src/tcds/styles/components/_button.scss">/src/tcds/styles/components/_button.scss</a></li>
+<li><strong>Template:</strong> <a href="https://github.com/jacecotton/tcds/blob/main/views/templates/components/button/button.html.twig">/views/templates/components/button/button.html.twig</a></li>
+</ul>
+<h2 id="footnotes">Footnotes</h2>
+ {{ include("@tch/components/footnotes/footnotes.html.twig") }}
+{% endblock %}

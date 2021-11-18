@@ -1,0 +1,9 @@
+$animation-properties: (
+  "productive-timing": .15s,
+  "productive-easing": ease-in,
+  "productive": .15s ease-in,
+
+  "expressive-timing": .8s,
+  "expressive-easing": cubic-bezier(0, 1, .4, 1),
+  "expressive": .8s cubic-bezier(0, 1, .4, 1),
+);

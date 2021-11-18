@@ -1,0 +1,22 @@
+<section class="example-box" role="doc-example">
+  <div class="example-box__result" {{ transparent_background ? 'style="background: transparent"' }}>
+    {% block result %}{% endblock %}
+  </div>
+  <div class="example-box__tabs">
+    {% set tabs = [] %}
+
+    {% for label, content in examples %}
+      {% set tabs = tabs|merge([{
+        label: label,
+        content: "<pre class='line-numbers language-#{label|clean_class}'><code class='language-#{label|clean_class}'>#{ content|escape }</code></pre>",
+      }]) %}
+    {% endfor %}
+
+    {% embed "templates/components/tabs/tabs.html.twig" with {
+      id: id ?: random(0, 1000),
+      tabs: tabs,
+      modifiers: [show_first ?: "hide-all", "small"]
+    } %}
+    {% endembed %}
+  </div>
+</section>

@@ -1,0 +1,41 @@
+@use "../../../tcds/styles" as *;
+
+table:not([class]),
+.table {
+  line-height: 1.5;
+  width: 100%;
+  margin: space("normal") 0 space("x-loose");
+
+  th, td {
+    border-bottom: 1px solid color("gray", "100");
+    border-top: 1px solid color("gray", "100");
+    text-align: left;
+  }
+
+  th {
+    background: color("gray", "0");
+    font-weight: font-weight("semibold");
+    padding: space("normal");
+    white-space: nowrap;
+
+    &[colspan] {
+      text-align: center;
+    }
+  }
+
+  td {
+    transition:
+      background animation("expressive"),
+      box-shadow animation("expressive");
+    padding: space("tight") space("normal");
+
+    ul {
+      margin: 0;
+      padding: 0;
+    }
+  }
+
+  tr:hover td {
+    background: color("blue", "0");
+  }
+}

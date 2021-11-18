@@ -1,11 +1,38 @@
+@use "sass:map";
+@use "sass:meta";
+@use "_variables" as *;
+
 @mixin reduced-motion() {
-  @media (prefers-reduced-motion: reduce), (update: slow) {
+  @media (prefers-reduced-motion: reduce) {
     @content;
   }
 }
 
 @mixin motion-ok() {
-  @media (prefers-reduced-motion: no-preference) and (update: fast) {
+  @media (prefers-reduced-motion: no-preference) {
     @content;
   }
+}
+
+@mixin animation($name, $options) {
+  $timing: "";
+  $easing: "";
+
+  @if meta.type-of($options) == "map" {
+    $timing: map.get($animation-properties, "#{map.get($options, "timing")}-timing");
+    $easing: map.get($animation-properties, "#{map.get($options, "easing")}-easing");
+
+    @if not $timing {
+      $timing: map.get($options, "timing");
+    }
+
+    @if not $easing {
+      $easing: map.get($options, "easing");
+    }
+  } @else if $options == "productive" or $options == "expressive" {
+    $timing: map.get($animation-properties, "#{$options}-timing");
+    $easing: map.get($animation-properties, "#{$options}-easing");
+  }
+
+  animation: $name $timing $easing;
 }

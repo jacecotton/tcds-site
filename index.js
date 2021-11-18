@@ -9,8 +9,8 @@ import TwingDrupalFilters from "twing-drupal-filters";
 
 const loader = new TwingLoaderFilesystem("./views");
 loader.addPath("./views/templates", "tch");
-const twing = new TwingEnvironment(loader);
 
+const twing = new TwingEnvironment(loader);
 TwingDrupalFilters(twing);
 
 const app = express();
@@ -26,7 +26,7 @@ content.forEach((category) => {
     const route = page.route || `/${categoryRoute}/${slugify(page.title, { lower: true })}`;
 
     app.get(route, (req, res) => {
-      twing.render(`pages${page.template ? "/" + page.template : route}.twig`, {
+      twing.render(`pages${page.template ? `/${page.template}` : route}.twig`, {
         title: page.title,
         display_title: page.display_title !== undefined ? page.display_title : page.title,
         meta_title: page.meta_title !== undefined ? page.meta_title : page.title,
@@ -48,6 +48,7 @@ content.forEach((category) => {
         res.end(output);
       }).catch((error) => {
         handle404(res);
+        console.log(error);
       });
     });
   });
@@ -63,6 +64,7 @@ function handle404(res) {
   twing.render("pages/404.twig", {
     title: "Page Not Found",
     meta_title: "Page Not Found",
+    display_title: "Page Not Found",
     content: content,
   }).then((output) => {
     res.end(output);

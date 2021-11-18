@@ -1,0 +1,38 @@
+@use "sass:math";
+@use "../../../tcds/styles" as *;
+
+:root {
+  --site-header-height: 120px;
+
+  @include breakpoint-below("main-nav") {
+    --site-header-height: 80px;
+  }
+}
+
+.site-header {
+  display: flex;
+  align-items: center;
+  background-color: color("gray", "0");
+  border-bottom: 1px solid color("gray", "100");
+  height: var(--site-header-height);
+  width: 100%;
+  padding: 0 math.div(size("x-large"), 2);
+  padding: 0 max(calc(50% - #{breakpoint("max")} / 2), math.div(size("x-large"), 2));
+  position: sticky;
+  top: 0;
+  z-index: layer("site-header");
+}
+
+.site-branding {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  color: color("gray", "400");
+  height: 100%;
+  text-decoration: none;
+  white-space: nowrap;
+
+  &__logo {
+    max-height: 60%;
+  }
+}

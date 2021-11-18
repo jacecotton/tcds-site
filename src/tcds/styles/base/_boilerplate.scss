@@ -1,4 +1,4 @@
-@use "../animation" as *;
+@use "../" as *;
 
 /**
  * This file contains many styles traditionally put in "reset" or "normalize"
@@ -39,13 +39,22 @@
 }
 
 /**
+ * 1. Animate scrolling to anchor elements to help users better understand the
+ *    direction and relative location of the target element (only if "reduced
+ *    motion" preference is not set).
+ */
+
+html {
+  @include motion-ok {
+    scroll-behavior: smooth; // 1
+  }
+}
+
+/**
  * 1. Remove default viewport margin.
  * 2. Prevent horizontal overflow and scrolling of viewport.
  * 3. Prevent automatic text scaling on orientation change. Both a design and
  *    performance consideration; changes to `font-size` trigger reflow.
- * 4. Animate scrolling to anchor elements to help users better understand the
- *    direction and relative location of the target element (only if "reduced
- *    motion" preference is not set).
  */
 
 body {
@@ -53,10 +62,6 @@ body {
   max-width: 100vw; // 2
   overflow-x: hidden; // 2
   text-size-adjust: 100%; // 3
-
-  @include motion-ok() {
-    scroll-behavior: smooth; // 4
-  }
 }
 
 /**

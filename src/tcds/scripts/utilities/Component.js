@@ -18,46 +18,19 @@
  * @property {object} props - An object for referencing static properties passed
  * to the component at time of instantiation.
  */
- class Component {
+class Component {
   constructor(element, props) {
     // Make the element accessible as a property of the extending class.
     this.element = element;
 
-    /**
-     * Set up a proxy to intercept changes to `this.state`. Will check that the
-     * new value is actually different, then fires a custom event to notify
-     * listeners of the change, with details about that change.
-     */
-    this.state = new Proxy({ }, this.stateHandler());
+    // Set up a proxy to intercept changes to `this.state`. Fires a
+    // `state-change` event when a change is detected.
+    this.state = new Proxy({}, this.stateHandler());
 
-    /**
-     * Set up a proxy to intercept changes to `this.props`. Will first merge the
-     * passed `props` argument to the object so they are accessible as a
-     * property of `this`. Then it will ensure these properties are immutable so
-     * they cannot be changed at runtime.
-     */
-    this.props = new Proxy({...props}, {
-      // `_props` references the new `this.props` object (rather than the
-      // original `props` argument).
-      set: (_props, prop, value) => {
-        // If the prop already exists and is different from the attempted
-        // value...
-        if(prop in _props && _props[prop] !== value) {
-          // Reject attempt.
-          console.warn("Attempt to mutate prop rejected. This is a problem in component subclass. Try deriving state from prop, or mutate prop value at time of instantiation.", {
-            context: this.element,
-            prop: prop,
-            "attempted value": value,
-            "persisting value": _props[prop],
-          });
-        } else {
-          // Otherwise proceed with setting the prop as normal.
-          _props[prop] = value;
-        }
-
-        return true;
-      },
-    });
+    // Set up a proxy to intercept changes to `this.props`. Will first merge the
+    // passed `props` argument to the object so they are accessible as a
+    // property of `this`.
+    this.props = new Proxy({...props}, this.propsHandler());
 
     /**
      * Listen for state changes and then call the `sync` method to update DOM.
@@ -102,16 +75,14 @@
     });
   }
 
+  /**
+   * A callback for a proxy on `this.state` to intercept changes. Will check
+   * that the new value is actually different, then fires a custom
+   * `state-change` event to notify listeners of the change, with details about
+   * that change.
+   */
   stateHandler() {
     return {
-      get: (store, state) => {
-        if(["[object Object]", "[object Array]"].indexOf(Object.prototype.toString.call(store[state])) > -1) {
-          return new Proxy(store[state], this.stateHandler());
-        }
-
-        return store[state];
-      },
-
       // store = the object that `this.state` becomes.
       // state = the property of the store object that was changed.
       // value = the new value that the property was set to.
@@ -145,14 +116,60 @@
 
         return true;
       },
+
+      // If a property of state is an array or object that is mutated (pushed,
+      // popped, spliced, etc.), the property is actually only "get"-ed. We
+      // still want the `set` callback to run, so we'll need to register a new
+      // proxy on that specific property, and only then will a `set` callback
+      // run. So first, we'll check if the property being read is an object or
+      // an array, and if so, set this same handler to a new proxy on the
+      // current property.
+      get: (store, state) => {
+        if(["[object Object]", "[object Array]"].indexOf(Object.prototype.toString.call(store[state])) > -1) {
+          return new Proxy(store[state], this.stateHandler());
+        }
+
+        return store[state];
+      },
+    };
+  }
+
+  /**
+   * A callback for a proxy on `this.props` to intercept changes. Will check if
+   * the prop attempting to be set already exists in the passed `props`, and if
+   * so, reject it (making props passed to the component instance by the user
+   * immutable at runtime).
+   */
+  propsHandler() {
+    return {
+      // `_props` references the new `this.props` object (rather than the
+      // original `props` constructor parameter).
+      set: (_props, prop, value) => {
+        // If the prop already exists and is different from the attempted
+        // value...
+        if(prop in _props && _props[prop] !== value) {
+          // Reject attempt.
+          console.warn("Attempt to mutate prop rejected. This is a problem in component subclass. Try deriving state from prop, or mutate prop value at time of instantiation.", {
+            "context": this.element,
+            "property": prop,
+            "attempted value": value,
+            "persisting value": _props[prop],
+          });
+        } else {
+          // Otherwise proceed with setting the prop as normal.
+          _props[prop] = value;
+        }
+
+        return true;
+      },
     };
   }
 
   /**
    * Each extending component subclass should have its own `sync` method, which
-   * will be responsible for all DOM manipulation. Since the method is called on
-   * every state change, it keeps the UI and state in sync, hence the name. As a
-   * result, it is best practice to always reference the current state when
+   * will be responsible for all reaction to state. Since the method is called
+   * on every state change, it keeps the UI and state in sync, hence the name.
+   * As a result, it is best practice to always reference the current state when
    * manipulating the DOM.
    *
    * @param {object} newState - An object containing only a copy of the changed

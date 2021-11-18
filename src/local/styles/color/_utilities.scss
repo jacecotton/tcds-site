@@ -1,0 +1,10 @@
+@use "sass:map";
+@use "../../../tcds/styles" as *;
+
+:root {
+  @each $color, $grade-map in $colors {
+    @each $grade, $use-map in $grade-map {
+      --color-#{$color}-#{$grade}: #{map.get($use-map, "background")};
+    }
+  }
+}

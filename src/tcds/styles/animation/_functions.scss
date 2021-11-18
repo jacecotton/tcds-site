@@ -1,0 +1,6 @@
+@use "sass:map";
+@use "_variables" as *;
+
+@function animation($type) {
+  @return map.get($animation-properties, $type);
+}

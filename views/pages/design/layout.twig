@@ -1,0 +1,39 @@
+{# DO NOT EDIT. This file was compiled from Markdown; please edit the source .md
+file and run the gulp process to compile (either `gulp` or `npm run dev` from
+the terminal). #}
+{% extends "@tch/base.twig" %}
+{% block lead %}Layout—the arrangement, sizing, and spacing of elements—should be responsive, logical, intuitive, and consistent.{% endblock %}
+{% block body %}
+<h2 id="space-and-scale">Space and scale</h2>
+<ul>
+<li>Space constants — normal, loose, extra loose, tight, extra tight</li>
+<li>Size constants — medium, large, extra large, small, extra small</li>
+<li>Emphasize that the tokens are not:<ul>
+<li>Intended to be responsive/flexible — at most, they can be used as floors/ceilings for intrinsic responsiveness.</li>
+<li>Intended for use at the macro layout level — this is mainly for scale variants of individual components and primitives and for the spacing between and within them.</li>
+</ul>
+</li>
+</ul>
+<h2 id="breakpoints">Breakpoints</h2>
+<ul>
+<li>Point to <a href="/design/responsive">Responsive</a> principle about intrinsic responsiveness and device agnosticism.</li>
+<li>Emphasize that the provided breakpoints are not to make assumptions about user devices, and are not necessarily modeled off of specific or standard screen sizes.</li>
+<li>The breakpoints are more rough starting points, and are mainly useful for global coordination between elements. Emphasize the need to create an individualized, custom breakpoint map for the project itself, based on its own unique design requirements.</li>
+</ul>
+<h2 id="layout-utilities">Layout utilities</h2>
+<h3 id="flexbox">Flexbox</h3>
+<ul>
+<li>Row</li>
+<li>Column</li>
+</ul>
+<h3 id="grid">Grid</h3>
+<ul>
+<li>Grid utility</li>
+</ul>
+<h3 id="general">General</h3>
+<ul>
+<li>Gap</li>
+<li>Align</li>
+<li>Justify</li>
+</ul>
+{% endblock %}

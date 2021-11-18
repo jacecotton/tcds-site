@@ -1,0 +1,26 @@
+@use "../" as *;
+
+main {
+  counter-reset: footnotes;  
+}
+
+.Footnotes {
+  font-size: font-size("small");
+  list-style: decimal;
+  margin-left: space("normal");
+
+  &:empty {
+    display: none;
+  }
+}
+
+.Footnote-ref {
+  counter-increment: footnotes;
+  font-size: font-size("x-small");
+  position: relative;
+  top: -.5em;
+
+  &::after {
+    content: "[" counter(footnotes) "]";
+  }
+}

@@ -1,30 +1,29 @@
 $base-unit: 4px;
 
-$size-1: $base-unit * 2;
-$size-2: $base-unit * 4;
-$size-3: $base-unit * 6;
-$size-4: $base-unit * 8;
-$size-5: $base-unit * 10;
-$size-6: $base-unit * 12;
-$size-7: $base-unit * 14;
-$size-8: $base-unit * 16;
-$size-9: $base-unit * 18;
-$size-10: $base-unit * 20;
+$sizes: (
+  "x-small": $base-unit * 6,
+  "small":   $base-unit * 8,
+  "medium":  $base-unit * 10,
+  "large":   $base-unit * 12,
+  "x-large": $base-unit * 14,
+);
 
-$spacing-1: $base-unit * 2;
-$spacing-2: $base-unit * 4;
-$spacing-3: $base-unit * 6;
-$spacing-4: $base-unit * 8;
-$spacing-5: $base-unit * 10;
-$spacing-6: $base-unit * 12;
-$spacing-7: $base-unit * 14;
-$spacing-8: $base-unit * 16;
-$spacing-9: $base-unit * 18;
-$spacing-10: $base-unit * 20;
+$spaces: (
+  "x-tight": $base-unit * 1,
+  "tight":   $base-unit * 2,
+  "normal":  $base-unit * 4,
+  "loose":   $base-unit * 6,
+  "x-loose": $base-unit * 8,
+);
 
 $breakpoints: (
   "small": 640px,
   "medium": 768px,
   "large": 1024px,
   "max": 1280px,
+);
+
+$layers: (
+  "modal": 4,
+  "site-header": 3,
 );

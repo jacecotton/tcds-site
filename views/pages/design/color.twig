@@ -1,37 +1,36 @@
+{# DO NOT EDIT. This file was compiled from Markdown; please edit the source .md
+file and run the gulp process to compile (either `gulp` or `npm run dev` from
+the terminal). #}
 {% extends "@tch/base.twig" %}
+{% block lead %}Color can be used to create pleasing designs, convey meaning and tone, establish brand identity, influence focus and emotion, and more. However, if used inconsistently or improperly, color can negatively impact a user's experience.{% endblock %}
 {% block body %}
-  <dl>
-    <div>
-      <dt>title</dt>
-      <dd>{{ title }}</dd>
-    </div>
-    <div>
-      <dt>display_title</dt>
-      <dd>{{ display_title }}</dd>
-    </div>
-    <div>
-      <dt>meta_title</dt>
-      <dd>{{ meta_title }}</dd>
-    </div>
-    <div>
-      <dt>menu_title</dt>
-      <dd>{{ menu_title }}</dd>
-    </div>
-    <div>
-      <dt>description</dt>
-      <dd>{{ description }}</dd>
-    </div>
-    <div>
-      <dt>category</dt>
-      <dd>{{ category }}</dd>
-    </div>
-    <div>
-      <dt>route</dt>
-      <dd>{{ route }}</dd>
-    </div>
-    <div>
-      <dt>request_path</dt>
-      <dd>{{ request_path }}</dd>
-    </div>
-  </dl>
+<p>Texas Children&#39;s Design System comes with a standardized, brand-compliant color palette. Its semantic naming system and numbered grading aims to help in the selection of colors that are thematically consistent, contextually meaningful, and accessible to those with low color perception.</p>
+<style>
+  .palette {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .swatch {
+    padding: 1rem;
+    border-radius: 8px;
+  }
+</style>
+
+
+  {% set colors = ["red", "blue", "green", "yellow", "gray"] %}
+  {% set grades = ["0", "100", "200", "300", "400", "500"] %}
+
+
+<div class="palette">
+  
+    {% for color in colors %}
+      {% for grade in grades %}
+        <div class="swatch bg-{{ color }}-{{ grade }}">{{ color }}-{{ grade }} <a href="#">a link</a></div>
+      {% endfor %}
+    {% endfor %}
+  
+</div>
 {% endblock %}

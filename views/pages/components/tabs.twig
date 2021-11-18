@@ -1,0 +1,46 @@
+{# DO NOT EDIT. This file was compiled from Markdown; please edit the source .md
+file and run the gulp process to compile (either `gulp` or `npm run dev` from
+the terminal). #}
+{% extends "@tch/base.twig" %}
+{% block body %}
+{{ include("@tch/components/tabs/tabs.html.twig", {
+    tabs: [
+      {
+        label: "Small test",
+        content: "Test content",
+      },
+      {
+        label: "Small test 2",
+        content: "Test content 2",
+      },
+    ],
+    modifiers: ["small"],
+  }) }}
+
+  {{ include("@tch/components/tabs/tabs.html.twig", {
+    tabs: [
+      {
+        label: "Medium test",
+        content: "Test content",
+      },
+      {
+        label: "Medium test 2",
+        content: "Test content 2",
+      },
+    ],
+  }) }}
+
+  {{ include("@tch/components/tabs/tabs.html.twig", {
+    tabs: [
+      {
+        label: "Large test",
+        content: "Test content",
+      },
+      {
+        label: "Large test 2",
+        content: "Test content 2",
+      },
+    ],
+    modifiers: ["large"],
+  }) }}
+{% endblock %}

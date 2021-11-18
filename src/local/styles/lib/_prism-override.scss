@@ -1,0 +1,112 @@
+@use "../../../tcds/styles" as *;
+
+/**
+ * Overrides for the Prism library.
+ */
+
+ :root {
+  $prism-code: "code[class*='language-']";
+  $prism-pre: "pre[class*='language-']";
+
+  #{$prism-code},
+  #{$prism-pre} {
+    font-size: font-size("small");
+    font-family: font-stack("monospace");
+    text-shadow: none;
+    color: color("gray");
+    line-height: 1.75;
+
+    .line-marker {
+      pointer-events: none;
+      user-select: none;
+      opacity: .5;
+    }
+  }
+
+  :not(pre) > #{$prism-code},
+  #{$prism-pre} {
+    background: color("gray", "0");
+  }
+
+  #{$prism-pre} {
+    margin: 0 0 space("normal");
+    padding: space("tight");
+    border: 1px solid color("shade", "0");
+    border-radius: 4px;
+
+    &::before {
+      content: attr(data-language);
+      position: absolute;
+      bottom: .5rem;
+      right: .5rem;
+      font-family: font-stack("sans-serif");
+      font-size: font-size("x-small");
+      text-transform: uppercase;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .15s;
+    }
+
+    &:hover::before {
+      opacity: 1;
+    }
+  }
+
+  .line-numbers .line-numbers-rows {
+    border-right: none;
+    margin-top: -.3em;
+
+    > span::before {
+      color: color("gray");
+    }
+  }
+
+  .token {
+    &.comment,
+    &.prolog,
+    &.doctype,
+    &.cdata {
+      color: color("gray");
+    }
+
+    &.punctuation {
+      color: color("gray");
+    }
+
+    &.property,
+    &.tag,
+    &.boolean,
+    &.number,
+    &.constant,
+    &.symbol,
+    &.deleted {
+      color: color("green");
+    }
+
+    &.selector,
+    &.attr-name,
+    &.string,
+    &.char,
+    &.builtin,
+    &.inserted {
+      color: color("blue", "400");
+    }
+
+    &.function,
+    &.class-name {
+      color: color("red");
+    }
+
+    &.regex,
+    &.important,
+    &.variable {
+      color: color("yellow");
+    }
+
+    &.atrule,
+    &.attr-value,
+    &.keyword {
+      color: color("blue");
+    }
+  }
+}

@@ -1,8 +1,38 @@
-@use "base/_boilerplate";
-@use "base/_utilities";
+/**
+ * This file imports all the actual CSS rules into one file. It compiles to
+ * ../../public/dist/tcds.css.
+ *
+ * Note that it does not bring in any abstracts (variables, mixins, functions,
+ * etc.) These are instead imported via `@forward` in the _index.scss file. Each
+ * individual stylesheet then imports the index via `@use`.
+ */
 
-@use "typography/_fonts";
-@use "typography/_globals";
+/* Base */
+@use "base/_base" as *;
+@use "base/_boilerplate" as *;
+@use "base/_utilities" as *;
 
-@use "primitives/_lists";
-@use "primitives/_tables";
+/* Color */
+@use "color/_utilities" as *;
+
+/* Layout */
+@use "layout/_utilities" as *;
+
+/* Typography */
+@use "typography/_fonts" as *;
+@use "typography/_globals" as *;
+
+/* Primitives */
+@use "primitives/_divider" as *;
+@use "primitives/_lists" as *;
+@use "primitives/_tables" as *;
+
+/* Atomic components */
+@use "components/_footnotes" as *;
+@use "components/_icon" as *;
+@use "components/_tabs" as *;
+
+/* Composite components */
+@use "components/_accordion" as *;
+@use "components/_button" as *;
+@use "components/_tile" as *;

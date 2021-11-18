@@ -1,0 +1,57 @@
+@use "../" as *;
+
+.Accordion {
+  &__controls {
+    display: flex;
+    justify-content: end;
+    list-style: none;
+    margin: 0;
+  }
+
+  &__section {
+    margin-bottom: 3px;
+  }
+
+  &__button {
+    appearance: none;
+    border: 0;
+    background: color("gray", "0");
+    color: color("gray", "400");
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    font-family: font-stack("sans-serif");
+    font-size: font-size("medium");
+    font-weight: font-weight("semibold");
+    padding: space("normal") space("loose");
+    width: 100%;
+    transition:
+      background animation("productive"),
+      color animation("productive");
+
+    &:hover {
+      background: theme-color("secondary");
+      color: theme-color("secondary", "foreground");
+    }
+
+    &[aria-expanded="true"] {
+      --icon-rotate: 180deg;
+    }
+  }
+
+  &__icon {
+    width: 1em;
+    pointer-events: none;
+    transform: rotateZ(var(--icon-rotate, 0));
+    transition: transform animation("productive");
+  }
+
+  &__panel {
+    overflow: hidden;
+    transition: height animation("expressive");
+  }
+  
+  &__content {
+    padding: space("normal");
+  }
+}

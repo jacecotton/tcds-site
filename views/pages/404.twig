@@ -1,4 +1,12 @@
+{# DO NOT EDIT. This file was compiled from Markdown; please edit the source .md
+file and run the gulp process to compile (either `gulp` or `npm run dev` from
+the terminal). #}
 {% extends "@tch/base.twig" %}
+{% block lead %}Error 404{% endblock %}
 {% block body %}
-  Error 404 not found
+<p>We&#39;re sorry, but the URL you landed on doesn&#39;t seem to have an associated page.</p>
+<ul>
+<li>Go back to the <a href="javascript:history.back()">previous page</a>.</li>
+<li>Go to the <a href="/" rel="home">home page</a>.</li>
+</ul>
 {% endblock %}

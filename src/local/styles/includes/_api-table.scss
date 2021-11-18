@@ -1,0 +1,8 @@
+@use "../../../tcds/styles" as *;
+
+.api-table {
+  td:nth-of-type(2),
+  td:nth-of-type(3) {
+    white-space: nowrap;
+  }
+}

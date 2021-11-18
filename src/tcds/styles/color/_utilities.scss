@@ -1,0 +1,23 @@
+@use "sass:map";
+@use "../" as *;
+
+@each $color, $grade-map in $theme-colors {
+  @each $grade, $use-map in $grade-map {
+    $selector: ".bg-#{$color}-#{$grade}";
+
+    @if $grade == "300" {
+      $selector: ".bg-#{$color}";
+    }
+
+    #{$selector} {
+      background: map.get($use-map, "background");
+      color: map.get($use-map, "foreground");
+
+      @if map.has-key($use-map, "link") {
+        a {
+          color: map.get($use-map, "link");
+        }
+      }
+    }
+  }
+}

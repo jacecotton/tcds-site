@@ -1,15 +1,35 @@
-<nav class="side-nav" aria-label="Category navigation">
-  <ul class="side-nav__list">
-    {% for top_level_category in content %}
-      {% if top_level_category.title == category %}
-        {% set category_route = top_level_category.route ?: top_level_category.title|clean_class %}
-        {% for page in top_level_category.pages %}
-          {% set page_route = page.route ?: "/" ~ category_route ~ "/" ~ page.title|clean_class %}
-          <li class="side-nav__item">
-            <a href="{{ page_route }}" {{ page_route == route ? 'aria-current="location"' : "" }} class="side-nav__link">{{ page.menu_title ?: page.title }}</a>
-          </li>
-        {% endfor %}
-      {% endif %}
-    {% endfor %}
-  </ul>
-</nav>
+{% set menu = false %}
+
+{% for top_level_category in content %}
+  {% if top_level_category.title == category %}
+    {% set menu = true %}
+  {% endif %}
+{% endfor %}
+
+{% if menu == true %}
+  <nav class="side-nav" aria-label="{{ category }} navigation">
+    <div class="side-nav__teaser">
+      <span aria-hidden="true">{{ category }}</span>
+      {{ include("@tch/icons/chevron-right.svg.twig") }}
+      <span aria-hidden="true">{{ menu_title }}</span>
+
+      <button aria-controls="side-nav" class="side-nav__toggle" aria-label="Toggle {{ category }} menu" title="Toggle {{ category }} menu">
+        {{ include("@tch/icons/chevron-down.svg.twig") }}
+      </button>
+    </div>
+
+    <ul class="side-nav__list" data-category="{{ category }}" id="side-nav">
+      {% for top_level_category in content %}
+        {% if top_level_category.title == category %}
+          {% set category_route = top_level_category.route ?: top_level_category.title|clean_class %}
+          {% for page in top_level_category.pages %}
+            {% set page_route = page.route ?: "/" ~ category_route ~ "/" ~ page.title|clean_class %}
+            <li class="side-nav__item {{ page_route == route ? "side-nav__item--active" }}">
+              <a href="{{ page_route }}" {{ page_route == route ? 'aria-current="location"' }} class="side-nav__link">{{ page.menu_title ?: page.title }}</a>
+            </li>
+          {% endfor %}
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </nav>
+{% endif %}

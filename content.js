@@ -3,8 +3,9 @@ export default [
     title: "Introduction",
     pages: [
       {
-        title: "Introduction",
+        title: "Overview",
         meta_title: "",
+        display_title: "Texas Children's Design System",
         route: "/",
         template: "index",
         description: "Welcome to the Texas Children's Design System.",
@@ -24,6 +25,13 @@ export default [
     title: "Design",
     pages: [
       {
+        title: "Overview",
+        meta_title: "Design",
+        display_title: "Design",
+        route: "/design",
+        template: "design/overview",
+      },
+      {
         title: "Animation",
       },
       {
@@ -36,10 +44,13 @@ export default [
         title: "Icons",
       },
       {
-        title: "Imagery",
+        title: "Images",
       },
       {
         title: "Layout",
+      },
+      {
+        title: "Responsive",
       },
       {
         title: "Typography",
@@ -85,6 +96,9 @@ export default [
         title: "Footer",
       },
       {
+        title: "Forms",
+      },
+      {
         title: "Header",
       },
       {
@@ -110,6 +124,37 @@ export default [
       },
       {
         title: "Tooltip",
+      },
+    ],
+  },
+
+  {
+    title: "Accessibility",
+    pages: [
+      {
+        title: "Overview",
+        meta_title: "Accessibility",
+        display_title: "Accessibility",
+        route: "/accessibility",
+        template: "accessibility/overview",
+      },
+      {
+        title: "Testing",
+      },
+    ],
+  },
+
+  {
+    title: "Developers",
+    pages: [
+      {
+        title: "Code reference",
+      },
+      {
+        title: "Performance",
+      },
+      {
+        title: "Style guide",
       },
     ],
   },

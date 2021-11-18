@@ -1,0 +1,141 @@
+@use "../../../tcds/styles" as *;
+
+.side-nav {
+  grid-area: side-nav;
+
+  @include breakpoint-below("side-nav") {
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+    border-bottom: 1px solid color("gray", "100");
+    z-index: 2;
+  }
+
+  @include breakpoint-above("side-nav") {
+    max-height: calc(100vh - (var(--site-header-height) * 1.75));
+    overflow-y: auto;
+    position: sticky;
+    top: calc(var(--site-header-height) * 1.25);
+  }
+
+  &__teaser {
+    display: flex;
+    align-items: center;
+    gap: space("normal");
+    height: size("x-large");
+    width: 100%;
+    position: relative;
+
+    svg {
+      width: space("normal");
+    }
+
+    @include breakpoint-above("side-nav") {
+      display: none;
+    }
+  }
+
+  &__toggle {
+    appearance: none;
+    background: transparent;
+    border: 0;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    text-align: right;
+
+    svg {
+      width: space("normal");
+    }
+  }
+
+  &__list {
+    color: color("gray", "400");
+    font-size: font-size("small");
+
+    @include breakpoint-below("side-nav") {
+      padding-bottom: space("normal");
+      width: 100%;
+    }
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    color: inherit;
+    height: size("large");
+    text-decoration: none;
+
+    @media (pointer: fine) {
+      padding: 0 space("normal");
+    }
+
+    @media (any-hover: hover) {
+      transition:
+        background animation("productive"),
+        color animation("productive");
+
+      &:hover {
+        background: color("gray", "0");
+        color: color("gray", "500");
+      }
+    }
+
+    &[aria-current] {
+      color: color("gray", "500");
+      font-weight: font-weight("bold");
+    }
+  }
+
+  .TOC {
+    &__list {
+      counter-reset: toc-heading;
+      color: color("gray");
+      font-size: font-size("x-small");
+      margin-left: space("loose");
+
+      @at-root .side-nav__item > .TOC__list {
+        margin-left: space("x-loose");
+      }
+    }
+
+    &__item {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      align-items: center;
+      gap: 0 .5ch;
+
+      &::before {
+        content: counters(toc-heading, ".") ".";
+        counter-increment: toc-heading;
+      }
+
+      .TOC__list {
+        grid-column: 1 / -1;
+      }
+    }
+
+    &__link {
+      display: flex;
+      align-items: center;
+      color: inherit;
+      height: size("medium");
+      text-decoration: none;
+
+      @media (any-hover: hover) {
+        &:hover {
+          color: color("gray", "500");
+        }
+      }
+
+      @media (pointer: fine) {
+        height: size("small");
+      }
+
+      &[aria-current] {
+        color: color("gray", "500");
+        font-weight: bold;
+      }
+    }
+  }
+}
