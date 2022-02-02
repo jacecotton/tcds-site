@@ -52,9 +52,9 @@ twig-->
 
 Goals are accomplished by following our [Principles](#principles).
 
-**Create pleasant and inclusive experiences.** Our digital products should be intuitive to use and accessible to all, with a strong sense of consistency and cohesion.
+**Create pleasant and inclusive experiences.** Our web products should be intuitive to use and accessible to all, with a strong sense of cohesion and credibility.
 
-**Increase efficiency and focus.** By documenting and demonstrating established solutions to precedented challenges, we reduce guesswork and redundancies, and streamline the process prototyping, iterating, and maintaining.
+**Increase efficiency and focus.** By documenting and demonstrating established solutions to precedented challenges, we reduce guesswork and redundancies, and streamline the process of prototyping, iterating, and maintaining on the web.
 
 . . .
 
@@ -76,6 +76,7 @@ Principles are the means to our [Goals](#goals).
 * Semantic: Content and interface elements are enriched with semantic meaning, enhancing the accessibility of assistive technology, integration with social media, and understanding by search engine algorithms.
 * Adaptable: Every element is made with iteration and logistics for updating and maintaining in mind.
 
+. . .
 <!--
 - Open — transparent development, open source, open to contribution and feedback from all across the organization
 - Interoperable — platform-agnostic, paradigm-agnostic: should work with any content management system, rendering strategy, etc.
