@@ -4,7 +4,7 @@ lead-->
 
 ## Best practices
 
-**Use specific but concise section labels.** There is an inherent [interaction cost](https://www.nngroup.com/articles/interaction-cost-definition/ "Interaction Cost - Nielsen Norman Group") to accordions that may cause users to miss or ignore the content. Ensure your labels are concise enough to be read quickly, but descriptive enough to let the user know whether the contained content is what they're looking for.
+**Use specific but concise section labels.** There is an inherent [interaction cost](https://www.nngroup.com/articles/interaction-cost-definition/ "Interaction Cost - Nielsen Norman Group") to accordions that may cause users to miss or ignore the content. Ensure your labels are concise enough to be read quickly, but descriptive enough to provide a strong [information scent](https://www.nngroup.com/articles/information-scent/).
 
 ### When to use
 
@@ -19,8 +19,8 @@ lead-->
 **The use case fits a different pattern better.** Consider one of the following:
 
 * [Tabs](/components/tabs), which are more useful for quick comparison between different content of the same information type. Tabs do not move position when selected, making navigation between them faster and easier.
-* [Table of Contents](/components/table-of-contents), which work better for navigating content that is expected to be read in full and in sequence.<span data-footnote>["Anchors OK? Re-Assessing In-Page Links" \- Nielsen Norman Group](https://www.nngroup.com/articles/in-page-links/)</span> They also provide a simpler overview to examine before scrolling.
-* [Details](/components/details), which work better for collapsing a single, independent section.
+* [Table of Contents](/components/table-of-contents), which works better for navigating content that is expected to be read in full and in sequence.<span data-footnote>["Anchors OK? Re-Assessing In-Page Links"](https://www.nngroup.com/articles/in-page-links/) — Nielsen Norman Group</span> They also provide a simpler overview to examine before scrolling.
+* [Details](/primitives/details), which work better for collapsing a single, independent section.
 
 ## Examples
 ### Default accordion
@@ -396,15 +396,17 @@ twig-->
 }) }}
 twig-->
 
-## Source code
-
-* **Script:** [/src/tcds/scripts/components/Accordion.js](https://github.com/jacecotton/tcds/blob/main/src/tcds/scripts/components/Accordion.js)
-* **Stylesheet:** [/src/tcds/styles/components/_accordion.scss](https://github.com/jacecotton/tcds/blob/main/src/tcds/styles/components/_accordion.scss)
-* **Template:** [/views/templates/components/accordion/accordion.html.twig](https://github.com/jacecotton/tcds/blob/main/views/templates/components/accordion/accordion.html.twig)
+## Citations
+<!--twig {{ include("@tch/components/footnotes/footnotes.html.twig") }} twig-->
 
 ## Further reading
 
-* [WAI-ARIA Authoring Practices 1.2 &sect; 3.1 Accordion](https://www.w3.org/TR/wai-aria-practices-1.2/#accordion)
+Additional research, techniques, and guidelines considered in the creation of this component.
+
+* [WAI-ARIA Authoring Practices 1.2 &sect; 3.1 Accordion](https://www.w3.org/TR/wai-aria-practices-1.2/#accordion) — W3.org
+* [Progressive Disclosure](https://www.nngroup.com/articles/progressive-disclosure/) — Nielsen Norman Group
+
+<!--
 * https://www.nngroup.com/articles/accordion-icons/ 
 * https://www.nngroup.com/articles/accordions-complex-content/
 * https://www.nngroup.com/articles/auto-forwarding/
@@ -420,12 +422,11 @@ twig-->
 * https://www.hassellinclusion.com/blog/accessible-accordion-pattern/
 * https://www.carbondesignsystem.com/components/accordion/usage/
 * https://www.smashingmagazine.com/2017/06/designing-perfect-accordion-checklist/
+-->
 
-## Footnotes
-<!--twig {{ include("@tch/components/footnotes/footnotes.html.twig") }} twig-->
-
-## To-do
-
-* URL hash mechanisms (see https://inclusive-components.design/collapsible-sections/)
-  * Update a URL hash when a button is clicked
-  * If a URL hash matches a heading id, open that section and focus it.
+<!--
+/**
+ * @todo URL hash mechanism - https://inclusive-components.design/collapsible-sections/
+ * @todo Test mobile experience. Possibly make open accordion heading sticky, and possibly scroll the accordion heading to the top of the viewport on activation?
+ */
+-->

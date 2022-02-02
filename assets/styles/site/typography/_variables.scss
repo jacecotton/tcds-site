@@ -1,0 +1,6 @@
+@use "sass:map";
+@use "../../tcds/" as *;
+
+$font-stacks: map.merge($font-stacks, (
+  "monospace": ("IBM Plex Mono", monospace),
+));

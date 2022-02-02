@@ -4,7 +4,7 @@
 
 **Use concise, accurate, and specific labels.** Avoid vague and abstract language like "Get started" or "Learn more". Prefer explicit labels instead, like "Confirm choice" or "Continue reading". Accurate and specific language improves user confidence and engagement,<span data-footnote>[Information Scent: How Users Decide Where to Go Next](https://www.nngroup.com/articles/information-scent/#:~:text=Perhaps%20the%20most,to%20click%20it.) — Nielsen Norman Group</span> while overly broad calls to action can mislead, disinterest, or confuse users.<span data-footnote>[Get Started Stops Users](https://www.nngroup.com/articles/get-started/) — Nielsen Norman Group</span>
 
-**Use sentence case.** All-uppercase text is slower and more difficult to read for all users,<span data-footnote>[Accessibility Requirements for People with Low Vision § 3.3.4 Capitalization](https://www.w3.org/TR/low-vision-needs/#capitalization) — W3C</span> but particularly for those with dyslexia.<span data-footnote>[Creating a dyslexia friendly workplace](https://www.bdadyslexia.org.uk/advice/employers/creating-a-dyslexia-friendly-workplace/dyslexia-friendly-style-guide#:~:text=Avoid%20text%20in%20uppercase/capital%20letters%20and%20small%20caps%2C%20which%20can%20be%20less%20familiar%20to%20the%20reader%20and%20harder%20to%20read.) — British Dyslexia Association</span> Furthermore, screen readers sometimes interpret certain uppercased words as common initialisms (such as ADD or US), and will spell out those words letter by letter.<span data-footnote>[Designing for Screen Reader Compatibility § How Screen Readers Read Content](https://webaim.org/techniques/screenreader/#:~:text=Screen%20readers%20try%20to%20pronounce%20acronyms%2C%20if%20there%20are%20sufficient%20vowels/consonants%20to%20be%20pronounceable.%20Otherwise%2C%20they%20spell%20out%20the%20letters.) — WebAIM</span>
+**Use sentence case.** All-uppercase text is slower and more difficult to read for all users,<span data-footnote>[Accessibility Requirements for People with Low Vision § 3.3.4 Capitalization](https://www.w3.org/TR/low-vision-needs/#capitalization) — W3.org</span> but particularly for those with dyslexia.<span data-footnote>[Creating a dyslexia friendly workplace](https://www.bdadyslexia.org.uk/advice/employers/creating-a-dyslexia-friendly-workplace/dyslexia-friendly-style-guide#:~:text=Avoid%20text%20in%20uppercase/capital%20letters%20and%20small%20caps%2C%20which%20can%20be%20less%20familiar%20to%20the%20reader%20and%20harder%20to%20read.) — British Dyslexia Association</span> Furthermore, screen readers sometimes interpret certain uppercased words as common initialisms (such as ADD or US), and will spell out those words letter by letter.<span data-footnote>[Designing for Screen Reader Compatibility § How Screen Readers Read Content](https://webaim.org/techniques/screenreader/#:~:text=Screen%20readers%20try%20to%20pronounce%20acronyms%2C%20if%20there%20are%20sufficient%20vowels/consonants%20to%20be%20pronounceable.%20Otherwise%2C%20they%20spell%20out%20the%20letters.) — WebAIM</span>
 
 ### When to use
 
@@ -12,7 +12,7 @@
 
 ### When not to use
 
-**Page navigation.** Avoid using buttons to take users to a different page. Prefer links instead (see [&sect; Buttons vs. links](#buttons-vs-links)).
+**Page navigation.** While this is possible and supported by the component (see [example](#default-button)), you should generally avoid using buttons to take users to a different page. Prefer links instead (see [&sect; Buttons vs. links](#buttons-vs-links)).
 
 ## Examples
 ### Default button
@@ -386,7 +386,7 @@ While icon-only buttons are possible, try to always keep the text label visible;
           <li><code>file</code></li>
         </ul>",
         type: "string",
-        description: "The <a href='https://www.w3.org/TR/2011/WD-html5-20110525/the-button-element.html#attr-button-type' title='4.10.8 The button element - W3C.org'>HTML button type</a>.",
+        description: "The <a href='https://www.w3.org/TR/2011/WD-html5-20110525/the-button-element.html#attr-button-type' title='4.10.8 The button element — W3.org'>HTML button type</a>.",
         required: "no",
       },
       {
@@ -453,10 +453,5 @@ While icon-only buttons are possible, try to always keep the text label visible;
 }) }}
 twig-->
 
-## Source code
-
-* **Stylesheet:** [/src/tcds/styles/components/_button.scss](https://github.com/jacecotton/tcds/blob/main/src/tcds/styles/components/_button.scss)
-* **Template:** [/views/templates/components/button/button.html.twig](https://github.com/jacecotton/tcds/blob/main/views/templates/components/button/button.html.twig)
-
-## Footnotes
+## Citations
 <!--twig {{ include("@tch/components/footnotes/footnotes.html.twig") }} twig-->

@@ -1,7 +1,0 @@
-@use "../" as *;
-
-hr {
-  border: 0;
-  border-top: $base-unit solid color("gray", "100");
-  margin: 0 0 2rem;
-}

@@ -5,7 +5,7 @@ the terminal). #}
 {% block body %}
 <p>The fastest and easiest way to get started is to <a href="#linking-from-cdn">link CSS and JavaScript files from a CDN</a>. Then, you can copy and paste example HTML code, modifying it per your requirements.</p>
 <p>However, this method is extremely limited. This only gives you access to <em>compiled</em> code, and requires that you manually copy and paste HTML, which is not very maintainable.</p>
-<p>The recommended way to use the Design System is to download the uncompiled assets, and use them as a part of the build process of your project. This gives you access to variables, functions, mixins, and templates. You can do this via a <a href="#npm">package manager</a> or downloading and manually including the files from the <a href="#download-archive">downloads</a>.</p>
+<p>The recommended way to use the Design System is to download the uncompiled assets, and use them as a part of the build process of your project. This gives you access to variables, functions, mixins, and templates. See <a href="#project-setup">&sect; Project setup</a>.</p>
 <h2 id="linking-from-cdn">Linking from CDN</h2>
 <p>You can load the Design System straight from a CDN via UNPKG, powered by Cloudflare:</p>
 <pre><code class="language-html">&lt;head&gt;
@@ -17,7 +17,9 @@ the terminal). #}
   &lt;script async src=&quot;https://unpkg.com/@tch/tcds/tcds.min.js&quot;&gt;&lt;/script&gt;
 &lt;/body&gt;
 </code></pre>
-<h2 id="installation">Installation</h2>
-<h3 id="npm">NPM</h3>
-<h3 id="download-archive">Download archive</h3>
+<h2 id="project-setup">Project setup</h2>
+
+  {{ include("@tch/components/message/message.html.twig", {
+    content: "<b>Coming soon.</b> Check back later for a step-by-step guide on how to install the Design System along with the build process of the rest of your project's assets.",
+  }) }}
 {% endblock %}

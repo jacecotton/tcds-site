@@ -1,43 +1,47 @@
 <!--lead
-  Texas Children's Design System is a centralized library of resources and guides for creating digital experiences.
+  Texas Children's Design System is a centralized library of resources for creating websites at scale. It aims to bring consistency, standardization, and efficiency to Texas Children's digital products, by providing reusable patterns, documentation, and standards.
 lead-->
+
+## Get started
+
+First, read the [Getting Started](/getting-started) page, then select a category below to begin using the Design System.
 
 <!--twig
   {% set contents = [
     {
-      title: "Design",
-      subtitle: "Typography, color, layout, and more",
+      heading: "Design",
+      subheading: "Typography, color, layout, and more",
       link: "/design",
       icon: "eye",
     },
     {
-      title: "Components",
-      subtitle: "Standardized, reusable building blocks",
+      heading: "Components",
+      subheading: "Reusable building blocks and interface elements",
       link: "/components",
       icon: "grid",
     },
     {
-      title: "Accessibility",
-      subtitle: "Creating inclusive experiences for users with disabilities",
+      heading: "Primitives",
+      subheading: "Basic HTML elements. Forms, lists, images, and more",
+      link: "/primitives",
+      icon: "type",
+    },
+    {
+      heading: "Accessibility",
+      subheading: "Creating inclusive experiences for users with disabilities",
       link: "/accessibility",
       icon: "wheelchair",
     },
-    {
-      title: "Developers",
-      subtitle: "Documentation, code reference, and style guides",
-      link: "/developers/style-guide",
-      icon: "code",
-    },
   ] %}
-  <ul class="grid gap-tight" style="--grid-columns: auto-fill; --grid-column-min-width: 356px; margin: 64px 0">
+  <ul class="column" style="margin: 24px 0">
     {% for item in contents %}
       <li>
         {{ include("@tch/components/tile/tile.html.twig", {
-          title: item.title,
-          subtitle: item.subtitle,
+          heading: item.heading,
+          subheading: item.subheading,
           link: item.link,
           icon: item.icon,
-          modifiers: ["fill"],
+          modifiers: ["no-hover", "small", "filled-icon"],
         }) }}
       </li>
     {% endfor %}
@@ -46,40 +50,50 @@ twig-->
 
 ## Goals
 
-Goals are accomplished by following our [principles](#principles).
+Goals are accomplished by following our [Principles](#principles).
 
-**Create pleasant and inclusive experiences.** Our digital products should be intuitive to use and accessible to all, with a strong sense of cohesion and familiarity.
+**Create pleasant and inclusive experiences.** Our digital products should be intuitive to use and accessible to all, with a strong sense of consistency and cohesion.
 
-**Increase productivity.** By documenting and demonstrating established solutions to precedented challenges, we take the guesswork and duplication out of prototyping, iterating, deploying, and scaling.
+**Increase efficiency and focus.** By documenting and demonstrating established solutions to precedented challenges, we reduce guesswork and redundancies, and streamline the process prototyping, iterating, and maintaining.
+
+. . .
 
 ## Principles
 
-Principles are the means to our [goals](#goals).
+Principles are the means to our [Goals](#goals).
 
 **Human-centered design.**
 
-* Intuitive — familiar, consistent
-* Focused — no extraneous elements; knows its audience
-* Inclusive — accessible, fault tolerant, avoids assumptions on our end but considerate of user assumptions
-* Performant
+* Intuitive: Experiences should be familiar and consistent to maximize user engagement and [limit cognitive load](https://www.nngroup.com/articles/minimize-cognitive-load/ "Minimize Cognitive Load to Maximize Usability — Nielsen Norman Group") from inconsistent or esoteric design.
+* Focused: Experiences should be as simple and streamlined as possible to achieve the required user goal. Design patterns should consider the target audience, define optimal use cases, and when they should not be used.
+* Inclusive: Going a step beyond [accessibility](/accessibility), inclusive design is a committment to bringing efficient and pleasant experiences to users of all abilities and backgrounds.
+* Performant: Views should be fast to load, and interaction should feel smooth and efficient. Requests transfer minimal data to users, and leverage the most efficient rendering strategies for the task at hand.
 
 **Standardized.**
 
-* Consistent — coding style, design choices, how things work
-* Semantic
-* Adaptable
-    * Easy to iterate, update, and percolate
+* Modern: Newly stable technologies and APIs are leveraged to provide users with the most performant, effective, and feature-rich interfaces possible.
+* Consistent: Everything from interaction design, pattern design, coding style, API integration, to aesthetic style should be consistent with a single source of truth.
+* Semantic: Content and interface elements are enriched with semantic meaning, enhancing the accessibility of assistive technology, integration with social media, and understanding by search engine algorithms.
+* Adaptable: Every element is made with iteration and logistics for updating and maintaining in mind.
+
+<!--
+- Open — transparent development, open source, open to contribution and feedback from all across the organization
+- Interoperable — platform-agnostic, paradigm-agnostic: should work with any content management system, rendering strategy, etc.
+- Rigorous
+-->
 
 ## Questions and feedback
 
 Please see [Contributing](/contributing).
 
-* Create a Slack space for TCDS?
+* To do: Investigate creating a Slack space or more informal channel for help and feedback.
 
-## Further reading
+<!--
+https://style.helpscout.com/product/#help-scout-design-system - really good language here for introducing the design system as a concept
 
-* https://www.nngroup.com/articles/front-end-style-guides/
-* https://www.nngroup.com/articles/improving-usability-guideline-compliance/
-* https://designsystem.digital.gov/design-principles/
-* Make analytics part of the DS? https://designsystem.digital.gov/about/research/
-* Security? https://designsystem.digital.gov/about/security/
+https://designsystem.digital.gov/design-principles/ - same for principles
+
+Make analytics part of the DS? https://designsystem.digital.gov/about/research/
+
+Security? https://designsystem.digital.gov/about/security/
+-->

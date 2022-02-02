@@ -11,7 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1",
+    "express": "^4.17.2",
     "html-minifier": "^4.0.0",
     "slugify": "^1.6.1",
     "twing": "^5.1.0",
@@ -24,7 +24,7 @@
     "concurrently": "^6.3.0",
     "gulp": "^4.0.2",
     "gulp-babel": "^8.0.0",
-    "gulp-clean-css": "^4.3.0",
+    "gulp-clean-css": "https://github.com/jakubpawlowicz/gulp-clean-css",
     "gulp-concat": "^2.6.1",
     "gulp-dart-sass": "^1.0.2",
     "gulp-imagemin": "^8.0.0",

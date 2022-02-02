@@ -1,0 +1,66 @@
+@use "../../" as *;
+
+.comparison-box {
+  display: flex;
+  gap: space("loose");
+  margin-bottom: space("loose");
+
+  @include breakpoint-below("medium") {
+    flex-direction: column;
+  }
+
+  &__side {
+    flex: 1;
+  }
+
+  &__example {
+    background: var(--comparison-box-example-background-color);
+    padding: space("loose");
+    color: var(--comparison-box-example-foreground-color);
+    
+    &:not(:last-child) {
+      margin-bottom: space("loose");
+    }
+
+    @include breakpoint-below("medium") {
+      border-left: 6px solid var(--comparison-box-example-highlight-color);
+      border-bottom-left-radius: 4px;
+      border-top-left-radius: 4px;
+    }
+
+    @include breakpoint-above("medium") {
+      border-top: 6px solid var(--comparison-box-example-highlight-color);
+      border-top-right-radius: 4px;
+      border-top-left-radius: 4px;
+    }
+
+    &--positive {
+      --comparison-box-example-highlight-color: #{color("green", "200")};
+      --comparison-box-example-background-color: #{color("gray", "0")};
+      --comparison-box-example-heading-color: #{color("green", "400")};
+      --comparison-box-example-foreground-color: #{color("green", "500")};
+    }
+
+    &--negative {
+      --comparison-box-example-highlight-color: #{color("red", "200")};
+      --comparison-box-example-background-color: #{color("red", "0")};
+      --comparison-box-example-heading-color: #{color("red", "400")};
+      --comparison-box-example-foreground-color: #{color("red", "500")};
+    }
+  }
+
+  &__header {
+    font-weight: font-weight("bold");
+    display: flex;
+    gap: space("normal");
+    align-items: center;
+    color: var(--comparison-box-example-heading-color);
+    margin-bottom: space("normal");
+
+    .Icon {
+      color: var(--comparison-box-example-heading-color);
+      height: size("x-small");
+      width: size("x-small");
+    }
+  }
+}

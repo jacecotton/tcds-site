@@ -1,4 +1,4 @@
-{% extends "templates/components/component/component.html.twig" %}
+{% extends "@tch/components/component/component.html.twig" %}
 
 {% set component_name = "Accordion" %}
 
@@ -6,7 +6,7 @@
   {% if "multiselectable" in modifiers %}
     <ul class="Accordion__controls" aria-label="Accordion controls">
       <li>
-        {{ include("templates/components/button/button.html.twig", {
+        {{ include("@tch/components/button/button.html.twig", {
           label: "expand all",
           modifiers: ["ghost", "round", "small"],
           custom_classes: ["Accordion__control"],
@@ -16,7 +16,7 @@
         }) }}
       </li>
       <li>
-        {{ include("templates/components/button/button.html.twig", {
+        {{ include("@tch/components/button/button.html.twig", {
           label: "collapse all",
           modifiers: ["ghost", "round", "small"],
           custom_classes: ["Accordion__control"],
@@ -40,7 +40,7 @@
         <button data-component-part="panel-toggle" class="Accordion__button" id="{{ section_id }}-button" aria-controls="{{ section_id }}-panel">
           {{ section.heading|raw }}
 
-          {{ include("templates/components/icon/icon.html.twig", {
+          {{ include("@tch/components/icon/icon.html.twig", {
             icon: "chevron-down",
             custom_classes: ["Accordion__icon"],
           }) }}

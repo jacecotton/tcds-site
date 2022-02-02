@@ -1,0 +1,12 @@
+@use "../../" as *;
+
+.page-overview.category-introduction {
+  h1 {
+    color: color("blue");
+    text-align: center;
+  }
+
+  .lead {
+    text-align: center;
+  }
+}

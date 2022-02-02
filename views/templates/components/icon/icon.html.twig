@@ -1,15 +1,16 @@
-{% extends "templates/components/component/component.html.twig" %}
+{% extends "@tch/components/component/component.html.twig" %}
 
 {% set component_name = "Icon" %}
 
 {% set root_element = "span" %}
 
-{% block inner_content %}
-  {% if label %}
-    <span class="visually-hidden">{{ label }}</span>
-  {% endif %}
+{% block root_attributes %}
+  aria-hidden="true"
+  role="presentation"
+{% endblock %}
 
-  <span aria-hidden="true" style="display: contents">
-    {{ include("templates/icons/#{icon}.svg.twig") }}
-  </span>
+{% block inner_content %}
+  {% if icon %}
+    {{ include("@tch/icons/#{icon}.svg.twig") }}
+  {% endif %}
 {% endblock %}

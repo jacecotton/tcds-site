@@ -1,0 +1,11 @@
+@use "../../" as *;
+
+code,
+pre {
+  font-family: font-stack("monospace");
+
+  &:not([class*="language-"]) {
+    background: color("gray", "0");
+    border: 1px solid color("shade", "0");
+  }
+}

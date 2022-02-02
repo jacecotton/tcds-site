@@ -5,7 +5,7 @@ the terminal). #}
 {% block lead %}An accordion is a group of sections collapsed under headers. Users can expand a section by tapping or clicking the header.{% endblock %}
 {% block body %}
 <h2 id="best-practices">Best practices</h2>
-<p><strong>Use specific but concise section labels.</strong> There is an inherent <a href="https://www.nngroup.com/articles/interaction-cost-definition/" title="Interaction Cost - Nielsen Norman Group">interaction cost</a> to accordions that may cause users to miss or ignore the content. Ensure your labels are concise enough to be read quickly, but descriptive enough to let the user know whether the contained content is what they&#39;re looking for.</p>
+<p><strong>Use specific but concise section labels.</strong> There is an inherent <a href="https://www.nngroup.com/articles/interaction-cost-definition/" title="Interaction Cost - Nielsen Norman Group">interaction cost</a> to accordions that may cause users to miss or ignore the content. Ensure your labels are concise enough to be read quickly, but descriptive enough to provide a strong <a href="https://www.nngroup.com/articles/information-scent/">information scent</a>.</p>
 <h3 id="when-to-use">When to use</h3>
 <p><strong>Progressive disclosure.</strong> When it would be more helpful to present a user with a choice before revealing content within a page. Sometimes, only certain sections of content on a page are likely to be relevant to a user, even if all the sections do belong on the page due to the nature of the topic (like with a Frequently Asked Questions page).</p>
 <p><strong>Navigation assistance.</strong> Sometimes, a page may become too long to be comfortably navigated. If it cannot be simplified or split into multiple pages, an accordion can help condense content to make it less cumbersome to navigate.</p>
@@ -14,8 +14,8 @@ the terminal). #}
 <p><strong>The use case fits a different pattern better.</strong> Consider one of the following:</p>
 <ul>
 <li><a href="/components/tabs">Tabs</a>, which are more useful for quick comparison between different content of the same information type. Tabs do not move position when selected, making navigation between them faster and easier.</li>
-<li><a href="/components/table-of-contents">Table of Contents</a>, which work better for navigating content that is expected to be read in full and in sequence.<span data-footnote><a href="https://www.nngroup.com/articles/in-page-links/">&quot;Anchors OK? Re-Assessing In-Page Links&quot; - Nielsen Norman Group</a></span> They also provide a simpler overview to examine before scrolling.</li>
-<li><a href="/components/details">Details</a>, which work better for collapsing a single, independent section.</li>
+<li><a href="/components/table-of-contents">Table of Contents</a>, which works better for navigating content that is expected to be read in full and in sequence.<span data-footnote><a href="https://www.nngroup.com/articles/in-page-links/">&quot;Anchors OK? Re-Assessing In-Page Links&quot;</a> — Nielsen Norman Group</span> They also provide a simpler overview to examine before scrolling.</li>
+<li><a href="/primitives/details">Details</a>, which work better for collapsing a single, independent section.</li>
 </ul>
 <h2 id="examples">Examples</h2>
 <h3 id="default-accordion">Default accordion</h3>
@@ -383,40 +383,37 @@ the terminal). #}
 }) }}
 
 
-<h2 id="source-code">Source code</h2>
-<ul>
-<li><strong>Script:</strong> <a href="https://github.com/jacecotton/tcds/blob/main/src/tcds/scripts/components/Accordion.js">/src/tcds/scripts/components/Accordion.js</a></li>
-<li><strong>Stylesheet:</strong> <a href="https://github.com/jacecotton/tcds/blob/main/src/tcds/styles/components/_accordion.scss">/src/tcds/styles/components/_accordion.scss</a></li>
-<li><strong>Template:</strong> <a href="https://github.com/jacecotton/tcds/blob/main/views/templates/components/accordion/accordion.html.twig">/views/templates/components/accordion/accordion.html.twig</a></li>
-</ul>
-<h2 id="further-reading">Further reading</h2>
-<ul>
-<li><a href="https://www.w3.org/TR/wai-aria-practices-1.2/#accordion">WAI-ARIA Authoring Practices 1.2 &sect; 3.1 Accordion</a></li>
-<li><a href="https://www.nngroup.com/articles/accordion-icons/">https://www.nngroup.com/articles/accordion-icons/</a> </li>
-<li><a href="https://www.nngroup.com/articles/accordions-complex-content/">https://www.nngroup.com/articles/accordions-complex-content/</a></li>
-<li><a href="https://www.nngroup.com/articles/auto-forwarding/">https://www.nngroup.com/articles/auto-forwarding/</a></li>
-<li><a href="https://www.nngroup.com/articles/progressive-disclosure/">https://www.nngroup.com/articles/progressive-disclosure/</a></li>
-<li><a href="https://www.nngroup.com/articles/timing-exposing-content/">https://www.nngroup.com/articles/timing-exposing-content/</a></li>
-<li><a href="https://www.nngroup.com/articles/in-page-links/">https://www.nngroup.com/articles/in-page-links/</a> &sect; Accordions vs in-page links</li>
-<li><a href="https://www.nngroup.com/articles/mobile-accordions/">https://www.nngroup.com/articles/mobile-accordions/</a></li>
-<li><a href="https://inclusive-components.design/collapsible-sections/">https://inclusive-components.design/collapsible-sections/</a></li>
-<li><a href="https://designsystem.digital.gov/components/accordion/">https://designsystem.digital.gov/components/accordion/</a></li>
-<li><a href="https://design-system.service.gov.uk/components/accordion/">https://design-system.service.gov.uk/components/accordion/</a></li>
-<li><a href="https://www.sarasoueidan.com/blog/accordion-markup/">https://www.sarasoueidan.com/blog/accordion-markup/</a></li>
-<li><a href="https://www.scottohara.me/blog/2017/10/25/accordion-release.html">https://www.scottohara.me/blog/2017/10/25/accordion-release.html</a></li>
-<li><a href="https://www.hassellinclusion.com/blog/accessible-accordion-pattern/">https://www.hassellinclusion.com/blog/accessible-accordion-pattern/</a></li>
-<li><a href="https://www.carbondesignsystem.com/components/accordion/usage/">https://www.carbondesignsystem.com/components/accordion/usage/</a></li>
-<li><a href="https://www.smashingmagazine.com/2017/06/designing-perfect-accordion-checklist/">https://www.smashingmagazine.com/2017/06/designing-perfect-accordion-checklist/</a></li>
-</ul>
-<h2 id="footnotes">Footnotes</h2>
+<h2 id="citations">Citations</h2>
  {{ include("@tch/components/footnotes/footnotes.html.twig") }} 
 
-<h2 id="to-do">To-do</h2>
+<h2 id="further-reading">Further reading</h2>
+<p>Additional research, techniques, and guidelines considered in the creation of this component.</p>
 <ul>
-<li>URL hash mechanisms (see <a href="https://inclusive-components.design/collapsible-sections/">https://inclusive-components.design/collapsible-sections/</a>)<ul>
-<li>Update a URL hash when a button is clicked</li>
-<li>If a URL hash matches a heading id, open that section and focus it.</li>
+<li><a href="https://www.w3.org/TR/wai-aria-practices-1.2/#accordion">WAI-ARIA Authoring Practices 1.2 &sect; 3.1 Accordion</a> — W3.org</li>
+<li><a href="https://www.nngroup.com/articles/progressive-disclosure/">Progressive Disclosure</a> — Nielsen Norman Group</li>
 </ul>
-</li>
-</ul>
+<!--
+* https://www.nngroup.com/articles/accordion-icons/ 
+* https://www.nngroup.com/articles/accordions-complex-content/
+* https://www.nngroup.com/articles/auto-forwarding/
+* https://www.nngroup.com/articles/progressive-disclosure/
+* https://www.nngroup.com/articles/timing-exposing-content/
+* https://www.nngroup.com/articles/in-page-links/ &sect; Accordions vs in-page links
+* https://www.nngroup.com/articles/mobile-accordions/
+* https://inclusive-components.design/collapsible-sections/
+* https://designsystem.digital.gov/components/accordion/
+* https://design-system.service.gov.uk/components/accordion/
+* https://www.sarasoueidan.com/blog/accordion-markup/
+* https://www.scottohara.me/blog/2017/10/25/accordion-release.html
+* https://www.hassellinclusion.com/blog/accessible-accordion-pattern/
+* https://www.carbondesignsystem.com/components/accordion/usage/
+* https://www.smashingmagazine.com/2017/06/designing-perfect-accordion-checklist/
+-->
+
+<!--
+/**
+ * @todo URL hash mechanism - https://inclusive-components.design/collapsible-sections/
+ * @todo Test mobile experience. Possibly make open accordion heading sticky, and possibly scroll the accordion heading to the top of the viewport on activation?
+ */
+-->
 {% endblock %}

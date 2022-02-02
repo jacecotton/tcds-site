@@ -1,0 +1,74 @@
+@use "../../" as *;
+
+main {
+  width: calc(100% - 300px);
+  transform: translateX(300px);
+  padding: 10vh 10%;
+  padding: max(48px, 10vh) max(64px, 10%);
+  overflow-x: hidden;
+  will-change: transform, width;
+  transition:
+    width animation("productive"),
+    transform animation("productive");
+
+  @include breakpoint-below("site-header") {
+    width: 100%;
+  }
+
+  .site-header[hidden] ~ &,
+  .site-header[data-transition] ~ & {
+    width: 100%;
+    transform: translateX(0);
+  }
+}
+
+.page-masthead {
+  background-color: color("gray", "0");
+  margin: calc(max(48px,10vh) * -1) -50vw 3rem;
+  padding: max(48px,10vh) 50vw 3rem;
+}
+
+.page-category {
+  font-size: font-size("small");
+  letter-spacing: .1em;
+  margin: 0 0 space("tight") !important;
+  text-transform: uppercase;
+  color: theme-color("primary");
+
+  @include breakpoint-below("side-nav") {
+    display: none;
+  }
+}
+
+.lead {
+  color: color("gray", "300");
+  font-size: font-size("medium-plus");
+  line-height: 1.75;
+  font-weight: 300;
+  letter-spacing: 0.035em;
+}
+
+:is(h2, h3, h4, h5, h6)[data-anchored] {
+  --heading-anchor-color: transparent;
+
+  display: grid;
+  grid-template-columns: 1.5ch auto;
+  position: relative;
+  left: -1.5ch;
+
+  &:hover {
+    --heading-anchor-color: #{color("gray")};
+  }
+
+  .heading-anchor {
+    color: var(--heading-anchor-color);
+    text-decoration: none;
+    transform: scale(.7);
+    transition: color animation("productive");
+
+    &:hover,
+    &:focus {
+      --heading-anchor-color: #{color("gray", "500")};
+    }
+  }
+}

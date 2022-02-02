@@ -26,6 +26,23 @@ content.forEach((category) => {
     const route = page.route || `/${categoryRoute}/${slugify(page.title, { lower: true })}`;
 
     app.get(route, (req, res) => {
+      const reject = () => {
+        res.setHeader("www-authenticate", "Basic");
+        res.sendStatus(401);
+      };
+
+      const authorization = req.headers.authorization;
+
+      if(!authorization) {
+        return reject();
+      }
+
+      const [username, password] = Buffer.from(authorization.replace("Basic", ""), "base64").toString().split(":");
+
+      if(!(username === "tcds-demo-user" && password === "demopass123")) {
+        return reject();
+      }
+
       twing.render(`pages${page.template ? `/${page.template}` : route}.twig`, {
         title: page.title,
         display_title: page.display_title !== undefined ? page.display_title : page.title,

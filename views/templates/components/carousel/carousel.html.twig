@@ -1,23 +1,40 @@
-{% extends "templates/components/component/component.html.twig" %}
+{% extends "@tch/components/component/component.html.twig" %}
 
 {% set component_name = "Carousel" %}
 
-{% set required_props = [slides] %}
+{% set required_props = [slides, heading] %}
 
-{% set root_element = "div" %}
+{% set root_element = "section" %}
 
 {% block root_attributes %}
-  {# Sets the amount of time (milliseconds) between slide changes #}
-  data-timing="{{ timing ?: "2000" }}"
+  aria-roledescription="carousel"
   data-autoplay="{{ autoplay ?: "true" }}"
+  {# Sets the amount of time (milliseconds) between slide changes #}
+  {{ interval ? "data-interval=#{interval}" }}
 {% endblock %}
 
 {% block inner_content %}
-  <div role="tablist" aria-label="{{ heading ?: "Carousel" }}" class="Carousel__indicators">
+  <header class="Carousel__header">
+    <h{{ heading_level ?: "2" }} class="Carousel__heading">
+      {% if heading_link %} <a href="{{ heading_link }}"> {% endif %}
+        {{ heading }}
+      {% if heading_link %} </a> {% endif %}
+    </h{{ heading_level ?: "2" }}>
+
+    {{ include("@tch/components/button/button.html.twig", {
+      label: "Expand carousel",
+      icon: "chevron-down",
+      controls: heading|clean_id ~ "-carousel-slides",
+      custom_attributes: { "data-action": "expand-collapse" },
+      modifiers: ["icon-only", "small", "round"],
+    }) }}
+  </header>
+
+  <div role="tablist" class="Carousel__indicators">
     {% set slide_ids = [] %}
 
     {% for index, slide in slides %}
-      {% set slide_id = "slide-#{index}" %}
+      {% set slide_id = "#{heading|clean_id}-slide-#{index + 1}" %}
     
       {% if id %}
         {% set slide_id = slide_id ~ "-" ~ id  %}
@@ -30,18 +47,19 @@
         id="{{ slide_id }}-button"
         aria-controls="{{ slide_id }}-content"
         class="Carousel__indicator"
-      >
-        Slide {{ index + 1 }} of {{ slides|length }}
-      </button>
+        aria-label="Slide {{ index + 1 }} of {{ slides|length }}"
+        title="Slide {{ index + 1 }} of {{ slides|length }}"
+      ></button>
     {% endfor %}
   </div>
 
-  <div data-component-part="tabpanels" class="Carousel__slides">
+  <div data-component-part="tabpanels" id="{{ heading|clean_id }}-carousel-slides" class="Carousel__slides">
     {% for index, slide in slides %}
       <div
         role="tabpanel"
         id="{{ slide_ids[index] }}-content"
         aria-labelledby="{{ slide_ids[index] }}-button"
+        aria-roledescription="slide"
         class="Carousel__slide"
       >
         {{ slide.content ? slide.content|raw }}
@@ -53,15 +71,25 @@
     {% endfor %}
   </div>
 
-  <ul class="Carousel__controls" aria-label="Carousel controls">
-    <li class="Carousel__control">
-      <button class="Carousel__action" data-action="play-pause">Play/Pause</button>
-    </li>
-    <li class="Carousel__control">
-      <button class="Carousel__action" data-action="previous">Previous</button>
-    </li>
-    <li class="Carousel__control">
-      <button class="Carousel__action" data-action="next">Next</button>
-    </li>
-  </ul>
+  {{ include("@tch/components/button/button.html.twig", {
+    label: "Play carousel",
+    icon: "play",
+    controls: heading|clean_id ~ "-carousel-slides",
+    modifiers: ["icon-only", "small", "round", "ghost"],
+    custom_attributes: { "data-action": "play-pause" },
+  }) }}
+  {{ include("@tch/components/button/button.html.twig", {
+    label: "Previous slide",
+    icon: "chevron-left",
+    controls: heading|clean_id ~ "-carousel-slides",
+    modifiers: ["icon-only", "small", "round"],
+    custom_attributes: { "data-action": "previous" },
+  }) }}
+  {{ include("@tch/components/button/button.html.twig", {
+    label: "Next slide",
+    icon: "chevron-right",
+    controls: heading|clean_id ~ "-carousel-slides",
+    modifiers: ["icon-only", "small", "round"],
+    custom_attributes: { "data-action": "next" },
+  }) }}
 {% endblock %}

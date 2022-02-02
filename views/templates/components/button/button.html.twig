@@ -18,18 +18,22 @@
 
   {% if link %}
     href="{{ link }}"
-  {% endif %}
+  {% else %}
+    type="{{ type ?: "button" }}"
 
-  {% if onclick %}
-    onclick="{{ onclick }}"
-  {% endif %}
-  
-  type="{{ type ?: "button" }}"
+    {% if onclick %}
+      onclick="{{ onclick }}"
+    {% endif %}
 
-  {% if controls %}
-    aria-controls="{{ controls }}"
+    {% if controls %}
+      aria-controls="{{ controls }}"
+    {% endif %}
   {% endif %}
 {% endblock %}
+
+{% if background %}
+  {% set component_classes = ["bg-#{background}"] %}
+{% endif %}
 
 {% block inner_content %}
   {% if icon %}

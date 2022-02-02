@@ -2,7 +2,7 @@ The fastest and easiest way to get started is to [link CSS and JavaScript files 
 
 However, this method is extremely limited. This only gives you access to *compiled* code, and requires that you manually copy and paste HTML, which is not very maintainable.
 
-The recommended way to use the Design System is to download the uncompiled assets, and use them as a part of the build process of your project. This gives you access to variables, functions, mixins, and templates. You can do this via a [package manager](#npm) or downloading and manually including the files from the [downloads](#download-archive).
+The recommended way to use the Design System is to download the uncompiled assets, and use them as a part of the build process of your project. This gives you access to variables, functions, mixins, and templates. See [&sect; Project setup](#project-setup).
 
 ## Linking from CDN
 
@@ -19,8 +19,10 @@ You can load the Design System straight from a CDN via UNPKG, powered by Cloudfl
 </body>
 ```
 
-## Installation
+## Project setup
 
-### NPM
-
-### Download archive
+<!--twig
+  {{ include("@tch/components/message/message.html.twig", {
+    content: "<b>Coming soon.</b> Check back later for a step-by-step guide on how to install the Design System along with the build process of the rest of your project's assets.",
+  }) }}
+twig-->

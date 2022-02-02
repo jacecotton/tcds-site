@@ -7,46 +7,41 @@
   <title>{{ meta_title ? "#{meta_title} - " }}Texas Children's Design System</title>
   <meta name="description" content="{{ description }}">
 
-  <link href="/dist/tcds/tcds.css" rel="stylesheet">
   <link href="/styles/main.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.19.0/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
 
+  <link href="/favicon.png" rel="shortcut icon" type="image/png">
+  <meta name="theme-color" content="#da2530">
+
   {% block head %}{% endblock %}
 </head>
-<body class="page-{{ title|clean_class }} category-{{ category|clean_class }} line-numbers">
+<body class="page-{{ title|clean_class }} category-{{ category|clean_class }} line-numbers preload">
   {{ include("@tch/partials/site-header.twig") }}
 
-  <div class="page">
-    <div class="page-content max-width-container">
-      {{ include("@tch/partials/side-nav.twig") }}
+  <main>
+    <div class="max-reading-width">
+      <header class="page-masthead">
+        {% if category and title != "Overview" and display_title != category %}
+          <p class="page-category">{{ category }}</p>
+        {% endif %}
 
-      <main>
-        <header class="page-masthead">
-          {% if category and title != "Overview" and display_title != category %}
-            <p class="page-category">{{ category }}</p>
-          {% endif %}
+        {% if display_title == "" %}
+          <h1 class="visually-hidden">{{ title }}</h1>
+        {% else %}
+          <h1>{{ display_title }}</h1>
+        {% endif %}
 
-          {% if display_title == "" %}
-            <h1 class="visually-hidden">{{ title }}</h1>
-          {% else %}
-            <h1>{{ display_title }}</h1>
-          {% endif %}
+        {% if block("lead") %}
+          <p class="lead">
+            {% block lead %}{% endblock %}
+          </p>
+        {% endif %}
+      </header>
 
-          {% if block("lead") %}
-            <p class="lead">
-              {% block lead %}{% endblock %}
-            </p>
-
-            <hr>
-          {% endif %}
-        </header>
-
-        {% block body %}{% endblock %}
-      </main>
+      {% block body %}{% endblock %}
     </div>
-  </div>
+  </main>
 
-<script async src="/dist/tcds/tcds.js"></script>
 <script async src="/scripts/main.js"></script>
 {% block scripts %}{% endblock %}
 </body>

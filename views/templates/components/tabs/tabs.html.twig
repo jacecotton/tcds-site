@@ -1,11 +1,11 @@
-{% extends "templates/components/component/component.html.twig" %}
+{% extends "@tch/components/component/component.html.twig" %}
 
 {% set component_name = "Tabs" %}
 
 {% set required_props = [tabs] %}
 
 {% for tab in tabs %}
-  {% set required_props = required_props|merge([tab.label]) %}
+  {% set required_props = required_props|merge([tab.heading]) %}
 {% endfor %}
 
 {% set root_element = "div" %}
@@ -15,7 +15,7 @@
     {% set tab_ids = [] %}
 
     {% for tab in tabs %}
-      {% set tab_id = tab.label|clean_id %}
+      {% set tab_id = tab.heading|clean_id %}
     
       {% if id %}
         {% set tab_id = tab_id ~ "-" ~ id  %}
@@ -32,7 +32,7 @@
           aria-controls="{{ tab_id }}-content"
           class="Tabs__tab"
         >
-          {{- tab.label|raw -}}
+          {{- tab.heading|raw -}}
         </button>
       {% if heading_level %}
         </h{{ heading_level }}>

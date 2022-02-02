@@ -1,0 +1,105 @@
+@use "../../" as *;
+
+.size-space-chart {
+  margin: space("x-loose") 0;
+
+  dl {
+    display: flex;
+    gap: 1rem;
+
+    &.size-chart {
+      height: 101px;
+    }
+
+    &.space-chart {
+      height: 130px;
+    }
+
+    div {
+      display: flex;
+      flex-flow: column-reverse;
+      flex: 1;
+
+      &:nth-of-type(1) dd {
+        animation-delay: 0ms;
+      }
+
+      &:nth-of-type(2) dd {
+        animation-delay: 100ms;
+      }
+
+      &:nth-of-type(3) dd {
+        animation-delay: 200ms;
+      }
+
+      &:nth-of-type(4) dd {
+        animation-delay: 300ms;
+      }
+
+      &:nth-of-type(5) dd {
+        animation-delay: 400ms;
+      }
+    }
+
+    dt {
+      border-top: 1px solid color("gray", "100");
+      padding-top: .5rem;
+      margin-top: .5rem;
+      text-align: center;
+    }
+
+    dd {
+      color: transparent;
+      font-size: .75rem;
+      padding: 0;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 4px;
+    }
+
+    &.size-chart dd {
+      background: theme-color("secondary", "0");
+      height: 0px;
+      animation: size-chart-bar-grow 900ms animation("expressive-easing") forwards;
+    
+      @keyframes size-chart-bar-grow {
+        to {
+          height: var(--size-bar-height);
+          padding: .75rem;
+          color: theme-color("secondary", "400");
+        }
+      }
+    }
+
+    &.space-chart dd {
+      --polka-pattern-dot-size: .75px;
+      --polka-pattern-dot-spacing: 8px;
+      --polka-pattern-dot-color: #{color("green", "300")};
+      --polka-pattern-bg: #{color("green", "0")};
+
+      background-color: var(--polka-pattern-bg);
+      background-image:  radial-gradient(var(--polka-pattern-dot-color) var(--polka-pattern-dot-size), transparent var(--polka-pattern-dot-size)), radial-gradient(var(--polka-pattern-dot-color) var(--polka-pattern-dot-size), var(--polka-pattern-bg) var(--polka-pattern-dot-size));
+      background-size: var(--polka-pattern-dot-spacing) var(--polka-pattern-dot-spacing);
+      background-position: 0 0, calc(var(--polka-pattern-dot-spacing) * 2) calc(var(--polka-pattern-dot-spacing) * 2);
+      padding: 0;
+      width: fit-content;
+      margin: 0 auto;
+      animation: space-chart-bar-grow 900ms animation("expressive-easing") forwards;
+
+      span {
+        background: theme-color("secondary", "0");
+        display: block;
+        padding: 0 space("x-tight");
+      }
+
+      @keyframes space-chart-bar-grow {
+        to {
+          padding: var(--space-bar-padding);
+          color: theme-color("secondary", "400");
+        }
+      }
+    }
+  }
+}

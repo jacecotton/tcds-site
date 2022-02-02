@@ -2,7 +2,6 @@
   <thead>
     <tr>
       <th>Name</th>
-      <th>Value</th>
       <th>Type</th>
       <th>Description</th>
       <th>Required?</th>
@@ -15,7 +14,6 @@
     {% for prop in properties.specific %}
       <tr id="{{ prop.name|clean_id }}-property">
         <td><code>{{ prop.name }}</code></td>
-        <td>{{ prop.value|raw }}</td>
         <td><code>{{ prop.type }}</code></td>
         <td>{{ prop.description|raw }}</td>
         <td>{{ prop.required }}</td>
@@ -27,7 +25,6 @@
     {% for prop in properties.global %}
       <tr id="{{ prop.name|clean_id }}-property">
         <td><code>{{ prop.name }}</code></td>
-        <td>{{ prop.value|raw }}</td>
         <td><code>{{ prop.type }}</code></td>
         <td>{{ prop.description|raw }}</td>
         <td>{{ prop.required }}</td>

@@ -3,5 +3,10 @@ file and run the gulp process to compile (either `gulp` or `npm run dev` from
 the terminal). #}
 {% extends "@tch/base.twig" %}
 {% block body %}
-
+<h2 id="css">CSS</h2>
+<h3 id="specificity-management">Specificity management</h3>
+<ul>
+<li>&quot;Globals&quot; are default styles applied to primitive elements (headings, paragraphs, links, lists, etc.) They should have extremely low specificity (imported first, low-specificity selectors), as primitives are often used for semantics inside components but require different styles. Therefore they should be very easy to override.</li>
+<li>&quot;Utilities&quot; are functional classes that can be applied to any element. They should have higher specificity (imported last), because they should act analogously to &quot;pure functions&quot; (always the same output for the same input). Plus, utilities are meant to be composable, which means that adding them on top of a component class, for instance, should modify that component&#39;s appearance, not be overruled by the component&#39;s base styles.</li>
+</ul>
 {% endblock %}

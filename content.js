@@ -17,6 +17,7 @@ export default [
       {
         title: "Contributing",
         route: "/contributing",
+        disabled: true,
       },
     ],
   },
@@ -30,31 +31,13 @@ export default [
         display_title: "Design",
         route: "/design",
         template: "design/overview",
+        disabled: true,
       },
-      {
-        title: "Animation",
-      },
-      {
-        title: "Branding",
-      },
-      {
-        title: "Color",
-      },
-      {
-        title: "Icons",
-      },
-      {
-        title: "Images",
-      },
-      {
-        title: "Layout",
-      },
-      {
-        title: "Responsive",
-      },
-      {
-        title: "Typography",
-      },
+      { title: "Animation" },
+      { title: "Branding", disabled: true },
+      { title: "Color" },
+      { title: "Layout" },
+      { title: "Typography" },
     ],
   },
 
@@ -67,64 +50,44 @@ export default [
         display_title: "Components",
         route: "/components",
         template: "components/overview",
+        disabled: true,
       },
+      { title: "Accordion" },
+      { title: "Action Bar", disabled: true },
+      // { title: "Breadcrumbs", disabled: true },
+      { title: "Button" },
+      { title: "Callout", disabled: true },
+      { title: "Card", disabled: true },
+      { title: "Carousel" },
+      { title: "Dialog", disabled: true },
+      { title: "Hero", disabled: true },
+      { title: "Icon" },
+      // { title: "Message", disabled: true },
+      { title: "Notification", disabled: true },
+      // { title: "Pagination", disabled: true },
+      { title: "Tabs" },
+      { title: "Tile", disabled: true },
+    ],
+  },
+
+  {
+    title: "Primitives",
+    pages: [
       {
-        title: "Accordion",
+        title: "Overview",
+        meta_title: "Primitives",
+        display_title: "Primitives",
+        route: "/primitives",
+        template: "/primitives/overview",
+        disabled: true,
       },
-      {
-        title: "Action Bar",
-      },
-      {
-        title: "Breadcrumbs",
-      },
-      {
-        title: "Button",
-      },
-      {
-        title: "Callout",
-      },
-      {
-        title: "Card",
-      },
-      {
-        title: "Carousel",
-      },
-      {
-        title: "Dialog",
-      },
-      {
-        title: "Footer",
-      },
-      {
-        title: "Forms",
-      },
-      {
-        title: "Header",
-      },
-      {
-        title: "Hero",
-      },
-      {
-        title: "Icon",
-      },
-      {
-        title: "Notification",
-      },
-      {
-        title: "Pagination",
-      },
-      {
-        title: "Table of Contents",
-      },
-      {
-        title: "Tabs",
-      },
-      {
-        title: "Tile",
-      },
-      {
-        title: "Tooltip",
-      },
+      { title: "Blockquote", disabled: true },
+      { title: "Details", disabled: true },
+      { title: "Forms" },
+      { title: "Horizontal rule", disabled: true },
+      { title: "Images", disabled: true },
+      { title: "Lists", disabled: true },
+      { title: "Tables", disabled: true },
     ],
   },
 
@@ -138,24 +101,18 @@ export default [
         route: "/accessibility",
         template: "accessibility/overview",
       },
-      {
-        title: "Testing",
-      },
+      { title: "Testing", disabled: true },
+      { title: "Writing accessible text" },
     ],
   },
 
   {
-    title: "Developers",
+    title: "Style Guide",
     pages: [
-      {
-        title: "Code reference",
-      },
-      {
-        title: "Performance",
-      },
-      {
-        title: "Style guide",
-      },
+      { title: "General", disabled: true },
+      { title: "HTML", disabled: true },
+      { title: "CSS", disabled: true },
+      { title: "JavaScript", disabled: true },
     ],
   },
 ];

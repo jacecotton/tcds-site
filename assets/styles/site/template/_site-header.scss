@@ -1,0 +1,77 @@
+@use "sass:math";
+@use "../../" as *;
+
+.site-header {
+  width: 300px;
+  max-height: 100vh;
+  background: #fff;
+  border-right: 1px solid color("gray", "100");
+  overflow-y: auto;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: layer("site-header");
+  overscroll-behavior: none;
+  padding-bottom: size("large") * 2;
+  scrollbar-width: thin;
+
+  &[data-use-animation] {
+    animation: slide-right-reveal animation("productive");
+  }
+
+  &[data-transition="closing"] {
+    animation: slide-left-hide animation("productive");
+  }
+
+  &::after {
+    content: "";
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 300px - 1px;
+    height: size("large") * 2;
+    background: linear-gradient(0deg, #fff 50%, rgba(255, 255, 255, 0) 100%);
+  }
+
+  &-toggle {
+    z-index: layer("site-header");
+    position: fixed;
+    bottom: space("tight");
+    left: space("tight");
+  }
+}
+
+.site-branding {
+  position: sticky;
+  top: 0;
+  padding-top: space("x-loose");
+  margin-bottom: space("normal");
+  border-right: space("loose") solid #fff;
+  border-left: space("loose") solid #fff;
+  background: rgba(255, 255, 255, .98);
+  z-index: 3;
+
+  @supports ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
+    background: rgba(255, 255, 255, .7);
+    backdrop-filter: blur(16px);
+  }
+  
+  a {
+    padding-bottom: space("loose");
+    border-bottom: 1px solid color("gray", "100");
+    display: block;
+    text-decoration: none;
+  }
+
+  &__logo {
+    display: block;
+    margin: 0 auto space("normal");
+  }
+
+  &__title {
+    font-size: font-size("small");
+    text-align: center;
+    color: color("gray");
+    display: block;
+  }
+}

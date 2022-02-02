@@ -1,7 +1,0 @@
-@use "sass:map";
-@use "../../../tcds/styles" as *;
-
-$breakpoints: map.merge($breakpoints, (
-  "main-nav": 1000px,
-  "side-nav": 1000px,
-));

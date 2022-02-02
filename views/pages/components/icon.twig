@@ -1,0 +1,79 @@
+{# DO NOT EDIT. This file was compiled from Markdown; please edit the source .md
+file and run the gulp process to compile (either `gulp` or `npm run dev` from
+the terminal). #}
+{% extends "@tch/base.twig" %}
+{% block lead %}Icons are useful illustrative aids that can enhance understanding, supplement meaning, and reinforce brand tone and style. However, if used improperly, icons can be distracting, confusing, and potentially misleading.{% endblock %}
+{% block body %}
+<h2 id="best-practices">Best practices</h2>
+<p><strong>Avoid using icons by themselves.</strong> Icons cannot be guaranteed to have universally (well) understood meaning.<span data-footnote><a href="https://www.nngroup.com/articles/icon-usability/">Icon Usability</a> — Nielsen Norman Group</span> Icons are best used as illustrative aids to <em>enhance</em> meaning (in addition to text), <em>not</em> to be the sole indicator of it.</p>
+<p><strong>Ensure icons are meaningful and relevant.</strong> An icon should, to the extent possible, independently and accurately reflect the sense of the accompanying text. Deduce the context-dependent <a href="https://www.nngroup.com/articles/classifying-icons/">icon classification</a> (resemblance, symbolic, or conventional), and consider whether an icon of a different classification may be more effective.</p>
+<p><strong>Prefer simplicity and clarity over visual interest.</strong> Icons that communicate an idea clearly and efficiently will benefit the user experience over icons that are busy or attention-drawing. Furthermore, avoid icons that are overly esoteric; users shouldn&#39;t need to solve a puzzle to understand an icon.<span data-footnote><a href="https://www.nngroup.com/articles/bad-icons/">Bad Icons: How to Identify and Improve Them</a> — Nielsen Norman Group</span></p>
+<h2 id="example">Example</h2>
+
+{% embed "@tch/includes/example-box/example-box.html.twig" with {
+  examples: {
+    "Twig": '{{ include("@tch/components/icon/icon.html.twig", {
+  icon: "info",
+}) }}',
+    "HTML": '<span class="Icon" data-component="Icon" aria-hidden="true" role="presentation">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4m0-4h0"></path></svg>
+</span>',
+  },
+} %}
+  {% block result %}
+    {{ include("@tch/components/icon/icon.html.twig", {
+      icon: "info",
+    }) }}
+  {% endblock %}
+{% endembed %}
+
+
+<details>
+  <summary>Technical details</summary>
+  <div>
+
+<p>The Icon component works by directly <a href="https://twig.symfony.com/doc/3.x/functions/include.html"><code>include</code>-ing</a> an icon&#39;s SVG file as a Twig template, which outputs the code in the HTML. This is to avoid extra <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods">HTTP requests</a> and to allow for the direct styling of the icon with CSS.</p>
+<p>The default styling of an icon is based on its parent element. It inherits the text <code>color</code> for its <code>stroke</code> or <code>fill</code> (<code>currentColor</code>), and the <code>height</code> is set to <code>1em</code>, i.e. 100% of the parent&#39;s <code>font-size</code>.</p>
+<p>Alternatively, for no styling or HTML wrapping at all, bare icons can be directly included in Twig. All icons are placed in the <code>icons/</code> folder of the theme&#39;s <code>template/</code> directory (accessible from any directory via the configured <a href="https://www.drupal.org/docs/8/theming-drupal-8/including-part-template#s-the-recommended-method">template namespace</a>, e.g. <code>@tch</code>), with the extension <code>.svg.twig</code>.</p>
+
+{% embed "@tch/includes/example-box/example-box.html.twig" with {
+  examples: {
+    "Twig": '{{ include("@tch/icons/info.svg.twig") }}',
+    "HTML": '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4m0-4h0"></path></svg>',
+  },
+} %}
+  {% block result %}
+    {{ include("@tch/components/icon/icon.html.twig", {
+      icon: "info",
+    }) }}
+  {% endblock %}
+{% endembed %}
+
+
+<p>Use caution when doing this—styling and <a href="#accessibility">accessibility considerations</a> will have to be handled manually.</p>
+</div>
+</details>
+
+
+<h2 id="icon-library">Icon library</h2>
+<p>Many of the current icons in this set are adapted from <a href="https://iconsvg.xyz">ICONSVG</a> by Gaddafi Rusli.</p>
+
+  {% set icons = ["check", "chevron-down", "chevron-left", "chevron-right", "chevrons-down", "chevrons-up", "code", "edit", "eye", "grid", "hamburger", "info", "list", "maximize", "minimize", "pause", "play", "type", "wheelchair", "x"] %}
+  <ul class="icon-grid" data-in-viewport="false">
+    {% for index, icon in icons %}
+      <li data-svg-snippet='{% autoescape %}{{ include("@tch/icons/#{icon}.svg.twig") }}{% endautoescape %}' class="icon-grid__item" style="animation-delay: {{ (index + 1) * 50 }}ms" title="Click to copy SVG code">
+        {{ include("@tch/components/icon/icon.html.twig", {
+          icon: icon,
+        }) }}
+        <span class="icon-grid__label">{{ icon }}</span>
+      </li>
+    {% endfor %}
+  </ul>
+
+
+<h2 id="accessibility">Accessibility</h2>
+<p>The Icon component hides the icon itself from assistive technology with <code>aria-hidden=true</code> and <code>role=presentation</code>. This is because icons should only be used to supplement text,<span data-footnote><a href="https://www.nngroup.com/videos/icon-text-labels/">Yes, Icons Need Text Labels</a> (Video) — Nielsen Norman Group</span> in which case the text should serve as the icon&#39;s accessible label.</p>
+<p>The only allowed exception is when an icon is used in a button without text, such as with the <a href="/components/button">Button</a> component&#39;s <a href="/components/button#icon-button"><code>icon-only</code> modifier</a>. In this case, the Button&#39;s <code>label</code> property is still required, but serves as the <code>aria-label</code> and <code>title</code> attributes rather than as a visible label.</p>
+<h2 id="citations">Citations</h2>
+ {{ include("@tch/components/footnotes/footnotes.html.twig") }}
+{% endblock %}

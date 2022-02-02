@@ -1,0 +1,11 @@
+@use "../../" as *;
+
+.api-table {
+  td:nth-of-type(2) {
+    white-space: nowrap;
+  }
+
+  th[colspan] {
+    text-align: center;
+  }
+}

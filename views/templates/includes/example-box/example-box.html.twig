@@ -5,14 +5,14 @@
   <div class="example-box__tabs">
     {% set tabs = [] %}
 
-    {% for label, content in examples %}
+    {% for heading, content in examples %}
       {% set tabs = tabs|merge([{
-        label: label,
-        content: "<pre class='line-numbers language-#{label|clean_class}'><code class='language-#{label|clean_class}'>#{ content|escape }</code></pre>",
+        heading: heading,
+        content: "<pre class='line-numbers language-#{heading|clean_class}'><code class='language-#{heading|clean_class}'>#{ content|escape }</code></pre>",
       }]) %}
     {% endfor %}
 
-    {% embed "templates/components/tabs/tabs.html.twig" with {
+    {% embed "@tch/components/tabs/tabs.html.twig" with {
       id: id ?: random(0, 1000),
       tabs: tabs,
       modifiers: [show_first ?: "hide-all", "small"]

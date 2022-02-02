@@ -1,8 +1,18 @@
-<header class="site-header">
-  <a href="/" rel="home" title="Home" class="site-branding">
-    <img src="/images/tch-logo.svg" alt="Texas Children's" class="site-branding__logo" height="70">
-    <span class="site-branding__title">Design System</span>
-  </a>
+<header class="site-header" id="site-header">
+  <div class="site-branding">
+    <a href="/" rel="home" title="Home">
+      <img src="/images/tch-logo.svg" alt="Texas Children's" class="site-branding__logo" width="125">
+      <span class="site-branding__title">Design System</span>
+    </a>
+  </div>
 
   {{ include("@tch/partials/main-nav.twig") }}
 </header>
+
+{{ include("@tch/components/button/button.html.twig", {
+  label: "Toggle menu",
+  icon: "hamburger",
+  modifiers: ["icon-only", "round", "ghost"],
+  controls: "site-header",
+  custom_classes: ["site-header-toggle"],
+}) }}
