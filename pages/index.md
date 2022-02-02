@@ -11,19 +11,19 @@ First, read the [Getting Started](/getting-started) page, then select a category
     {
       heading: "Design",
       subheading: "Typography, color, layout, and more",
-      link: "/design",
+      link: "/design/animation",
       icon: "eye",
     },
     {
       heading: "Components",
       subheading: "Reusable building blocks and interface elements",
-      link: "/components",
+      link: "/components/accordion",
       icon: "grid",
     },
     {
       heading: "Primitives",
       subheading: "Basic HTML elements. Forms, lists, images, and more",
-      link: "/primitives",
+      link: "/primitives/forms",
       icon: "type",
     },
     {
