@@ -1,3 +1,5 @@
+// Export array of content. Each object is a category, which contains a `pages`
+// array, which contains objects for page metadata.
 export default [
   {
     title: "Introduction",
