@@ -170,6 +170,7 @@ class Carousel extends Tabs {
       root: this.panelsContainer,
       // Don't switch active state until scrolled-to slide is 100% intersecting.
       threshold: 1.0,
+      rootMargin: "1px",
     });
 
     // Attach intersection observer on each slide (panel).
@@ -307,15 +308,17 @@ class Carousel extends Tabs {
   }
 }
 
-// Attach component.
-document.querySelectorAll("[data-component=Carousel]").forEach((instance) => {
-  instance && new Carousel(instance, {
-    interval: parseInt(instance.getAttribute("data-interval")) || 5000,
-    // Returns a boolean based on the how the string value compares to the
-    // equality condition.
-    autoplay: instance.getAttribute("data-autoplay") === "true",
-    // We'll handle visibility separately, so disable `[hidden]` attribute from
-    // being added by the parent Tabs script.
-    keepPanelVisibility: true,
+window.addEventListener("load", () => {
+  // Attach component.
+  document.querySelectorAll("[data-component=Carousel]").forEach((instance) => {
+    instance && new Carousel(instance, {
+      interval: parseInt(instance.getAttribute("data-interval")) || 5000,
+      // Returns a boolean based on the how the string value compares to the
+      // equality condition.
+      autoplay: instance.getAttribute("data-autoplay") === "true",
+      // We'll handle visibility separately, so disable `[hidden]` attribute from
+      // being added by the parent Tabs script.
+      keepPanelVisibility: true,
+    });
   });
 });
