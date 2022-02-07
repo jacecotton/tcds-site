@@ -1,5 +1,5 @@
 @use "sass:map";
-@use "../../tcds/" as *;
+@use "@tcds/layout/_variables" as *;
 
 $breakpoints: map.merge($breakpoints, (
   "site-header": 1000px,

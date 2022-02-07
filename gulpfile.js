@@ -227,7 +227,9 @@ const tasks = {
       // Start sourcemap input.
       .pipe(sourcemaps.init())
       // Preprocessing (Sass).
-      .pipe(sass())
+      .pipe(sass({
+        includePaths: ["./tcds/src/styles"],
+      }))
       // Post-processing.
       .pipe(postcss([
         autoprefixer({

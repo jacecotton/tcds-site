@@ -1,0 +1,16 @@
+@use "../_all" as *;
+
+blockquote {
+  position: relative;
+  margin: space("loose") 0 space("loose") space("x-loose");
+  font-style: italic;
+  color: color("gray", "400");
+
+  &::before {
+    content: "“";
+    font-size: 3rem;
+    position: absolute;
+    left: space("x-loose") * -1;
+    line-height: 1;
+  }
+}

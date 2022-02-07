@@ -1,0 +1,27 @@
+@use "../_all" as *;
+
+/**
+ * List resets and defaults.
+ */
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+}
+
+ul[class]:not(.ul),
+ol[class]:not(.ol) {
+  list-style: none;
+}
+
+ul:not([class]),
+ol:not([class]),
+.ul,
+.ol {
+  padding-left: space("loose");
+
+  :not(li) > &:not(:last-child) {
+    margin-bottom: space("normal");
+  }
+}

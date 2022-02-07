@@ -1,0 +1,26 @@
+@use "../_all" as *;
+
+.Message {
+  --message-background-color: #{interface-color("neutral", "0")};
+
+  background-color: var(--message-background-color);
+  color: color("gray", "400");
+  padding: space("loose");
+  margin: space("loose") 0;
+
+  &--positive {
+    --message-background-color: #{interface-color("positive", "0")};
+  }
+
+  &--negative {
+    --message-background-color: #{interface-color("negative", "0")};
+  }
+
+  &--attention {
+    --message-background-color: #{interface-color("attention", "0")};
+  }
+
+  &--notice {
+    --message-background-color: #{interface-color("notice", "0")};
+  }
+}
