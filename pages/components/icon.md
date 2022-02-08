@@ -44,7 +44,7 @@ Alternatively, for no styling or HTML wrapping at all, bare icons can be directl
 <!--twig
 {% embed "@tch/includes/example-box/example-box.html.twig" with {
   examples: {
-    "Twig": '{{ include("@tch/icons/info.svg.twig") }}',
+    "Twig": '{{ include("@tcds/icons/info.svg.twig") }}',
     "HTML": '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4m0-4h0"></path></svg>',
   },
 } %}
@@ -69,7 +69,7 @@ Many of the current icons in this set are adapted from [ICONSVG](https://iconsvg
   {% set icons = ["check", "chevron-down", "chevron-left", "chevron-right", "chevrons-down", "chevrons-up", "code", "edit", "eye", "grid", "hamburger", "info", "list", "maximize", "minimize", "pause", "play", "type", "wheelchair", "x"] %}
   <ul class="icon-grid" data-in-viewport="false">
     {% for index, icon in icons %}
-      <li data-svg-snippet='{% autoescape %}{{ include("@tch/icons/#{icon}.svg.twig") }}{% endautoescape %}' class="icon-grid__item" style="animation-delay: {{ (index + 1) * 50 }}ms" title="Click to copy SVG code">
+      <li data-svg-snippet='{% autoescape %}{{ include("@tcds/icons/#{icon}.svg.twig") }}{% endautoescape %}' class="icon-grid__item" style="animation-delay: {{ (index + 1) * 50 }}ms" title="Click to copy SVG code">
         {{ include("@tcds/components/icon/icon.html.twig", {
           icon: icon,
         }) }}

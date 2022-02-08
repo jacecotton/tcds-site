@@ -65,11 +65,8 @@ const config = {
   },
 
   icons: {
-    src: `${inputPath}/icons/**/*`,
-    dest: {
-      images: `${outputPath}/images/icons/`,
-      templates: `./views/templates/icons/`,
-    },
+    src: "./tcds/src/icons/**/*.svg",
+    dest: `${outputPath}/images/icons/`,
   },
 };
 
@@ -285,17 +282,8 @@ const tasks = {
 
   icons: () => {
     return src(config.icons.src)
-      // File minimization.
       .pipe(imagemin())
-      // Output to image directory.
-      .pipe(dest(config.icons.dest.images))
-      // Convert to .twig file extension for icons to be includeable from Twig
-      // templates.
-      .pipe(rename((path) => {
-        path.extname = ".svg.twig";
-      }))
-      // Output to template directory.
-      .pipe(dest(config.icons.dest.templates));
+      .pipe(dest(config.icons.dest));
   },
 };
 
@@ -314,7 +302,7 @@ task("watch", function watcher() {
   watch(`${inputPath}/styles/`, tasks.styles);
   watch(`${inputPath}/scripts/`, tasks.scripts);
   watch(`${inputPath}/images/`, tasks.images);
-  watch(`${inputPath}/icons/`, tasks.icons);
+  watch(`./tcds/src/icons/`, tasks.icons);
 });
 
 task("default", series(["pages", "styles", "scripts", "images", "icons", "watch"]));
