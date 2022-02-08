@@ -26,7 +26,7 @@ lead-->
 <!--twig
 {% embed "@tch/includes/example-box/example-box.html.twig" with {
   examples: {
-    "Twig": '{{ include("@tch/components/tabs/tabs.html.twig", {
+    "Twig": '{{ include("@tcds/components/tabs/tabs.html.twig", {
   tabs: [
     {
       heading: "Example tab 1",
@@ -63,7 +63,7 @@ lead-->
   },
 } %}
   {% block result %}
-    {{ include("@tch/components/tabs/tabs.html.twig", {
+    {{ include("@tcds/components/tabs/tabs.html.twig", {
       tabs: [
         {
           heading: "Example tab 1",
@@ -89,7 +89,7 @@ For fitting tabs into compact spaces (more useful in interfaces as opposed to we
 <!--twig
 {% embed "@tch/includes/example-box/example-box.html.twig" with {
   examples: {
-    "Twig": '{{ include("@tch/components/tabs/tabs.html.twig", {
+    "Twig": '{{ include("@tcds/components/tabs/tabs.html.twig", {
   tabs: [
     {
       heading: "Small tab 1",
@@ -127,7 +127,7 @@ For fitting tabs into compact spaces (more useful in interfaces as opposed to we
   },
 } %}
   {% block result %}
-    {{ include("@tch/components/tabs/tabs.html.twig", {
+    {{ include("@tcds/components/tabs/tabs.html.twig", {
       tabs: [
         {
           heading: "Small tab 1",
@@ -153,7 +153,7 @@ To make tabs more prominent (useful for landing page sections), the `large` modi
 <!--twig
 {% embed "@tch/includes/example-box/example-box.html.twig" with {
   examples: {
-    "Twig": '{{ include("@tch/components/tabs/tabs.html.twig", {
+    "Twig": '{{ include("@tcds/components/tabs/tabs.html.twig", {
   tabs: [
     {
       heading: "Large tab 1",
@@ -191,7 +191,7 @@ To make tabs more prominent (useful for landing page sections), the `large` modi
   },
 } %}
   {% block result %}
-    {{ include("@tch/components/tabs/tabs.html.twig", {
+    {{ include("@tcds/components/tabs/tabs.html.twig", {
       tabs: [
         {
           heading: "Large tab 1",
@@ -228,7 +228,7 @@ This interaction pattern adheres to the [WAI-ARIA Authoring Practices 1.2 &sect;
 ## API
 
 <!--twig
-{% embed "@tch/components/accordion/accordion.html.twig" with {
+{% embed "@tcds/components/accordion/accordion.html.twig" with {
   heading_level: "3",
   sections: [
     {

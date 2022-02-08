@@ -26,6 +26,11 @@ const config = {
     src: `${inputPath}/styles/@tcds/**/*.scss`,
     dest: `${outputPath}/styles/`,
   },
+
+  components: {
+    src: `${inputPath}/components/**/*.twig`,
+    dest: `${outputPath}/components/`,
+  },
 };
  
 /**
@@ -54,6 +59,11 @@ const tasks = {
       // Output final file.
       .pipe(dest(config.styles.dest));
   },
+
+  components: () => {
+    return src(config.components.src)
+      .pipe(dest(config.components.dest));
+  },
 };
  
 /**
@@ -61,9 +71,11 @@ const tasks = {
  */
  
 task("styles", tasks.styles);
+task("components", tasks.components);
  
 task("watch", function watcher() {
   watch(`${inputPath}/styles/`, tasks.styles);
+  watch(`${inputPath}/components/`, tasks.components);
 });
 
-task("default", series(["styles", "watch"]));
+task("default", series(["styles", "components", "watch"]));

@@ -113,7 +113,7 @@ p {
 ## Keyframe library
 
 <!--twig
-  {{ include("@tch/components/message/message.html.twig", {
+  {{ include("@tcds/components/message/message.html.twig", {
     content: "<b>Coming soon.</b> Check back later for documentation of the library of prebuilt keyframe animations provided by the Design System.",
   }) }}
 twig-->

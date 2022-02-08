@@ -12,7 +12,7 @@
       }]) %}
     {% endfor %}
 
-    {% embed "@tch/components/tabs/tabs.html.twig" with {
+    {% embed "@tcds/components/tabs/tabs.html.twig" with {
       id: id ?: random(0, 1000),
       tabs: tabs,
       modifiers: [show_first ?: "hide-all", "small"]

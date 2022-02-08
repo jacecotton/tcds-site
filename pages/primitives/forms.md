@@ -185,7 +185,7 @@ Alternatively, the [Button](/components/button) component can be used for extra 
 <!--twig
 {% embed "@tch/includes/example-box/example-box.html.twig" with {
   examples: {
-    "Twig": '{{ include("@tch/components/button/button.html.twig", {
+    "Twig": '{{ include("@tcds/components/button/button.html.twig", {
   label: "Submit form",
   type: "submit",
   icon: "chevron-right",
@@ -198,7 +198,7 @@ Alternatively, the [Button](/components/button) component can be used for extra 
   },
 } %}
   {% block result %}
-    {{ include("@tch/components/button/button.html.twig", {
+    {{ include("@tcds/components/button/button.html.twig", {
       label: "Submit form",
       type: "submit",
       icon: "chevron-right",

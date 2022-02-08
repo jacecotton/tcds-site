@@ -30,7 +30,7 @@ Note that both the above components label their sections, imparting [information
 <!--twig
 {% embed "@tch/includes/example-box/example-box.html.twig" with {
   examples: {
-    "Twig": '{{ include("@tch/components/carousel/carousel.html.twig", {
+    "Twig": '{{ include("@tcds/components/carousel/carousel.html.twig", {
   heading: "Example carousel",
   slides: [
     {
@@ -87,7 +87,7 @@ Note that both the above components label their sections, imparting [information
   },
 } %}
   {% block result %}
-    {{ include("@tch/components/carousel/carousel.html.twig", {
+    {{ include("@tcds/components/carousel/carousel.html.twig", {
       heading: "Example carousel",
       slides: [
         {

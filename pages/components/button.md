@@ -21,7 +21,7 @@ Buttons usually have some JavaScript event associated with them. This can be don
 <!--twig
 {% embed "@tch/includes/example-box/example-box.html.twig" with {
   examples: {
-    "Twig": '{{ include("@tch/components/button/button.html.twig", {
+    "Twig": '{{ include("@tcds/components/button/button.html.twig", {
   label: "Default button",
   onclick: "alert(\'Default button clicked.\')",
 }) }}',
@@ -31,7 +31,7 @@ Buttons usually have some JavaScript event associated with them. This can be don
   },
 } %}
   {% block result %}
-    {{ include("@tch/components/button/button.html.twig", {
+    {{ include("@tcds/components/button/button.html.twig", {
       label: "Default button",
       onclick: "alert('Default button clicked.')",
     }) }}
@@ -44,7 +44,7 @@ The [`type` property](#type) exists to specify any valid value of the [`type` HT
 <!--twig
 {% embed "@tch/includes/example-box/example-box.html.twig" with {
   examples: {
-    "Twig": '{{ include("@tch/components/button/button.html.twig", {
+    "Twig": '{{ include("@tcds/components/button/button.html.twig", {
   label: "Submit button",
   type: "submit",
 }) }}',
@@ -54,7 +54,7 @@ The [`type` property](#type) exists to specify any valid value of the [`type` HT
   },
 } %}
   {% block result %}
-    {{ include("@tch/components/button/button.html.twig", {
+    {{ include("@tcds/components/button/button.html.twig", {
       label: "Submit button",
       onclick: "alert('Form submitted!\n(Demonstration purposes only).')",
     }) }}
@@ -67,7 +67,7 @@ Alternatively, a button can point to a link using the [`link` property](#link-pr
 <!--twig
 {% embed "@tch/includes/example-box/example-box.html.twig" with {
   examples: {
-    "Twig": '{{ include("@tch/components/button/button.html.twig", {
+    "Twig": '{{ include("@tcds/components/button/button.html.twig", {
   label: "Link button",
   link: "https://texaschildrens.org/"
 }) }}',
@@ -77,7 +77,7 @@ Alternatively, a button can point to a link using the [`link` property](#link-pr
   },
 } %}
   {% block result %}
-    {{ include("@tch/components/button/button.html.twig", {
+    {{ include("@tcds/components/button/button.html.twig", {
       label: "Link button",
       link: "https://texaschildrens.org/",
     }) }}
@@ -93,7 +93,7 @@ Note that small buttons only decrease in height on devices with "fine" primary p
 <!--twig
 {% embed "@tch/includes/example-box/example-box.html.twig" with {
   examples: {
-    "Twig": '{{ include("@tch/components/button/button.html.twig", {
+    "Twig": '{{ include("@tcds/components/button/button.html.twig", {
   label: "Small button",
   modifiers: ["small"],
 }) }}',
@@ -103,7 +103,7 @@ Note that small buttons only decrease in height on devices with "fine" primary p
   },
 } %}
   {% block result %}
-    {{ include("@tch/components/button/button.html.twig", {
+    {{ include("@tcds/components/button/button.html.twig", {
       label: "Small button",
       modifiers: ["small"],
     }) }}
@@ -116,7 +116,7 @@ Large buttons can add emphasis, attract attention, and increase efficiency (see 
 <!--twig
 {% embed "@tch/includes/example-box/example-box.html.twig" with {
   examples: {
-    "Twig": '{{ include("@tch/components/button/button.html.twig", {
+    "Twig": '{{ include("@tcds/components/button/button.html.twig", {
   label: "Large button",
   modifiers: ["large"],
 }) }}',
@@ -126,7 +126,7 @@ Large buttons can add emphasis, attract attention, and increase efficiency (see 
   },
 } %}
   {% block result %}
-    {{ include("@tch/components/button/button.html.twig", {
+    {{ include("@tcds/components/button/button.html.twig", {
       label: "Large button",
       modifiers: ["large"],
     }) }}
@@ -139,7 +139,7 @@ Full-width buttons automatically fill the available space of their parent contai
 <!--twig
 {% embed "@tch/includes/example-box/example-box.html.twig" with {
   examples: {
-    "Twig": '{{ include("@tch/components/button/button.html.twig", {
+    "Twig": '{{ include("@tcds/components/button/button.html.twig", {
   label: "Full-width button",
   modifiers: ["full-width"],
 }) }}',
@@ -149,7 +149,7 @@ Full-width buttons automatically fill the available space of their parent contai
   },
 } %}
   {% block result %}
-    {{ include("@tch/components/button/button.html.twig", {
+    {{ include("@tcds/components/button/button.html.twig", {
       label: "Full-width button",
       modifiers: ["full-width"],
     }) }}
@@ -165,11 +165,11 @@ Additionally, the [`ghost` modifier](#modifiers-property) can be used to visuall
 <!--twig
 {% embed "@tch/includes/example-box/example-box.html.twig" with {
   examples: {
-    "Twig": '{{ include("@tch/components/button/button.html.twig", {
+    "Twig": '{{ include("@tcds/components/button/button.html.twig", {
   label: "Secondary action",
   custom_classes: ["bg-secondary"],
 }) }}\n
-{{ include("@tch/components/button/button.html.twig", {
+{{ include("@tcds/components/button/button.html.twig", {
   label: "Tertiary action",
   modifiers: ["ghost"],
 }) }}',
@@ -183,11 +183,11 @@ Additionally, the [`ghost` modifier](#modifiers-property) can be used to visuall
 } %}
   {% block result %}
     <div class="row gap-tight">
-      {{ include("@tch/components/button/button.html.twig", {
+      {{ include("@tcds/components/button/button.html.twig", {
         label: "Secondary action",
         custom_classes: ["bg-secondary"],
       }) }}
-      {{ include("@tch/components/button/button.html.twig", {
+      {{ include("@tcds/components/button/button.html.twig", {
         label: "Tertiary action",
         modifiers: ["ghost"],
       }) }}
@@ -201,13 +201,13 @@ Use [icons](/design/icons) as complementary visual aids.
 
 Button icons should be left-aligned (default) when:
 
-* Used purely as a decorative aid (e.g. <!--twig {{ include("@tch/components/icon/icon.html.twig", { icon: "info", label: "i inside circle" }) }} twig-->&nbsp;for info, <!--twig {{ include("@tch/components/icon/icon.html.twig", { icon: "check", label: "Checkmark" }) }} twig-->&nbsp;for success).
-* Used to indicate a regressive or destructive action (e.g. <!--twig {{ include("@tch/components/icon/icon.html.twig", { icon: "chevron-left", label: "Left" }) }} twig-->&nbsp;for back, <!--twig {{ include("@tch/components/icon/icon.html.twig", { icon: "x", label: "X" }) }} twig-->&nbsp;for cancel).
+* Used purely as a decorative aid (e.g. <!--twig {{ include("@tcds/components/icon/icon.html.twig", { icon: "info", label: "i inside circle" }) }} twig-->&nbsp;for info, <!--twig {{ include("@tcds/components/icon/icon.html.twig", { icon: "check", label: "Checkmark" }) }} twig-->&nbsp;for success).
+* Used to indicate a regressive or destructive action (e.g. <!--twig {{ include("@tcds/components/icon/icon.html.twig", { icon: "chevron-left", label: "Left" }) }} twig-->&nbsp;for back, <!--twig {{ include("@tcds/components/icon/icon.html.twig", { icon: "x", label: "X" }) }} twig-->&nbsp;for cancel).
 
 <!--twig
 {% embed "@tch/includes/example-box/example-box.html.twig" with {
   examples: {
-    "Twig": '{{ include("@tch/components/button/button.html.twig", {
+    "Twig": '{{ include("@tcds/components/button/button.html.twig", {
   label: "Open information",
   icon: "info",
 }) }}',
@@ -222,7 +222,7 @@ Button icons should be left-aligned (default) when:
   },
 } %}
   {% block result %}
-    {{ include("@tch/components/button/button.html.twig", {
+    {{ include("@tcds/components/button/button.html.twig", {
       label: "Open information",
       icon: "info",
     }) }}
@@ -232,12 +232,12 @@ twig-->
 
 Button icons should be right-aligned when:
 
-* Used to indicate a progressive action (e.g. <!--twig {{ include("@tch/components/icon/icon.html.twig", { icon: "chevron-right", label: "Right" }) }} twig-->&nbsp;for proceed, <!--twig {{ include("@tch/components/icon/icon.html.twig", { icon: "chevron-down", label: "Down" }) }} twig-->&nbsp;for dropdown).
+* Used to indicate a progressive action (e.g. <!--twig {{ include("@tcds/components/icon/icon.html.twig", { icon: "chevron-right", label: "Right" }) }} twig-->&nbsp;for proceed, <!--twig {{ include("@tcds/components/icon/icon.html.twig", { icon: "chevron-down", label: "Down" }) }} twig-->&nbsp;for dropdown).
 
 <!--twig
 {% embed "@tch/includes/example-box/example-box.html.twig" with {
   examples: {
-    "Twig": '{{ include("@tch/components/button/button.html.twig", {
+    "Twig": '{{ include("@tcds/components/button/button.html.twig", {
   label: "Next",
   icon: "chevron-right",
   modifiers: ["icon-right"],
@@ -252,7 +252,7 @@ Button icons should be right-aligned when:
   },
 } %}
   {% block result %}
-    {{ include("@tch/components/button/button.html.twig", {
+    {{ include("@tcds/components/button/button.html.twig", {
       label: "Next",
       icon: "chevron-right",
       modifiers: ["icon-right"],
@@ -266,7 +266,7 @@ To conserve space, button labels can be hidden when using an icon using the [`ic
 <!--twig
 {% embed "@tch/includes/example-box/example-box.html.twig" with {
   examples: {
-    "Twig": '{{ include("@tch/components/button/button.html.twig", {
+    "Twig": '{{ include("@tcds/components/button/button.html.twig", {
   label: "Close",
   icon: "x",
   modifiers: ["icon-only"],
@@ -281,7 +281,7 @@ To conserve space, button labels can be hidden when using an icon using the [`ic
   },
 } %}
   {% block result %}
-    {{ include("@tch/components/button/button.html.twig", {
+    {{ include("@tcds/components/button/button.html.twig", {
       label: "Close (demonstration only)",
       icon: "x",
       modifiers: ["icon-only"],
@@ -303,7 +303,7 @@ Without JavaScript, the initial state of the button should be expanded, therefor
 {% embed "@tch/includes/example-box/example-box.html.twig" with {
   examples: {
     "Twig": '<!-- No initial [aria-expanded] state without JavaScript --\>
-{{ include("@tch/components/button/button.html.twig", {
+{{ include("@tcds/components/button/button.html.twig", {
   label: "Toggle content",
   controls: "example-content",
 }) }}\n
@@ -320,7 +320,7 @@ button.addEventListener("click", () => {
   },
 } %}
   {% block result %}
-{{ include("@tch/components/button/button.html.twig", {
+{{ include("@tcds/components/button/button.html.twig", {
   label: "Toggle content",
   controls: "example-content",
   custom_attributes: { "id": "example-toggle-button" },

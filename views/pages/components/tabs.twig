@@ -21,7 +21,7 @@ the terminal). #}
 
 {% embed "@tch/includes/example-box/example-box.html.twig" with {
   examples: {
-    "Twig": '{{ include("@tch/components/tabs/tabs.html.twig", {
+    "Twig": '{{ include("@tcds/components/tabs/tabs.html.twig", {
   tabs: [
     {
       heading: "Example tab 1",
@@ -58,7 +58,7 @@ the terminal). #}
   },
 } %}
   {% block result %}
-    {{ include("@tch/components/tabs/tabs.html.twig", {
+    {{ include("@tcds/components/tabs/tabs.html.twig", {
       tabs: [
         {
           heading: "Example tab 1",
@@ -83,7 +83,7 @@ the terminal). #}
 
 {% embed "@tch/includes/example-box/example-box.html.twig" with {
   examples: {
-    "Twig": '{{ include("@tch/components/tabs/tabs.html.twig", {
+    "Twig": '{{ include("@tcds/components/tabs/tabs.html.twig", {
   tabs: [
     {
       heading: "Small tab 1",
@@ -121,7 +121,7 @@ the terminal). #}
   },
 } %}
   {% block result %}
-    {{ include("@tch/components/tabs/tabs.html.twig", {
+    {{ include("@tcds/components/tabs/tabs.html.twig", {
       tabs: [
         {
           heading: "Small tab 1",
@@ -146,7 +146,7 @@ the terminal). #}
 
 {% embed "@tch/includes/example-box/example-box.html.twig" with {
   examples: {
-    "Twig": '{{ include("@tch/components/tabs/tabs.html.twig", {
+    "Twig": '{{ include("@tcds/components/tabs/tabs.html.twig", {
   tabs: [
     {
       heading: "Large tab 1",
@@ -184,7 +184,7 @@ the terminal). #}
   },
 } %}
   {% block result %}
-    {{ include("@tch/components/tabs/tabs.html.twig", {
+    {{ include("@tcds/components/tabs/tabs.html.twig", {
       tabs: [
         {
           heading: "Large tab 1",
@@ -215,7 +215,7 @@ the terminal). #}
 <p>This interaction pattern adheres to the <a href="https://www.w3.org/TR/wai-aria-practices-1.2/#tabpanel">WAI-ARIA Authoring Practices 1.2 &sect; 3.24 Tabs</a> guidelines.</p>
 <h2 id="api">API</h2>
 
-{% embed "@tch/components/accordion/accordion.html.twig" with {
+{% embed "@tcds/components/accordion/accordion.html.twig" with {
   heading_level: "3",
   sections: [
     {

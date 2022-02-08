@@ -22,7 +22,7 @@ You can load the Design System straight from a CDN via UNPKG, powered by Cloudfl
 ## Project setup
 
 <!--twig
-  {{ include("@tch/components/message/message.html.twig", {
+  {{ include("@tcds/components/message/message.html.twig", {
     content: "<b>Coming soon.</b> Check back later for a step-by-step guide on how to install the Design System along with the build process of the rest of your project's assets.",
   }) }}
 twig-->

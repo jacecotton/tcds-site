@@ -24,7 +24,7 @@ the terminal). #}
 {% embed "@tch/includes/example-box/example-box.html.twig" with {
   transparent_background: true,
   examples: {
-    "Twig": '{{ include("@tch/components/accordion/accordion.html.twig", {
+    "Twig": '{{ include("@tcds/components/accordion/accordion.html.twig", {
   heading_level: "3",
   sections: [
     {
@@ -100,7 +100,7 @@ the terminal). #}
   },
 } %}
   {% block result %}
-    {{ include("@tch/components/accordion/accordion.html.twig", {
+    {{ include("@tcds/components/accordion/accordion.html.twig", {
       sections: [
         {
           heading: "Section 1",
@@ -127,7 +127,7 @@ the terminal). #}
 {% embed "@tch/includes/example-box/example-box.html.twig" with {
   transparent_background: true,
   examples: {
-    "Twig": '{{ include("@tch/components/accordion/accordion.html.twig", {
+    "Twig": '{{ include("@tcds/components/accordion/accordion.html.twig", {
   heading_level: "3",
   modifiers: ["multiselectable"],
   sections: [
@@ -208,7 +208,7 @@ the terminal). #}
   },
 } %}
   {% block result %}
-    {{ include("@tch/components/accordion/accordion.html.twig", {
+    {{ include("@tcds/components/accordion/accordion.html.twig", {
       modifiers: ["multiselectable"],
       sections: [
         {
@@ -235,7 +235,7 @@ the terminal). #}
 {% embed "@tch/includes/example-box/example-box.html.twig" with {
   transparent_background: true,
   examples: {
-    "Twig": '{% embed "@tch/components/accordion/accordion.html.twig" with {
+    "Twig": '{% embed "@tcds/components/accordion/accordion.html.twig" with {
   heading_level: "3",
   sections: [
     {
@@ -293,7 +293,7 @@ the terminal). #}
   },
 } %}
   {% block result %}
-    {% embed "@tch/components/accordion/accordion.html.twig" with {
+    {% embed "@tcds/components/accordion/accordion.html.twig" with {
       sections: [
         {
           heading: "Slot example 1",

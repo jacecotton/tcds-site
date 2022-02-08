@@ -17,7 +17,7 @@ the terminal). #}
 
 {% embed "@tch/includes/example-box/example-box.html.twig" with {
   examples: {
-    "Twig": '{{ include("@tch/components/button/button.html.twig", {
+    "Twig": '{{ include("@tcds/components/button/button.html.twig", {
   label: "Default button",
   onclick: "alert(\'Default button clicked.\')",
 }) }}',
@@ -27,7 +27,7 @@ the terminal). #}
   },
 } %}
   {% block result %}
-    {{ include("@tch/components/button/button.html.twig", {
+    {{ include("@tcds/components/button/button.html.twig", {
       label: "Default button",
       onclick: "alert('Default button clicked.')",
     }) }}
@@ -39,7 +39,7 @@ the terminal). #}
 
 {% embed "@tch/includes/example-box/example-box.html.twig" with {
   examples: {
-    "Twig": '{{ include("@tch/components/button/button.html.twig", {
+    "Twig": '{{ include("@tcds/components/button/button.html.twig", {
   label: "Submit button",
   type: "submit",
 }) }}',
@@ -49,7 +49,7 @@ the terminal). #}
   },
 } %}
   {% block result %}
-    {{ include("@tch/components/button/button.html.twig", {
+    {{ include("@tcds/components/button/button.html.twig", {
       label: "Submit button",
       onclick: "alert('Form submitted!\n(Demonstration purposes only).')",
     }) }}
@@ -61,7 +61,7 @@ the terminal). #}
 
 {% embed "@tch/includes/example-box/example-box.html.twig" with {
   examples: {
-    "Twig": '{{ include("@tch/components/button/button.html.twig", {
+    "Twig": '{{ include("@tcds/components/button/button.html.twig", {
   label: "Link button",
   link: "https://texaschildrens.org/"
 }) }}',
@@ -71,7 +71,7 @@ the terminal). #}
   },
 } %}
   {% block result %}
-    {{ include("@tch/components/button/button.html.twig", {
+    {{ include("@tcds/components/button/button.html.twig", {
       label: "Link button",
       link: "https://texaschildrens.org/",
     }) }}
@@ -85,7 +85,7 @@ the terminal). #}
 
 {% embed "@tch/includes/example-box/example-box.html.twig" with {
   examples: {
-    "Twig": '{{ include("@tch/components/button/button.html.twig", {
+    "Twig": '{{ include("@tcds/components/button/button.html.twig", {
   label: "Small button",
   modifiers: ["small"],
 }) }}',
@@ -95,7 +95,7 @@ the terminal). #}
   },
 } %}
   {% block result %}
-    {{ include("@tch/components/button/button.html.twig", {
+    {{ include("@tcds/components/button/button.html.twig", {
       label: "Small button",
       modifiers: ["small"],
     }) }}
@@ -107,7 +107,7 @@ the terminal). #}
 
 {% embed "@tch/includes/example-box/example-box.html.twig" with {
   examples: {
-    "Twig": '{{ include("@tch/components/button/button.html.twig", {
+    "Twig": '{{ include("@tcds/components/button/button.html.twig", {
   label: "Large button",
   modifiers: ["large"],
 }) }}',
@@ -117,7 +117,7 @@ the terminal). #}
   },
 } %}
   {% block result %}
-    {{ include("@tch/components/button/button.html.twig", {
+    {{ include("@tcds/components/button/button.html.twig", {
       label: "Large button",
       modifiers: ["large"],
     }) }}
@@ -129,7 +129,7 @@ the terminal). #}
 
 {% embed "@tch/includes/example-box/example-box.html.twig" with {
   examples: {
-    "Twig": '{{ include("@tch/components/button/button.html.twig", {
+    "Twig": '{{ include("@tcds/components/button/button.html.twig", {
   label: "Full-width button",
   modifiers: ["full-width"],
 }) }}',
@@ -139,7 +139,7 @@ the terminal). #}
   },
 } %}
   {% block result %}
-    {{ include("@tch/components/button/button.html.twig", {
+    {{ include("@tcds/components/button/button.html.twig", {
       label: "Full-width button",
       modifiers: ["full-width"],
     }) }}
@@ -153,11 +153,11 @@ the terminal). #}
 
 {% embed "@tch/includes/example-box/example-box.html.twig" with {
   examples: {
-    "Twig": '{{ include("@tch/components/button/button.html.twig", {
+    "Twig": '{{ include("@tcds/components/button/button.html.twig", {
   label: "Secondary action",
   custom_classes: ["bg-secondary"],
 }) }}\n
-{{ include("@tch/components/button/button.html.twig", {
+{{ include("@tcds/components/button/button.html.twig", {
   label: "Tertiary action",
   modifiers: ["ghost"],
 }) }}',
@@ -171,11 +171,11 @@ the terminal). #}
 } %}
   {% block result %}
     <div class="row gap-tight">
-      {{ include("@tch/components/button/button.html.twig", {
+      {{ include("@tcds/components/button/button.html.twig", {
         label: "Secondary action",
         custom_classes: ["bg-secondary"],
       }) }}
-      {{ include("@tch/components/button/button.html.twig", {
+      {{ include("@tcds/components/button/button.html.twig", {
         label: "Tertiary action",
         modifiers: ["ghost"],
       }) }}
@@ -188,13 +188,13 @@ the terminal). #}
 <p>Use <a href="/design/icons">icons</a> as complementary visual aids.</p>
 <p>Button icons should be left-aligned (default) when:</p>
 <ul>
-<li>Used purely as a decorative aid (e.g.  {{ include("@tch/components/icon/icon.html.twig", { icon: "info", label: "i inside circle" }) }} &nbsp;for info,  {{ include("@tch/components/icon/icon.html.twig", { icon: "check", label: "Checkmark" }) }} &nbsp;for success).</li>
-<li>Used to indicate a regressive or destructive action (e.g.  {{ include("@tch/components/icon/icon.html.twig", { icon: "chevron-left", label: "Left" }) }} &nbsp;for back,  {{ include("@tch/components/icon/icon.html.twig", { icon: "x", label: "X" }) }} &nbsp;for cancel).</li>
+<li>Used purely as a decorative aid (e.g.  {{ include("@tcds/components/icon/icon.html.twig", { icon: "info", label: "i inside circle" }) }} &nbsp;for info,  {{ include("@tcds/components/icon/icon.html.twig", { icon: "check", label: "Checkmark" }) }} &nbsp;for success).</li>
+<li>Used to indicate a regressive or destructive action (e.g.  {{ include("@tcds/components/icon/icon.html.twig", { icon: "chevron-left", label: "Left" }) }} &nbsp;for back,  {{ include("@tcds/components/icon/icon.html.twig", { icon: "x", label: "X" }) }} &nbsp;for cancel).</li>
 </ul>
 
 {% embed "@tch/includes/example-box/example-box.html.twig" with {
   examples: {
-    "Twig": '{{ include("@tch/components/button/button.html.twig", {
+    "Twig": '{{ include("@tcds/components/button/button.html.twig", {
   label: "Open information",
   icon: "info",
 }) }}',
@@ -209,7 +209,7 @@ the terminal). #}
   },
 } %}
   {% block result %}
-    {{ include("@tch/components/button/button.html.twig", {
+    {{ include("@tcds/components/button/button.html.twig", {
       label: "Open information",
       icon: "info",
     }) }}
@@ -219,12 +219,12 @@ the terminal). #}
 
 <p>Button icons should be right-aligned when:</p>
 <ul>
-<li>Used to indicate a progressive action (e.g.  {{ include("@tch/components/icon/icon.html.twig", { icon: "chevron-right", label: "Right" }) }} &nbsp;for proceed,  {{ include("@tch/components/icon/icon.html.twig", { icon: "chevron-down", label: "Down" }) }} &nbsp;for dropdown).</li>
+<li>Used to indicate a progressive action (e.g.  {{ include("@tcds/components/icon/icon.html.twig", { icon: "chevron-right", label: "Right" }) }} &nbsp;for proceed,  {{ include("@tcds/components/icon/icon.html.twig", { icon: "chevron-down", label: "Down" }) }} &nbsp;for dropdown).</li>
 </ul>
 
 {% embed "@tch/includes/example-box/example-box.html.twig" with {
   examples: {
-    "Twig": '{{ include("@tch/components/button/button.html.twig", {
+    "Twig": '{{ include("@tcds/components/button/button.html.twig", {
   label: "Next",
   icon: "chevron-right",
   modifiers: ["icon-right"],
@@ -239,7 +239,7 @@ the terminal). #}
   },
 } %}
   {% block result %}
-    {{ include("@tch/components/button/button.html.twig", {
+    {{ include("@tcds/components/button/button.html.twig", {
       label: "Next",
       icon: "chevron-right",
       modifiers: ["icon-right"],
@@ -252,7 +252,7 @@ the terminal). #}
 
 {% embed "@tch/includes/example-box/example-box.html.twig" with {
   examples: {
-    "Twig": '{{ include("@tch/components/button/button.html.twig", {
+    "Twig": '{{ include("@tcds/components/button/button.html.twig", {
   label: "Close",
   icon: "x",
   modifiers: ["icon-only"],
@@ -267,7 +267,7 @@ the terminal). #}
   },
 } %}
   {% block result %}
-    {{ include("@tch/components/button/button.html.twig", {
+    {{ include("@tcds/components/button/button.html.twig", {
       label: "Close (demonstration only)",
       icon: "x",
       modifiers: ["icon-only"],
@@ -285,7 +285,7 @@ the terminal). #}
 {% embed "@tch/includes/example-box/example-box.html.twig" with {
   examples: {
     "Twig": '<!-- No initial [aria-expanded] state without JavaScript --\>
-{{ include("@tch/components/button/button.html.twig", {
+{{ include("@tcds/components/button/button.html.twig", {
   label: "Toggle content",
   controls: "example-content",
 }) }}\n
@@ -302,7 +302,7 @@ button.addEventListener("click", () => {
   },
 } %}
   {% block result %}
-{{ include("@tch/components/button/button.html.twig", {
+{{ include("@tcds/components/button/button.html.twig", {
   label: "Toggle content",
   controls: "example-content",
   custom_attributes: { "id": "example-toggle-button" },

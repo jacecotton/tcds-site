@@ -3,7 +3,7 @@
 lead-->
 
 <!--twig
-  {{ include("@tch/components/message/message.html.twig", {
+  {{ include("@tcds/components/message/message.html.twig", {
     content: '<strong>This document is not comprehensive.</strong> As accessibility is implicated across <em>every</em> aspect of the Design System, there is such guidance on nearly every documentation page. Content included there is not repeated here. For example, guidance on accessibility for users with low color sensitivity is covered in <a href="/design/color">Design &rarr; Color</a>, those with vestibular disorders in <a href="/design/animation">Design &rarr; Animation</a>, and so on.',
     modifiers: ["attention"],
   }) }}

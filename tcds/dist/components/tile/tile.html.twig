@@ -1,4 +1,4 @@
-{% extends "@tch/components/component/component.html.twig" %}
+{% extends "@tcds/components/component/component.html.twig" %}
 
 {% set component_name = "Tile" %}
 
@@ -18,7 +18,7 @@
 
 {% block inner_content %}
   {% if icon %}
-    {{ include("@tch/components/icon/icon.html.twig", {
+    {{ include("@tcds/components/icon/icon.html.twig", {
       icon: icon,
       custom_classes: ["Tile__icon"],
     }, with_context = false) }}

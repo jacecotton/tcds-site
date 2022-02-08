@@ -15,7 +15,7 @@ lead-->
 <!--twig
 {% embed "@tch/includes/example-box/example-box.html.twig" with {
   examples: {
-    "Twig": '{{ include("@tch/components/icon/icon.html.twig", {
+    "Twig": '{{ include("@tcds/components/icon/icon.html.twig", {
   icon: "info",
 }) }}',
     "HTML": '<span class="Icon" data-component="Icon" aria-hidden="true" role="presentation">
@@ -24,7 +24,7 @@ lead-->
   },
 } %}
   {% block result %}
-    {{ include("@tch/components/icon/icon.html.twig", {
+    {{ include("@tcds/components/icon/icon.html.twig", {
       icon: "info",
     }) }}
   {% endblock %}
@@ -49,7 +49,7 @@ Alternatively, for no styling or HTML wrapping at all, bare icons can be directl
   },
 } %}
   {% block result %}
-    {{ include("@tch/components/icon/icon.html.twig", {
+    {{ include("@tcds/components/icon/icon.html.twig", {
       icon: "info",
     }) }}
   {% endblock %}
@@ -70,7 +70,7 @@ Many of the current icons in this set are adapted from [ICONSVG](https://iconsvg
   <ul class="icon-grid" data-in-viewport="false">
     {% for index, icon in icons %}
       <li data-svg-snippet='{% autoescape %}{{ include("@tch/icons/#{icon}.svg.twig") }}{% endautoescape %}' class="icon-grid__item" style="animation-delay: {{ (index + 1) * 50 }}ms" title="Click to copy SVG code">
-        {{ include("@tch/components/icon/icon.html.twig", {
+        {{ include("@tcds/components/icon/icon.html.twig", {
           icon: icon,
         }) }}
         <span class="icon-grid__label">{{ icon }}</span>

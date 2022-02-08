@@ -31,7 +31,7 @@ By default, only one section is expandable at a time. This tends to work best fo
 {% embed "@tch/includes/example-box/example-box.html.twig" with {
   transparent_background: true,
   examples: {
-    "Twig": '{{ include("@tch/components/accordion/accordion.html.twig", {
+    "Twig": '{{ include("@tcds/components/accordion/accordion.html.twig", {
   heading_level: "3",
   sections: [
     {
@@ -107,7 +107,7 @@ By default, only one section is expandable at a time. This tends to work best fo
   },
 } %}
   {% block result %}
-    {{ include("@tch/components/accordion/accordion.html.twig", {
+    {{ include("@tcds/components/accordion/accordion.html.twig", {
       sections: [
         {
           heading: "Section 1",
@@ -137,7 +137,7 @@ As a usability requirement, controls to expand or collapse all panels at once ar
 {% embed "@tch/includes/example-box/example-box.html.twig" with {
   transparent_background: true,
   examples: {
-    "Twig": '{{ include("@tch/components/accordion/accordion.html.twig", {
+    "Twig": '{{ include("@tcds/components/accordion/accordion.html.twig", {
   heading_level: "3",
   modifiers: ["multiselectable"],
   sections: [
@@ -218,7 +218,7 @@ As a usability requirement, controls to expand or collapse all panels at once ar
   },
 } %}
   {% block result %}
-    {{ include("@tch/components/accordion/accordion.html.twig", {
+    {{ include("@tcds/components/accordion/accordion.html.twig", {
       modifiers: ["multiselectable"],
       sections: [
         {
@@ -247,7 +247,7 @@ Normally, with the [`content` property](#sections-content-property), you are lim
 {% embed "@tch/includes/example-box/example-box.html.twig" with {
   transparent_background: true,
   examples: {
-    "Twig": '{% embed "@tch/components/accordion/accordion.html.twig" with {
+    "Twig": '{% embed "@tcds/components/accordion/accordion.html.twig" with {
   heading_level: "3",
   sections: [
     {
@@ -305,7 +305,7 @@ Normally, with the [`content` property](#sections-content-property), you are lim
   },
 } %}
   {% block result %}
-    {% embed "@tch/components/accordion/accordion.html.twig" with {
+    {% embed "@tcds/components/accordion/accordion.html.twig" with {
       sections: [
         {
           heading: "Slot example 1",

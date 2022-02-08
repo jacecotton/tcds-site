@@ -66,7 +66,7 @@ The Design System provides a collection of tokens for setting space (margin, pad
 </div>
 
 <!--twig
-  {{ include("@tch/components/message/message.html.twig", {
+  {{ include("@tcds/components/message/message.html.twig", {
     content: "<strong>Tip:</strong> Because these tokens represent fixed constants at relatively low pixel sizes, they are most useful for micro-layouts. For example, setting spacing between or sizing on individual <a href='/components'>components</a>, <a href='/primitives/forms'>form elements</a>, etc. At the macro-level, layouts need to be <a href='/design/responsive'>responsive</a> and should use <a href='#grid'>grid</a> or <a href='#flexbox'>flexbox</a>, along with relative or flexible units and <a href='#breakpoints'>breakpoint sizes</a>.",
   }) }}
 twig-->
@@ -168,7 +168,7 @@ Breakpoint values are accessible via the `breakpoint()` custom Sass function. Ho
 ```
 
 <!--twig
-  {{ include("@tch/components/message/message.html.twig", {
+  {{ include("@tcds/components/message/message.html.twig", {
     content: "<strong>Tips:</strong>
       <ul>
         <li><strong>Don't assume specific devices.</strong> The modern web is viewed on a wide diversity of screen sizes, even beyond the traditional mobile–desktop spectrum.</li>
@@ -350,7 +350,7 @@ To create columns that are proportionately sized to each other, via flex units, 
 twig-->
 
 <!--twig
-  {{ include("@tch/components/message/message.html.twig", {
+  {{ include("@tcds/components/message/message.html.twig", {
     content: "<strong>Note:</strong> The numbers do not denote a width, but a fractional share. So two columns, one with <code>.flex-1</code> and one with <code>.flex-3</code>, would be the same as two columns with <code>.flex-3</code> and <code>.flex-9</code>—in both cases, the first column would have a 25% width (1/4 or 3/12), and the second column would have a 75% width (3/4 or 9/12).",
   }) }}
 twig-->
@@ -514,7 +514,7 @@ The below example demonstrates the traditional "Holy Grail" layout in grid.
 twig-->
 
 <!--twig
-  {{ include("@tch/components/message/message.html.twig", {
+  {{ include("@tcds/components/message/message.html.twig", {
     content: "<strong>Tip:</strong> Note the differences between this and the flexbox example. With grid, an extra <code>div</code> wrapper is not needed around the <code>aside</code> and <code>main</code> tags. While grid may seem more complicated than flexbox for this small, contrived example, as a layout grows in complexity, grid works better for this reason. Especially as responsive considerations are introduced; grids can be changed from the parent selector by redefining the relevant properties at each breakpoint. With flexbox, the classes on all child elements would need to be changed or overridden at each breakpoint.",
   }) }}
 twig-->

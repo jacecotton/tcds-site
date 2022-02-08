@@ -3,7 +3,7 @@
     {% for example in positive %}
       <div class="comparison-box__example comparison-box__example--positive">
         <div class="comparison-box__header">
-          {{ include("@tch/components/icon/icon.html.twig", {
+          {{ include("@tcds/components/icon/icon.html.twig", {
             icon: "check",
           }) }}
           Do
@@ -24,7 +24,7 @@
     {% for example in negative %}
       <div class="comparison-box__example comparison-box__example--negative">
         <div class="comparison-box__header">
-          {{ include("@tch/components/icon/icon.html.twig", {
+          {{ include("@tcds/components/icon/icon.html.twig", {
             icon: "x",
           }) }}
           Don't

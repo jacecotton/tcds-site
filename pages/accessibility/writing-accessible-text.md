@@ -3,7 +3,7 @@
 lead-->
 
 <!--twig
-  {{ include("@tch/components/message/message.html.twig", {
+  {{ include("@tcds/components/message/message.html.twig", {
     content: "<strong>This document is not comprehensive.</strong> It is primarily aimed at authoring accessible text from a technical perspective. Other than some basics, it does not cover general editorial guidelines for accessibility.",
     modifiers: ["attention"],
   }) }}
