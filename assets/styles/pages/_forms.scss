@@ -1,0 +1,7 @@
+@use "../" as *;
+
+.form-error {
+  font-size: font-size("small");
+  font-weight: font-weight("semibold");
+  color: interface-color("negative", "400");
+}

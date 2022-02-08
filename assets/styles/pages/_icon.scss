@@ -1,0 +1,65 @@
+@use "../" as *;
+
+.icon-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(7.5rem, 1fr));
+  margin: space("loose") 0;
+
+  &[data-in-viewport="true"] &__item {
+    animation: icon-grid-icon-reveal animation("expressive") forwards;
+  }
+
+  &__item {
+    display: block;
+    aspect-ratio: 1 / 1;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+    align-items: center;
+    text-align: center;
+    background-color: transparent;
+    transform: scale(1);
+    transition: background-color animation("productive");
+    user-select: none;
+    cursor: pointer;
+    opacity: 0;
+
+    @keyframes icon-grid-icon-reveal {
+      from {
+        transform: scale(0);
+      } to {
+        opacity: 1;
+      }
+    }
+    
+    &:hover {
+      background-color: color("gray", "0");
+      --icon-grid-icon-translate-y: 0%;
+      --icon-grid-icon-label-opacity: 1;
+      --icon-grid-icon-color: #{color("blue")};
+    }
+
+    &:active {
+      transform: scale(.97);
+    }
+
+    .Icon {
+      align-self: end;
+      transform: translateY(var(--icon-grid-icon-translate-y, 50%));
+      transition: transform animation("expressive");
+      font-size: 1.7em;
+      color: var(--icon-grid-icon-color, inherit);
+    }
+  }
+
+  &__label {
+    opacity: var(--icon-grid-icon-label-opacity, 0);
+    transform: translateY(var(--icon-grid-icon-translate-y, 50%));
+    transition:
+      opacity animation("expressive"),
+      transform animation("expressive");
+    transition-delay: 100ms;
+    font-size: font-size("small");
+    white-space: nowrap;
+  }
+}

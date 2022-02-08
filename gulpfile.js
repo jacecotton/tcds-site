@@ -10,9 +10,9 @@ import markdown from "gulp-markdown";
 import map from "map-stream";
 
 // Script utilities
-import babel from "gulp-babel";
-import terser from "gulp-terser";
-import concat from "gulp-concat";
+// import babel from "gulp-babel";
+// import terser from "gulp-terser";
+// import concat from "gulp-concat";
 
 // Style utilities
 import sass from "gulp-dart-sass";
@@ -45,19 +45,10 @@ const config = {
     dest: `${outputPath}/styles/`,
   },
 
-  scripts: {
-    src: [
-      // Handle TCDS utilities first.
-      `${inputPath}/scripts/tcds/utilities/*.js`,
-      // Then top-level TCDS scripts.
-      `${inputPath}/scripts/tcds/*.js`,
-      // Then go deeper into other TCDS directories.
-      `${inputPath}/scripts/tcds/**/*.js`,
-      // Then handle all other scripts.
-      `${inputPath}/scripts/site/**/*.js`,
-    ],
-    dest: `${outputPath}/scripts/`,
-  },
+  // scripts: {
+  //   src: `${inputPath}/scripts/**/*.js`,
+  //   dest: `${outputPath}/scripts/`,
+  // },
 
   images: {
     src: `${inputPath}/images/**/*`,
@@ -243,34 +234,34 @@ const tasks = {
       .pipe(dest(config.styles.dest));
   },
 
-  scripts: () => {
-    return src(config.scripts.src)
-      // Start sourcemap input.
-      .pipe(sourcemaps.init())
-      // Combine all files into one.
-      .pipe(concat("main.js"))
-      // Transpile new JavaScript to older browser-compatible JavaScript.
-      .pipe(babel({
-        presets: [
-          [
-            "@babel/env",
-            {
-              targets: {
-                "chrome": "70",
-                "ie": "11",
-                "safari": "13",
-              },
-            },
-          ],
-        ],
-      }))
-      // File minimization.
-      .pipe(terser())
-      // Write sourcemap output.
-      .pipe(sourcemaps.write("."))
-      // Output final file.
-      .pipe(dest(config.scripts.dest));
-  },
+  // scripts: () => {
+  //   return src(config.scripts.src)
+  //     // Start sourcemap input.
+  //     .pipe(sourcemaps.init())
+  //     // Combine all files into one.
+  //     .pipe(concat("main.js"))
+  //     // Transpile new JavaScript to older browser-compatible JavaScript.
+  //     .pipe(babel({
+  //       presets: [
+  //         [
+  //           "@babel/env",
+  //           {
+  //             targets: {
+  //               "chrome": "70",
+  //               "ie": "11",
+  //               "safari": "13",
+  //             },
+  //           },
+  //         ],
+  //       ],
+  //     }))
+  //     // File minimization.
+  //     .pipe(terser())
+  //     // Write sourcemap output.
+  //     .pipe(sourcemaps.write("."))
+  //     // Output final file.
+  //     .pipe(dest(config.scripts.dest));
+  // },
 
   images: () => {
     return src(config.images.src)
@@ -293,16 +284,16 @@ const tasks = {
 
 task("pages", tasks.pages);
 task("styles", tasks.styles);
-task("scripts", tasks.scripts);
+// task("scripts", tasks.scripts);
 task("images", tasks.images);
 task("icons", tasks.icons);
 
 task("watch", function watcher() {
   watch(`./pages/`, tasks.pages);
   watch(`${inputPath}/styles/`, tasks.styles);
-  watch(`${inputPath}/scripts/`, tasks.scripts);
+  // watch(`${inputPath}/scripts/`, tasks.scripts);
   watch(`${inputPath}/images/`, tasks.images);
   watch(`./tcds/src/icons/`, tasks.icons);
 });
 
-task("default", series(["pages", "styles", "scripts", "images", "icons", "watch"]));
+task("default", series(["pages", "styles", /* "scripts", */ "images", "icons", "watch"]));

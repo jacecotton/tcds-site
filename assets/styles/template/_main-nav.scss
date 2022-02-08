@@ -1,0 +1,71 @@
+@use "../" as *;
+
+.main-nav {
+  padding-left: space("x-loose");
+  
+  &__list {
+    font-size: font-size("small");
+    list-style: none;
+  }
+  
+  &__category {
+    padding: space("tight") 0;
+    display: block;
+    font-weight: font-weight("semibold");
+    margin-top: space("loose");
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: font-size("x-small");
+  }
+
+  &__link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    padding: space("tight") 0;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    &[aria-current] {
+      font-weight: font-weight("semibold");
+      color: theme-color("primary");
+      box-shadow: inset -4px 0 theme-color("primary");
+    }
+
+    &.disabled {
+      color: color("gray", "200");
+      cursor: default;
+      position: relative;
+
+      &::after {
+        content: "Coming soon";
+        display: inline-block;
+        margin-left: space("normal");
+        text-transform: uppercase;
+        font-size: font-size("x-small");
+        font-weight: font-weight("semibold");
+        background: color("blue", "100");
+        color: color("blue", "300");
+        padding: 0 3px;
+        border-radius: 3px;
+        transform: translateX(20%);
+        opacity: 0;
+        transition:
+          transform animation("productive-timing") animation("expressive-easing"),
+          opacity animation("productive-timing") animation("expressive-easing");
+        transition-delay: 400ms;
+      }
+
+      &:hover {
+        text-decoration: none;
+
+        &::after {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+    }
+  }
+}

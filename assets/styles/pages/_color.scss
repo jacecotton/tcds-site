@@ -1,0 +1,76 @@
+@use "../" as *;
+
+.color-data {
+  opacity: 0;
+  transform: scale(.75);
+  animation: color-data-grow animation("expressive") forwards;
+
+  @keyframes color-data-grow {
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+}
+
+.column {
+  .row.color:nth-of-type(1) .color-data:nth-of-type(1) {
+    animation-delay: 100ms;
+  }
+
+  .row.color:nth-of-type(1) .color-data:nth-of-type(2),
+  .row.color:nth-of-type(2) .color-data:nth-of-type(1) {
+    animation-delay: 200ms;
+  }
+
+  .row.color:nth-of-type(1) .color-data:nth-of-type(3),
+  .row.color:nth-of-type(2) .color-data:nth-of-type(2),
+  .row.color:nth-of-type(3) .color-data:nth-of-type(1) {
+    animation-delay: 250ms;
+  }
+
+  .row.color:nth-of-type(1) .color-data:nth-of-type(4),
+  .row.color:nth-of-type(2) .color-data:nth-of-type(3),
+  .row.color:nth-of-type(3) .color-data:nth-of-type(2),
+  .row.color:nth-of-type(4) .color-data:nth-of-type(1) {
+    animation-delay: 300ms;
+  }
+
+  .row.color:nth-of-type(1) .color-data:nth-of-type(5),
+  .row.color:nth-of-type(2) .color-data:nth-of-type(4),
+  .row.color:nth-of-type(3) .color-data:nth-of-type(3),
+  .row.color:nth-of-type(4) .color-data:nth-of-type(2),
+  .row.color:nth-of-type(5) .color-data:nth-of-type(1) {
+    animation-delay: 350ms;
+  }
+
+  .row.color:nth-of-type(1) .color-data:nth-of-type(6),
+  .row.color:nth-of-type(2) .color-data:nth-of-type(5),
+  .row.color:nth-of-type(3) .color-data:nth-of-type(4),
+  .row.color:nth-of-type(4) .color-data:nth-of-type(3),
+  .row.color:nth-of-type(5) .color-data:nth-of-type(2) {
+    animation-delay: 400ms;
+  }
+
+  .row.color:nth-of-type(2) .color-data:nth-of-type(6),
+  .row.color:nth-of-type(3) .color-data:nth-of-type(5),
+  .row.color:nth-of-type(4) .color-data:nth-of-type(4),
+  .row.color:nth-of-type(5) .color-data:nth-of-type(3) {
+    animation-delay: 450ms;
+  }
+
+  .row.color:nth-of-type(3) .color-data:nth-of-type(6),
+  .row.color:nth-of-type(4) .color-data:nth-of-type(5),
+  .row.color:nth-of-type(5) .color-data:nth-of-type(4) {
+    animation-delay: 500ms;
+  }
+
+  .row.color:nth-of-type(4) .color-data:nth-of-type(6),
+  .row.color:nth-of-type(5) .color-data:nth-of-type(5) {
+    animation-delay: 550ms;
+  }
+
+  .row.color:nth-of-type(5) .color-data:nth-of-type(6) {
+    animation-delay: 600ms;
+  }
+}
