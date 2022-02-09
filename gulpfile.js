@@ -9,11 +9,6 @@ const { task, watch, src, dest, series } = gulp;
 import markdown from "gulp-markdown";
 import map from "map-stream";
 
-// Script utilities
-// import babel from "gulp-babel";
-// import terser from "gulp-terser";
-// import concat from "gulp-concat";
-
 // Style utilities
 import sass from "gulp-dart-sass";
 import postcss from "gulp-postcss";
