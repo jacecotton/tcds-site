@@ -1,1 +1,0 @@
-{"version":3,"sources":["primitives/tables.scss"],"names":[],"mappings":"AAEA,MACE,gBAAA","file":"tables.css","sourcesContent":["@use \"../_all\" as *;\n\ntable {\n  border-collapse: collapse;\n}"]}

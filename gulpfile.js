@@ -9,12 +9,6 @@ const { task, watch, src, dest, series } = gulp;
 import markdown from "gulp-markdown";
 import map from "map-stream";
 
-// Style utilities
-import sass from "gulp-dart-sass";
-import postcss from "gulp-postcss";
-import autoprefixer from "autoprefixer";
-import cleancss from "gulp-clean-css";
-
 // Image utilities
 import imagemin from "gulp-imagemin";
 
@@ -34,16 +28,6 @@ const config = {
     src: "./pages/**/*.md",
     dest: "./views/pages/",
   },
-
-  styles: {
-    src: `${inputPath}/styles/**/*.scss`,
-    dest: `${outputPath}/styles/`,
-  },
-
-  // scripts: {
-  //   src: `${inputPath}/scripts/**/*.js`,
-  //   dest: `${outputPath}/scripts/`,
-  // },
 
   images: {
     src: `${inputPath}/images/**/*`,
@@ -205,59 +189,6 @@ const tasks = {
       .pipe(dest(config.pages.dest));
   },
 
-  styles: () => {
-    return src(config.styles.src)
-      // Start sourcemap input.
-      .pipe(sourcemaps.init())
-      // Preprocessing (Sass).
-      .pipe(sass({
-        includePaths: ["./tcds/src/styles"],
-      }))
-      // Post-processing.
-      .pipe(postcss([
-        autoprefixer({
-          grid: "autoplace",
-        }),
-      ]))
-      // File minimization.
-      .pipe(cleancss({ level: 2 }, (details) => {
-        console.log("clean-css report:", details.stats);
-      }))
-      // Write sourcemap output.
-      .pipe(sourcemaps.write("."))
-      // Output final file.
-      .pipe(dest(config.styles.dest));
-  },
-
-  // scripts: () => {
-  //   return src(config.scripts.src)
-  //     // Start sourcemap input.
-  //     .pipe(sourcemaps.init())
-  //     // Combine all files into one.
-  //     .pipe(concat("main.js"))
-  //     // Transpile new JavaScript to older browser-compatible JavaScript.
-  //     .pipe(babel({
-  //       presets: [
-  //         [
-  //           "@babel/env",
-  //           {
-  //             targets: {
-  //               "chrome": "70",
-  //               "ie": "11",
-  //               "safari": "13",
-  //             },
-  //           },
-  //         ],
-  //       ],
-  //     }))
-  //     // File minimization.
-  //     .pipe(terser())
-  //     // Write sourcemap output.
-  //     .pipe(sourcemaps.write("."))
-  //     // Output final file.
-  //     .pipe(dest(config.scripts.dest));
-  // },
-
   images: () => {
     return src(config.images.src)
       // File minimization.
@@ -278,17 +209,13 @@ const tasks = {
  */
 
 task("pages", tasks.pages);
-task("styles", tasks.styles);
-// task("scripts", tasks.scripts);
 task("images", tasks.images);
 task("icons", tasks.icons);
 
 task("watch", function watcher() {
   watch(`./pages/`, tasks.pages);
-  watch(`${inputPath}/styles/`, tasks.styles);
-  // watch(`${inputPath}/scripts/`, tasks.scripts);
   watch(`${inputPath}/images/`, tasks.images);
   watch(`./tcds/src/icons/`, tasks.icons);
 });
 
-task("default", series(["pages", "styles", /* "scripts", */ "images", "icons", "watch"]));
+task("default", series(["pages", "images", "icons", "watch"]));
