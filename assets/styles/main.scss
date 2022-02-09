@@ -1,9 +1,9 @@
-@use "_index";
+@use "_all";
 
 @use "@tcds/tcds";
 
-@use "typography/_fonts";
 @use "typography/_globals";
+@use "typography/_fonts";
 
 @use "color/_utilities";
 

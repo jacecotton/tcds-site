@@ -1,5 +1,5 @@
 @use "sass:map";
-@use "../" as *;
+@use "../_all" as *;
 
 :root {
   @each $color, $grade-map in $colors {

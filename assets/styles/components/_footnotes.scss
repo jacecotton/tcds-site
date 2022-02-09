@@ -1,7 +1,7 @@
-@use "../" as *;
+@use "../_all" as *;
 
 main {
-  counter-reset: footnotes;  
+  counter-reset: footnotes;
 }
 
 .Footnotes {
