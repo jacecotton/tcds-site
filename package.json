@@ -6,8 +6,7 @@
   "type": "module",
   "scripts": {
     "start": "node index.js",
-    "dev": "concurrently \"onchange -i -k '**/*.js' '**/*.css' '**/*.twig' -- npm run start\" \"gulp\"",
-    "build": "webpack"
+    "dev": "concurrently \"onchange -i -k '**/*.js' '**/*.css' '**/*.twig' -- npm run start\" \"gulp\""
   },
   "author": "",
   "license": "ISC",
