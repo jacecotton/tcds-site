@@ -3,44 +3,29 @@ file and run the gulp process to compile (either `gulp` or `npm run dev` from
 the terminal). #}
 {% extends "@tch/base.twig" %}
 {% block body %}
-<p>WIP notes:</p>
-<ul>
-<li>Replace Gulp with Webpack for CSS, images, and icons</li>
-<li>Then, set up hot-reloading or at least a watch mechanism (maybe just a simple <code>onchange</code>?)</li>
-<li>Before the first reference of a &quot;root folder of the project&quot;, specify (maybe with the Message component) that this doesn&#39;t necessarily have to be the root folder of the entire site (though it can), but rather the root folder containing all of the front-end code of the website (so for instance, in Drupal this would be the theme folder, <code>docroot/themes/custom/THEME_NAME</code>). This folder is where <code>package.json</code>, <code>webpack.config.js</code>, and <code>node_modules</code> will live.</li>
-<li>Next, rather than give detailed step by step instructions about what to download, what files to add, where to change, etc., split the manual installation section into two parts:<ul>
-<li><strong>I already have a Node.js project set up</strong><ul>
-<li>Give a single terminal command for installing everything in one fell swoop (the design system, webpack, all the loaders, etc.)</li>
-<li>Provide a download for the webpack config file.</li>
-</ul>
-</li>
-<li><strong>I do not have a Node.js project set up</strong><ul>
-<li>Instruct to <code>npm init</code> from the folder you want to install your Node dependencies (this folder must contain all styles, scripts, and HTML).</li>
-<li>Provide a <code>package.json</code> file.</li>
-<li>Instruct to <code>npm install</code></li>
-<li>Provide a download for the webpack config file.</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Next, give a recommended folder structure. Where <code>.</code> is the folder that contains the <code>webpack.config.js</code> file:<ul>
-<li>Uncompiled assets: <code>./assets/styles</code>, <code>./assets/scripts</code></li>
-<li>Compiled files: <code>./public/styles</code>, <code>./public/scripts</code></li>
-<li>If the chosen folder structure is different, instruct where to go to change it (should be very simple constants defined at the top of the webpack config).</li>
-</ul>
-</li>
-<li>Then, the Twig instructions may as well be an entirely different section. Again, split this up into two:<ul>
-<li><strong>I am using Drupal</strong><ul>
-<li>Provide the snippet to add to the theme config file for adding the <code>@tcds</code> Twig namespace</li>
-</ul>
-</li>
-<li><strong>I am using Express.js</strong><ul>
-<li>Provide the snippet for adding a file path to the environment loader.</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
+<!-- WIP notes:
+* Replace Gulp with Webpack for CSS, images, and icons
+* Then, set up hot-reloading or at least a watch mechanism (maybe just a simple `onchange`?)
+* Before the first reference of a "root folder of the project", specify (maybe with the Message component) that this doesn't necessarily have to be the root folder of the entire site (though it can), but rather the root folder containing all of the front-end code of the website (so for instance, in Drupal this would be the theme folder, `docroot/themes/custom/THEME_NAME`). This folder is where `package.json`, `webpack.config.js`, and `node_modules` will live.
+* Next, rather than give detailed step by step instructions about what to download, what files to add, where to change, etc., split the manual installation section into two parts:
+  * **I already have a Node.js project set up**
+    * Give a single terminal command for installing everything in one fell swoop (the design system, webpack, all the loaders, etc.)
+    * Provide a download for the webpack config file.
+  * **I do not have a Node.js project set up**
+    * Instruct to `npm init` from the folder you want to install your Node dependencies (this folder must contain all styles, scripts, and HTML).
+    * Provide a `package.json` file.
+    * Instruct to `npm install`
+    * Provide a download for the webpack config file.
+* Next, give a recommended folder structure. Where `.` is the folder that contains the `webpack.config.js` file:
+  * Uncompiled assets: `./assets/styles`, `./assets/scripts`
+  * Compiled files: `./public/styles`, `./public/scripts`
+  * If the chosen folder structure is different, instruct where to go to change it (should be very simple constants defined at the top of the webpack config).
+* Then, the Twig instructions may as well be an entirely different section. Again, split this up into two:
+  * **I am using Drupal**
+    * Provide the snippet to add to the theme config file for adding the `@tcds` Twig namespace
+  * **I am using Express.js**
+    * Provide the snippet for adding a file path to the environment loader. -->
+
 <h2 id="quick-start-cdn">Quick start (CDN)</h2>
 <p>To start using the Design System with minimal setup, you can load the precompiled CSS and JavaScript bundles straight from a CDN (via UNPKG, powered by Cloudflare).</p>
 <pre><code class="language-html">&lt;head&gt;

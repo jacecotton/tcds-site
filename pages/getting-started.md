@@ -1,5 +1,4 @@
-WIP notes:
-
+<!-- WIP notes:
 * Replace Gulp with Webpack for CSS, images, and icons
 * Then, set up hot-reloading or at least a watch mechanism (maybe just a simple `onchange`?)
 * Before the first reference of a "root folder of the project", specify (maybe with the Message component) that this doesn't necessarily have to be the root folder of the entire site (though it can), but rather the root folder containing all of the front-end code of the website (so for instance, in Drupal this would be the theme folder, `docroot/themes/custom/THEME_NAME`). This folder is where `package.json`, `webpack.config.js`, and `node_modules` will live.
@@ -20,7 +19,7 @@ WIP notes:
   * **I am using Drupal**
     * Provide the snippet to add to the theme config file for adding the `@tcds` Twig namespace
   * **I am using Express.js**
-    * Provide the snippet for adding a file path to the environment loader.
+    * Provide the snippet for adding a file path to the environment loader. -->
 
 ## Quick start (CDN)
 
