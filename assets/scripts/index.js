@@ -1,4 +1,4 @@
-import "../../tcds/src/scripts/index.js";
+import "@tcds/index.js";
 import "./external-link-new-tab.js";
 import "./footnotes.js";
 import "./heading-anchors.js";

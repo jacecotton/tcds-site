@@ -4,6 +4,7 @@
 
 import gulp from "gulp";
 const { task, watch, src, dest, series } = gulp;
+import { join, resolve } from "path";
 
 // Content utilities
 import markdown from "gulp-markdown";
@@ -252,6 +253,11 @@ const tasks = {
               ],
             },
           ],
+        },
+        resolve: {
+          alias: {
+            "@tcds": resolve(join(), "./tcds/src/scripts/"),
+          },
         },
       }))
       .pipe(sourcemaps.write("."))
