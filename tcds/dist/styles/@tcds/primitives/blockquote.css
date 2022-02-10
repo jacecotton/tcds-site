@@ -1,0 +1,2 @@
+@charset "UTF-8";blockquote{position:relative;margin:24px 0 24px 32px;font-style:italic;color:#464652}blockquote::before{content:"“";font-size:3rem;position:absolute;left:-32px;line-height:1}
+/*# sourceMappingURL=blockquote.css.map */

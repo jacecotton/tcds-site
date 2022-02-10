@@ -13,7 +13,6 @@ import map from "map-stream";
 import imagemin from "gulp-imagemin";
 
 // General utilities
-import sourcemaps from "gulp-sourcemaps";
 import rename from "gulp-rename";
  
  /**

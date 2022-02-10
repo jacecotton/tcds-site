@@ -1,0 +1,2 @@
+ol,ul{margin:0;padding:0}ol[class]:not(.ol),ul[class]:not(.ul){list-style:none}.ol,.ul,ol:not([class]),ul:not([class]){padding-left:24px}:not(li)>.ol:not(:last-child),:not(li)>.ul:not(:last-child),:not(li)>ol:not([class]):not(:last-child),:not(li)>ul:not([class]):not(:last-child){margin-bottom:16px}
+/*# sourceMappingURL=lists.css.map */
