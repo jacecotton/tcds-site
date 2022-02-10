@@ -21,6 +21,13 @@
   * **I am using Express.js**
     * Provide the snippet for adding a file path to the environment loader. -->
 
+<!--twig
+  {{ include("@tcds/components/message/message.html.twig", {
+    content: "<strong>This page is a work in progress.</strong> Most of the instruction here is provisional, and may not work. Return to this page after the <strong>official release</strong> of Texas Children's Design System.",
+    modifiers: ["negative"],
+  }) }}
+twig-->
+
 ## Quick start (CDN)
 
 To start using the Design System with minimal setup, you can load the precompiled CSS and JavaScript bundles straight from a CDN (via UNPKG, powered by Cloudflare).
@@ -28,11 +35,11 @@ To start using the Design System with minimal setup, you can load the precompile
 ```html
 <head>
   ...
-  <link rel="stylesheet" href="https://unpkg.com/@txch/tcds/tcds.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/@txch/tcds/dist/styles/tcds.css">
 </head>
 <body>
   ...
-  <script async src="https://unpkg.com/@txch/tcds/tcds.min.js"></script>
+  <script async src="https://unpkg.com/@txch/tcds/dist/scripts/tcds.js"></script>
 </body>
 ```
 

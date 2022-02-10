@@ -26,15 +26,22 @@ the terminal). #}
   * **I am using Express.js**
     * Provide the snippet for adding a file path to the environment loader. -->
 
+
+  {{ include("@tcds/components/message/message.html.twig", {
+    content: "<strong>This page is a work in progress.</strong> Most of the instruction here is provisional, and may not work. Return to this page after the <strong>official release</strong> of Texas Children's Design System.",
+    modifiers: ["negative"],
+  }) }}
+
+
 <h2 id="quick-start-cdn">Quick start (CDN)</h2>
 <p>To start using the Design System with minimal setup, you can load the precompiled CSS and JavaScript bundles straight from a CDN (via UNPKG, powered by Cloudflare).</p>
 <pre><code class="language-html">&lt;head&gt;
   ...
-  &lt;link rel=&quot;stylesheet&quot; href=&quot;https://unpkg.com/@txch/tcds/tcds.min.css&quot;&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;https://unpkg.com/@txch/tcds/dist/styles/tcds.css&quot;&gt;
 &lt;/head&gt;
 &lt;body&gt;
   ...
-  &lt;script async src=&quot;https://unpkg.com/@txch/tcds/tcds.min.js&quot;&gt;&lt;/script&gt;
+  &lt;script async src=&quot;https://unpkg.com/@txch/tcds/dist/scripts/tcds.js&quot;&gt;&lt;/script&gt;
 &lt;/body&gt;
 </code></pre>
 <p>Then, you can use the HTML snippets documented for each <a href="/components">component</a>, <a href="/primitives">primitive</a>, and <a href="/design">utility class</a>, with styling and functionality taken care of. For example, from the <a href="/components/button">Button component</a>:</p>
