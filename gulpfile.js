@@ -9,15 +9,25 @@ const { task, watch, src, dest, series } = gulp;
 import markdown from "gulp-markdown";
 import map from "map-stream";
 
+// Script utilities
+import webpack from "webpack-stream";
+
+// Style utilities
+import sass from "gulp-dart-sass";
+import postcss from "gulp-postcss";
+import autoprefixer from "autoprefixer";
+import cleancss from "gulp-clean-css";
+
 // Image utilities
 import imagemin from "gulp-imagemin";
 
 // General utilities
+import sourcemaps from "gulp-sourcemaps";
 import rename from "gulp-rename";
  
- /**
-  * Configuration.
-  */
+/**
+ * Configuration.
+ */
  
 const inputPath = "./assets";
 const outputPath = "./public";
@@ -26,6 +36,16 @@ const config = {
   pages: {
     src: "./pages/**/*.md",
     dest: "./views/pages/",
+  },
+
+  styles: {
+    src: `${inputPath}/styles/**/*.scss`,
+    dest: `${outputPath}/styles/`,
+  },
+
+  scripts: {
+    src: `${inputPath}/scripts/index.js`,
+    dest: `${outputPath}/scripts/`,
   },
 
   images: {
@@ -188,6 +208,56 @@ const tasks = {
       .pipe(dest(config.pages.dest));
   },
 
+  styles: () => {
+    return src(config.styles.src)
+      // Start sourcemap input.
+      .pipe(sourcemaps.init())
+      // Preprocessing (Sass).
+      .pipe(sass({
+        includePaths: ["./tcds/src/styles"],
+      }))
+      // Post-processing (PostCSS).
+      .pipe(postcss([
+        autoprefixer({
+          grid: "autoplace",
+        }),
+      ]))
+      // File optimization.
+      .pipe(cleancss({ level: 2}, (details) => {
+        console.log("clean-css report:", details.stats);
+      }))
+      // Write sourcemaps.
+      .pipe(sourcemaps.write("."))
+      // Output final file.
+      .pipe(dest(config.styles.dest));
+  },
+
+  scripts: () => {
+    return src(config.scripts.src)
+      .pipe(sourcemaps.init())
+      .pipe(webpack({
+        entry: config.scripts.src,
+        module: {
+          rules: [
+            {
+              test: /\.js$/,
+              exclude: /(node_modules)/,
+              use: [
+                {
+                  loader: "babel-loader",
+                  options: {
+                    presets: ["@babel/preset-env"],
+                  },
+                },
+              ],
+            },
+          ],
+        },
+      }))
+      .pipe(sourcemaps.write("."))
+      .pipe(dest(config.scripts.dest));
+  },
+
   images: () => {
     return src(config.images.src)
       // File minimization.
@@ -208,13 +278,17 @@ const tasks = {
  */
 
 task("pages", tasks.pages);
+task("styles", tasks.styles);
+task("scripts", tasks.scripts);
 task("images", tasks.images);
 task("icons", tasks.icons);
 
 task("watch", function watcher() {
   watch(`./pages/`, tasks.pages);
+  watch(`${inputPath}/styles/`, tasks.styles);
+  watch(`${inputPath}/scripts/`, tasks.scripts);
   watch(`${inputPath}/images/`, tasks.images);
   watch(`./tcds/src/icons/`, tasks.icons);
 });
 
-task("default", series(["pages", "images", "icons", "watch"]));
+task("default", series(["pages", "styles", "scripts", "images", "icons", "watch"]));
