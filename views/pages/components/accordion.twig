@@ -4,6 +4,17 @@ the terminal). #}
 {% extends "@tch/base.twig" %}
 {% block lead %}An accordion is a group of sections collapsed under headers. Users can expand a section by tapping or clicking the header.{% endblock %}
 {% block body %}
+{{ include("@tcds/components/accordion/accordion.html.twig", {
+    sections: [
+      {
+        heading: "Example accordion",
+        content: "Hello world!",
+      },
+    ],
+  }) }}
+
+
+<hr>
 <h2 id="best-practices">Best practices</h2>
 <p><strong>Use specific but concise section labels.</strong> There is an inherent <a href="https://www.nngroup.com/articles/interaction-cost-definition/" title="Interaction Cost - Nielsen Norman Group">interaction cost</a> to accordions that may cause users to miss or ignore the content. Ensure your labels are concise enough to be read quickly, but descriptive enough to provide a strong <a href="https://www.nngroup.com/articles/information-scent/">information scent</a>.</p>
 <h3 id="when-to-use">When to use</h3>
