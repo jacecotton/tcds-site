@@ -67,7 +67,7 @@ The Design System provides a collection of tokens for setting space (margin, pad
 
 <!--twig
   {{ include("@tcds/components/message/message.html.twig", {
-    content: "<strong>Tip:</strong> Because these tokens represent fixed constants at relatively low pixel sizes, they are most useful for micro-layouts. For example, setting spacing between or sizing on individual <a href='/components'>components</a>, <a href='/primitives/forms'>form elements</a>, etc. At the macro-level, layouts need to be <a href='/design/responsive'>responsive</a> and should use <a href='#grid'>grid</a> or <a href='#flexbox'>flexbox</a>, along with relative or flexible units and <a href='#breakpoints'>breakpoint sizes</a>.",
+    content: "<strong>Tip:</strong> Because these tokens represent fixed constants at relatively low pixel sizes, they are most useful for micro-layouts. For example, setting spacing between or sizing on individual <a href='/components'>components</a>, <a href='/primitives/forms'>form elements</a>, etc. At the macro-level, layouts need to be <a href='/design/responsive'>responsive</a>, and should therefore use grid or <a href='#flexbox'>flexbox</a> with relative or flexible units and <a href='#breakpoints'>breakpoint sizes</a>.",
   }) }}
 twig-->
 
@@ -86,7 +86,7 @@ Tokens are accessible via corresponding `size()` and `space()` custom Sass funct
   </div>
 </details>
 
-Spacing tokens are also available as utility classes for the `gap` property in [grid](#grid) or [flexbox](#flexbox).
+Spacing tokens are also available as utility classes for the `gap` property in grid or [flexbox](#flexbox).
 
 <details>
   <summary>Utility classes</summary>
@@ -402,121 +402,6 @@ The below example demonstrates the traditional "Holy Grail" layout in flexbox.
       </div>
     {% endblock %}
   {% endembed %}
-twig-->
-
-### Grid
-
-The following utilities provide only basic grid features for convenience. Because of the complex feature set of grid, it can't be fully utilized through utility classes alone. To do so, custom classes designed in a stylesheet would be required.
-
-This documentation assumes some basic familiarity with [CSS grid](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Grids).
-
-#### Basic grid
-
-Use the `.grid` class to create a basic grid. By default, this will create a grid with an automatic amount of rows, but only one column. All immediate children will become grid items, and will automatically populate the available grid cells.
-
-To define the number of evenly-sized columns, set the `--grid-columns` custom property.
-
-<!--twig
-  {% embed "@tch/includes/example-box/example-box.html.twig" with {
-    show_first: true,
-    examples: {
-      "HTML": '<div class="grid" style="--grid-columns: 3">
-  <div>1</div>
-  <div>2</div>
-  <div>3</div>
-</div>',
-      "CSS": '.grid {
-  display: grid;
-  grid-template-columns: repeat(var(--grid-columns, 1), 1fr);
-}',
-    },
-  } %}
-    {% block result %}
-      <div class="grid gap-normal" style="--grid-columns: 3">
-        <div class="fake-item">1</div>
-        <div class="fake-item">2</div>
-        <div class="fake-item">3</div>
-      </div>
-    {% endblock %}
-  {% endembed %}
-twig-->
-
-#### Responsive grid
-
-You can create a responsive grid by setting `--grid-columns` to `auto-fit` or `auto-fill`. This will generate an automatic amount of evenly-sized columns, with one row by default. You can set the `--grid-column-min-width` property to specify the minimum width a column is allowed to reach before a new row is created, reducing the amount of columns but increasing their width.
-
-<!--twig
-  {% embed "@tch/includes/example-box/example-box.html.twig" with {
-    show_first: true,
-    examples: {
-      "HTML": '<div class="grid" style="--grid-columns: auto-fit; --grid-column-min-width: 217px">
-  <div>1</div>
-  <div>2</div>
-  <div>3</div>
-  <div>4</div>
-</div>',
-      "CSS": '.grid {
-  display: grid;
-  grid-template-columns: repeat(var(--grid-columns, 1), minmax(var(--grid-column-min-width, 0px), 1fr));
-}',
-    },
-  } %}
-    {% block result %}
-      <div class="grid gap-normal" style="--grid-columns: auto-fit; --grid-column-min-width: 217px">
-        <div class="fake-item">1</div>
-        <div class="fake-item">2</div>
-        <div class="fake-item">3</div>
-        <div class="fake-item">4</div>
-      </div>
-    {% endblock %}
-  {% endembed %}
-twig-->
-
-#### Custom grid
-
-To create unevenly-sized cells, you can set the `grid-template-columns` property directly, along with `grid-template-rows` and `grid-template-areas` if needed.
-
-Beware that, when using this, the resulting grid applies to all breakpoints. To create a fully custom grid that changes at certain breakpoints, you will need to use a stylesheet.
-
-The below example demonstrates the traditional "Holy Grail" layout in grid.
-
-<!--twig
-  {% embed "@tch/includes/example-box/example-box.html.twig" with {
-    show_first: true,
-    examples: {
-      "HTML": '<div class="grid" style="
-  grid-template-columns: 1fr 3fr;
-  grid-template-rows: 70px auto 70px;
-  grid-template-areas:
-    \'header header\'
-    \'sidebar main\'
-    \'footer footer\';
-">
-  <header style="grid-area: header">Header (4/4)</header>
-  <aside style="grid-area: sidebar">Sidebar (1/4)</aside>
-  <main style="grid-area: main">Main area (3/4)</main>
-  <footer style="grid-area: footer">Footer (4/4)</footer>
-</div>',
-      "CSS": '.grid {
-  display: grid;
-}',
-    },
-  } %}
-    {% block result %}
-      <div class="grid gap-normal" style="grid-template-columns: 1fr 3fr; grid-template-rows: 70px minmax(200px, auto) 70px; grid-template-areas: 'header header' 'sidebar main' 'footer footer'">
-        <div class="fake-item" style="grid-area: header">Header (4/4)</div>
-        <div class="fake-item" style="grid-area: sidebar">Sidebar (1/4)</div>
-        <div class="fake-item" style="grid-area: main">Main area (3/4)</div>
-        <div class="fake-item" style="grid-area: footer">Footer (4/4)</div>
-      </div>
-    {% endblock %}
-  {% endembed %}
-twig-->
-
-<!--twig
-  {{ include("@tcds/components/message/message.html.twig", {
-    content: "<strong>Tip:</strong> Note the differences between this and the flexbox example. With grid, an extra <code>div</code> wrapper is not needed around the <code>aside</code> and <code>main</code> tags. While grid may seem more complicated than flexbox for this small, contrived example, as a layout grows in complexity, grid works better for this reason. Especially as responsive considerations are introduced; grids can be changed from the parent selector by redefining the relevant properties at each breakpoint. With flexbox, the classes on all child elements would need to be changed or overridden at each breakpoint.",
-  }) }}
 twig-->
 
 ### General
