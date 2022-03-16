@@ -1,5 +1,5 @@
 <!--lead
-  Texas Children's Design System is a centralized library of resources for creating websites at scale. It aims to bring consistency, standardization, and efficiency to Texas Children's digital products, by providing reusable patterns, documentation, and standards.
+  Texas Children's Design System is a centralized library of web components, design patterns, and design resources. It aims to improve standardization, efficiency, and scalability by providing a single, custom framework for building websites at scale.
 lead-->
 
 ## Get started
@@ -50,6 +50,13 @@ twig-->
 
 ## Goals
 
+<!--twig
+{{ include("@tcds/components/message/message.html.twig", {
+  content: "This section is a <strong>work in progress</strong>. Please check back later.",
+  modifiers: ["attention"],
+}) }}
+twig-->
+
 Goals are accomplished by following our [Principles](#principles).
 
 **Create pleasant and inclusive experiences.** Our web products should be intuitive to use and accessible to all, with a strong sense of cohesion and credibility.
@@ -59,6 +66,12 @@ Goals are accomplished by following our [Principles](#principles).
 . . .
 
 ## Principles
+<!--twig
+{{ include("@tcds/components/message/message.html.twig", {
+  content: "This section is a <strong>work in progress</strong>. Please check back later.",
+  modifiers: ["attention"],
+}) }}
+twig-->
 
 Principles are the means to our [Goals](#goals).
 
@@ -77,17 +90,10 @@ Principles are the means to our [Goals](#goals).
 * Adaptable: Every element is made with iteration and logistics for updating and maintaining in mind.
 
 . . .
-<!--
-- Open — transparent development, open source, open to contribution and feedback from all across the organization
-- Interoperable — platform-agnostic, paradigm-agnostic: should work with any content management system, rendering strategy, etc.
-- Rigorous
--->
 
 ## Questions and feedback
 
 Please see [Contributing](/contributing).
-
-* To do: Investigate creating a Slack space or more informal channel for help and feedback.
 
 <!--
 https://style.helpscout.com/product/#help-scout-design-system - really good language here for introducing the design system as a concept

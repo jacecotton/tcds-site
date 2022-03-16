@@ -2,7 +2,7 @@
 file and run the gulp process to compile (either `gulp` or `npm run dev` from
 the terminal). #}
 {% extends "@tch/base.twig" %}
-{% block lead %}Texas Children's Design System is a centralized library of resources for creating websites at scale. It aims to bring consistency, standardization, and efficiency to Texas Children's digital products, by providing reusable patterns, documentation, and standards.{% endblock %}
+{% block lead %}Texas Children's Design System is a centralized library of web components, design patterns, and design resources. It aims to improve standardization, efficiency, and scalability by providing a single, custom framework for building websites at scale.{% endblock %}
 {% block body %}
 <h2 id="get-started">Get started</h2>
 <p>First, read the <a href="/getting-started">Getting Started</a> page, then select a category below to begin using the Design System.</p>
@@ -49,11 +49,25 @@ the terminal). #}
 
 
 <h2 id="goals">Goals</h2>
+
+{{ include("@tcds/components/message/message.html.twig", {
+  content: "This section is a <strong>work in progress</strong>. Please check back later.",
+  modifiers: ["attention"],
+}) }}
+
+
 <p>Goals are accomplished by following our <a href="#principles">Principles</a>.</p>
 <p><strong>Create pleasant and inclusive experiences.</strong> Our web products should be intuitive to use and accessible to all, with a strong sense of cohesion and credibility.</p>
 <p><strong>Increase efficiency and focus.</strong> By documenting and demonstrating established solutions to precedented challenges, we reduce guesswork and redundancies, and streamline the process of prototyping, iterating, and maintaining on the web.</p>
 <p>. . .</p>
 <h2 id="principles">Principles</h2>
+
+{{ include("@tcds/components/message/message.html.twig", {
+  content: "This section is a <strong>work in progress</strong>. Please check back later.",
+  modifiers: ["attention"],
+}) }}
+
+
 <p>Principles are the means to our <a href="#goals">Goals</a>.</p>
 <p><strong>Human-centered design.</strong></p>
 <ul>
@@ -70,17 +84,8 @@ the terminal). #}
 <li>Adaptable: Every element is made with iteration and logistics for updating and maintaining in mind.</li>
 </ul>
 <p>. . .</p>
-<!--
-- Open — transparent development, open source, open to contribution and feedback from all across the organization
-- Interoperable — platform-agnostic, paradigm-agnostic: should work with any content management system, rendering strategy, etc.
-- Rigorous
--->
-
 <h2 id="questions-and-feedback">Questions and feedback</h2>
 <p>Please see <a href="/contributing">Contributing</a>.</p>
-<ul>
-<li>To do: Investigate creating a Slack space or more informal channel for help and feedback.</li>
-</ul>
 <!--
 https://style.helpscout.com/product/#help-scout-design-system - really good language here for introducing the design system as a concept
 
