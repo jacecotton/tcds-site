@@ -1,0 +1,27 @@
+{
+  "name": "tcds-downstream",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "The contents of this file do not matter, other than the type and devDependencies properties. Feel free to change any other properties as desired, such as the name, version, or description.",
+  "main": "index.js",
+  "scripts": {
+    "build": "gulp"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.17.7",
+    "@babel/preset-env": "^7.16.11",
+    "@txch/tcds": "^0.16.0",
+    "autoprefixer": "^10.4.3",
+    "babel-loader": "^8.2.3",
+    "gulp": "^4.0.2",
+    "gulp-dart-sass": "^1.0.2",
+    "gulp-imagemin": "^8.0.0",
+    "gulp-postcss": "^9.0.1",
+    "gulp-rename": "^2.0.0",
+    "gulp-sourcemaps": "^3.0.0",
+    "webpack-stream": "^7.0.0"
+  }
+}
