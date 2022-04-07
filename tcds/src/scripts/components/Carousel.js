@@ -77,9 +77,12 @@ export default class Carousel extends Tabs {
     });
 
     this.tabs.forEach((tab) => {
-      // Pause on tab button click.
       tab.addEventListener("click", () => {
+        // Pause on tab button click.
         this.state.playing = false;
+        // Prevent scroll detection-based tab activation while scroll is in
+        // progress.
+        this.debounceScroll = true;
       });
 
       // Pause on tab button key press.
@@ -162,7 +165,7 @@ export default class Carousel extends Tabs {
     const switchSlideOnSwipe = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         // If the current slide was scrolled to...
-        if(entry.isIntersecting && this.state.expanded !== true) {
+        if(entry.isIntersecting && this.state.expanded !== true && !this.debounceScroll) {
           // Set the associated tab (indicator) as active.
           this.state.activeTab = this.element.querySelector(`[role=tab][aria-controls=${entry.target.id}]`);
         }
@@ -210,7 +213,11 @@ export default class Carousel extends Tabs {
   
         // Scroll the panel container to the active slide.
         this.panelsContainer.scrollLeft += panelOffset - panelsContainerOffset;
-  
+
+        setTimeout(() => {
+          this.debounceScroll = false;
+        }, 500);
+
         this.panels.forEach((panel) => {
           if(panel === activePanel) {
             // Now that it's in view, remove attributes from the active panel
@@ -265,6 +272,7 @@ export default class Carousel extends Tabs {
         this.controls.expandCollapse.setAttribute("title", this.state.expanded ? "Collapse carousel" : "Expand carousel");
         this.controls.expandCollapse.setAttribute("aria-label", this.state.expanded ? "Collapse carousel" : "Expand carousel");
         this.element.setAttribute("data-expanded", this.state.expanded);
+        this.element.setAttribute("aria-roledescription", this.state.expanded ? "" : "carousel");
 
         // Hide all controls and indicators when expanded.
         this.tablist.hidden = this.state.expanded;
@@ -272,26 +280,19 @@ export default class Carousel extends Tabs {
         this.controls.next.hidden = this.state.expanded;
         this.controls.previous.hidden = this.state.expanded;
 
+        this.panels.forEach((panel) => {
+          panel.setAttribute("role", this.state.expanded ? "" : "tabpanel");
+          panel.setAttribute("aria-roledescription", this.state.expanded ? "" : "slide");
+        });
+
         if(this.state.expanded) {
-          // Remove functionality-promising attributes from relevant elements.
-          this.element.removeAttribute("aria-roledescription");
           this.panelsContainer.removeAttribute("aria-live");
 
           this.panels.forEach((panel) => {
-            panel.removeAttribute("role");
-            panel.removeAttribute("aria-roledescription");
             panel.removeAttribute("aria-hidden");
             panel.removeAttribute("tabindex");
           });
         } else {
-          // Re-add functionality-promising attributes to relevant elements.
-          this.element.setAttribute("aria-roledescription", "carousel");
-
-          this.panels.forEach((panel) => {
-            panel.setAttribute("role", "tabpanel");
-            panel.setAttribute("aria-roledescription", "slide");
-          });
-
           // Call `activeTab` callback to add other attributes that are
           // state-based.
           this.sync().activeTab();

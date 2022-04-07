@@ -39,6 +39,11 @@
       --icon-grid-icon-color: #{color("blue")};
     }
 
+    @media (hover: none) {
+      --icon-grid-icon-translate-y: 0%;
+      --icon-grid-icon-label-opacity: 1;
+    }
+
     &:active {
       transform: scale(.97);
     }
