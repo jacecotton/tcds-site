@@ -70,7 +70,7 @@ npm install --save-dev @txch/tcds
 Note that you will also need to install the other dependencies listed in the provided `package.json` file. If you already have your own build process, you will also need to replicate the build steps in the provided `gulpfile.js`. The most important utilities are:
 
 * [webpack](https://www.npmjs.com/package/webpack-stream) — A module bundler for JavaScript files.
-* [dart-sass](https://www.npmjs.com/package/gulp-dart-sass) — A pre-processor for CSS for added programming features.
+* [sass](https://www.npmjs.com/package/sass) — A pre-processor for CSS for added programming features.
 * [postcss](https://www.npmjs.com/package/gulp-postcss) — A post-processor for CSS for added browser compatibility.
 * [babel](https://babeljs.io/) ([core](https://www.npmjs.com/package/@babel/core), [preset-env](https://www.npmjs.com/package/@babel/preset-env), [loader](https://www.npmjs.com/package/babel-loader)) — A JavaScript compiler for added browser compatibility.
   </div>
@@ -114,11 +114,19 @@ Alternatively, you can import specific modules:
 
 ```css
 /* main.scss */
-@use "@tcds/typography/utilities";
+@use "@tcds/typography";
+@use "@tcds/components";
+```
+
+Or even specific packages within those modules:
+
+```css
+/* main.scss */
+@use "@tcds/typography/globals";
 @use "@tcds/components/button";
 ```
 
-To use and configure Sass members (variables, functions, mixins, etc.), create a file and `@forward` the `_all.scss` partial. You can set configuration variables via the `with` keyword:
+To use and configure Sass members (variables, functions, mixins, etc.), create a new `_all.scss` file and `@forward` the `@tcds/_all.scss` partial. You can set configuration variables via the `with` keyword:
 
 ```css
 /* _all.scss */
@@ -127,14 +135,15 @@ To use and configure Sass members (variables, functions, mixins, etc.), create a
 );
 ```
 
-To apply these configurations to the TCDS style bundle, `@use` this forwarding file before importing the Design System:
+To apply these configurations to the TCDS style bundle, `@use` the `_all.scss` file before importing the Design System:
+
 ```css
 /* main.scss */
 @use "_all" as *;
 @use "@tcds/tcds";
 ```
 
-Now, from any file throughout your project's code, you can `@use` the forwarding file to bring in Design System utilities with the configurations.
+Now, from any file throughout your project's code, you can `@use` the forwarding file to bring in Design System utilities with the configurations. For example:
 
 ```css
 /* partials/sidebar.scss */
@@ -156,7 +165,7 @@ $breakpoints: map.merge($breakpoints, (
 ));
 ```
 
-Now in the root forwarding file, `@forward` your new `_variables` partial:
+Now in the root forwarding file, `@forward` your new `_variables` partial after the `@tcds/_all` file:
 
 ```css
 /* _all.scss */
@@ -173,14 +182,13 @@ In this example, the `small` breakpoint is now redefined as `360px`, and a new `
 Lastly, you can compile all your code together by running the following:
 
 ```command
-npm run build
+npm run dev
 ```
 
 This will build your front-end code from `assets/` to `public/` (unless otherwise configured), and will continuously watch for changes, recompiling on every save.
 
 #### To-do
 
-Instructions for setting up and importing Twig templates.
-
-* Custom/multiple namespaces in Drupal?
-* Automatically copying templates from node module to template path?
+* Instructions for setting up and importing Twig templates.
+  * Custom/multiple namespaces in Drupal? — See https://www.drupal.org/project/components
+  * Automatically copy templates from node module to template path?

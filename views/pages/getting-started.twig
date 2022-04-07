@@ -75,7 +75,7 @@ the terminal). #}
 <p>Note that you will also need to install the other dependencies listed in the provided <code>package.json</code> file. If you already have your own build process, you will also need to replicate the build steps in the provided <code>gulpfile.js</code>. The most important utilities are:</p>
 <ul>
 <li><a href="https://www.npmjs.com/package/webpack-stream">webpack</a> — A module bundler for JavaScript files.</li>
-<li><a href="https://www.npmjs.com/package/gulp-dart-sass">dart-sass</a> — A pre-processor for CSS for added programming features.</li>
+<li><a href="https://www.npmjs.com/package/sass">sass</a> — A pre-processor for CSS for added programming features.</li>
 <li><a href="https://www.npmjs.com/package/gulp-postcss">postcss</a> — A post-processor for CSS for added browser compatibility.</li>
 <li><a href="https://babeljs.io/">babel</a> (<a href="https://www.npmjs.com/package/@babel/core">core</a>, <a href="https://www.npmjs.com/package/@babel/preset-env">preset-env</a>, <a href="https://www.npmjs.com/package/babel-loader">loader</a>) — A JavaScript compiler for added browser compatibility.</div>
 </details></li>
@@ -101,21 +101,26 @@ the terminal). #}
 </code></pre>
 <p>Alternatively, you can import specific modules:</p>
 <pre><code class="language-css">/* main.scss */
-@use &quot;@tcds/typography/utilities&quot;;
+@use &quot;@tcds/typography&quot;;
+@use &quot;@tcds/components&quot;;
+</code></pre>
+<p>Or even specific packages within those modules:</p>
+<pre><code class="language-css">/* main.scss */
+@use &quot;@tcds/typography/globals&quot;;
 @use &quot;@tcds/components/button&quot;;
 </code></pre>
-<p>To use and configure Sass members (variables, functions, mixins, etc.), create a file and <code>@forward</code> the <code>_all.scss</code> partial. You can set configuration variables via the <code>with</code> keyword:</p>
+<p>To use and configure Sass members (variables, functions, mixins, etc.), create a new <code>_all.scss</code> file and <code>@forward</code> the <code>@tcds/_all.scss</code> partial. You can set configuration variables via the <code>with</code> keyword:</p>
 <pre><code class="language-css">/* _all.scss */
 @forward &quot;@tcds/_all&quot; with (
   $theme-color-primary: &quot;blue&quot;,
 );
 </code></pre>
-<p>To apply these configurations to the TCDS style bundle, <code>@use</code> this forwarding file before importing the Design System:</p>
+<p>To apply these configurations to the TCDS style bundle, <code>@use</code> the <code>_all.scss</code> file before importing the Design System:</p>
 <pre><code class="language-css">/* main.scss */
 @use &quot;_all&quot; as *;
 @use &quot;@tcds/tcds&quot;;
 </code></pre>
-<p>Now, from any file throughout your project&#39;s code, you can <code>@use</code> the forwarding file to bring in Design System utilities with the configurations.</p>
+<p>Now, from any file throughout your project&#39;s code, you can <code>@use</code> the forwarding file to bring in Design System utilities with the configurations. For example:</p>
 <pre><code class="language-css">/* partials/sidebar.scss */
 @use &quot;../_all&quot; as *;
 </code></pre>
@@ -131,7 +136,7 @@ $breakpoints: map.merge($breakpoints, (
   &quot;xx-large&quot;: 1920px,
 ));
 </code></pre>
-<p>Now in the root forwarding file, <code>@forward</code> your new <code>_variables</code> partial:</p>
+<p>Now in the root forwarding file, <code>@forward</code> your new <code>_variables</code> partial after the <code>@tcds/_all</code> file:</p>
 <pre><code class="language-css">/* _all.scss */
 @forward &quot;@tcds/_all&quot; with (
   $theme-color-primary: &quot;blue&quot;,
@@ -142,13 +147,15 @@ $breakpoints: map.merge($breakpoints, (
 <p>In this example, the <code>small</code> breakpoint is now redefined as <code>360px</code>, and a new <code>1920px</code> breakpoint has been added (making it available in the <code>breakpoint()</code> getter function, as well as generating breakpoint-based utility classes for <code>xx-large</code>).</p>
 <h4 id="compile-and-watch-for-changes">Compile and watch for changes</h4>
 <p>Lastly, you can compile all your code together by running the following:</p>
-<pre><code class="language-command">npm run build
+<pre><code class="language-command">npm run dev
 </code></pre>
 <p>This will build your front-end code from <code>assets/</code> to <code>public/</code> (unless otherwise configured), and will continuously watch for changes, recompiling on every save.</p>
 <h4 id="to-do">To-do</h4>
-<p>Instructions for setting up and importing Twig templates.</p>
 <ul>
-<li>Custom/multiple namespaces in Drupal?</li>
-<li>Automatically copying templates from node module to template path?</li>
+<li>Instructions for setting up and importing Twig templates.<ul>
+<li>Custom/multiple namespaces in Drupal? — See <a href="https://www.drupal.org/project/components">https://www.drupal.org/project/components</a></li>
+<li>Automatically copy templates from node module to template path?</li>
+</ul>
+</li>
 </ul>
 {% endblock %}
