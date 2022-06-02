@@ -10,7 +10,6 @@
   }
 
   &__item {
-    display: block;
     aspect-ratio: 1 / 1;
     display: grid;
     grid-template-columns: 1fr;
@@ -49,6 +48,7 @@
     }
 
     .Icon {
+      display: inline-block;
       align-self: end;
       transform: translateY(var(--icon-grid-icon-translate-y, 50%));
       transition: transform animation("expressive");

@@ -4,8 +4,11 @@
   padding-left: space("x-loose");
   
   &__list {
-    font-size: font-size("small");
     list-style: none;
+  }
+
+  &__item {
+    @include font-size("small");
   }
   
   &__category {

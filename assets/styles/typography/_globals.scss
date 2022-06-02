@@ -9,3 +9,8 @@ pre {
     border: 1px solid color("shade", "0");
   }
 }
+
+h2, h3, h4,
+.h2, .h3, .h4 {
+  font-weight: font-weight("normal");
+}
