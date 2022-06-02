@@ -11,7 +11,7 @@ import TwingDrupalFilters from "twing-drupal-filters";
 const loader = new TwingLoaderFilesystem("./views");
 // Configure custom namespace.
 loader.addPath("./views/templates", "tch");
-loader.addPath("../tcds/assets/templates", "tcds");
+loader.addPath("./node_modules/@txch/tcds/assets/templates", "tcds");
 
 // Set up Twing environment.
 const twing = new TwingEnvironment(loader);

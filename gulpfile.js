@@ -218,7 +218,7 @@ const tasks = {
       // Preprocessing (Sass).
       .pipe(sass({
         outputStyle: "compressed",
-        includePaths: ["../tcds/assets/styles"],
+        includePaths: ["./node_modules/@txch/tcds/assets/styles"],
       }))
       // Post-processing (PostCSS).
       .pipe(postcss([
@@ -255,7 +255,7 @@ const tasks = {
         },
         resolve: {
           alias: {
-            "@tcds": resolve(join(), "../tcds/assets/scripts/"),
+            "@tcds": resolve(join(), "./node_modules/@txch/tcds/assets/scripts/"),
           },
         },
       }))
