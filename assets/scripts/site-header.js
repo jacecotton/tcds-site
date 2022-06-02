@@ -1,4 +1,4 @@
-import Component from "../../tcds/src/scripts/Component.js";
+import Component from "@tcds/Component.js";
 
 class SiteHeader extends Component {
   constructor(element, props) {
