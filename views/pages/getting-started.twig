@@ -4,7 +4,7 @@ the terminal). #}
 {% extends "@tch/base.twig" %}
 {% block body %}
 <h2 id="quick-start-cdn">Quick start (CDN)</h2>
-<p>To start using the Design System with minimal setup, you can load the precompiled CSS and JavaScript bundles straight from a CDN (via UNPKG, powered by Cloudflare).</p>
+<p>To start using the Design System with minimal setup, you can load the precompiled CSS and JavaScript bundles straight from a CDN.</p>
 <pre><code class="language-html">&lt;head&gt;
   ...
   &lt;link rel=&quot;stylesheet&quot; href=&quot;https://unpkg.com/@txch/tcds/dist/styles/tcds.css&quot;&gt;
@@ -15,7 +15,7 @@ the terminal). #}
 &lt;/body&gt;
 </code></pre>
 <p>Then, you can use the HTML snippets documented for each component, primitive, and utility class, with styling and functionality taken care of. For example, from the <a href="/components/button">Button component</a>:</p>
-<pre><code class="language-html">&lt;button class=&quot;Button&quot;&gt;My TCDS button&lt;/button&gt;
+<pre><code class="language-html">&lt;button class=&quot;Button&quot;&gt;Click me&lt;/button&gt;
 </code></pre>
 <p>However, because the code is precompiled, you are limited to HTML snippets, and have no options for configuration. To fully integrate the Design System, we recommend <a href="#local-installation">installing it as a project dependency</a>.</p>
 <h2 id="local-installation">Local installation</h2>
@@ -44,18 +44,11 @@ the terminal). #}
 <li><code>public/</code> — Compiled production code.<ul>
 <li><code>styles/</code> — CSS stylesheets.</li>
 <li><code>scripts/</code> — JavaScript bundles.</li>
-<li><code>images/</code> — Optimized theme images.<ul>
-<li><code>icons/</code> — SVG files from the TCDS icon library.</li>
-</ul>
-</li>
+<li><code>images/</code> — Optimized theme images.</li>
 </ul>
 </li>
 <li><code>views/</code> — Twig files.<ul>
-<li><code>templates/</code> — Twig templates.<ul>
-<li><code>components/</code> — Twig components.</li>
-<li><code>icons/</code> — Twig SVG files from the TCDS icon library.</li>
-</ul>
-</li>
+<li><code>templates/</code> — Twig templates.</li>
 </ul>
 </li>
 </ul>
@@ -72,12 +65,15 @@ the terminal). #}
 <p>The above files are not required to use—they are provided only for convenience. If you already have a <code>package.json</code> file, you can install the Design System directly by running:</p>
 <pre><code class="language-command">npm install --save-dev @txch/tcds
 </code></pre>
-<p>Note that you will also need to install the other dependencies listed in the provided <code>package.json</code> file. If you already have your own build process, you will also need to replicate the build steps in the provided <code>gulpfile.js</code>. The most important utilities are:</p>
+<p>If you already have your own build process, you will need to replicate the build steps in the provided <code>gulpfile.js</code>. The required ones are:</p>
 <ul>
-<li><a href="https://www.npmjs.com/package/webpack-stream">webpack</a> — A module bundler for JavaScript files.</li>
-<li><a href="https://www.npmjs.com/package/sass">sass</a> — A pre-processor for CSS for added programming features.</li>
-<li><a href="https://www.npmjs.com/package/gulp-postcss">postcss</a> — A post-processor for CSS for added browser compatibility.</li>
-<li><a href="https://babeljs.io/">babel</a> (<a href="https://www.npmjs.com/package/@babel/core">core</a>, <a href="https://www.npmjs.com/package/@babel/preset-env">preset-env</a>, <a href="https://www.npmjs.com/package/babel-loader">loader</a>) — A JavaScript compiler for added browser compatibility.</div>
+<li>An ES module bundler, we use <a href="https://www.npmjs.com/package/webpack-stream">webpack</a></li>
+<li><a href="https://www.npmjs.com/package/sass">Sass</a> for preprocessing and compiling source stylesheets</li>
+<li><a href="https://babeljs.io/">Babel</a> for compiling next-generation JavaScript to backwards-compatible syntax</li>
+</ul>
+<p>Not required, but recommended:</p>
+<ul>
+<li><a href="https://www.npmjs.com/package/gulp-postcss">PostCSS</a> for browser compatibility</div>
 </details></li>
 </ul>
 <h3 id="step-2-install-dependencies">Step 2. Install dependencies</h3>
@@ -90,8 +86,12 @@ the terminal). #}
 <h3 id="step-3-import-configure-and-build">Step 3. Import, configure, and build</h3>
 <p>Now, you should be able to import Design System assets from your front-end code.</p>
 <h4 id="javascript">JavaScript</h4>
-<p>From a JavaScript file, you can import specific modules as needed:</p>
+<p>From a JavaScript file, you can import the entire bundle:</p>
+<pre><code class="language-javascript">import &quot;@tcds/index.js&quot;;
+</code></pre>
+<p>Or only the specific modules and/or utilities you actually need:</p>
 <pre><code class="language-javascript">import Tabs from &quot;@tcds/components/Tabs.js&quot;;
+import AnimateElement from &quot;@tcds/animation/AnimateElement.js&quot;;
 </code></pre>
 <h4 id="sass">Sass</h4>
 <p><strong>Tip:</strong> Familiarize yourself with Sass&#39;s <a href="https://sass-lang.com/blog/the-module-system-is-launched">module system</a> (<code>@use</code> and <code>@forward</code>) before proceeding.</p>
@@ -99,35 +99,35 @@ the terminal). #}
 <pre><code class="language-css">/* main.scss */
 @use &quot;@tcds/tcds&quot;;
 </code></pre>
-<p>Alternatively, you can import specific modules:</p>
+<p>Alternatively, you can import specific package bundles:</p>
 <pre><code class="language-css">/* main.scss */
-@use &quot;@tcds/typography&quot;;
-@use &quot;@tcds/components&quot;;
+@use &quot;@tcds/typography/bundle&quot;;
+@use &quot;@tcds/components/bundle&quot;;
 </code></pre>
-<p>Or even specific packages within those modules:</p>
+<p>Or even specific modules within a package:</p>
 <pre><code class="language-css">/* main.scss */
 @use &quot;@tcds/typography/globals&quot;;
 @use &quot;@tcds/components/button&quot;;
 </code></pre>
-<p>To use and configure Sass members (variables, functions, mixins, etc.), create a new <code>_all.scss</code> file and <code>@forward</code> the <code>@tcds/_all.scss</code> partial. You can set configuration variables via the <code>with</code> keyword:</p>
-<pre><code class="language-css">/* _all.scss */
-@forward &quot;@tcds/_all&quot; with (
+<p>To use and configure Sass abstracts (variables, functions, mixins, etc.), create a new <code>_index.scss</code> file and <code>@forward</code> the <code>@tcds/_index.scss</code> file (you only have to specify the path name, as <code>_index</code> files are loaded by default). You can set configuration variables via the <code>with</code> keyword:</p>
+<pre><code class="language-css">/* _index.scss */
+@forward &quot;@tcds&quot; with (
   $theme-color-primary: &quot;blue&quot;,
 );
 </code></pre>
-<p>To apply these configurations to the TCDS style bundle, <code>@use</code> the <code>_all.scss</code> file before importing the Design System:</p>
+<p>To apply these configurations to the TCDS style bundle, <code>@use</code> the <code>_index.scss</code> file before importing the Design System:</p>
 <pre><code class="language-css">/* main.scss */
-@use &quot;_all&quot; as *;
+@use &quot;_index&quot; as *;
 @use &quot;@tcds/tcds&quot;;
 </code></pre>
 <p>Now, from any file throughout your project&#39;s code, you can <code>@use</code> the forwarding file to bring in Design System utilities with the configurations. For example:</p>
 <pre><code class="language-css">/* partials/sidebar.scss */
-@use &quot;../_all&quot; as *;
+@use &quot;../&quot; as *;
 </code></pre>
-<p>You can also extend and overwrite Sass maps by creating a corresponding <code>_variables</code> file, importing the respective <code>_variables</code> file from the TCDS package, and then <code>map.merge</code>-ing the original map with your new map. For example:</p>
+<p>You can also extend and overwrite Sass maps by creating a corresponding <code>variables</code> file, importing the respective <code>variables</code> file from the TCDS package, and then <code>map.merge</code>-ing the original map with your new map. For example:</p>
 <pre><code class="language-css">/* layout/_variables.scss */
 @use &quot;sass:map&quot;;
-@use &quot;@tcds/layout/_variables&quot; as *;
+@use &quot;@tcds/layout/abstracts/variables&quot; as *;
 
 $breakpoints: map.merge($breakpoints, (
   /* Overwrite the small breakpoint. */
@@ -136,26 +136,18 @@ $breakpoints: map.merge($breakpoints, (
   &quot;xx-large&quot;: 1920px,
 ));
 </code></pre>
-<p>Now in the root forwarding file, <code>@forward</code> your new <code>_variables</code> partial after the <code>@tcds/_all</code> file:</p>
-<pre><code class="language-css">/* _all.scss */
-@forward &quot;@tcds/_all&quot; with (
+<p>Now in the root forwarding file, <code>@forward</code> your new <code>variables</code> file after the <code>@tcds/_index.scss</code> file:</p>
+<pre><code class="language-css">/* _index.scss */
+@forward &quot;@tcds&quot; with (
   $theme-color-primary: &quot;blue&quot;,
 );
 
-@forward &quot;layout/_variables&quot;;
+@forward &quot;layout/variables&quot;;
 </code></pre>
-<p>In this example, the <code>small</code> breakpoint is now redefined as <code>360px</code>, and a new <code>1920px</code> breakpoint has been added (making it available in the <code>breakpoint()</code> getter function, as well as generating breakpoint-based utility classes for <code>xx-large</code>).</p>
+<p>In this example, the <code>small</code> breakpoint is now redefined as <code>360px</code>, and a new <code>1920px</code> breakpoint has been added. All breakpoint-relevant code utilities will be generated based off of this map.</p>
 <h4 id="compile-and-watch-for-changes">Compile and watch for changes</h4>
 <p>Lastly, you can compile all your code together by running the following:</p>
 <pre><code class="language-command">npm run dev
 </code></pre>
 <p>This will build your front-end code from <code>assets/</code> to <code>public/</code> (unless otherwise configured), and will continuously watch for changes, recompiling on every save.</p>
-<h4 id="to-do">To-do</h4>
-<ul>
-<li>Instructions for setting up and importing Twig templates.<ul>
-<li>Custom/multiple namespaces in Drupal? — See <a href="https://www.drupal.org/project/components">https://www.drupal.org/project/components</a></li>
-<li>Automatically copy templates from node module to template path?</li>
-</ul>
-</li>
-</ul>
 {% endblock %}

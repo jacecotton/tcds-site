@@ -51,52 +51,17 @@ Texas Children's Design System provides a standardized, brand-compliant color pa
   } %}
 twig-->
 
-<style>
-.color {
-  padding: 1.5rem 0;
-}
-
-.color:not(:last-child) {
-  border-bottom: 1px solid #e2e2e7;
-}
-
-.color-name {
-  width: 7ch;
-  text-transform: capitalize;
-  font-weight: bold;
-}
-
-.color-swatch {
-  width: 100%;
-  height: 48px;
-  border-radius: 8px;
-}
-
-.color-swatch--small {
-  height: 1rem;
-  width: 1rem;
-}
-
-.color-grade {
-  font-weight: bold;
-}
-
-.color-value {
-  color: #707079;
-}
-</style>
-
-<div class="column" style="margin: 32px 0">
+<div class="color-chart">
   <!--twig
     {% for color, grades in colors %}
-      <div class="row color gap-normal">
+      <div class="row color">
         <div class="color-name">{{ color }}</div>
-        <div class="row gap-normal" style="width: 100%">
+        <div class="row gap-normal flex-1">
           {% for grade, value in grades %}
-            <div class="flex-1 color-data">
+            <div class="color-data">
               <div class="color-swatch" style="background: {{ value }}"></div>
-              <div class="color-grade text-small">{{ grade }}</div>
-              <div class="color-value text-small">{{ value }}</div>
+              <div class="color-grade">{{ grade }}</div>
+              <div class="color-value">{{ value }}</div>
             </div>
           {% endfor %}
         </div>

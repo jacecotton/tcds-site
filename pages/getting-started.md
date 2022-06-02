@@ -1,6 +1,6 @@
 ## Quick start (CDN)
 
-To start using the Design System with minimal setup, you can load the precompiled CSS and JavaScript bundles straight from a CDN (via UNPKG, powered by Cloudflare).
+To start using the Design System with minimal setup, you can load the precompiled CSS and JavaScript bundles straight from a CDN.
 
 ```html
 <head>
@@ -16,7 +16,7 @@ To start using the Design System with minimal setup, you can load the precompile
 Then, you can use the HTML snippets documented for each component, primitive, and utility class, with styling and functionality taken care of. For example, from the [Button component](/components/button):
 
 ```html
-<button class="Button">My TCDS button</button>
+<button class="Button">Click me</button>
 ```
 
 However, because the code is precompiled, you are limited to HTML snippets, and have no options for configuration. To fully integrate the Design System, we recommend [installing it as a project dependency](#local-installation).
@@ -47,11 +47,8 @@ It is recommended to structure your front-end code as follows.
     * `styles/` — CSS stylesheets.
     * `scripts/` — JavaScript bundles.
     * `images/` — Optimized theme images.
-      * `icons/` — SVG files from the TCDS icon library.
   * `views/` — Twig files.
     * `templates/` — Twig templates.
-      * `components/` — Twig components.
-      * `icons/` — Twig SVG files from the TCDS icon library.
 
 If you have a different structure, you will need to modify the gulpfile as instructed in the comments.
   </div>
@@ -67,12 +64,13 @@ The above files are not required to use—they are provided only for convenience
 npm install --save-dev @txch/tcds
 ```
 
-Note that you will also need to install the other dependencies listed in the provided `package.json` file. If you already have your own build process, you will also need to replicate the build steps in the provided `gulpfile.js`. The most important utilities are:
+If you already have your own build process, you will need to replicate the build steps in the provided `gulpfile.js`. The required ones are:
+* An ES module bundler, we use [webpack](https://www.npmjs.com/package/webpack-stream)
+* [Sass](https://www.npmjs.com/package/sass) for preprocessing and compiling source stylesheets
+* [Babel](https://babeljs.io/) for compiling next-generation JavaScript to backwards-compatible syntax
 
-* [webpack](https://www.npmjs.com/package/webpack-stream) — A module bundler for JavaScript files.
-* [sass](https://www.npmjs.com/package/sass) — A pre-processor for CSS for added programming features.
-* [postcss](https://www.npmjs.com/package/gulp-postcss) — A post-processor for CSS for added browser compatibility.
-* [babel](https://babeljs.io/) ([core](https://www.npmjs.com/package/@babel/core), [preset-env](https://www.npmjs.com/package/@babel/preset-env), [loader](https://www.npmjs.com/package/babel-loader)) — A JavaScript compiler for added browser compatibility.
+Not required, but recommended:
+* [PostCSS](https://www.npmjs.com/package/gulp-postcss) for browser compatibility
   </div>
 </details>
 
@@ -94,10 +92,17 @@ npm install
 Now, you should be able to import Design System assets from your front-end code.
 
 #### JavaScript
-From a JavaScript file, you can import specific modules as needed:
+From a JavaScript file, you can import the entire bundle:
+
+```javascript
+import "@tcds/index.js";
+```
+
+Or only the specific modules and/or utilities you actually need:
 
 ```javascript
 import Tabs from "@tcds/components/Tabs.js";
+import AnimateElement from "@tcds/animation/AnimateElement.js";
 ```
 
 #### Sass
@@ -110,15 +115,15 @@ From a Sass file, you can import the entire Design System bundle:
 @use "@tcds/tcds";
 ```
 
-Alternatively, you can import specific modules:
+Alternatively, you can import specific package bundles:
 
 ```css
 /* main.scss */
-@use "@tcds/typography";
-@use "@tcds/components";
+@use "@tcds/typography/bundle";
+@use "@tcds/components/bundle";
 ```
 
-Or even specific packages within those modules:
+Or even specific modules within a package:
 
 ```css
 /* main.scss */
@@ -126,20 +131,20 @@ Or even specific packages within those modules:
 @use "@tcds/components/button";
 ```
 
-To use and configure Sass members (variables, functions, mixins, etc.), create a new `_all.scss` file and `@forward` the `@tcds/_all.scss` partial. You can set configuration variables via the `with` keyword:
+To use and configure Sass abstracts (variables, functions, mixins, etc.), create a new `_index.scss` file and `@forward` the `@tcds/_index.scss` file (you only have to specify the path name, as `_index` files are loaded by default). You can set configuration variables via the `with` keyword:
 
 ```css
-/* _all.scss */
-@forward "@tcds/_all" with (
+/* _index.scss */
+@forward "@tcds" with (
   $theme-color-primary: "blue",
 );
 ```
 
-To apply these configurations to the TCDS style bundle, `@use` the `_all.scss` file before importing the Design System:
+To apply these configurations to the TCDS style bundle, `@use` the `_index.scss` file before importing the Design System:
 
 ```css
 /* main.scss */
-@use "_all" as *;
+@use "_index" as *;
 @use "@tcds/tcds";
 ```
 
@@ -147,15 +152,15 @@ Now, from any file throughout your project's code, you can `@use` the forwarding
 
 ```css
 /* partials/sidebar.scss */
-@use "../_all" as *;
+@use "../" as *;
 ```
 
-You can also extend and overwrite Sass maps by creating a corresponding `_variables` file, importing the respective `_variables` file from the TCDS package, and then `map.merge`-ing the original map with your new map. For example:
+You can also extend and overwrite Sass maps by creating a corresponding `variables` file, importing the respective `variables` file from the TCDS package, and then `map.merge`-ing the original map with your new map. For example:
 
 ```css
 /* layout/_variables.scss */
 @use "sass:map";
-@use "@tcds/layout/_variables" as *;
+@use "@tcds/layout/abstracts/variables" as *;
 
 $breakpoints: map.merge($breakpoints, (
   /* Overwrite the small breakpoint. */
@@ -165,18 +170,18 @@ $breakpoints: map.merge($breakpoints, (
 ));
 ```
 
-Now in the root forwarding file, `@forward` your new `_variables` partial after the `@tcds/_all` file:
+Now in the root forwarding file, `@forward` your new `variables` file after the `@tcds/_index.scss` file:
 
 ```css
-/* _all.scss */
-@forward "@tcds/_all" with (
+/* _index.scss */
+@forward "@tcds" with (
   $theme-color-primary: "blue",
 );
 
-@forward "layout/_variables";
+@forward "layout/variables";
 ```
 
-In this example, the `small` breakpoint is now redefined as `360px`, and a new `1920px` breakpoint has been added (making it available in the `breakpoint()` getter function, as well as generating breakpoint-based utility classes for `xx-large`).
+In this example, the `small` breakpoint is now redefined as `360px`, and a new `1920px` breakpoint has been added. All breakpoint-relevant code utilities will be generated based off of this map.
 
 #### Compile and watch for changes
 Lastly, you can compile all your code together by running the following:
@@ -186,9 +191,3 @@ npm run dev
 ```
 
 This will build your front-end code from `assets/` to `public/` (unless otherwise configured), and will continuously watch for changes, recompiling on every save.
-
-#### To-do
-
-* Instructions for setting up and importing Twig templates.
-  * Custom/multiple namespaces in Drupal? — See https://www.drupal.org/project/components
-  * Automatically copy templates from node module to template path?

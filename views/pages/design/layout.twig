@@ -6,63 +6,60 @@ the terminal). #}
 {% block body %}
 <h2 id="size-and-space">Size and space</h2>
 <p>The Design System provides a collection of tokens for setting space (margin, padding, gap) and size (width, height) on elements. Each constant is a multiple of a base unit of 4px.</p>
-<div class="size-space-chart [ column gap-loose ]">
-  <div class="row gap-tight">
-    <div class="column justify-center flex-1">
-      <span class="text-semibold">Size</span>
-      <span>(ex <code>height</code>)</span>
-    </div>
-    <dl class="size-chart [ flex-6 ]">
-      <div>
-        <dt><code>x-small</code></dt>
-        <dd style="--size-bar-height: 24px">24px</dd>
-      </div>
-      <div>
-        <dt><code>small</code></dt>
-        <dd style="--size-bar-height: 32px">32px</dd>
-      </div>
-      <div>
-        <dt><code>medium</code></dt>
-        <dd style="--size-bar-height: 40px">40px</dd>
-      </div>
-      <div>
-        <dt><code>large</code></dt>
-        <dd style="--size-bar-height: 48px">48px</dd>
-      </div>
-      <div>
-        <dt><code>x-large</code></dt>
-        <dd style="--size-bar-height: 56px">56px</dd>
-      </div>
-    </dl>
+<div class="size-space-chart grid gap-x-loose align-center">
+  <div class="column-2">
+    <span class="text-semibold">Size</span>
+    <span>(ex <code>height</code>)</span>
   </div>
-  <div class="row gap-tight">
-    <div class="column justify-center flex-1">
-      <span class="text-semibold">Space</span>
-      <span>(ex <code>padding</code>)</span>
+  <dl class="size-chart row gap-normal column-10">
+    <div>
+      <dt><code>x-small</code></dt>
+      <dd style="--size-bar-height: 24px">24px</dd>
     </div>
-    <dl class="space-chart [ flex-6 ]">
-      <div>
-        <dt><code>x-tight</code></dt>
-        <dd style="--space-bar-padding: 4px"><span>4px</span></dd>
-      </div>
-      <div>
-        <dt><code>tight</code></dt>
-        <dd style="--space-bar-padding: 8px"><span>8px</span></dd>
-      </div>
-      <div>
-        <dt><code>normal</code></dt>
-        <dd style="--space-bar-padding: 16px"><span>16px</span></dd>
-      </div>
-      <div>
-        <dt><code>loose</code></dt>
-        <dd style="--space-bar-padding: 24px"><span>24px</span></dd>
-      </div>
-      <div>
-        <dt><code>x-loose</code></dt>
-        <dd style="--space-bar-padding: 32px"><span>32px</span></dd>
-      </div>
-    </dl>
+    <div>
+      <dt><code>small</code></dt>
+      <dd style="--size-bar-height: 32px">32px</dd>
+    </div>
+    <div>
+      <dt><code>medium</code></dt>
+      <dd style="--size-bar-height: 40px">40px</dd>
+    </div>
+    <div>
+      <dt><code>large</code></dt>
+      <dd style="--size-bar-height: 48px">48px</dd>
+    </div>
+    <div>
+      <dt><code>x-large</code></dt>
+      <dd style="--size-bar-height: 56px">56px</dd>
+    </div>
+  </dl>
+
+  <div class="column-2">
+    <span class="text-semibold">Space</span>
+    <span>(ex <code>padding</code>)</span>
   </div>
+  <dl class="space-chart row gap-normal column-10">
+    <div>
+      <dt><code>x-tight</code></dt>
+      <dd style="--space-bar-padding: 4px"><span>4px</span></dd>
+    </div>
+    <div>
+      <dt><code>tight</code></dt>
+      <dd style="--space-bar-padding: 8px"><span>8px</span></dd>
+    </div>
+    <div>
+      <dt><code>normal</code></dt>
+      <dd style="--space-bar-padding: 16px"><span>16px</span></dd>
+    </div>
+    <div>
+      <dt><code>loose</code></dt>
+      <dd style="--space-bar-padding: 24px"><span>24px</span></dd>
+    </div>
+    <div>
+      <dt><code>x-loose</code></dt>
+      <dd style="--space-bar-padding: 32px"><span>32px</span></dd>
+    </div>
+  </dl>
 </div>
 
 
