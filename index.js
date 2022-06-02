@@ -11,7 +11,7 @@ import TwingDrupalFilters from "twing-drupal-filters";
 const loader = new TwingLoaderFilesystem("./views");
 // Configure custom namespace.
 loader.addPath("./views/templates", "tch");
-loader.addPath("./tcds/dist", "tcds");
+loader.addPath("../tcds/assets/templates", "tcds");
 
 // Set up Twing environment.
 const twing = new TwingEnvironment(loader);
@@ -54,7 +54,7 @@ content.forEach((category) => {
       const [username, password] = Buffer.from(authorization.replace("Basic", ""), "base64").toString().split(":");
 
       // Again, just dummy info. Obviously not secure.
-      if(!(username === "tcds-demo-user" && password === "demopass123")) {
+      if(!(username === "reviewer" && password === "1919")) {
         return reject();
       }
 

@@ -14,10 +14,11 @@ import map from "map-stream";
 import webpack from "webpack-stream";
 
 // Style utilities
-import sass from "gulp-dart-sass";
 import postcss from "gulp-postcss";
 import autoprefixer from "autoprefixer";
-import cleancss from "gulp-clean-css";
+import dartSass from "sass";
+import gulpSass from "gulp-sass";
+const sass = gulpSass(dartSass);
 
 // Image utilities
 import imagemin from "gulp-imagemin";
@@ -29,9 +30,10 @@ import rename from "gulp-rename";
 /**
  * Configuration.
  */
- 
-const inputPath = "./assets";
-const outputPath = "./public";
+
+const INPUT_PATH = "./assets";
+const OUTPUT_PATH = "./public";
+const TEMPLATE_PATH = "./views/templates";
 
 const config = {
   pages: {
@@ -40,23 +42,23 @@ const config = {
   },
 
   styles: {
-    src: `${inputPath}/styles/**/*.scss`,
-    dest: `${outputPath}/styles/`,
+    src: `${INPUT_PATH}/styles/**/*.scss`,
+    dest: `${OUTPUT_PATH}/styles/`,
   },
 
   scripts: {
-    src: `${inputPath}/scripts/index.js`,
-    dest: `${outputPath}/scripts/`,
+    src: `${INPUT_PATH}/scripts/index.js`,
+    dest: `${OUTPUT_PATH}/scripts/`,
   },
 
   images: {
-    src: `${inputPath}/images/**/*`,
-    dest: `${outputPath}/images/`,
+    src: `${INPUT_PATH}/images/**/*`,
+    dest: `${OUTPUT_PATH}/images/`,
   },
 
   icons: {
-    src: "./tcds/src/icons/**/*.svg",
-    dest: `${outputPath}/images/icons/`,
+    src: "../tcds/assets/icons/**/*.svg",
+    dest: `${OUTPUT_PATH}/images/icons/`,
   },
 };
 
@@ -215,7 +217,8 @@ const tasks = {
       .pipe(sourcemaps.init())
       // Preprocessing (Sass).
       .pipe(sass({
-        includePaths: ["./tcds/src/styles"],
+        outputStyle: "compressed",
+        includePaths: ["../tcds/assets/styles"],
       }))
       // Post-processing (PostCSS).
       .pipe(postcss([
@@ -223,10 +226,6 @@ const tasks = {
           grid: "autoplace",
         }),
       ]))
-      // File optimization.
-      .pipe(cleancss({ level: 2}, (details) => {
-        console.log("clean-css report:", details.stats);
-      }))
       // Write sourcemaps.
       .pipe(sourcemaps.write("."))
       // Output final file.
@@ -256,7 +255,7 @@ const tasks = {
         },
         resolve: {
           alias: {
-            "@tcds": resolve(join(), "./tcds/src/scripts/"),
+            "@tcds": resolve(join(), "../tcds/assets/scripts/"),
           },
         },
       }))
@@ -291,10 +290,9 @@ task("icons", tasks.icons);
 
 task("watch", function watcher() {
   watch(`./pages/`, tasks.pages);
-  watch(`${inputPath}/styles/`, tasks.styles);
-  watch(`${inputPath}/scripts/`, tasks.scripts);
-  watch(`${inputPath}/images/`, tasks.images);
-  watch(`./tcds/src/icons/`, tasks.icons);
+  watch(`${INPUT_PATH}/styles/`, tasks.styles);
+  watch(`${INPUT_PATH}/scripts/`, tasks.scripts);
+  watch(`${INPUT_PATH}/images/`, tasks.images);
 });
 
 task("default", series(["pages", "styles", "scripts", "images", "icons", "watch"]));

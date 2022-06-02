@@ -2,10 +2,10 @@
  * This is a sample gulpfile for getting a build process up and running that is
  * integrated with Texas Children's Design System.
  *
- * Of note is the INPUT_PATH, OUTPUT_PATH, and TEMPLATE_PATH variables in the
- * "Configuration" section below (lines 50 through 52). If your project's
- * directory structure differs, change these variables as necessary. Otherwise,
- * no further changes are needed.
+ * Of note is the INPUT_PATH and OUTPUT_PATH variables in the "Configuration"
+ * section below (lines 50 through 52). If your project's directory structure
+ * differs, change these variables as necessary. Otherwise, no further changes
+ * are needed.
  *
  * See https://texaschildrens.design/getting-started
  */
@@ -28,9 +28,6 @@ import dartSass from "sass";
 import gulpSass from "gulp-sass";
 const sass = gulpSass(dartSass);
 
-// Image utilities
-import imagemin from "gulp-imagemin";
-
 // General utilities
 import sourcemaps from "gulp-sourcemaps";
 
@@ -38,18 +35,14 @@ import sourcemaps from "gulp-sourcemaps";
  * Configuration.
  *
  * 1. This is the folder that contains uncompiled source code. Sass code will be
- *    in the `styles/` folder, JavaScript code will be in the `scripts/` folder,
- *    and images will be in the `images/` folder.
+ *    in the `styles/` folder, JavaScript code will be in the `scripts/` folder.
  * 2. This is the folder that each task will compile to for production code.
  *    Subfolders correspond to the input path.
- * 3. This is the folder that contains Twig templates, such as components and
- *    icons.
  */
 
 // These may need to be changed depending on your project's folder structure.
-/* 1 */ const INPUT_PATH = "./assets";
-/* 2 */ const OUTPUT_PATH = "./public";
-/* 3 */ const TEMPLATE_PATH = "./views/templates";
+const INPUT_PATH = "./assets"; // 1
+const OUTPUT_PATH = "./public"; // 2
 
 const config = {
   styles: {
@@ -60,16 +53,6 @@ const config = {
   scripts: {
     src: `${INPUT_PATH}/scripts/index.js`,
     dest: `${OUTPUT_PATH}/scripts/`,
-  },
-
-  images: {
-    src: `${INPUT_PATH}/images/**/*`,
-    dest: `${OUTPUT_PATH}/images/`,
-  },
-
-  icons: {
-    src: "./node_modules/@txch/tcds/assets/icons/**/*.svg",
-    dest: `${OUTPUT_PATH}/images/icons/`,
   },
 };
 
@@ -91,11 +74,7 @@ const tasks = {
         includePaths: ["./node_modules/@txch/tcds/assets/styles"],
       }))
       // Post-processing (PostCSS).
-      .pipe(postcss([
-        autoprefixer({
-          grid: "autoplace",
-        }),
-      ]))
+      .pipe(postcss([autoprefixer()]))
       // Write sourcemaps.
       .pipe(sourcemaps.write("."))
       // Output final file.
@@ -139,20 +118,6 @@ const tasks = {
       // Output final file.
       .pipe(dest(config.scripts.dest));
   },
-
-  images: () => {
-    return src(config.images.src)
-      // File minimization.
-      .pipe(imagemin())
-      // Output final file.
-      .pipe(dest(config.images.dest));
-  },
-
-  icons: () => {
-    return src(config.icons.src)
-      .pipe(imagemin())
-      .pipe(dest(config.icons.dest));
-  },
 };
  
 /**
@@ -161,13 +126,10 @@ const tasks = {
 
 task("styles", tasks.styles);
 task("scripts", tasks.scripts);
-task("images", tasks.images);
-task("icons", tasks.icons);
 
 task("watch", function watcher() {
   watch(`${INPUT_PATH}/styles/`, tasks.styles);
   watch(`${INPUT_PATH}/scripts/`, tasks.scripts);
-  watch(`${INPUT_PATH}/images/`, tasks.images);
 });
 
-task("default", series(["styles", "scripts", "images", "icons", "watch"]));
+task("default", series(["styles", "scripts", "watch"]));
