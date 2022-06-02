@@ -1,12 +1,9 @@
-@use "../_all" as *;
+@use "../" as *;
 
 .size-space-chart {
   margin: space("x-loose") 0;
 
   dl {
-    display: flex;
-    gap: 1rem;
-
     &.size-chart {
       height: 101px;
     }

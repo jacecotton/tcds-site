@@ -1,4 +1,4 @@
-@use "../_all" as *;
+@use "../" as *;
 
 .main-nav {
   padding-left: space("x-loose");
@@ -53,8 +53,8 @@
         transform: translateX(20%);
         opacity: 0;
         transition:
-          transform animation("productive-timing") animation("expressive-easing"),
-          opacity animation("productive-timing") animation("expressive-easing");
+          transform animation("productive-duration") animation("expressive-easing"),
+          opacity animation("productive-duration") animation("expressive-easing");
         transition-delay: 400ms;
       }
 

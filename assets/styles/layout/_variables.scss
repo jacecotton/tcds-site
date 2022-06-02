@@ -1,6 +1,10 @@
 @use "sass:map";
-@use "@tcds/layout/_variables" as *;
+@use "@tcds/layout/abstracts/variables" as *;
 
 $breakpoints: map.merge($breakpoints, (
   "site-header": 1000px,
+));
+
+$layers: map.merge($layers, (
+  "site-header": 3,
 ));
