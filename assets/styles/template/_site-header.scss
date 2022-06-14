@@ -65,11 +65,12 @@
 
   &__logo {
     display: block;
-    margin: 0 auto space("normal");
+    margin: 0 auto;
   }
 
   &__title {
     font-size: font-size("small");
+    line-height: 2.5;
     text-align: center;
     color: color("gray");
     display: block;

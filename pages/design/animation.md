@@ -14,7 +14,7 @@ lead-->
 
 **Draw attention and direct focus.** Motion attracts the eye and can combat phenomena like [change blindness](https://www.nngroup.com/articles/change-blindness-definition/ "Change Blindness in UX — Nielsen Norman Group") and [tunnel vision](https://www.nngroup.com/articles/tunnel-vision-and-selective-attention/).
 
-**Establish relationships and provide visual cues.** Animation can both hint towards and affirm a cause-and-effect relationship. It can help a user more efficiently identify and learn design patterns in an interface.
+**Establish relationships and provide visual cues.** Animation can both hint towards and affirm a cause-and-effect relationship between elements. This can help users more efficiently identify and learn design patterns in an interface.
 
 **Add expressiveness and interactivity.** Animation can be used to convey brand expression and tone, turning mundane experiences into memorable and engaging ones (just remember to follow [best practices](#best-practices)).
 
