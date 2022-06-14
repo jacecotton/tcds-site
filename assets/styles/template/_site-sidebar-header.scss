@@ -1,7 +1,7 @@
 @use "sass:math";
 @use "../" as *;
 
-.site-header {
+.site-sidebar-header {
   width: 300px;
   max-height: 100vh;
   background: #fff;
@@ -32,13 +32,13 @@
     height: size("large") * 2;
     background: linear-gradient(0deg, #fff 50%, rgba(255, 255, 255, 0) 100%);
   }
+}
 
-  &-toggle {
-    z-index: layer("site-header");
-    position: fixed;
-    bottom: space("tight");
-    left: space("tight");
-  }
+.site-header-toggle {
+  z-index: layer("site-header");
+  position: fixed;
+  bottom: space("tight");
+  left: space("tight");
 }
 
 .site-branding {
