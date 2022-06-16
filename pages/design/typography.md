@@ -4,11 +4,11 @@ lead-->
 
 ## Typeface
 
-The Design System uses the [Inter](https://fonts.google.com/specimen/Inter) typeface from [Google Fonts](https://fonts.google.com/) by [Rasmus Andersson](https://rsms.me/).
+[Inter](https://fonts.google.com/specimen/Inter) is the default and used for copy and UI. [Metropolis](https://github.com/dw5/Metropolis) is used for headings and display text.
 
 ### Font stack
 
-The Design System provides a set of font stacks based on the purpose of the text. While in practice the font stacks use the same typefaces, referring to them separately in the codebase allows for greater control and easier future customization.
+The Design System provides a set of font stacks based on the purpose of the text. While in practice some font stacks are the same as others, referring to them separately in the codebase provides for future-proof scalability.
 
 <table>
   <thead>
@@ -22,22 +22,27 @@ The Design System provides a set of font stacks based on the purpose of the text
     <tr>
       <td><code>default</code></td>
       <td><code>Inter, system-ui, sans-serif</code></td>
-      <td>Base font to use when no other font is specified</td>
-    </tr>
-    <tr>
-      <td><code>headings</code></td>
-      <td><code>Inter, system-ui, sans-serif</code></td>
-      <td>Font used for heading elements (H1–H6)</td>
+      <td>General purpose</td>
     </tr>
     <tr>
       <td><code>copy</code></td>
       <td><code>Inter, system-ui, sans-serif</code></td>
-      <td>Font used for body copy (paragraphs, captions, tables, etc.)</td>
+      <td>Body copy (paragraphs, captions, tables, etc.)</td>
     </tr>
     <tr>
       <td><code>ui</code></td>
       <td><code>Inter, system-ui, sans-serif</code></td>
-      <td>Font used for interface elements (buttons, tabs, form labels, etc.)</td>
+      <td>Interface elements (buttons, tabs, form labels, etc.)</td>
+    </tr>
+    <tr>
+      <td><code>headings</code></td>
+      <td><code>Metropolis, sans-serif</code></td>
+      <td>Heading elements (H1–H6)</td>
+    </tr>
+    <tr>
+      <td><code>display</code></td>
+      <td><code>Metropolis, sans-serif</code></td>
+      <td>Display text (slogans, taglines, etc.)</td>
     </tr>
   </tbody>
 </table>
@@ -63,8 +68,8 @@ These font stacks are overridable by setting `$theme-font-(token)` configuration
   <div>
   
 ```css
-@forward "tcds/" with (
-  $theme-font-headings: ("Roboto Slab", Georgia, serif),
+@forward "@tcds" with (
+  $theme-font-headings: serif,
   ...
 );
 ```

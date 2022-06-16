@@ -5,9 +5,9 @@ the terminal). #}
 {% block lead %}Good typography helps communicate ideas clearly and effectively. The Design System provides styles to establish and enforce visual hierarchy, consistency, and rhythm.{% endblock %}
 {% block body %}
 <h2 id="typeface">Typeface</h2>
-<p>The Design System uses the <a href="https://fonts.google.com/specimen/Inter">Inter</a> typeface from <a href="https://fonts.google.com/">Google Fonts</a> by <a href="https://rsms.me/">Rasmus Andersson</a>.</p>
+<p><a href="https://fonts.google.com/specimen/Inter">Inter</a> is the default and used for copy and UI. <a href="https://github.com/dw5/Metropolis">Metropolis</a> is used for headings and display text.</p>
 <h3 id="font-stack">Font stack</h3>
-<p>The Design System provides a set of font stacks based on the purpose of the text. While in practice the font stacks use the same typefaces, referring to them separately in the codebase allows for greater control and easier future customization.</p>
+<p>The Design System provides a set of font stacks based on the purpose of the text. While in practice some font stacks are the same as others, referring to them separately in the codebase provides for future-proof scalability.</p>
 <table>
   <thead>
     <tr>
@@ -20,22 +20,27 @@ the terminal). #}
     <tr>
       <td><code>default</code></td>
       <td><code>Inter, system-ui, sans-serif</code></td>
-      <td>Base font to use when no other font is specified</td>
-    </tr>
-    <tr>
-      <td><code>headings</code></td>
-      <td><code>Inter, system-ui, sans-serif</code></td>
-      <td>Font used for heading elements (H1–H6)</td>
+      <td>General purpose</td>
     </tr>
     <tr>
       <td><code>copy</code></td>
       <td><code>Inter, system-ui, sans-serif</code></td>
-      <td>Font used for body copy (paragraphs, captions, tables, etc.)</td>
+      <td>Body copy (paragraphs, captions, tables, etc.)</td>
     </tr>
     <tr>
       <td><code>ui</code></td>
       <td><code>Inter, system-ui, sans-serif</code></td>
-      <td>Font used for interface elements (buttons, tabs, form labels, etc.)</td>
+      <td>Interface elements (buttons, tabs, form labels, etc.)</td>
+    </tr>
+    <tr>
+      <td><code>headings</code></td>
+      <td><code>Metropolis, sans-serif</code></td>
+      <td>Heading elements (H1–H6)</td>
+    </tr>
+    <tr>
+      <td><code>display</code></td>
+      <td><code>Metropolis, sans-serif</code></td>
+      <td>Display text (slogans, taglines, etc.)</td>
     </tr>
   </tbody>
 </table>
@@ -57,8 +62,8 @@ the terminal). #}
   <summary>Example</summary>
   <div>
   
-<pre><code class="language-css">@forward &quot;tcds/&quot; with (
-  $theme-font-headings: (&quot;Roboto Slab&quot;, Georgia, serif),
+<pre><code class="language-css">@forward &quot;@tcds&quot; with (
+  $theme-font-headings: serif,
   ...
 );
 </code></pre>
