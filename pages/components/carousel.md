@@ -32,6 +32,8 @@ Note that both the above components label their sections, imparting [information
   examples: {
     "Twig": '{{ include("@tcds/components/carousel/carousel.html.twig", {
   heading: "Example carousel",
+  hide_header: "true",
+  playable: "false",
   slides: [
     {
       content: "Slide 1",
@@ -89,6 +91,8 @@ Note that both the above components label their sections, imparting [information
   {% block result %}
     {{ include("@tcds/components/carousel/carousel.html.twig", {
       heading: "Example carousel",
+      hide_header: "true",
+      playable: "false",
       slides: [
         {
           content: "Slide 1",
