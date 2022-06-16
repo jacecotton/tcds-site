@@ -7,11 +7,13 @@ import content from "./content.js";
 import { TwingEnvironment, TwingLoaderFilesystem } from "twing";
 import TwingDrupalFilters from "twing-drupal-filters";
 
+const MODE = "prod";
+
 // Configure template path.
 const loader = new TwingLoaderFilesystem("./views");
 // Configure custom namespace.
 loader.addPath("./views/templates", "tch");
-loader.addPath("./node_modules/@txch/tcds/assets/templates", "tcds");
+loader.addPath(`${MODE === "prod" ? "./node_modules/@txch/tcds" : "../tcds" }/assets/templates`, "tcds");
 
 // Set up Twing environment.
 const twing = new TwingEnvironment(loader);

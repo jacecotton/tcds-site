@@ -1,47 +1,35 @@
-import Component from "@tcds/utilities/Component.js";
+import Toggleable from "@tcds/components/Toggleable.js";
 
-class SiteHeader extends Component {
-  constructor(element, props) {
-    super(element, props);
+class SiteHeader {
+  constructor(element) {
+    this.element = element;
 
-    this.toggle = document.querySelector(`[aria-controls=${this.element.id}]`);
-
-    this.state.expanded = window.innerWidth >= this.props.threshold;
-
-    // Toggle the header on toggle button click.
-    this.toggle.addEventListener("click", () => {
-      this.state.expanded = !this.state.expanded;
-      this.state.useAnimation = true;
+    this.toggleableHeader = new Toggleable(this.element, {
+      animation: {
+        open: "slide-in-right",
+        close: "slide-out-left",
+      },
+      closeOnClickOutside: false,
+      openOnload: true,
     });
+
+    const breakpoint = window.matchMedia("(max-width: 1024px)");
+
+    this.handleHeaderMenu(breakpoint);
+    breakpoint.addListener(this.handleHeaderMenu.bind(this));
   }
 
-  sync(newState, prevState) {
-    if("expanded" in newState) {
-      this.toggle.setAttribute("aria-expanded", this.state.expanded);
-
-      if(this.state.useAnimation === true) {
-        this.element.setAttribute("data-use-animation", true);
-        
-        if(this.state.expanded === true) {
-          this.element.onanimationend = null;
-          this.element.hidden = false;
-        } else {
-          this.element.setAttribute("data-transition", "closing");
-
-          this.element.onanimationend = () => {
-            this.element.removeAttribute("data-transition");
-            this.element.hidden = true;
-          };
-        }
-      } else {
-        this.element.hidden = !this.state.expanded;
-      }
+  handleHeaderMenu(breakpoint) {
+    if(breakpoint.matches) {
+      this.element.hidden = true;
+      this.toggleableHeader.close();
+    } else {
+      this.toggleableHeader.open();
     }
   }
 }
 
-window.addEventListener("load", () => {
-  new SiteHeader(document.getElementById("site-header"), {
-    threshold: 1000,
-  });
-});
+(function() {
+  const instance = document.getElementById("site-header");
+  instance && new SiteHeader(instance);
+}());

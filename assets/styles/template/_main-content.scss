@@ -1,24 +1,31 @@
 @use "../" as *;
 
 main {
-  width: calc(100% - 300px);
-  transform: translateX(300px);
   padding: 10vh 10%;
   padding: max(48px, 10vh) max(64px, 10%);
   overflow-x: hidden;
   will-change: transform, width;
   transition:
-    width animation("productive"),
-    transform animation("productive");
+    width animation("expressive"),
+    transform animation("expressive");
+
+  .site-sidebar-header[hidden] ~ &,
+  .site-sidebar-header[data-animation-state="closing"] ~ & {
+    width: 100%;
+    transform: translateX(0);
+  }
+
+  &,
+  .site-sidebar-header[data-animation-state="opening"] ~ & {
+    transform: translateX(300px);
+    
+    @include breakpoint-above("site-header") {
+      width: calc(100% - 300px);
+    }
+  }
 
   @include breakpoint-below("site-header") {
     width: 100%;
-  }
-
-  .site-header[hidden] ~ &,
-  .site-header[data-transition] ~ & {
-    width: 100%;
-    transform: translateX(0);
   }
 }
 

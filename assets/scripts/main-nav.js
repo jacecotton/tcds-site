@@ -9,7 +9,7 @@
  */
 (function() {
   // Get global nav.
-  const siteHeader = document.querySelector(".site-header");
+  const siteHeader = document.querySelector(".site-sidebar-header");
   // Initialize scroll position variable (will be populated from cookie on
   // repeat views).
   let scrollPosition = null;
@@ -61,5 +61,5 @@
   });
 
   // Observe the active link only.
-  scrollToActiveLink.observe(document.querySelector(".site-header [aria-current]"));
+  scrollToActiveLink.observe(document.querySelector(".site-sidebar-header [aria-current]"));
 }());

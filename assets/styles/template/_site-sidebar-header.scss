@@ -15,14 +15,6 @@
   padding-bottom: size("large") * 2;
   scrollbar-width: thin;
 
-  &[data-use-animation] {
-    animation: slide-right-reveal animation("productive");
-  }
-
-  &[data-transition="closing"] {
-    animation: slide-left-hide animation("productive");
-  }
-
   &::after {
     content: "";
     position: fixed;

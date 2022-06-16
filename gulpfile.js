@@ -31,9 +31,11 @@ import rename from "gulp-rename";
  * Configuration.
  */
 
+const MODE = "prod";
 const INPUT_PATH = "./assets";
 const OUTPUT_PATH = "./public";
 const TEMPLATE_PATH = "./views/templates";
+const TCDS_PATH = MODE === "prod" ? "./node_modules/@txch/tcds" : "../tcds";
 
 const config = {
   pages: {
@@ -57,7 +59,7 @@ const config = {
   },
 
   icons: {
-    src: "../tcds/assets/icons/**/*.svg",
+    src: `${TCDS_PATH}/assets/icons/**/*.svg`,
     dest: `${OUTPUT_PATH}/images/icons/`,
   },
 };
@@ -218,7 +220,7 @@ const tasks = {
       // Preprocessing (Sass).
       .pipe(sass({
         outputStyle: "compressed",
-        includePaths: ["./node_modules/@txch/tcds/assets/styles"],
+        includePaths: [`${TCDS_PATH}/assets/styles`],
       }))
       // Post-processing (PostCSS).
       .pipe(postcss([
@@ -255,7 +257,7 @@ const tasks = {
         },
         resolve: {
           alias: {
-            "@tcds": resolve(join(), "./node_modules/@txch/tcds/assets/scripts/"),
+            "@tcds": resolve(join(), `${TCDS_PATH}/assets/scripts/`),
           },
         },
       }))
