@@ -59,46 +59,55 @@ the terminal). #}
 <p>Many of the current icons in this set are adapted from <a href="https://iconsvg.xyz">ICONSVG</a> by Gaddafi Rusli.</p>
 
   {% set icons = [
-    "arrow-down",
-    "arrow-left",
-    "arrow-right",
-    "arrow-up",
-    "check",
-    "chevron-down",
-    "chevron-left",
-    "chevron-right",
-    "chevron-up",
-    "code",
-    "edit",
-    "eye",
-    "facebook",
-    "grid",
-    "hamburger",
-    "info",
-    "instagram",
-    "list",
-    "marker-filled",
-    "marker",
-    "mychart",
-    "pause",
-    "play",
-    "search",
-    "smartphone",
-    "type",
-    "wheelchair",
-    "x",
-    "youtube",
+    ["Arrows", [
+      "arrow-down",
+      "arrow-left",
+      "arrow-right",
+      "arrow-up",
+      "chevron-down",
+      "chevron-left",
+      "chevron-right",
+      "chevron-up",
+    ]],
+    ["Symbols", [
+      "check",
+      "code",
+      "edit",
+      "eye",
+      "grid",
+      "hamburger",
+      "info",
+      "list",
+      "marker-filled",
+      "marker",
+      "pause",
+      "play",
+      "search",
+      "x",
+      "smartphone",
+      "type",
+      "wheelchair",
+    ]],
+    ["Brands", [
+      "facebook",
+      "instagram",
+      "mychart",
+      "youtube",
+    ]],
   ] %}
-  <ul class="icon-grid" data-in-viewport="false">
-    {% for index, icon in icons %}
-      <li data-svg-snippet='{% autoescape %}{{ include("@tcds/icons/#{icon}.svg.twig") }}{% endautoescape %}' class="icon-grid__item" style="animation-delay: {{ (index + 1) * 50 }}ms" title="Click to copy SVG code">
-        {{ include("@tcds/components/icon/icon.html.twig", {
-          icon: icon,
-        }) }}
-        <span class="icon-grid__label">{{ icon }}</span>
-      </li>
-    {% endfor %}
-  </ul>
+  {% for category in icons %}
+    <h3 class="text-small">{{ category[0] }}</h3>
+    <ul class="icon-grid" data-in-viewport="false">
+      {% for index, icon in category[1] %}
+        <li data-svg-snippet='{% autoescape %}{{ include("@tcds/icons/#{icon}.svg.twig") }}{% endautoescape %}' class="icon-grid__item" style="animation-delay: {{ (index + 1) * 50 }}ms" title="Click to copy SVG code">
+          {{ include("@tcds/components/icon/icon.html.twig", {
+            icon: icon,
+          }) }}
+          <span class="icon-grid__label">{{ icon }}</span>
+        </li>
+      {% endfor %}
+    </ul>
+  {% endfor %}
 
 
 <h2 id="accessibility">Accessibility</h2>
