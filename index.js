@@ -7,7 +7,7 @@ import content from "./content.js";
 import { TwingEnvironment, TwingLoaderFilesystem } from "twing";
 import TwingDrupalFilters from "twing-drupal-filters";
 
-const MODE = "dev";
+const MODE = "prod";
 
 // Configure template path.
 const loader = new TwingLoaderFilesystem("./views");

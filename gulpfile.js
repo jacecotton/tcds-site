@@ -31,7 +31,7 @@ import rename from "gulp-rename";
  * Configuration.
  */
 
-const MODE = "dev";
+const MODE = "prod";
 const INPUT_PATH = "./assets";
 const OUTPUT_PATH = "./public";
 const TEMPLATE_PATH = "./views/templates";
