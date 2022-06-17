@@ -66,7 +66,37 @@ Use caution when doing this—styling and [accessibility considerations](#access
 Many of the current icons in this set are adapted from [ICONSVG](https://iconsvg.xyz) by Gaddafi Rusli.
 
 <!--twig
-  {% set icons = ["check", "chevron-down", "chevron-left", "chevron-right", "chevrons-down", "chevrons-up", "code", "edit", "eye", "grid", "hamburger", "info", "list", "maximize", "minimize", "pause", "play", "type", "wheelchair", "x"] %}
+  {% set icons = [
+    "arrow-down",
+    "arrow-left",
+    "arrow-right",
+    "arrow-up",
+    "check",
+    "chevron-down",
+    "chevron-left",
+    "chevron-right",
+    "chevron-up",
+    "code",
+    "edit",
+    "eye",
+    "facebook",
+    "grid",
+    "hamburger",
+    "info",
+    "instagram",
+    "list",
+    "marker-filled",
+    "marker",
+    "mychart",
+    "pause",
+    "play",
+    "search",
+    "smartphone",
+    "type",
+    "wheelchair",
+    "x",
+    "youtube",
+  ] %}
   <ul class="icon-grid" data-in-viewport="false">
     {% for index, icon in icons %}
       <li data-svg-snippet='{% autoescape %}{{ include("@tcds/icons/#{icon}.svg.twig") }}{% endautoescape %}' class="icon-grid__item" style="animation-delay: {{ (index + 1) * 50 }}ms" title="Click to copy SVG code">
