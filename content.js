@@ -36,7 +36,7 @@ export default [
         disabled: true,
       },
       { title: "Animation" },
-      { title: "Branding", disabled: true },
+      { title: "Branding" },
       { title: "Color" },
       { title: "Layout" },
       { title: "Typography" },
