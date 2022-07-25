@@ -48,7 +48,7 @@ twig-->
 
 **All tab content is intended for a page's general audience.** Because of the interaction cost, tabs past the first few may receive less engagement. Use tabs to selectively disclose information relevant to a targeted subset of the page's audience. For a wider audience, burying general purpose content in a tab can hinder discovery.
 
-**Comparing content with minor variations.** Each content panel should include distinct but parallel content belonging to the same information category, not the same information with particular differences.
+**Comparing content with minor variations.** Each content panel should include <em>distinct</em> content belonging to the same information category as its peer panels, not the same information with certain differences.
 
 **A different component better fits the use case.** For sequentially disclosing pieces of content that are not necessarily interrelated, the [Accordion](/components/accordion) may be a better choice. To allow for navigating content that is expected to be more-or-less read in full and in sequence, consider a [Table of Contents](/components/table-of-contents).<span data-footnote>["Anchors OK? Re-Assessing In-Page Links"](https://www.nngroup.com/articles/in-page-links/) — Nielsen Norman Group</span>
 
