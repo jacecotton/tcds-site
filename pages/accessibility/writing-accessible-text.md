@@ -10,7 +10,7 @@ lead-->
 twig-->
 
 ## General guidance
-**Use clear and simple language.** Avoid verbiage that's overly abstract, lengthy, or technical. Users implicated range from those with cognitive disorders (dyslexia, ADHD, autism) to situational challenges (time constraints, multitasking).
+**Use clear language and a common vocabulary.** Avoid wording that's overly esoteric, abstract, or lengthy. Users impacted range from those with cognitive and learning disabilities to situational challenges (time constraints, multitasking).
 
 ## Headings
 Headings, H1 through H6, help break up and organize sections of content. It is important to include them to allow:
@@ -31,9 +31,9 @@ Inversely, you may sometimes need to use a heading element for its semantic mean
 There should only ever be one H1 on a page. It should contain the page's name or topic (even if it has to be visually hidden for the design, like on a home page). It should not be used to contain the website name, and it should not be used to simply make the biggest text possible.
 
 ### Using H5 and H6
-H5 and H6 headings should generally not be used. If you find yourself needing them, your content is probably too complicated and should be split up between multiple pages or simplified.
+H5 and H6 headings should usually not be used. Before reaching for them, consider splitting up your content between multiple pages or simplifying it.
 
-Using them can make a page's outline too deep, which can be cumbersome for users of assistive technology. When in doubt, the best course of action is always to actually [test the content with a screen reader](/accessibility/testing).
+Using them can make a page's outline too deep, which can be cumbersome for users of assistive technology. When in doubt, the best course of action is always to actually [test the content with a screen reader](/accessibility/testing) and judge the experience for yourself.
 
 ## Links
 The text of a link should describe or fully label the page it points to. Some assistive technology, such as screen readers, provide their users with a list of links on a page to navigate. As such, these links need to be sensible without their surrounding context.
