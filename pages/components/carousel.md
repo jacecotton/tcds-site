@@ -42,7 +42,7 @@ twig-->
 
 **Prioritize slide order, and limit the number of slides.** Most users will not see all of the slides in a carousel.<span data-footnote>[10 Requirements For Making Home Page Carousels Work For End Users (If Needed)](https://www.smashingmagazine.com/2016/07/ten-requirements-for-making-home-page-carousels-work-for-end-users/) — Smashing Magazine</span> Put the most important and engaging slides first, and avoid adding too many slides to begin with (as the more there are, the less likely they are to be discovered).
 
-**Allow sufficient time between slides.** The [`timing` property](#interval-property), which determines the time between slides when the carousel is playing, should be based on a generous approximation of how long the slide with the most content takes to read, understand, and interact with.
+**Allow sufficient time between slides.** The [`timing` property](#timing-property), which determines the time between slides when the carousel is playing, should be based on a generous approximation of how long the slide with the most content takes to read, understand, and interact with.
 
 ### When to use
 
