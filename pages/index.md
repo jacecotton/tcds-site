@@ -63,8 +63,6 @@ Goals are accomplished by following our [Principles](#principles).
 
 **Increase efficiency and focus.** By documenting and demonstrating established solutions to precedented challenges, we reduce guesswork and redundancies, and streamline the process of prototyping, iterating, and maintaining on the web.
 
-. . .
-
 ## Principles
 <!--twig
 {{ include("@tcds/components/message/message.html.twig", {
@@ -74,7 +72,7 @@ Goals are accomplished by following our [Principles](#principles).
 twig-->
 
 Principles are the means to our [Goals](#goals).
-
+<!-- 
 **Human-centered design.**
 
 * Intuitive: Experiences should be familiar and consistent to maximize user engagement and [limit cognitive load](https://www.nngroup.com/articles/minimize-cognitive-load/ "Minimize Cognitive Load to Maximize Usability — Nielsen Norman Group") from inconsistent or esoteric design.
@@ -89,7 +87,7 @@ Principles are the means to our [Goals](#goals).
 * Semantic: Content and interface elements are enriched with semantic meaning, enhancing the accessibility of assistive technology, integration with social media, and understanding by search engine algorithms.
 * Adaptable: Every element is made with iteration and logistics for updating and maintaining in mind.
 
-. . .
+. . . -->
 
 ## Questions and feedback
 

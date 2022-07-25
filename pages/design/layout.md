@@ -1,6 +1,210 @@
 <!--lead
-  Layout is the arrangement, sizing, and spacing of elements on a page. The Design System provides utilities for implementing layouts in a cohesive and consistent manner, working across platforms and screen sizes.
+  Layout is the arrangement, sizing, and spacing of elements on a page. The Design System provides utilities for implementing layouts in a consistent and responsive manner.
 lead-->
+
+## Grid
+
+The Design System provides [CSS Grid](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout)-based utility classes for creating responsive layouts.
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Class</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>.grid</code></td>
+      <td>Creates a grid container, 12 columns by default. When the child grid items add up to the total number of columns, a new row is automatically created.</td>
+    </tr>
+    <tr>
+      <td><code>.column-x</code></td>
+      <td>Creates a grid item spanning <code>x</code> number of columns (<code>1</code> through <code>12</code>). If you want an item to span the full row, you can set <code>x</code> to <code>12</code> or <code>full</code>.</td>
+    </tr>
+    <tr>
+      <td style="white-space: nowrap"><code>.above-x:column-y</code></td>
+      <td>Sets <code>y</code> number of columns above <code>x</code> <a href="#breakpoints">breakpoint token</a>.</td>
+    </tr>
+  </tbody>
+</table>
+
+<style>
+  .grid.example > div {
+    background: #d5e3ff;
+    padding: 1rem;
+    border-radius: .5rem;
+    text-align: center;
+  }
+</style>
+
+<!--twig
+{% embed "@tch/includes/example-box/example-box.html.twig" %}
+{% block result %}
+<p><small>Resize the window to see responsive changes to the column spans.</small></p>
+
+<div class="grid example gap-normal">
+  <div class="column-full above-medium:column-6 above-large:column-3">
+    <span class="hide-above-medium">12/12</span>
+    <span class="hide-below-medium hide-above-large">6/12</span>
+    <span class="hide-below-large">3/12</span>
+  </div>
+  <div class="column-full above-medium:column-6 above-large:column-9">
+    <span class="hide-above-medium">12/12</span>
+    <span class="hide-below-medium hide-above-large">6/12</span>
+    <span class="hide-below-large">9/12</span>
+  </div>
+  <div class="column-full above-large:column-6">
+    <span class="hide-above-large">12/12</span>
+    <span class="hide-below-large">6/12</span>
+  </div>
+  <div class="column-full above-large:column-6">
+    <span class="hide-above-large">12/12</span>
+    <span class="hide-below-large">6/12</span>
+  </div>
+</div>
+{% endblock %}
+{% block code %}
+<div class="grid">
+  <div class="column-full above-medium:column-6 above-large:column-3">
+    ...
+  </div>
+  <div class="column-full above-medium:column-6 above-large:column-3">
+    ...
+  </div>
+  <div class="column-full above-large:column-6">
+    ...
+  </div>
+  <div class="column-full above-large:column-6">
+    ...
+  </div>
+</div>
+{% endblock %}
+{% endembed %}
+twig-->
+
+If you want grid items to fill whatever available cell is created by the grid container, you can set custom properties on the `.grid` container.
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Custom property</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>--grid-columns-default</code></td>
+      <td>The default number of columns in the grid container.</td>
+    </tr>
+    <tr>
+      <td><code>--above-x-grid-columns</code></td>
+      <td>The number of columns in the grid container above <code>x</code> breakpoint token.</td>
+    </tr>
+  </tbody>
+</table>
+
+<!--twig
+{% embed "@tch/includes/example-box/example-box.html.twig" %}
+{% block result %}
+<p><small>Resize the window to see responsive changes to the grid column count.</small></p>
+
+<div class="grid example gap-normal" style="
+  --grid-columns-default: 2;
+  --above-medium-grid-columns: 4;
+  --above-large-grid-columns: 6;
+">
+  <div class="column-2">1 – 2</div>
+  <div>3</div>
+  <div>4</div>
+  <div>5</div>
+  <div>6</div>
+  <div>7</div>
+  <div>8</div>
+  <div>9</div>
+</div>
+{% endblock %}
+{% block code %}
+<div class="grid" style="
+  --grid-columns-default: 2;
+  --above-medium-grid-columns: 4;
+  --above-large-grid-columns: 6;
+">
+  <div class="column-2">1 – 2</div>
+  <div>3</div>
+  <div>4</div>
+  <div>5</div>
+  <div>6</div>
+  <div>7</div>
+  <div>8</div>
+  <div>9</div>
+</div>
+{% endblock %}
+{% endembed %}
+twig-->
+
+This allows you to forgo adding any classes on the child items, unless you also want a particular item to span some number of columns.
+
+## Breakpoints
+
+Breakpoints are used to apply styles based on the viewport size. The Design System provides a set of standard breakpoints, which can be accessed in Sass with a function or a mixin. Also, certain utility classes use breakpoint names to conditionally apply their styles (see below).
+
+Also provided are configuration variables which can override the breakpoint values on importing the Design System to a project (see [Getting Started &sect; Sass](/getting-started#sass)).
+
+<table>
+  <thead>
+    <tr>
+      <th style="width: 12ch">Breakpoint</th>
+      <th style="width: 12ch">Value</th>
+      <th>SCSS configuration variable</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>small</code></td>
+      <td><code>640px</code></td>
+      <td><code>$theme-breakpoint-small</code></td>
+    </tr>
+    <tr>
+      <td><code>medium</code></td>
+      <td><code>768px</code></td>
+      <td><code>$theme-breakpoint-medium</code></td>
+    </tr>
+    <tr>
+      <td><code>large</code></td>
+      <td><code>1024px</code></td>
+      <td><code>$theme-breakpoint-large</code></td>
+    </tr>
+    <tr>
+      <td><code>x-large</code></td>
+      <td><code>1280px</code></td>
+      <td><code>$theme-breakpoint-x-large</code></td>
+    </tr>
+  </tbody>
+</table>
+
+### Sass utilities
+The `breakpoint()` Sass function can be used to get the value of a breakpoint directly. However, breakpoints are generally more useful as [media queries](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries), for which there are the `breakpoint-above()` and `breakpoint-below()` mixins. Example:
+
+```css
+@include breakpoint-above("small") {
+  // Applies only to screen sizes above 640px.
+}
+
+@include breakpoint-below("large") {
+  // Applies only to screen sizes below 1024px.
+}
+```
+
+Because the majority of visitors are on handheld devices, **we recommend a "mobile-first" approach to responsive strategy.** Therefore, the `breakpoint-above()` mixin is recommended for most cases, [progressively enhancing](https://developer.mozilla.org/en-US/docs/Glossary/Progressive_Enhancement "Progressive Enhancement - MDN Web Docs Glossary") designs as the screen gets wider. The older approach is "desktop-first", [gracefully degrading](https://developer.mozilla.org/en-US/docs/Glossary/Graceful_degradation "Graceful degradation - MDN Web Docs Glossary") a design as the screen gets smaller, which can still be done if necessary with the `breakpoint-below()` mixin.
+
+**Use custom breakpoints.** The provided breakpoints are only reasonable defaults, not hard-set rules. Consider using custom breakpoints to optimize for the specific experience at hand. For custom breakpoints, standard CSS `@media` query syntax can be used, or a custom value can be passed to the mixins:
+
+```css
+@include breakpoint-above("123px") {
+  // Custom breakpoint.
+}
+```
 
 ## Size and space
 
@@ -121,287 +325,22 @@ Spacing tokens are also available as utility classes for the `gap` property in g
   </div>
 </details>
 
-## Breakpoints
-
-Breakpoints are useful to apply conditional styles based on the user's current viewport size. The Design System provides a set of standard breakpoints for global coordination.
-
-<table>
-  <thead>
-    <tr>
-      <th style="width: 12ch">Breakpoint</th>
-      <th>Value</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>small</code></td>
-      <td><code>640px</code>
-    </tr>
-    <tr>
-      <td><code>medium</code></td>
-      <td><code>768px</code>
-    </tr>
-    <tr>
-      <td><code>large</code></td>
-      <td><code>1024px</code>
-    </tr>
-    <tr>
-      <td><code>x-large</code></td>
-      <td><code>1300px</code>
-    </tr>
-  </tbody>
-</table>
-
-Breakpoint values are accessible via the `breakpoint()` custom Sass function. However, breakpoints are generally more useful as [CSS media queries](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries), for which there are the `breakpoint-above()` and `breakpoint-below()` custom Sass mixins. Example:
-
-```css
-@include breakpoint-above("small") {
-  // Applies only to screen sizes above 640px...
-}
-
-@include breakpoint-below("large") {
-  // Applies only to screen sizes below 1024px...
-}
-```
-
-<!--twig
-  {{ include("@tcds/components/message/message.html.twig", {
-    content: "<strong>Tips:</strong>
-      <ul>
-        <li><strong>Don't assume specific devices.</strong> The modern web is viewed on a wide diversity of screen sizes, even beyond the traditional mobile–desktop spectrum.</li>
-        <li><strong>Develop for smaller screens first.</strong> Progressively enhance the experience as the available screen space grows. Avoid \"gracefully degrading\" the experience as the screen space shrinks, which is both more difficult and targets a minority of visitors.</li>
-        <li><strong>Use custom breakpoints.</strong> The provided breakpoints are only reasonable defaults, not hard-set rules. Consider using custom breakpoints to optimize for the specific experience at hand.</li>
-      </ul>
-    ",
-  }) }}
-twig-->
-
 ### Viewport-based hiding
 
 Breakpoint tokens are also available in utility classes for hiding content based on the screen size. The class format is `.hide-below-[breakpoint]` or `.hide-above-[breakpoint]`. Example:
 
 <!--twig
-{% embed "@tch/includes/example-box/example-box.html.twig" with {
-  examples: {
-    "HTML": '<p class="hide-below-small">Content not for screen sizes below 640px.</p>
-<p class="hide-above-medium">Content not for screen sizes above 768px.</p>',
-    "CSS": '@media (max-width: 640px) {
-  .hide-below-small {
-    display: none !important;
-  }
-}
-...
-
-@media (min-width: 768px) {
-  .hide-above-medium {
-    display: none !important;
-  }
-}
-...',
-  },
-} %}
-  {% block result %}
-    <span class="hide-below-small">Content not for screen sizes below 640px.</span>
-    <span class="hide-above-medium">Content not for screen sizes above 768px.</span>
-  {% endblock %}
+{% embed "@tch/includes/example-box/example-box.html.twig" %}
+{% block content %}
+<span class="hide-below-small">Content not for screen sizes below 640px.</span>
+<span class="hide-above-medium">Content not for screen sizes above 768px.</span>
+{% endblock %}
 {% endembed %}
 twig-->
 
 Note these utilities are only intended to switch out actual content. Avoid duplicating elements just to adjust styling between different screen sizes. Instead, prefer adjusting the design of a single element in CSS with media queries.
 
 ## Layout utilities
-
-### Flexbox
-
-The below utilities are provided in the Design System stylesheet for convenience. However, they should only be used to style text content or construct one-off pages. They should be avoided when creating elements that are reused or systematized, e.g. components, partials, and page templates (see [CSS Style Guide &sect; Semantic vs. functional](/style-guide/css#semantic-vs-functional)).
-
-Note that in the below examples, the corresponding CSS to the utility class is shown. This is simply for informational purposes—it is not necessary to copy this to your project manually if you have [installed the Design System](/getting-started).
-
-This documentation assumes some basic familiarity with [CSS flexbox](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Flexbox).
-
-#### Row
-
-Use `.row` to create a flex container with a horizontal flow. All immediate children become flex items.
-
-<!--twig
-  {% embed "@tch/includes/example-box/example-box.html.twig" with {
-    show_first: true,
-    examples: {
-      "HTML": '<div class="row">
-  <div>1</div>
-  <div>2</div>
-  <div>3</div>
-</div>',
-      "CSS": '.row {
-  display: flex;
-}',
-    },
-  } %}
-    {% block result %}
-      <div class="row gap-normal">
-        <div class="fake-item">1</div>
-        <div class="fake-item">2</div>
-        <div class="fake-item">3</div>
-      </div>
-    {% endblock %}
-  {% endembed %}
-twig-->
-
-#### Column
-
-Use `.column` to create a flex container with a vertical flow. All immediate children become flex items. (Note that this class is not necessary to add to items of a `.row`.)
-
-<!--twig
-  {% embed "@tch/includes/example-box/example-box.html.twig" with {
-    show_first: true,
-    examples: {
-      "HTML": '<div class="column">
-  <div>1</div>
-  <div>2</div>
-  <div>3</div>
-</div>',
-      "CSS": '.column {
-  display: flex;
-  flex-direction: column;
-}',
-    },
-  } %}
-    {% block result %}
-      <div class="column gap-normal">
-        <div class="fake-item">1</div>
-        <div class="fake-item">2</div>
-        <div class="fake-item">3</div>
-      </div>
-    {% endblock %}
-  {% endembed %}
-twig-->
-
-#### Wrapping
-
-Use `.row-wrap` or `.column-wrap` to allow items to wrap onto a new row. Without wrapping, the items will shrink if possible, or overflow along the main axis of the container if not.
-
-<!--twig
-  {% embed "@tch/includes/example-box/example-box.html.twig" with {
-    show_first: true,
-    examples: {
-      "HTML": '<div class="row row-wrap">
-  <div>1</div>
-  <div>2</div>
-  <div>3</div>
-  <div>4</div>
-  <!-- ... --\>
-</div>',
-      "CSS": '.row-wrap {
-  flex-wrap: wrap;
-}',
-    },
-  } %}
-    {% block result %}
-      <div class="row row-wrap gap-normal">
-        <div class="fake-item">1</div>
-        <div class="fake-item">2</div>
-        <div class="fake-item">3</div>
-        <div class="fake-item">4</div>
-        <div class="fake-item">5</div>
-        <div class="fake-item">6</div>
-        <div class="fake-item">7</div>
-        <div class="fake-item">8</div>
-        <div class="fake-item">9</div>
-        <div class="fake-item">10</div>
-        <div class="fake-item">11</div>
-        <div class="fake-item">12</div>
-      </div>
-    {% endblock %}
-  {% endembed %}
-twig-->
-
-#### Proportional sizing
-
-To create columns that are proportionately sized to each other, via flex units, use the `.flex-1` through `.flex-12` classes.
-
-<!--twig
-  {% embed "@tch/includes/example-box/example-box.html.twig" with {
-    show_first: true,
-    examples: {
-      "HTML": '<div class="row">
-  <div class="flex-1">1/4</div>
-  <div class="flex-3">3/4</div>
-</div>',
-      "CSS": '.flex-1 {
-  flex: 1;
-}\n
-/* ... */
-.flex-3 {
-  flex: 3;
-}\n
-/* ... */',
-    },
-  } %}
-    {% block result %}
-      <div class="row gap-normal">
-        <div class="fake-item flex-1">1/4</div>
-        <div class="fake-item flex-3">3/4</div>
-      </div>
-    {% endblock %}
-  {% endembed %}
-twig-->
-
-<!--twig
-  {{ include("@tcds/components/message/message.html.twig", {
-    content: "<strong>Note:</strong> The numbers do not denote a width, but a fractional share. So two columns, one with <code>.flex-1</code> and one with <code>.flex-3</code>, would be the same as two columns with <code>.flex-3</code> and <code>.flex-9</code>—in both cases, the first column would have a 25% width (1/4 or 3/12), and the second column would have a 75% width (3/4 or 9/12).",
-  }) }}
-twig-->
-
-#### Layout composition
-
-To compose a larger layout from flex utilities, you can use `.row`, `.column`, and `.flex-1` through `.flex-12` together.
-
-The below example demonstrates the traditional "Holy Grail" layout in flexbox.
-
-<!--twig
-  {% embed "@tch/includes/example-box/example-box.html.twig" with {
-    show_first: true,
-    examples: {
-      "HTML": '<div class="column">
-  <header>Header (4/4)</header>
-  <div class="row">
-    <aside class="flex-1">Sidebar (1/4)</aside>
-    <main class="flex-3">Main area (3/4)</main>
-  </div>
-  <footer>Footer (4/4)</footer>
-</div>',
-      "CSS": '.row {
-  display: flex;
-}\n
-.column {
-  display: flex;
-  flex-direction: column;
-}\n
-.flex-1 {
-  flex: 1;
-}
-...
-
-.flex-3 {
-  flex: 3;
-}
-...',
-    },
-  } %}
-    {% block result %}
-      <div class="column gap-normal">
-        <div class="fake-item flex-1">Header (4/4)</div>
-        <div class="row gap-normal">
-          <div class="fake-item flex-1" style="min-height: 200px">Sidebar (1/4)</div>
-          <div class="fake-item flex-3" style="min-height: 200px">Main area (3/4)</div>
-        </div>
-        <div class="fake-item flex-1">Footer (4/4)</div>
-      </div>
-    {% endblock %}
-  {% endembed %}
-twig-->
-
-### General
 
 The following utilities apply to both grid and flexbox, and are used for alignment and spacing.
 
@@ -413,6 +352,14 @@ The following utilities apply to both grid and flexbox, and are used for alignme
     </tr>
   </thead>
   <tbody>
+    <tr>
+      <td><code>row</code></td>
+      <td><code>display: flex; flex-flow: row wrap;</code></td>
+    </tr>
+    <tr>
+      <td><code>column</code></td>
+      <td><code>display: flex; flex-direction: column;</code></td>
+    </tr>
     <tr>
       <td><code>.justify-space-between</code></td>
       <td><code>justify-content: space-between;</code></td>

@@ -190,9 +190,9 @@ Heading styles use the above type scale, with a combination of weight, letter sp
         </tr>
         <tr>
           <td><code>xx-large</code></td>
-          <td><code>600</code></td>
+          <td><code>700</code></td>
           <td><code>-.025em</code></td>
-          <td><code>1.0</code></td>
+          <td><code>1.25</code></td>
           <td><code>.h1</code></td>
         </tr>
       </table>
@@ -212,9 +212,9 @@ Heading styles use the above type scale, with a combination of weight, letter sp
         </tr>
         <tr>
           <td><code>x-large</code></td>
-          <td><code>400</code></td>
+          <td><code>700</code></td>
           <td><code>-.0125em</code></td>
-          <td><code>1.15</code></td>
+          <td><code>1.25</code></td>
           <td><code>.h2</code></td>
         </tr>
       </table>
@@ -235,8 +235,8 @@ Heading styles use the above type scale, with a combination of weight, letter sp
         <tr>
           <td><code>large</code></td>
           <td><code>400</code></td>
-          <td><code>-.0125em</code></td>
-          <td><code>1.15</code></td>
+          <td><code>0</code></td>
+          <td><code>1.25</code></td>
           <td><code>.h3</code></td>
         </tr>
       </table>
@@ -257,8 +257,8 @@ Heading styles use the above type scale, with a combination of weight, letter sp
         <tr>
           <td><code>medium-plus</code></td>
           <td><code>400</code></td>
-          <td><code>-.0125em</code></td>
-          <td><code>1.15</code></td>
+          <td><code>0</code></td>
+          <td><code>1.6</code></td>
           <td><code>.h4</code></td>
         </tr>
       </table>
@@ -279,8 +279,8 @@ Heading styles use the above type scale, with a combination of weight, letter sp
         <tr>
           <td><code>medium</code></td>
           <td><code>700</code></td>
-          <td><code>-.0125em</code></td>
-          <td><code>1.15</code></td>
+          <td><code>0</code></td>
+          <td><code>1.6</code></td>
           <td><code>.h5</code></td>
         </tr>
       </table>
@@ -301,8 +301,8 @@ Heading styles use the above type scale, with a combination of weight, letter sp
         <tr>
           <td><code>small</code></td>
           <td><code>700</code></td>
-          <td><code>-.0125em</code></td>
-          <td><code>1.15</code></td>
+          <td><code>0</code></td>
+          <td><code>1.6</code></td>
           <td><code>.h6</code></td>
         </tr>
       </table>

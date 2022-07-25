@@ -1,9 +1,15 @@
 @use "../" as *;
 
 main {
+  display: grid;
+  grid-template-rows: auto auto;
+  grid-template-columns: min(100%, 80ch) 1fr;
+  gap: 0 max(1rem, 3vw);
+  grid-template-areas:
+    "masthead ."
+    "content toc";
   padding: 10vh 10%;
   padding: max(48px, 10vh) max(64px, 10%);
-  overflow-x: hidden;
   will-change: transform, width;
   transition:
     width animation("expressive"),
@@ -29,10 +35,19 @@ main {
   }
 }
 
+.page-inner-sidebar {
+  grid-area: toc;
+}
+
+.page-article {
+  grid-area: content;
+}
+
 .page-masthead {
+  grid-area: masthead;
   background-color: color("gray", "0");
-  margin: calc(max(48px,10vh) * -1) -50vw 3rem;
-  padding: max(48px,10vh) 50vw 3rem;
+  margin: calc(max(48px, 10vh) * -1) -50vw 3rem;
+  padding: max(48px, 10vh) 50vw 3rem;
 }
 
 .page-category {

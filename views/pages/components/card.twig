@@ -1,0 +1,205 @@
+{# DO NOT EDIT. This file was compiled from Markdown; please edit the source .md
+file and run the gulp process to compile (either `gulp` or `npm run dev` from
+the terminal). #}
+{% extends "@tch/base.twig" %}
+{% block lead %}The Card component displays a snippet for content of a different page, including its associated image, title, description, and link.{% endblock %}
+{% block body %}
+{% embed "@tch/includes/example-box/example-box.html.twig" %}
+{% block result %}
+<tcds-card>
+  <img slot="image" src="https://www.texaschildrensurgentcare.org/sites/urgentcare/files/2022-07/MyChart%20video%20visits.png" alt="">
+  <a slot="title" href="#some-page">Card title</a>
+  <p slot="description">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+    eiusmod tempor incididunt.
+  </p>
+</tcds-card>
+{% endblock %}
+{% block code %}
+<tcds-card>
+  <img slot="image" src="image.jpg" alt="">
+  <a slot="title" href="#some-page">Card title</a>
+  <p slot="description">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+    eiusmod tempor incididunt.
+  </p>
+</tcds-card>
+{% endblock %}
+{% endembed %}
+
+
+<h2 id="usage">Usage</h2>
+<p>Cards are native web components usable through the <code>&lt;tcds-card&gt;</code> custom element. The <code>image</code>, <code>title</code>, <code>link</code>, and <code>description</code> slots are provided to insert respective content into the Card body (see examples).</p>
+<h3 id="small-card">Small card</h3>
+<p>To create a more compact Card, the <code>size</code> attribute may be set to <code>small</code>.</p>
+
+{% embed "@tch/includes/example-box/example-box.html.twig" %}
+{% block result %}
+<tcds-card size="small">
+  <img slot="image" src="https://www.texaschildrensurgentcare.org/sites/urgentcare/files/2022-07/MyChart%20video%20visits.png" alt="">
+  <a slot="title" href="#some-page">Example small card</a>
+  <p slot="description">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+    eiusmod tempor incididunt.
+  </p>
+</tcds-card>
+{% endblock %}
+{% block code %}
+<tcds-card size="small">
+  <img slot="image" src="image.jpg" alt="">
+  <a slot="title" href="#some-page">Example small card</a>
+  <p slot="description">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+    eiusmod tempor incididunt.
+  </p>
+</tcds-card>
+{% endblock %}
+{% endembed %}
+
+
+<h3 id="responsive-orientation">Responsive orientation</h3>
+<p>The Card&#39;s orientation is vertical (image above content) by default, but will become horizontal (image to the left of content) if its parent container is wider than 600px.</p>
+<p>If you wish to change the Card&#39;s default orientation before responsive calculations are made, you can set the <code>orientation</code> attribute to <code>horizontal</code>.</p>
+<p>You can also lock the Card into a particular orientation by adding <code>lock</code> to the <code>orientation</code> attribute value.</p>
+
+{% embed "@tch/includes/example-box/example-box.html.twig" %}
+{% block result %}
+<tcds-card orientation="lock vertical">
+  <img slot="image" src="https://www.texaschildrensurgentcare.org/sites/urgentcare/files/2022-07/MyChart%20video%20visits.png" alt="">
+  <a slot="title" href="#some-page">Example vertically locked card</a>
+  <p slot="description">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+    eiusmod tempor incididunt.
+  </p>
+</tcds-card>
+{% endblock %}
+{% block code %}
+<tcds-card orientation="lock vertical">
+  <img slot="image" src="image.jpg" alt="">
+  <a slot="title" href="#some-page">Example vertically locked card</a>
+  <p slot="description">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+    eiusmod tempor incididunt.
+  </p>
+</tcds-card>
+{% endblock %}
+{% endembed %}
+
+
+<h3 id="background-colors">Background colors</h3>
+<p>By default, the Card&#39;s background color is <a href="/design/color#palette">Gray 0</a>. The <code>background</code> attribute can be set to either <code>none</code> (transparent) or <code>reverse</code> (white).</p>
+
+{% embed "@tch/includes/example-box/example-box.html.twig" %}
+{% block result %}
+<tcds-card background="reverse">
+  <img slot="image" src="https://www.texaschildrensurgentcare.org/sites/urgentcare/files/2022-07/MyChart%20video%20visits.png" alt="">
+  <a slot="title" href="#some-page">Example card with white background</a>
+  <p slot="description">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+    eiusmod tempor incididunt.
+  </p>
+</tcds-card>
+{% endblock %}
+{% block code %}
+<tcds-card background="reverse">
+  <img slot="image" src="image.jpg" alt="">
+  <a slot="title" href="#some-page">Example card with white background</a>
+  <p slot="description">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+    eiusmod tempor incididunt.
+  </p>
+</tcds-card>
+{% endblock %}
+{% endembed %}
+
+
+<h3 id="custom-footer">Custom footer</h3>
+<p>By default, the footer will simply show a &quot;Read more&quot; label. However, a fully customizable <code>footer</code> slot is provided, which should be marked up with the <code>footer</code> tag.</p>
+
+{% embed "@tch/includes/example-box/example-box.html.twig" %}
+{% block result %}
+<tcds-card>
+  <img slot="image" src="https://www.texaschildrensurgentcare.org/sites/urgentcare/files/2022-07/MyChart%20video%20visits.png" alt="">
+  <a slot="title" href="#some-page">Example card with custom footer</a>
+  <p slot="description">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+    eiusmod tempor incididunt.
+  </p>
+  <footer slot="footer">
+    <a href="#link-1">Link 1</a>
+    <a href="#link-2">Link 2</a>
+  </footer>
+</tcds-card>
+{% endblock %}
+{% block code %}
+<tcds-card>
+  <img slot="image" src="image.jpg" alt="">
+  <a slot="title" href="#some-page">Example card with custom footer</a>
+  <p slot="description">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+    eiusmod tempor incididunt.
+  </p>
+  <footer slot="footer">
+    <a href="#link-1">Link 1</a>
+    <a href="#link-2">Link 2</a>
+  </footer>
+</tcds-card>
+{% endblock %}
+{% endembed %}
+
+
+<p>Note that any links added inside the footer (or description) will be &quot;elevated&quot; above the Card surface&#39;s primary link added from the title.</p>
+<h2 id="implementation">Implementation</h2>
+<h3 id="progressive-enhancement">Progressive enhancement</h3>
+<p>If the JavaScript fails to execute and register the custom element that creates the card, the content will still be accessible as a plain image floated to the left of plain text. This will be the result in browsers that do not support the JavaScript techniques used to program the component, as well as clients that fail to load the required assets.</p>
+<h2 id="api">API</h2>
+<table class="table api-table">
+  <thead>
+    <tr>
+      <th>Property</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Required</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>size</code></td>
+      <td>string</td>
+      <td>Available option is <code>small</code>.</td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <td><code>orientation</code></td>
+      <td>string</td>
+      <td>One of <code>vertical</code> (default) or <code>horizontal</code>, optionally in combination with <code>lock</code>.</td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <td><code>background</code></td>
+      <td>string</td>
+      <td>One of <code>none</code> (transparent) or <code>reverse</code> (white).</td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <td><code>divider</code></td>
+      <td>boolean</td>
+      <td>Adds a thick divider between the image and content, colored with the theme's <a href="/design/color#palette">primary color</a>. To enable, add the attribute with no value. To disable, omit the attribute.</td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <td><code>image</code></td>
+      <td>string</td>
+      <td>If set to <code>contain</code>, a horizontal card's image's <em>maximum</em> height and width will be the image's container, with no minimum. The default is <code>cover</code>, which will make the image's container the <em>minimum</em> width and height, cropping whichever dimension exceeds the image's container. In both cases, the image is centered within the container and its dimensions are kept proportionate. See <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit"><code>object-fit</code> CSS property</a>.</td>
+      <td>no</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Source code: <a href="https://github.com/jacecotton/tcds/blob/main/assets/scripts/components/Card.js">Card.js</a>, <a href="https://github.com/jacecotton/tcds/blob/main/assets/styles/%40tcds/components/card.scss">card.scss</a></p>
+<!--
+https://open-ui.org/components/card.research
+https://ant.design/components/card/
+https://www.lightningdesignsystem.com/components/cards/
+-->
+{% endblock %}

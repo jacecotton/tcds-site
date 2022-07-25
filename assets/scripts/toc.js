@@ -17,10 +17,10 @@ class TOC {
     this.element = element;
     this.props = props;
 
-    this.headings = Array.from(document.querySelectorAll("h2, h3, h4, h5, h6"));
+    this.headings = Array.from(document.querySelectorAll("h2, h3, h4, h5, h6")).filter((heading) => !heading.hasAttribute("data-toc-exclude"));
 
     this.headingsOfDepthLimit = this.headings.filter((heading) => {
-      return parseInt(heading.tagName.substring(1)) <= this.props.depthLimit;
+      return parseInt(heading.tagName.substring(1)) <= this.props.depthLimit + 1;
     });
     
     if(this.headingsOfDepthLimit.length >= this.props.renderThreshold) {
@@ -71,7 +71,7 @@ class TOC {
         tocItem.appendChild(tocLink);
         tocList.appendChild(tocItem);
 
-        if(headingObject.children.length > 0 && headingObject.level < this.props.depthLimit) {
+        if(headingObject.children.length > 0 && headingObject.level < this.props.depthLimit + 1) {
           addTOCList(headingObject.children, tocItem);
         }
       });
@@ -102,3 +102,8 @@ class TOC {
     window.addEventListener("hashchange", hashChangeHandler);
   }
 }
+
+new TOC(document.querySelector(".TOC"), {
+  depthLimit: 2,
+  renderThreshold: 2,
+});

@@ -19,27 +19,36 @@
   {{ include("@tch/partials/site-header.twig") }}
 
   <main>
-    <div class="max-reading-width">
-      <header class="page-masthead">
-        {% if category and title != "Overview" and display_title != category %}
-          <p class="page-category">{{ category }}</p>
-        {% endif %}
+    <header class="page-masthead">
+      {% if category and title != "Overview" and display_title != category %}
+        <p class="page-category">{{ category }}</p>
+      {% endif %}
 
-        {% if display_title == "" %}
-          <h1 class="visually-hidden">{{ title }}</h1>
-        {% else %}
-          <h1>{{ display_title }}</h1>
-        {% endif %}
+      {% if display_title == "" %}
+        <h1 class="visually-hidden">{{ title }}</h1>
+      {% else %}
+        <h1>{{ display_title }}</h1>
+      {% endif %}
 
-        {% if block("lead") %}
-          <p class="lead">
-            {% block lead %}{% endblock %}
-          </p>
-        {% endif %}
-      </header>
+      {% if block("lead") %}
+        <p class="lead">
+          {% block lead %}{% endblock %}
+        </p>
+      {% endif %}
+    </header>
 
+    <section class="page-article">
       {% block body %}{% endblock %}
-    </div>
+    </section>
+
+    <aside class="page-inner-sidebar">
+      <nav class="TOC" aria-labelledby="toc-label">
+        <h2 id="toc-label" class="TOC__label" data-toc-exclude>
+          {{ include("@tcds/components/icon/icon.html.twig", { icon: "list" }) }}
+          Contents
+        </h2>
+      </nav>
+    </aside>
   </main>
 
 <script async src="/scripts/main.js"></script>

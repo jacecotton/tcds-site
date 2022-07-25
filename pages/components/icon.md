@@ -121,7 +121,7 @@ twig-->
 ## Accessibility
 The Icon component hides the icon itself from assistive technology with `aria-hidden=true` and `role=presentation`. This is because icons should only be used to supplement text,<span data-footnote>[Yes, Icons Need Text Labels](https://www.nngroup.com/videos/icon-text-labels/) (Video) — Nielsen Norman Group</span> in which case the text should serve as the icon's accessible label.
 
-The only allowed exception is when an icon is used in a button without text, such as with the [Button](/components/button) component's [<code>icon-only</code> modifier](/components/button#icon-button). In this case, the Button's `label` property is still required, but serves as the `aria-label` and `title` attributes rather than as a visible label.
+The only allowed exception is when an icon is used in a button without text, such as with the [Button](/components/button) component's [<code>icon-only</code> modifier](/components/button#icon-buttons). In this case, the Button's `label` property is still required, but serves as the `aria-label` and `title` attributes rather than as a visible label.
 
 ## Citations
 <!--twig {{ include("@tch/components/footnotes/footnotes.html.twig") }} twig-->

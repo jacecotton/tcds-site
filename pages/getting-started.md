@@ -16,7 +16,7 @@ To start using the Design System with minimal setup, you can load the precompile
 Then, you can use the HTML snippets documented for each component, primitive, and utility class, with styling and functionality taken care of. For example, from the [Button component](/components/button):
 
 ```html
-<button class="Button">Click me</button>
+<tcds-button>Click me</tcds-button>
 ```
 
 However, because the code is precompiled, you are limited to HTML snippets, and have no options for configuration. To fully integrate the Design System, we recommend [installing it as a project dependency](#local-installation).

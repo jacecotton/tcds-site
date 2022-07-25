@@ -1,0 +1,41 @@
+@use "../" as *;
+
+.TOC {
+  position: sticky;
+  top: 3rem;
+  display: flex;
+  flex-direction: column;
+
+  @include breakpoint-below("x-large") {
+    display: none;
+  }
+
+  &__label {
+    @include font-size("small");
+
+    font-weight: font-weight("semibold");
+    color: color("gray");
+    display: flex;
+    align-items: center;
+    gap: 1ch;
+    margin: 0 0 2ex;
+  }
+
+  &__list &__list {
+    margin-left: 2ch;
+  }
+
+  &__item {
+    font-size: font-size("small");
+  }
+
+  &__link {
+    color: inherit;
+    white-space: nowrap;
+
+    &:not(:hover) {
+      color: color("gray", "300");
+      text-decoration: none;
+    }
+  }
+}

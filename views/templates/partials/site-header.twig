@@ -9,10 +9,4 @@
   {{ include("@tch/partials/main-nav.twig") }}
 </header>
 
-{{ include("@tcds/components/button/button.html.twig", {
-  label: "Toggle menu",
-  icon: "hamburger",
-  modifiers: ["icon-only", "round", "ghost"],
-  controls: "site-header",
-  custom_classes: ["site-header-toggle"],
-}) }}
+<tcds-button controlss="site-header" icon="only hamburger" color="ghost" round class="site-header-toggle">Toggle menu</tcds-button>
