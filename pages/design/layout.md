@@ -69,7 +69,7 @@ The Design System provides [CSS Grid](https://developer.mozilla.org/en-US/docs/W
   <div class="column-full above-medium:column-6 above-large:column-3">
     ...
   </div>
-  <div class="column-full above-medium:column-6 above-large:column-3">
+  <div class="column-full above-medium:column-6 above-large:column-9">
     ...
   </div>
   <div class="column-full above-large:column-6">
