@@ -59,7 +59,7 @@ Note that both the above components label their sections, imparting [information
 
 ## Usage
 ### Auto-cycling carousel
-If you wish for the Carousel to auto-cycle on an interval, set the `timing` property in milliseconds.
+To auto-cycle the Carousel on an interval, set the `timing` property (in milliseconds).
 
 <!--twig
 {% embed "@tch/includes/example-box/example-box.html.twig" %}
@@ -164,7 +164,7 @@ twig-->
 ### Responsive behavior
 By default, the indicator dots and play/pause button are hidden until the Carousel receives hover or focus. On devices without hovering capability, these elements are always shown.
 
-On screens that are too small, the left and right navigation arrows are removed to create more space for the slide content. The persistent display of the indicator dots implicitly informs the user that they can navigate left and right by swiping.
+On smaller screen sizes, the left and right navigation arrows are removed to create more space for the slide content. The persistent display of the indicator dots implicitly informs the user that they can navigate left and right by swiping, negating the need for the navigation arrows.
 
 ### Progressive enhancement
 If the JavaScript fails to execute and register the custom elements that create the carousel, the slide content will still be accessible as plain sections. This will be the result in browsers that do not support the JavaScript techniques used to program the component, as well as clients that fail to load the required assets.

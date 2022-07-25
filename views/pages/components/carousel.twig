@@ -51,7 +51,7 @@ the terminal). #}
 <p>Note that both the above components label their sections, imparting <a href="https://www.nngroup.com/articles/information-scent/" title="Information scent – Nielsen Norman Group">information scent</a> that makes it more likely a user will find what they&#39;re looking for if it&#39;s contained therein.</p>
 <h2 id="usage">Usage</h2>
 <h3 id="auto-cycling-carousel">Auto-cycling carousel</h3>
-<p>If you wish for the Carousel to auto-cycle on an interval, set the <code>timing</code> property in milliseconds.</p>
+<p>To auto-cycle the Carousel on an interval, set the <code>timing</code> property (in milliseconds).</p>
 
 {% embed "@tch/includes/example-box/example-box.html.twig" %}
 {% block content %}
@@ -151,7 +151,7 @@ the terminal). #}
 <h2 id="implementation">Implementation</h2>
 <h3 id="responsive-behavior">Responsive behavior</h3>
 <p>By default, the indicator dots and play/pause button are hidden until the Carousel receives hover or focus. On devices without hovering capability, these elements are always shown.</p>
-<p>On screens that are too small, the left and right navigation arrows are removed to create more space for the slide content. The persistent display of the indicator dots implicitly informs the user that they can navigate left and right by swiping.</p>
+<p>On smaller screen sizes, the left and right navigation arrows are removed to create more space for the slide content. The persistent display of the indicator dots implicitly informs the user that they can navigate left and right by swiping, negating the need for the navigation arrows.</p>
 <h3 id="progressive-enhancement">Progressive enhancement</h3>
 <p>If the JavaScript fails to execute and register the custom elements that create the carousel, the slide content will still be accessible as plain sections. This will be the result in browsers that do not support the JavaScript techniques used to program the component, as well as clients that fail to load the required assets.</p>
 <h3 id="accessibility">Accessibility</h3>
