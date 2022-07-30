@@ -1,6 +1,6 @@
 @use "../" as *;
 
-.example-box {
+.example {
   border: 1px solid color("gray", "100");
   margin-bottom: space("loose");
 
@@ -13,8 +13,8 @@
     padding: space("loose");
   }
 
-  &__tabs {
-    padding: space("normal");
+  &__code {
+    padding: 0 space("normal");
   }
 }
 

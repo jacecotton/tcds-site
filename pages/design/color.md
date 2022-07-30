@@ -211,7 +211,7 @@ Utility classes for setting background colors are also provided, in the format `
   <div>
 
 <!--twig
-{% embed "@tch/includes/example-box/example-box.html.twig" with {
+{% embed "@tch/includes/example.html.twig" with {
   examples: {
     "HTML": '<p class="bg-secondary-100">This is background color is the secondary theme color at grade 100.</div>',
     "CSS": '.bg-secondary-100 {

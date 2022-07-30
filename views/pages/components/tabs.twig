@@ -4,7 +4,7 @@ the terminal). #}
 {% extends "@tch/base.twig" %}
 {% block lead %}Tabs allow users to switch between panels of content from a horizontal list of tab buttons. They enable quick comparison between different pieces of content of the same context and information type.{% endblock %}
 {% block body %}
-{% embed "@tch/includes/example-box/example-box.html.twig" %}
+{% embed "@tch/includes/example.html.twig" %}
 {% block content %}
 <tcds-tabs>
   <tcds-tab label="Example tab 1">
@@ -36,20 +36,20 @@ the terminal). #}
 
 
 <h2 id="best-practices">Best practices</h2>
-<p><strong>Use specific but concise tab labels.</strong> There is an inherent <a href="https://www.nngroup.com/articles/interaction-cost-definition/" title="Interaction Cost - Nielsen Norman Group">interaction cost</a> to tabs that may cause users to miss or ignore the content. Ensure your labels are concise enough to be read quickly, but descriptive enough to provide a strong <a href="https://www.nngroup.com/articles/information-scent/">information scent</a>.</p>
+<p><strong>Use specific but concise tab labels.</strong> Ensure your labels are concise enough to be read quickly, but descriptive enough to provide a strong <a href="https://www.nngroup.com/articles/information-scent/">information scent</a>.</p>
 <p><strong>Use sentence case.</strong> All-uppercase text is slower and more difficult to read for all users,<span data-footnote><a href="https://www.w3.org/TR/low-vision-needs/#capitalization">Accessibility Requirements for People with Low Vision § 3.3.4 Capitalization</a> — W3.org</span> but particularly for those with dyslexia.<span data-footnote><a href="https://www.bdadyslexia.org.uk/advice/employers/creating-a-dyslexia-friendly-workplace/dyslexia-friendly-style-guide#:~:text=Avoid%20text%20in%20uppercase/capital%20letters%20and%20small%20caps%2C%20which%20can%20be%20less%20familiar%20to%20the%20reader%20and%20harder%20to%20read.">Creating a dyslexia friendly workplace</a> — British Dyslexia Association</span> Furthermore, screen readers sometimes interpret certain uppercased words as common initialisms (such as ADD or US), and may erroneously spell out those words letter by letter.<span data-footnote><a href="https://webaim.org/techniques/screenreader/#:~:text=Screen%20readers%20try%20to%20pronounce%20acronyms%2C%20if%20there%20are%20sufficient%20vowels/consonants%20to%20be%20pronounceable.%20Otherwise%2C%20they%20spell%20out%20the%20letters.">Designing for Screen Reader Compatibility § How Screen Readers Read Content</a> — WebAIM</span></p>
 <h3 id="when-to-use">When to use</h3>
 <p><strong>Presenting different pieces of content of the same information category or type.</strong> Tabs are most useful for quickly comparing alternative pieces of content belonging to the same category (e.g. switching between different campus locations, progressing through different steps in the same sequence, etc.) They allow users to select the version of a piece of content most relevant to them, rather than being presented with all available versions.</p>
 <h3 id="when-not-to-use">When not to use</h3>
-<p><strong>All tab content is intended for a page&#39;s general audience.</strong> Because of the interaction cost, tabs past the first few may receive less engagement. Use tabs to selectively disclose information relevant to a targeted subset of the page&#39;s audience. For a wider audience, burying general purpose content in a tab can hinder discovery.</p>
+<p><strong>All tab content is intended for a page&#39;s general audience.</strong> Because of the inherent <a href="https://www.nngroup.com/articles/interaction-cost-definition/" title="Interaction Cost - Nielsen Norman Group">interaction cost</a>, tabs past the first few may receive less engagement. Use tabs to selectively disclose information relevant to a targeted subset of the page&#39;s audience. For a wider audience, burying general purpose content in a tab can hinder discovery.</p>
 <p><strong>Comparing content with minor variations.</strong> Each content panel should include <em>distinct</em> content belonging to the same information category as its peer panels, not the same information with certain differences.</p>
-<p><strong>A different component better fits the use case.</strong> For sequentially disclosing pieces of content that are not necessarily interrelated, the <a href="/components/accordion">Accordion</a> may be a better choice. To allow for navigating content that is expected to be more-or-less read in full and in sequence, consider a <a href="/components/table-of-contents">Table of Contents</a>.<span data-footnote><a href="https://www.nngroup.com/articles/in-page-links/">&quot;Anchors OK? Re-Assessing In-Page Links&quot;</a> — Nielsen Norman Group</span></p>
+<p><strong>A different component better fits the use case.</strong> For sequentially disclosing pieces of content that are not necessarily interrelated, the <a href="/components/accordion">Accordion</a> may be a better choice. To allow for navigating content that is expected to more-or-less be read in full and in sequence, consider a <a href="/components/table-of-contents">Table of Contents</a>.<span data-footnote><a href="https://www.nngroup.com/articles/in-page-links/">&quot;Anchors OK? Re-Assessing In-Page Links&quot;</a> — Nielsen Norman Group</span></p>
 <h2 id="usage">Usage</h2>
 <p>Tabs are native web components usable through the <code>&lt;tcds-tabs&gt;</code> and <code>&lt;tcds-tab&gt;</code> custom elements. Each tab is labeled with an attribute in the tab element, e.g. <code>&lt;tcds-tab label=&quot;My tab&quot;&gt;</code>. </p>
 <h3 id="small-tabs">Small tabs</h3>
 <p>For fitting tabs into compact spaces (useful in interfaces as opposed to web pages), the <code>size</code> attribute may be set to <code>small</code>.</p>
 
-{% embed "@tch/includes/example-box/example-box.html.twig" %}
+{% embed "@tch/includes/example.html.twig" %}
 {% block content %}
 <tcds-tabs size="small">
   <tcds-tab label="Small tab 1">
@@ -83,7 +83,7 @@ the terminal). #}
 <h3 id="large-tabs">Large tabs</h3>
 <p>To make tabs more prominent (useful for landing page sections), the <code>size</code> attribute may be set to <code>large</code>. This also justifies the tablist across the available space.</p>
 
-{% embed "@tch/includes/example-box/example-box.html.twig" %}
+{% embed "@tch/includes/example.html.twig" %}
 {% block content %}
 <tcds-tabs size="large">
   <tcds-tab label="Large tab 1">
@@ -114,48 +114,87 @@ the terminal). #}
 {% endembed %}
 
 
+<h3 id="initial-active">Initial active</h3>
+<p>To set an initial active tab different from the default first tab, set the <code>active</code> boolean attribute on the desired tab.</p>
+
+{% embed "@tch/includes/example.html.twig" %}
+{% block content %}
+<tcds-tabs>
+  <tcds-tab label="First tab">
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+      eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+      enim ad minim veniam, quis nostrud exercitation ullamco laboris
+      nisi ut aliquip ex ea commodo consequat.
+    </p>
+  </tcds-tab>
+  <tcds-tab label="Second tab" active>
+    <p>
+      Lorem ipsum is simply dummy text of the printing and typesetting
+      industry. Lorem ipsum has been the industry's standard dummy text
+      ever since the 1500s, when an unknown printer took a galley of 
+      type and scrambled it to make a type specimen book.
+    </p>
+  </tcds-tab>
+  <tcds-tab label="Third tab">
+    <p>
+      Contrary to popular belief, Lorem Ipsum is not simply random text.
+      It has roots in a piece of classical Latin literature from 45 BC,
+      making it over two millennia old.
+    </p>
+  </tcds-tab>
+</tcds-tabs>
+{% endblock %}
+{% endembed %}
+
+
 <h2 id="implementation">Implementation</h2>
 <h3 id="responsive-behavior">Responsive behavior</h3>
 <p>Where the screen is too small to accomodate all the tab buttons, the tab list scrolls horizontally. Users on smaller devices can access all the tabs by swiping within the tab list and tapping on the desired tab.</p>
 <p>The responsive behavior of each tab panel&#39;s content is not handled by the Tabs component itself, but instead by whatever content or components may be nested inside.</p>
 <h3 id="progressive-enhancement">Progressive enhancement</h3>
-<p>If the JavaScript fails to execute and register the custom elements that create the tabs, the tab content and labels will still be accessible as plain sections with headings. This will be the result in browsers that do not support the JavaScript techniques used to program the component, as well as clients that fail to load the required assets.</p>
+<p>Tabs are by default</p>
+<ul>
+<li>vertically-stacked sections of plain content with headings</li>
+</ul>
+<p>to which the component will be limited when</p>
+<ul>
+<li>the browser does not support the techniques required for the additional features, or</li>
+<li>the client fails to load the required assets (poor network connection, etc.)</li>
+</ul>
 <h3 id="accessibility">Accessibility</h3>
 <p>The Tabs component was designed and implemented according to the <a href="https://www.w3.org/WAI/ARIA/apg/patterns/tabpanel/">ARIA Authoring Practices Guide</a>. The <code>&lt;tcds-tab&gt;</code> custom element takes care of all the required implementation details, which are included here only for documentation purposes.</p>
 <p>When a tab (a <code>button</code> with a <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/tab_role"><code>tab</code> ARIA role</a>) is activated, it is the only button in the tab list (a container with a <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/tablist_role"><code>tablist</code> ARIA role</a>) that can be focused using the &quot;tab&quot; key. Next in the tabbing order is the active tab&#39;s associated panel (a <code>section</code> element with a <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/tabpanel_role"><code>tabpanel</code> ARIA role</a>, associated with its tab with corresponding <code>id</code> and <code>aria-controls</code> attribute values), so as to not require that keyboard users navigate through the tablist just to get to the content.</p>
 <p>To activate the next tab, keyboard users press the right and left arrow keys while focusing on a tab, which will focus on and automatically activate the appropriate tab. If selecting the &quot;next&quot; tab when focusing on the last tab, the first tab will activate. Vice versa, selecting the &quot;previous&quot; tab when focusing on the first tab will activate the last tab.</p>
 <p>Tab activation is handled by setting the <code>aria-expanded</code> attribute to <code>true</code> on the selected <code>tab</code>, and to <code>false</code> on the others. All tabpanels except the currently selected one receive a <code>hidden</code> attribute.</p>
 <h2 id="api">API</h2>
-<table class="table api-table">
-  <thead>
-    <tr>
-      <th>Property</th>
-      <th>Type</th>
-      <th>Description</th>
-      <th>Required</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th colspan="4">Tabs</th>
-    </tr>
-    <tr>
-      <td><code>size</code></td>
-      <td>string</td>
-      <td>One of <code>small</code> or <code>large</code> to affect the size of the tabs.</td>
-      <td>no</td>
-    </tr>
-    <tr>
-      <th colspan="4">Tab</th>
-    </tr>
-    <tr>
-      <td><code>label</code></td>
-      <td>string</td>
-      <td>The label of the tab button.</td>
-      <td>yes</td>
-    </tr>
-  </tbody>
-</table>
+<h3 id="tabs">Tabs</h3>
+
+{{ include("@tch/includes/api.html.twig", {
+  properties: [
+    {
+      name: "size",
+      type: "string",
+      description: "One of <code>small</code> or <code>large</code>.",
+      required: "no",
+    },
+  ]
+}) }}
+
+
+<h3 id="tab">Tab</h3>
+
+{{ include("@tch/includes/api.html.twig", {
+  properties: [
+    {
+      name: "label",
+      type: "string",
+      description: "The tab label.",
+      required: "yes",
+    },
+  ]
+}) }}
+
 
 <p>Source code: <a href="https://github.com/jacecotton/tcds/blob/main/assets/scripts/components/Tabs.js">Tabs.js</a>, <a href="https://github.com/jacecotton/tcds/blob/main/assets/styles/%40tcds/components/tabs.scss">tabs.scss</a></p>
 <h2 id="citations">Citations</h2>

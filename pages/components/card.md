@@ -1,7 +1,7 @@
 <!--lead The Card component displays a snippet for content of a different page, including its associated image, title, description, and link. lead-->
 
 <!--twig
-{% embed "@tch/includes/example-box/example-box.html.twig" %}
+{% embed "@tch/includes/example.html.twig" %}
 {% block result %}
 <tcds-card>
   <img slot="image" src="https://www.texaschildrensurgentcare.org/sites/urgentcare/files/2022-07/MyChart%20video%20visits.png" alt="">
@@ -32,7 +32,7 @@ Cards are native web components usable through the `<tcds-card>` custom element.
 To create a more compact Card, the `size` attribute may be set to `small`.
 
 <!--twig
-{% embed "@tch/includes/example-box/example-box.html.twig" %}
+{% embed "@tch/includes/example.html.twig" %}
 {% block result %}
 <tcds-card size="small">
   <img slot="image" src="https://www.texaschildrensurgentcare.org/sites/urgentcare/files/2022-07/MyChart%20video%20visits.png" alt="">
@@ -59,14 +59,12 @@ twig-->
 ### Responsive orientation
 The Card's orientation is vertical (image above content) by default, but will become horizontal (image to the left of content) if its parent container is wider than 600px.
 
-If you wish to change the Card's default orientation before responsive calculations are made, you can set the `orientation` attribute to `horizontal`.
-
-You can also lock the Card into a particular orientation by adding `lock` to the `orientation` attribute value.
+You can lock the Card into a particular orientation by setting the `orientation` property to either `horizontal` or `vertical`.
 
 <!--twig
-{% embed "@tch/includes/example-box/example-box.html.twig" %}
+{% embed "@tch/includes/example.html.twig" %}
 {% block result %}
-<tcds-card orientation="lock vertical">
+<tcds-card orientation="vertical">
   <img slot="image" src="https://www.texaschildrensurgentcare.org/sites/urgentcare/files/2022-07/MyChart%20video%20visits.png" alt="">
   <a slot="title" href="#some-page">Example vertically locked card</a>
   <p slot="description">
@@ -76,7 +74,7 @@ You can also lock the Card into a particular orientation by adding `lock` to the
 </tcds-card>
 {% endblock %}
 {% block code %}
-<tcds-card orientation="lock vertical">
+<tcds-card orientation="vertical">
   <img slot="image" src="image.jpg" alt="">
   <a slot="title" href="#some-page">Example vertically locked card</a>
   <p slot="description">
@@ -92,7 +90,7 @@ twig-->
 By default, the Card's background color is [Gray 0](/design/color#palette). The `background` attribute can be set to either `none` (transparent) or `reverse` (white).
 
 <!--twig
-{% embed "@tch/includes/example-box/example-box.html.twig" %}
+{% embed "@tch/includes/example.html.twig" %}
 {% block result %}
 <tcds-card background="reverse">
   <img slot="image" src="https://www.texaschildrensurgentcare.org/sites/urgentcare/files/2022-07/MyChart%20video%20visits.png" alt="">
@@ -120,7 +118,7 @@ twig-->
 By default, the footer will simply show a "Read more" label. However, a fully customizable `footer` slot is provided, which should be marked up with the `footer` tag.
 
 <!--twig
-{% embed "@tch/includes/example-box/example-box.html.twig" %}
+{% embed "@tch/includes/example.html.twig" %}
 {% block result %}
 <tcds-card>
   <img slot="image" src="https://www.texaschildrensurgentcare.org/sites/urgentcare/files/2022-07/MyChart%20video%20visits.png" alt="">
@@ -156,51 +154,50 @@ Note that any links added inside the footer (or description) will be "elevated" 
 
 ## Implementation
 ### Progressive enhancement
-If the JavaScript fails to execute and register the custom element that creates the card, the content will still be accessible as a plain image floated to the left of plain text. This will be the result in browsers that do not support the JavaScript techniques used to program the component, as well as clients that fail to load the required assets.
+The Card is by default
+* a simple container with an image floated to the left of plain text content
+
+to which the component will be limited when
+* the browser does not support the techniques required for the additional features, or
+* the client fails to load the required assets (poor network connection, etc.)
 
 ## API
-<table class="table api-table">
-  <thead>
-    <tr>
-      <th>Property</th>
-      <th>Type</th>
-      <th>Description</th>
-      <th>Required</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>size</code></td>
-      <td>string</td>
-      <td>Available option is <code>small</code>.</td>
-      <td>no</td>
-    </tr>
-    <tr>
-      <td><code>orientation</code></td>
-      <td>string</td>
-      <td>One of <code>vertical</code> (default) or <code>horizontal</code>, optionally in combination with <code>lock</code>.</td>
-      <td>no</td>
-    </tr>
-    <tr>
-      <td><code>background</code></td>
-      <td>string</td>
-      <td>One of <code>none</code> (transparent) or <code>reverse</code> (white).</td>
-      <td>no</td>
-    </tr>
-    <tr>
-      <td><code>divider</code></td>
-      <td>boolean</td>
-      <td>Adds a thick divider between the image and content, colored with the theme's <a href="/design/color#palette">primary color</a>. To enable, add the attribute with no value. To disable, omit the attribute.</td>
-      <td>no</td>
-    </tr>
-    <tr>
-      <td><code>image</code></td>
-      <td>string</td>
-      <td>If set to <code>contain</code>, a horizontal card's image's <em>maximum</em> height and width will be the image's container, with no minimum. The default is <code>cover</code>, which will make the image's container the <em>minimum</em> width and height, cropping whichever dimension exceeds the image's container. In both cases, the image is centered within the container and its dimensions are kept proportionate. See <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit"><code>object-fit</code> CSS property</a>.</td>
-      <td>no</td>
-    </tr>
-  </tbody>
-</table>
+<!--twig
+{{ include("@tch/includes/api.html.twig", {
+  properties: [
+    {
+      name: "size",
+      type: "string",
+      description: "Available option is <code>small</code>.",
+      required: "no",
+    },
+    {
+      name: "orientation",
+      type: "string",
+      description: "One of <code>vertical</code> or <code>horizontal</code>.",
+      required: "no",
+    },
+    {
+      name: "background",
+      type: "string",
+      description: "One of <code>none</code> (transparent) or <code>reverse</code> (white).",
+      required: "no",
+    },
+    {
+      name: "dividier",
+      type: "boolean",
+      description: "Adds an accentual divider between the image and content when vertically oriented. To enable, add the attribute with no value. To disable, omit the attribute.",
+      required: "no",
+    },
+    {
+      name: "image",
+      type: "string",
+      description: "One of <code>contain</code> or <code>cover</code> (default) to determine how and whether to scale or crop the Card's image. See <a href='https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit'><code>object-fit</code> CSS property</a>.",
+      required: "no",
+    },
+  ]
+}) }}
+twig-->
 
 Source code: [Card.js](https://github.com/jacecotton/tcds/blob/main/assets/scripts/components/Card.js), [card.scss](https://github.com/jacecotton/tcds/blob/main/assets/styles/%40tcds/components/card.scss)
 

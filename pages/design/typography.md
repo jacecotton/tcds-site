@@ -141,7 +141,7 @@ These can be used with the `font-size()` custom Sass function, or utility classe
   <div>
 
 <!--twig
-{% embed "@tch/includes/example-box/example-box.html.twig" with {
+{% embed "@tch/includes/example.html.twig" with {
   show_first: true,
   examples: {
     "HTML": '<p class="text-x-large">This is extra large text.</p>

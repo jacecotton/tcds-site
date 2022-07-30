@@ -22,7 +22,7 @@ Then, you can use the HTML snippets documented for each component, primitive, an
 However, because the code is precompiled, you are limited to HTML snippets, and have no options for configuration. To fully integrate the Design System, we recommend [installing it as a project dependency](#local-installation).
 
 ## Local installation
-Installing the Design System locally gives you greater configuration options, access to Twig components, and uncompiled assets and utilities for Sass and JavaScript. You can then import, bundle, and compile the Design System along with your project's other code.
+Installing the Design System locally gives you greater configuration options, uncompiled assets, and utilities for Sass and JavaScript. You can then import, bundle, and compile the Design System along with your project's other code.
 
 ### Step 1. Download project files
 Download the following files, and place them in whatever directory you keep the front-end code of your project (CSS, JavaScript, etc.) This could be the root folder of your project, or, in the case of a Drupal site, a custom theme folder.
@@ -47,8 +47,6 @@ It is recommended to structure your front-end code as follows.
     * `styles/` — CSS stylesheets.
     * `scripts/` — JavaScript bundles.
     * `images/` — Optimized theme images.
-  * `views/` — Twig files.
-    * `templates/` — Twig templates.
 
 If you have a different structure, you will need to modify the gulpfile as instructed in the comments.
   </div>
@@ -92,23 +90,23 @@ npm install
 Now, you should be able to import Design System assets from your front-end code.
 
 #### JavaScript
-From a JavaScript file, you can import the entire bundle:
+From a JavaScript file, you can import the entire bundle from the `node_modules` folder:
 
 ```javascript
-import "@tcds/index.js";
+import "@txch/tcds/assets/scripts/index.js";
 ```
 
 Or only the specific modules and/or utilities you actually need:
 
 ```javascript
-import Tabs from "@tcds/components/Tabs.js";
-import AnimateElement from "@tcds/animation/AnimateElement.js";
+import WebComponent from "@txch/tcds/assets/scripts/WebComponent/WebComponent.js";
+import AnimateElement from "@txch/tcds/assets/scripts/animation/AnimateElement.js";
 ```
 
 #### Sass
 **Tip:** Familiarize yourself with Sass's [module system](https://sass-lang.com/blog/the-module-system-is-launched) (`@use` and `@forward`) before proceeding.
 
-From a Sass file, you can import the entire Design System bundle:
+From a Sass file, you can import the entire Design System bundle from the provided `@tcds` namespace:
 
 ```css
 /* main.scss */

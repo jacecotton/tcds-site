@@ -19,7 +19,7 @@ the terminal). #}
 </code></pre>
 <p>However, because the code is precompiled, you are limited to HTML snippets, and have no options for configuration. To fully integrate the Design System, we recommend <a href="#local-installation">installing it as a project dependency</a>.</p>
 <h2 id="local-installation">Local installation</h2>
-<p>Installing the Design System locally gives you greater configuration options, access to Twig components, and uncompiled assets and utilities for Sass and JavaScript. You can then import, bundle, and compile the Design System along with your project&#39;s other code.</p>
+<p>Installing the Design System locally gives you greater configuration options, uncompiled assets, and utilities for Sass and JavaScript. You can then import, bundle, and compile the Design System along with your project&#39;s other code.</p>
 <h3 id="step-1-download-project-files">Step 1. Download project files</h3>
 <p>Download the following files, and place them in whatever directory you keep the front-end code of your project (CSS, JavaScript, etc.) This could be the root folder of your project, or, in the case of a Drupal site, a custom theme folder.</p>
 <ul>
@@ -45,10 +45,6 @@ the terminal). #}
 <li><code>styles/</code> — CSS stylesheets.</li>
 <li><code>scripts/</code> — JavaScript bundles.</li>
 <li><code>images/</code> — Optimized theme images.</li>
-</ul>
-</li>
-<li><code>views/</code> — Twig files.<ul>
-<li><code>templates/</code> — Twig templates.</li>
 </ul>
 </li>
 </ul>
@@ -86,16 +82,16 @@ the terminal). #}
 <h3 id="step-3-import-configure-and-build">Step 3. Import, configure, and build</h3>
 <p>Now, you should be able to import Design System assets from your front-end code.</p>
 <h4 id="javascript">JavaScript</h4>
-<p>From a JavaScript file, you can import the entire bundle:</p>
-<pre><code class="language-javascript">import &quot;@tcds/index.js&quot;;
+<p>From a JavaScript file, you can import the entire bundle from the <code>node_modules</code> folder:</p>
+<pre><code class="language-javascript">import &quot;@txch/tcds/assets/scripts/index.js&quot;;
 </code></pre>
 <p>Or only the specific modules and/or utilities you actually need:</p>
-<pre><code class="language-javascript">import Tabs from &quot;@tcds/components/Tabs.js&quot;;
-import AnimateElement from &quot;@tcds/animation/AnimateElement.js&quot;;
+<pre><code class="language-javascript">import WebComponent from &quot;@txch/tcds/assets/scripts/WebComponent/WebComponent.js&quot;;
+import AnimateElement from &quot;@txch/tcds/assets/scripts/animation/AnimateElement.js&quot;;
 </code></pre>
 <h4 id="sass">Sass</h4>
 <p><strong>Tip:</strong> Familiarize yourself with Sass&#39;s <a href="https://sass-lang.com/blog/the-module-system-is-launched">module system</a> (<code>@use</code> and <code>@forward</code>) before proceeding.</p>
-<p>From a Sass file, you can import the entire Design System bundle:</p>
+<p>From a Sass file, you can import the entire Design System bundle from the provided <code>@tcds</code> namespace:</p>
 <pre><code class="language-css">/* main.scss */
 @use &quot;@tcds/tcds&quot;;
 </code></pre>

@@ -4,7 +4,7 @@ the terminal). #}
 {% extends "@tch/base.twig" %}
 {% block lead %}Carousels rotate through slides of content, allowing users to advance forward or backward, play or pause the cycle, and select specific slides from a row of dots.{% endblock %}
 {% block body %}
-{% embed "@tch/includes/example-box/example-box.html.twig" %}
+{% embed "@tch/includes/example.html.twig" %}
 {% block content %}
 <tcds-carousel>
   <tcds-slide>
@@ -36,26 +36,27 @@ the terminal). #}
 
 
 <h2 id="best-practices">Best practices</h2>
-<p><strong>Use with general caution.</strong> Even when properly implemented, research shows that users seldom interact with carousels, especially beyond the first slide.<span data-footnote><a href="https://erikrunyon.com/2013/01/carousel-interaction-stats/">Carousel Interaction Stats</a> — Erik Runyon</span> They represent a form of sequential access, as opposed to the more preferable direct access.<span data-footnote><a href="https://www.nngroup.com/articles/direct-vs-sequential-access/">Direct Access vs. Sequential Access: Definition</a> — Nielsen Norman Group</span> Furthermore, carousels necessarily have complicated <a href="#usability-checklist">interaction features</a> that come with a high <a href="https://www.nngroup.com/articles/interaction-cost-definition/" title="Interaction cost – Nielsen Norman Group">interaction cost</a>, potentially causing annoyance.<span data-footnote><a href="https://www.nngroup.com/articles/auto-forwarding/">Auto-Forwarding Carousels and Accordions Annoy Users and Reduce Visibility</a> — Nielsen Norman Group</span></p>
-<p><strong>Curate relevant and high quality content for each slide.</strong> Carousels with content that is perceived to be irrelevant, redundant, or unhelpful will discourage users from investigating and interacting with the carousel further. It could also contribute to a <a href="https://www.nngroup.com/articles/tunnel-vision-and-selective-attention/" title="Tunnel Vision and Selective Attention – Nielsen Norman Group">banner blindness</a> that will reduce perception and engagement of carousels elsewhere on the website.<span data-footnote><a href="https://www.smashingmagazine.com/2016/07/ten-requirements-for-making-home-page-carousels-work-for-end-users/">10 Requirements For Making Home Page Carousels Work For End Users (If Needed)</a> — Smashing Magazine</span></p>
-<p><strong>Prioritize slide order, and limit the number of slides.</strong> Most users will not see all of the slides in a carousel.<span data-footnote><a href="https://www.smashingmagazine.com/2016/07/ten-requirements-for-making-home-page-carousels-work-for-end-users/">10 Requirements For Making Home Page Carousels Work For End Users (If Needed)</a> — Smashing Magazine</span> Put the most important and engaging slides first, and avoid adding too many slides to begin with (as the more there are, the less likely they are to be discovered).</p>
-<p><strong>Allow sufficient time between slides.</strong> The <a href="#timing-property"><code>timing</code> property</a>, which determines the time between slides when the carousel is playing, should be based on a generous approximation of how long the slide with the most content takes to read, understand, and interact with.</p>
+<p><strong>Use with general caution.</strong> Even when properly implemented, research shows that users seldom interact with carousels, especially beyond the first slide.<span data-footnote><a href="https://erikrunyon.com/2013/01/carousel-interaction-stats/">Carousel Interaction Stats</a> — Erik Runyon</span> Furthermore, carousels have a high <a href="https://www.nngroup.com/articles/interaction-cost-definition/" title="Interaction cost – Nielsen Norman Group">interaction cost</a>, potentially causing inconvenience.<span data-footnote><a href="https://www.nngroup.com/articles/auto-forwarding/">Auto-Forwarding Carousels and Accordions Annoy Users and Reduce Visibility</a> — Nielsen Norman Group</span></p>
+<p><strong>Curate relevant and high quality content for each slide.</strong> Carousel content that the user perceives to be irrelevant, redundant, or unhelpful will discourage them from investigating and interacting further. This can contribute to a <a href="https://www.nngroup.com/articles/tunnel-vision-and-selective-attention/" title="Tunnel Vision and Selective Attention – Nielsen Norman Group">banner blindness</a> that will reduce perception and engagement of carousels elsewhere on the website.<span data-footnote><a href="https://www.smashingmagazine.com/2016/07/ten-requirements-for-making-home-page-carousels-work-for-end-users/">10 Requirements For Making Home Page Carousels Work For End Users (If Needed)</a> — Smashing Magazine</span></p>
+<p><strong>Prioritize slide order, and limit the number of slides.</strong> Most users will not see all the content in a carousel.<span data-footnote><a href="https://www.smashingmagazine.com/2016/07/ten-requirements-for-making-home-page-carousels-work-for-end-users/">10 Requirements For Making Home Page Carousels Work For End Users (If Needed)</a> — Smashing Magazine</span> Put the most important and engaging slides first, and avoid adding too many slides to begin with (as the more there are, the less likely they are to be discovered).</p>
+<p><strong>Allow sufficient time between slides.</strong> The <a href="#timing-property"><code>timing</code> property</a> sets the time between slides when the carousel is playing. It should be based on a generous approximation of how long the slide with the most content takes to read, understand, and interact with.</p>
 <h3 id="when-to-use">When to use</h3>
 <p><strong>When presenting a series of inessential or sample content.</strong> Examples include decorative pictures or testimonials. Only use a carousel for presenting content that users were not likely searching for when they navigated to the page, and may only be interested in consuming in a passive manner.</p>
 <h3 id="when-not-to-use">When not to use</h3>
-<p><strong>When presenting important or user goal-oriented content.</strong> Because slides are not labeled, users are unlikely to find content buried in carousels if they&#39;re looking for it. Furthermore, users are highly likely to miss content they may be looking for if the carousel auto-forwards.<span data-footnote><a href="https://www.nngroup.com/articles/auto-forwarding/">Auto-Forwarding Carousels and Accordions Annoy Users and Reduce Visibility</a> — Nielsen Norman Group</span> However, carousels are often useful to condense content into one container, and then progressively or selectively disclose it. If the content of a slide is supposed to serve a user goal, consider a different component that achieves a similar purpose, such as:</p>
+<p><strong>When presenting important or user goal-oriented content.</strong> Because slides are not labeled, users are unlikely to find content buried in carousels if they&#39;re looking for it. Furthermore, users are highly likely to miss content they may be looking for if the carousel autoplays.<span data-footnote><a href="https://www.nngroup.com/articles/auto-forwarding/">Auto-Forwarding Carousels and Accordions Annoy Users and Reduce Visibility</a> — Nielsen Norman Group</span> However, carousels are often useful to condense content into one container, and then progressively or selectively disclose it. If the content of a slide is supposed to serve a user goal, consider a different component that achieves a similar purpose, such as:</p>
 <ul>
 <li><a href="/components/tabs">Tabs</a>, useful for quick comparison between different content of the same information type.</li>
 <li><a href="/components/accordion">Accordion</a>, useful for collapsing multiple sections of content under headers, allowing users to quickly scan a page and choose whether or not to see the content.</li>
 </ul>
 <p>Note that both the above components label their sections, imparting <a href="https://www.nngroup.com/articles/information-scent/" title="Information scent – Nielsen Norman Group">information scent</a> that makes it more likely a user will find what they&#39;re looking for if it&#39;s contained therein.</p>
 <h2 id="usage">Usage</h2>
-<h3 id="auto-cycling-carousel">Auto-cycling carousel</h3>
-<p>To auto-cycle the Carousel on an interval, set the <code>timing</code> property (in milliseconds).</p>
+<h3 id="autoplaying">Autoplaying</h3>
+<p>To allow the user to play the Carousel, set the <a href="#timing-property"><code>timing</code> property</a> (in milliseconds). A button will appear that toggles between play and pause when clicked.</p>
+<p>By default, the user will have to click the play button for the Carousel to begin auto-forwarding. To have it play by default (subject to <a href="#usability-checklist">certain conditions</a>), add the <code>playing</code> state attribute.</p>
 
-{% embed "@tch/includes/example-box/example-box.html.twig" %}
+{% embed "@tch/includes/example.html.twig" %}
 {% block content %}
-<tcds-carousel timing="5000">
+<tcds-carousel timing="5000" playing>
   <tcds-slide>
     <p>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -84,11 +85,10 @@ the terminal). #}
 {% endembed %}
 
 
-<p>See <a href="#usability-checklist">&sect; Usability checklist</a> for auto-playing and auto-pausing criteria.</p>
 <h3 id="expand-collapse-header">Expand-collapse header</h3>
 <p>A header can be added with the <code>header</code> slot. If provided, expand/collapse functionality will also be added.</p>
 
-{% embed "@tch/includes/example-box/example-box.html.twig" %}
+{% embed "@tch/includes/example.html.twig" %}
 {% block result %}
 <tcds-carousel>
   <h2 slot="header" data-toc-exclude><a href="#some-page">My carousel</a></h2>
@@ -150,59 +150,67 @@ the terminal). #}
 
 <h2 id="implementation">Implementation</h2>
 <h3 id="responsive-behavior">Responsive behavior</h3>
-<p>By default, the indicator dots and play/pause button are hidden until the Carousel receives hover or focus. On devices without hovering capability, these elements are always shown.</p>
+<p>By default, the indicator dots and play/pause button are always shown. On hovering-enabled devices (i.e. not touchscreens), they will be hidden until the Carousel receives hover or internal focus.</p>
 <p>On smaller screen sizes, the left and right navigation arrows are removed to create more space for the slide content. The persistent display of the indicator dots implicitly informs the user that they can navigate left and right by swiping, negating the need for the navigation arrows.</p>
 <h3 id="progressive-enhancement">Progressive enhancement</h3>
-<p>If the JavaScript fails to execute and register the custom elements that create the carousel, the slide content will still be accessible as plain sections. This will be the result in browsers that do not support the JavaScript techniques used to program the component, as well as clients that fail to load the required assets.</p>
+<p>The Carousel is by default</p>
+<ul>
+<li>a simple horizontally-scrollable container, slides aligned side-by-side</li>
+</ul>
+<p>to which the component will be limited when</p>
+<ul>
+<li>the browser does not support the techniques required for the additional features, or</li>
+<li>the client fails to load the required assets (poor network connection, etc.)</li>
+</ul>
 <h3 id="accessibility">Accessibility</h3>
-<p>The Carousel component was designed and implemented according to the <a href="https://www.w3.org/WAI/ARIA/apg/patterns/carousel/">ARIA Authoring Practices Guide</a>. The <code>&lt;tcds-carousel&gt;</code> custom element takes care of all the required implementation details, which are included here only for documentation purposes.</p>
+<p>The Carousel component was implemented according to the <a href="https://www.w3.org/WAI/ARIA/apg/patterns/carousel/">ARIA Authoring Practices Guide</a>. The <code>&lt;tcds-carousel&gt;</code> custom element takes care of all the required implementation details, which are included here only for documentation purposes.</p>
 <h4 id="usability-checklist">Usability checklist</h4>
-<p>The following features are required for all carousels, for general UX and accessibility.</p>
+<p>The following features are required for all Carousels, for general UX and accessibility.</p>
 <details>
   <summary>Checklist</summary>
   <div>
 
 <ol>
 <li>Basic controls<ol>
-<li>The carousel advances forward* one slide when<ol>
+<li>The Carousel advances forward* one slide when<ol>
 <li>the &quot;next&quot; button is pressed, or</li>
 <li>the right arrow key is pressed while an indicator has keyboard focus, or</li>
 <li>the user swipes left or scrolls right inside the slide container (does not recycle)*, or</li>
-<li>the carousel is playing.</li>
+<li>the Carousel is playing.</li>
 </ol>
 </li>
-<li>The carousel advances backward* one slide when<ol>
+<li>The Carousel advances backward* one slide when<ol>
 <li>the &quot;previous&quot; button is pressed, or</li>
 <li>the left arrow key is pressed while an indicator has keyboard focus, or</li>
 <li>the user swipes right or scrolls left inside the slide container (does not recycle).*</li>
 </ol>
 </li>
 <li>A play/pause button appears if a <code>timing</code> interval is provided.</li>
-<li>The carousel begins automatically advancing through the slides at a set interval when the &quot;play&quot; button is pressed, then<ol>
+<li>The Carousel begins automatically advancing through the slides at a set interval when the &quot;play&quot; button is pressed, then<ol>
 <li>the &quot;play&quot; button becomes a &quot;pause&quot; button.</li>
 </ol>
 </li>
-<li>The carousel stops advancing through the slides when the &quot;pause&quot; button is pressed, then<ol>
+<li>The Carousel stops advancing through the slides when the &quot;pause&quot; button is pressed, then<ol>
 <li>the &quot;pause&quot; button becomes a &quot;play&quot; button.</li>
 </ol>
 </li>
-<li>The carousel skips to a specific slide when its associated indicator dot is selected.</li>
+<li>The Carousel skips to a specific slide when its associated indicator dot is selected.</li>
 </ol>
 </li>
 <li>Autoplay<ol>
-<li>The carousel automatically begins playing if <code>timing</code> attribute is given, the <code>paused</code> attribute is not present, &quot;reduced motion&quot; preference is <em>not</em> set, <em>and</em> the device&#39;s primary pointer device can hover (mouse or trackpad).</li>
-<li>The carousel is paused by default if <code>paused</code> attribute is present, &quot;reduced motion&quot; preference is set, <em>or</em> the device&#39;s primary pointer device cannot hover (touchscreen or stylus).</li>
+<li>The Carousel automatically begins playing if <code>timing</code> attribute is given, the <code>playing</code> attribute is present, &quot;reduced motion&quot; preference is <em>not</em> set, <em>and</em> the device is hover-enabled (i.e. not touchscreen).</li>
+<li>The Carousel is paused by default if the <code>playing</code> attribute is absent, &quot;reduced motion&quot; preference is set, <em>or</em> the device&#39;s primary pointer device cannot hover (i.e. touchscreen).</li>
 </ol>
 </li>
 <li>Responsive play state. If playing:<ol>
-<li>The carousel will temporarily pause itself when any of the following occurs, <em>and</em> will resume when they are no longer true <em>or</em> when the inverse occurs:<ol>
+<li>The Carousel will temporarily pause itself when any of the following occurs, <em>and</em> will resume when they are no longer true <em>or</em> when the inverse occurs:<ol>
 <li>The user hovers over the slide container (mouse or trackpad only).</li>
 <li>An element inside the slide container receives keyboard focus.</li>
-<li>The carousel is not fully in view (due to scrolling).</li>
+<li>The Carousel is not fully in view (due to scrolling).</li>
 <li>The user navigates away from the browser tab or window.</li>
 </ol>
 </li>
-<li>The carousel will permanently pause when any of the following occurs, <em>until</em> the user presses the play button:<ol>
+<li>The Carousel will permanently pause when any of the following occurs, <em>until</em> the user presses the play button:<ol>
 <li>The user presses the pause button.</li>
 <li>The user presses the next or previous buttons.</li>
 <li>The user selects an indicator (clicks or navigates using the arrow keys).</li>
@@ -213,41 +221,29 @@ the terminal). #}
 </li>
 </ol>
 <p><small>* Except where otherwise noted, advancing &quot;forward&quot; when the last slide is active means returning to the first slide (recycling); and vice versa, advancing &quot;backward&quot; when the first slide is active means recycling to the last slide.</small></p>
-<p><small>** Scrolling (with a mouse or trackpad, as opposed to swiping with a touchscreen) is excluded from triggering a pause, because it inherits the temporary pause scenario of the hover state. The carousel will resume playing when the cursor exits the slide container, a condition that doesn&#39;t exist with touchscreen devices.</small></p>
+<p><small>** Scrolling (with a mouse or trackpad, as opposed to swiping with a touchscreen) is excluded from triggering a pause, because it inherits the temporary pause scenario of the hover state. The Carousel will resume playing when the cursor exits the slide container, a condition that doesn&#39;t exist with touchscreen devices.</small></p>
 </div>
 </details>
 
 <h4 id="screen-reader-announcements">Screen reader announcements</h4>
-<p>When the carousel is not playing, the element that contains the slides (<code>[part=viewport]</code>) has an <code>aria-live</code> attribute of <code>polite</code>. The result is that, when using a screen reader, after a new slide becomes visible (by selecting an indicator or arrow button), it is read to the user after the user becomes idle (so as to not interrupt other announcements).</p>
-<p>However, if a carousel is playing (auto-forwarding), <code>aria-live</code> is set to <code>off</code> so that changes are not announced. The user would have to focus inside the carousel for the slide contents to be read, at which point the carousel will pause itself due to the received focus. This is to minimize distractions and interruptions, and simplify the experience of the screen reader user with a carousel. However, be cautioned that this may limit discoverability of carousel content.</p>
+<p>When the Carousel is not playing, the element that contains the slides (<code>[part=viewport]</code>) has an <code>aria-live</code> attribute of <code>polite</code>. The result is that, when using a screen reader, after a new slide becomes visible (by selecting an indicator or arrow button), it is read to the user after the user becomes idle (so as to not interrupt other announcements).</p>
+<p>However, if a Carousel is playing, <code>aria-live</code> is set to <code>off</code> so that changes are not announced. The user would have to focus inside the Carousel for the slide contents to be read, at which point the Carousel will pause itself due to the received focus. This is to limit intrusiveness and interruptions, and simplify the screen reader experience.</p>
 <h4 id="tabs-pattern-implementation">Tabs pattern implementation</h4>
-<p>The screen reader experience and semantic meaning of the Carousel component is functionally identical to the <a href="/components/tabs">Tabs</a> component (with added features). As a result, this component inherits the <a href="/components/tabs#accessibility">accessibility details of the Tabs component</a>.</p>
-<p>Carousel reuses Tabs&#39; semantics and interaction design, extending the source code to layer functionality for next and previous navigation, playing, and pausing. The indicator dots are converted tab buttons (<code>[role=tab]</code>), and the slides are converted tab panels (<code>[role=tabpanel]</code> with <code>[aria-roledescription=slide]</code>).</p>
+<p>The screen reader experience and semantic meaning of the Carousel component is effectively the same as the <a href="/components/tabs">Tabs</a> component, but with added features. Therefore, this component inherits the <a href="/components/tabs#accessibility">accessibility details of the Tabs component</a>.</p>
+<p>Carousel reuses Tabs&#39; semantics and interaction design, simply adding next/previous navigation, playing/pausing, and expanding/collapsing. The indicator dots are converted tab buttons (<code>[role=tab]</code>), and the slides are converted tab panels (<code>[role=tabpanel]</code>, with <code>[aria-roledescription=slide]</code>).</p>
 <h2 id="api">API</h2>
-<table class="table api-table">
-  <thead>
-    <tr>
-      <th>Property</th>
-      <th>Type</th>
-      <th>Description</th>
-      <th>Required</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td id="timing-property"><code>timing</code></td>
-      <td>integer</td>
-      <td>The time between slides in milliseconds.</td>
-      <td>no</td>
-    </tr>
-    <tr>
-      <td><code>paused</code></td>
-      <td>boolean</td>
-      <td>Whether the Carousel is paused by default. Only applicable given a <code>timing</code> attribute is present.</td>
-      <td>no</td>
-    </tr>
-  </tbody>
-</table>
+
+{{ include("@tch/includes/api.html.twig", {
+  properties: [
+    {
+      name: "timing",
+      type: "integer",
+      description: "The time between slides in milliseconds.",
+      required: "no",
+    },
+  ]
+}) }}
+
 
 <p>Source code: <a href="https://github.com/jacecotton/tcds/blob/main/assets/scripts/components/Carousel.js">Carousel.js</a>, <a href="https://github.com/jacecotton/tcds/blob/main/assets/styles/%40tcds/components/carousel.scss">carousel.scss</a></p>
 <h2 id="citations">Citations</h2>

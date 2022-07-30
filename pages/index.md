@@ -49,7 +49,6 @@ First, read the [Getting Started](/getting-started) page, then select a category
 twig-->
 
 ## Goals
-
 <!--twig
 {{ include("@tcds/components/message/message.html.twig", {
   content: "This section is a <strong>work in progress</strong>. Please check back later.",

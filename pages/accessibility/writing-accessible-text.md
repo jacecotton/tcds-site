@@ -4,13 +4,10 @@ lead-->
 
 <!--twig
   {{ include("@tcds/components/message/message.html.twig", {
-    content: "<strong>This document is not comprehensive.</strong> It is primarily aimed at authoring accessible text from a technical perspective. Other than some basics, it does not cover general editorial guidelines for accessibility.",
+    content: "<strong>This document is not comprehensive.</strong> It is primarily aimed at authoring accessible text from a technical perspective. It does not cover prose and general editorial guidelines for accessibility.",
     modifiers: ["attention"],
   }) }}
 twig-->
-
-## General guidance
-**Use clear language and a common vocabulary.** Avoid wording that's overly esoteric, abstract, or lengthy. Users impacted range from those with cognitive and learning disabilities to situational challenges (time constraints, multitasking).
 
 ## Headings
 Headings, H1 through H6, help break up and organize sections of content. It is important to include them to allow:
@@ -46,7 +43,7 @@ Instead, be explicit so the link makes sense without context:
 
 > Get more [information about vaccines](#example).
 
-This provides two other benefits aside from accessibility. It helps with SEO, as it helps algorithms better understand the purpose, intent, and content of a page's links. It also improves usability for sighted users, providing a stronger [information scent](https://www.nngroup.com/articles/information-scent/ "Information Scent: How Users Decide Where to Go Next — Nielsen Norman Group") and, in most cases, a larger [touch target](https://www.w3.org/WAI/WCAG21/Understanding/target-size.html "Understanding Success Criterion 2.5.5: Target Size — W3.org").
+This provides two other benefits aside from accessibility. It helps search engines better understand the purpose, intent, and content of a page's links, and improves usability for sighted users, providing a stronger [information scent](https://www.nngroup.com/articles/information-scent/ "Information Scent: How Users Decide Where to Go Next — Nielsen Norman Group") and, in most cases, a larger [touch target](https://www.w3.org/WAI/WCAG21/Understanding/target-size.html "Understanding Success Criterion 2.5.5: Target Size — W3.org").
 
 ## Alternative image text
 The `alt` attribute contains **alternative text** to images. It is used by:
@@ -60,17 +57,17 @@ The `alt` attribute contains **alternative text** to images. It is used by:
 ### How to write alt text
 Alternative text should be a literal description of the image. While not overly sterilizing the tone of the text, the goal should be to convey the same _visual_ information to a visually impaired user as a sighted user would receive by looking at the image. In effect, the text should function as a suitable substitute to the image.
 
-Avoid contextual, implied, or subjective information:
+Avoid narrative information:
 
 > Dr. Smith giving a patient an annual checkup.
 
 This description leaves all visual details up to the user's imagination.
 
-Instead, prefer literal, objective, and visual information:
+Instead, prefer visually descriptive information:
 
 > Doctor applying stethoscope to patient's chest in her office.
 
-Note that there is a place for descriptions like the former example: [thumbnail captions](/primitives/images#thumbnail-captions). These are marked up with `figcaption` elements, and are visibly displayed (usually beneath the image). Their purpose is to provide deeper meaning to the image that places it in context. It should be information given to all users, sighted and visually impaired alike.
+Note that there is a place for narrative descriptions like the former example: [thumbnail captions](/primitives/images#thumbnail-captions). These are marked up with `figcaption` elements, and are visibly displayed (usually beneath the image). Their purpose is to provide deeper meaning to the image that places it in context. It should be information given to all users, sighted and visually impaired alike.
 
 ## Further reading
 * [Lower-Literacy Users: Writing for a Broad Consumer Audience](https://www.nngroup.com/articles/writing-for-lower-literacy-users/) — Nielsen Norman Group

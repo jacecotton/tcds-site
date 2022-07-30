@@ -5,13 +5,11 @@ the terminal). #}
 {% block lead %}How text content is written and rendered has significant accessibility implications. It can make the difference between an inclusive experience for users with disabilities, and one that's frustrating, excluding, or unusable.{% endblock %}
 {% block body %}
 {{ include("@tcds/components/message/message.html.twig", {
-    content: "<strong>This document is not comprehensive.</strong> It is primarily aimed at authoring accessible text from a technical perspective. Other than some basics, it does not cover general editorial guidelines for accessibility.",
+    content: "<strong>This document is not comprehensive.</strong> It is primarily aimed at authoring accessible text from a technical perspective. It does not cover prose and general editorial guidelines for accessibility.",
     modifiers: ["attention"],
   }) }}
 
 
-<h2 id="general-guidance">General guidance</h2>
-<p><strong>Use clear language and a common vocabulary.</strong> Avoid wording that&#39;s overly esoteric, abstract, or lengthy. Users impacted range from those with cognitive and learning disabilities to situational challenges (time constraints, multitasking).</p>
 <h2 id="headings">Headings</h2>
 <p>Headings, H1 through H6, help break up and organize sections of content. It is important to include them to allow:</p>
 <ul>
@@ -38,7 +36,7 @@ the terminal). #}
 <blockquote>
 <p>Get more <a href="#example">information about vaccines</a>.</p>
 </blockquote>
-<p>This provides two other benefits aside from accessibility. It helps with SEO, as it helps algorithms better understand the purpose, intent, and content of a page&#39;s links. It also improves usability for sighted users, providing a stronger <a href="https://www.nngroup.com/articles/information-scent/" title="Information Scent: How Users Decide Where to Go Next — Nielsen Norman Group">information scent</a> and, in most cases, a larger <a href="https://www.w3.org/WAI/WCAG21/Understanding/target-size.html" title="Understanding Success Criterion 2.5.5: Target Size — W3.org">touch target</a>.</p>
+<p>This provides two other benefits aside from accessibility. It helps search engines better understand the purpose, intent, and content of a page&#39;s links, and improves usability for sighted users, providing a stronger <a href="https://www.nngroup.com/articles/information-scent/" title="Information Scent: How Users Decide Where to Go Next — Nielsen Norman Group">information scent</a> and, in most cases, a larger <a href="https://www.w3.org/WAI/WCAG21/Understanding/target-size.html" title="Understanding Success Criterion 2.5.5: Target Size — W3.org">touch target</a>.</p>
 <h2 id="alternative-image-text">Alternative image text</h2>
 <p>The <code>alt</code> attribute contains <strong>alternative text</strong> to images. It is used by:</p>
 <ul>
@@ -49,16 +47,16 @@ the terminal). #}
 <p><strong>All images must have an <code>alt</code> attribute.</strong> All images that are not purely decorative must have text in this <code>alt</code> attribute. This is not only an accessibility mandate, but an SEO one.</p>
 <h3 id="how-to-write-alt-text">How to write alt text</h3>
 <p>Alternative text should be a literal description of the image. While not overly sterilizing the tone of the text, the goal should be to convey the same <em>visual</em> information to a visually impaired user as a sighted user would receive by looking at the image. In effect, the text should function as a suitable substitute to the image.</p>
-<p>Avoid contextual, implied, or subjective information:</p>
+<p>Avoid narrative information:</p>
 <blockquote>
 <p>Dr. Smith giving a patient an annual checkup.</p>
 </blockquote>
 <p>This description leaves all visual details up to the user&#39;s imagination.</p>
-<p>Instead, prefer literal, objective, and visual information:</p>
+<p>Instead, prefer visually descriptive information:</p>
 <blockquote>
 <p>Doctor applying stethoscope to patient&#39;s chest in her office.</p>
 </blockquote>
-<p>Note that there is a place for descriptions like the former example: <a href="/primitives/images#thumbnail-captions">thumbnail captions</a>. These are marked up with <code>figcaption</code> elements, and are visibly displayed (usually beneath the image). Their purpose is to provide deeper meaning to the image that places it in context. It should be information given to all users, sighted and visually impaired alike.</p>
+<p>Note that there is a place for narrative descriptions like the former example: <a href="/primitives/images#thumbnail-captions">thumbnail captions</a>. These are marked up with <code>figcaption</code> elements, and are visibly displayed (usually beneath the image). Their purpose is to provide deeper meaning to the image that places it in context. It should be information given to all users, sighted and visually impaired alike.</p>
 <h2 id="further-reading">Further reading</h2>
 <ul>
 <li><a href="https://www.nngroup.com/articles/writing-for-lower-literacy-users/">Lower-Literacy Users: Writing for a Broad Consumer Audience</a> — Nielsen Norman Group</li>

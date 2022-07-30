@@ -30,7 +30,7 @@ The Design System provides [CSS Grid](https://developer.mozilla.org/en-US/docs/W
 </table>
 
 <style>
-  .grid.example > div {
+  .grid--example > div {
     background: #d5e3ff;
     padding: 1rem;
     border-radius: .5rem;
@@ -39,11 +39,11 @@ The Design System provides [CSS Grid](https://developer.mozilla.org/en-US/docs/W
 </style>
 
 <!--twig
-{% embed "@tch/includes/example-box/example-box.html.twig" %}
+{% embed "@tch/includes/example.html.twig" %}
 {% block result %}
 <p><small>Resize the window to see responsive changes to the column spans.</small></p>
 
-<div class="grid example gap-normal">
+<div class="grid grid--example gap-normal">
   <div class="column-full above-medium:column-6 above-large:column-3">
     <span class="hide-above-medium">12/12</span>
     <span class="hide-below-medium hide-above-large">6/12</span>
@@ -105,11 +105,11 @@ If you want grid items to fill whatever available cell is created by the grid co
 </table>
 
 <!--twig
-{% embed "@tch/includes/example-box/example-box.html.twig" %}
+{% embed "@tch/includes/example.html.twig" %}
 {% block result %}
 <p><small>Resize the window to see responsive changes to the grid column count.</small></p>
 
-<div class="grid example gap-normal" style="
+<div class="grid grid--example gap-normal" style="
   --grid-columns-default: 2;
   --above-medium-grid-columns: 4;
   --above-large-grid-columns: 6;
@@ -330,7 +330,7 @@ Spacing tokens are also available as utility classes for the `gap` property in g
 Breakpoint tokens are also available in utility classes for hiding content based on the screen size. The class format is `.hide-below-[breakpoint]` or `.hide-above-[breakpoint]`. Example:
 
 <!--twig
-{% embed "@tch/includes/example-box/example-box.html.twig" %}
+{% embed "@tch/includes/example.html.twig" %}
 {% block content %}
 <span class="hide-below-small">Content not for screen sizes below 640px.</span>
 <span class="hide-above-medium">Content not for screen sizes above 768px.</span>

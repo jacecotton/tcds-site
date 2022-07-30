@@ -3,7 +3,7 @@
  * integrated with Texas Children's Design System.
  *
  * Of note is the INPUT_PATH and OUTPUT_PATH variables in the "Configuration"
- * section below (lines 50 through 52). If your project's directory structure
+ * section below (lines 44 and 45). If your project's directory structure
  * differs, change these variables as necessary. Otherwise, no further changes
  * are needed.
  *
@@ -68,9 +68,7 @@ const tasks = {
       // Preprocessing (Sass).
       .pipe(sass({
         outputStyle: "compressed",
-        // This will make Sass imports look inside the TCDS node package. Inside
-        // the `styles` folder is a `@tcds` folder, so any Sass imports that
-        // begin with `@tcds` will import from the Design System.
+        // This will make Sass imports look inside the TCDS node package.
         includePaths: ["./node_modules/@txch/tcds/assets/styles"],
       }))
       // Post-processing (PostCSS).
@@ -104,13 +102,6 @@ const tasks = {
               ],
             },
           ],
-        },
-        resolve: {
-          alias: {
-            // This will make JavaScript module imports that begin with "@tcds"
-            // look inside the TCDS package.
-            "@tcds": resolve(join(), "./node_modules/@txch/tcds/assets/scripts/"),
-          },
         },
       }))
       // Write sourcemaps.

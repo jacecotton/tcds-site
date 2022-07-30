@@ -16,7 +16,7 @@
     "slugify": "^1.6.1",
     "twing": "^5.1.0",
     "twing-drupal-filters": "^0.0.2",
-    "@txch/tcds": "^0.53.2"
+    "@txch/tcds": "^0.53.6"
   },
   "devDependencies": {
     "@babel/core": "^7.17.2",

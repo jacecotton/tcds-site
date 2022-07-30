@@ -1,0 +1,15 @@
+<section class="example" role="doc-example">
+  <div class="example__result">
+    {% block result %}
+      {% block content %}{% endblock %}
+    {% endblock %}
+  </div>
+  <div class="example__code">
+    <details>
+      <summary>View code</summary>
+      <div>
+        <pre class="line-numbers language-{{ language ? language|clean_class : "html" }}"><code class="language-{{ language ? language|clean_class : "html" }}">{{ block("code") is defined ? block("code")|escape : block("content")|escape }}</pre>
+      </div>
+    </details>
+  </div>
+</section>
