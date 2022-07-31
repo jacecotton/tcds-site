@@ -184,7 +184,7 @@ to which the component will be limited when
       required: "no",
     },
     {
-      name: "dividier",
+      name: "divider",
       type: "boolean",
       description: "Adds an accentual divider between the image and content when vertically oriented. To enable, add the attribute with no value. To disable, omit the attribute.",
       required: "no",
