@@ -2,407 +2,135 @@
 file and run the gulp process to compile (either `gulp` or `npm run dev` from
 the terminal). #}
 {% extends "@tch/base.twig" %}
-{% block lead %}An accordion is a group of sections collapsed under headers. Users can expand a section by tapping or clicking the header.{% endblock %}
+{% block lead %}Accordions collapse content under associated headings. Users can then click the headings to disclose the content.{% endblock %}
 {% block body %}
-{{ include("@tcds/components/accordion/accordion.html.twig", {
-    sections: [
-      {
-        heading: "Example accordion",
-        content: "Hello world!",
-      },
-    ],
-  }) }}
+{% embed "@tch/includes/example.html.twig" %}
+{% block content %}
+<tcds-accordion>
+  <tcds-accordion-section label="Example section 1">
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+      eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+      enim ad minim veniam, quis nostrud exercitation ullamco laboris
+      nisi ut aliquip ex ea commodo consequat.
+    </p>
+  </tcds-accordion-section>
+  <tcds-accordion-section label="Example section 2">
+    <p>
+      Lorem ipsum is simply dummy text of the printing and typesetting
+      industry. Lorem ipsum has been the industry's standard dummy text
+      ever since the 1500s, when an unknown printer took a galley of 
+      type and scrambled it to make a type specimen book.
+    </p>
+  </tcds-accordion-section>
+  <tcds-accordion-section label="Example section 3">
+    <p>
+      Contrary to popular belief, Lorem Ipsum is not simply random text.
+      It has roots in a piece of classical Latin literature from 45 BC,
+      making it over two millennia old.
+    </p>
+  </tcds-accordion-section>
+</tcds-accordion>
+{% endblock %}
+{% endembed %}
 
 
-<hr>
 <h2 id="best-practices">Best practices</h2>
-<p><strong>Use specific but concise section labels.</strong> There is an inherent <a href="https://www.nngroup.com/articles/interaction-cost-definition/" title="Interaction Cost - Nielsen Norman Group">interaction cost</a> to accordions that may cause users to miss or ignore the content. Ensure your labels are concise enough to be read quickly, but descriptive enough to provide a strong <a href="https://www.nngroup.com/articles/information-scent/">information scent</a>.</p>
+<p><strong>Use specific but concise section labels.</strong> There is an inherent <a href="https://www.nngroup.com/articles/interaction-cost-definition/" title="Interaction Cost - Nielsen Norman Group">interaction cost</a> to Accordions that may cause users to miss or ignore the content. Ensure your labels are concise enough to be read quickly, but descriptive enough to provide a strong <a href="https://www.nngroup.com/articles/information-scent/">information scent</a>.</p>
 <h3 id="when-to-use">When to use</h3>
-<p><strong>Progressive disclosure.</strong> When it would be more helpful to present a user with a choice before revealing content within a page. Sometimes, only certain sections of content on a page are likely to be relevant to a user, even if all the sections do belong on the page due to the nature of the topic (like with a Frequently Asked Questions page).</p>
+<p><strong>Progressive disclosure.</strong> When it would be more helpful to present a user with a choice before revealing content within a page. Sometimes, only certain sections of content on a page are likely to be relevant to a user, even if all the sections do belong on the page due to the nature of the topic (like with a &quot;Frequently Asked Questions&quot; page).</p>
 <p><strong>Navigation assistance.</strong> Sometimes, a page may become too long to be comfortably navigated. If it cannot be simplified or split into multiple pages, an accordion can help condense content to make it less cumbersome to navigate.</p>
 <h3 id="when-not-to-use">When not to use</h3>
 <p><strong>Low engagement or low discoverability.</strong> If there is evidence to suggest users cannot or are not accessing the content they&#39;re looking for, show it by default.</p>
 <p><strong>The use case fits a different pattern better.</strong> Consider one of the following:</p>
 <ul>
 <li><a href="/components/tabs">Tabs</a>, which are more useful for quick comparison between different content of the same information type. Tabs do not move position when selected, making navigation between them faster and easier.</li>
-<li><a href="/components/table-of-contents">Table of Contents</a>, which works better for navigating content that is expected to be read in full and in sequence.<span data-footnote><a href="https://www.nngroup.com/articles/in-page-links/">&quot;Anchors OK? Re-Assessing In-Page Links&quot;</a> — Nielsen Norman Group</span> They also provide a simpler overview to examine before scrolling.</li>
+<li><a href="/components/table-of-contents">Table of Contents</a>, which works better for navigating content that is expected to more-or-less be read in full and in sequence.<span data-footnote><a href="https://www.nngroup.com/articles/in-page-links/">&quot;Anchors OK? Re-Assessing In-Page Links&quot;</a> — Nielsen Norman Group</span></li>
 <li><a href="/primitives/details">Details</a>, which work better for collapsing a single, independent section.</li>
 </ul>
-<h2 id="examples">Examples</h2>
-<h3 id="default-accordion">Default accordion</h3>
-<p>By default, only one section is expandable at a time. This tends to work best for selectively disclosing topics that are not necessarily related to one another.</p>
-
-{% embed "@tch/includes/example-box/example-box.html.twig" with {
-  transparent_background: true,
-  examples: {
-    "Twig": '{{ include("@tcds/components/accordion/accordion.html.twig", {
-  heading_level: "3",
-  sections: [
-    {
-      heading: "Section 1",
-      content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod ...",
-    },
-    {
-      heading: "Section 2",
-      content: "Lorem ipsum is simply dummy text of the printing and typesetting industry ...",
-    },
-    {
-      heading: "Section 3",
-      content: "Contrary to popular belief, lorem ipsum is not simply random text. It has ...",
-    },
-  ],
-}) }}',
-    "HTML": '<div class="Accordion" data-component="Accordion">
-  <section class="Accordion__section">
-    <h3 class="Accordion__heading">
-      <button data-component-part="panel-toggle" class="Accordion__button" id="section-1-button" aria-controls="section-1-panel">
-        Section 1\n
-        <span class="Icon Accordion__icon">
-          <!-- Icon code copied from src/tcds/icons/chevron-down.svg --\>
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square">
-            <path d="M6 9l6 6 6-6"/>
-          </svg>
-        </span>
-      </button>
-    </h3>\n
-    <div data-component-part="panel" class="Accordion__panel" id="section-1-panel" aria-labelledby="section-1-button">
-      <div class="Accordion__content">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod ...
-      </div>
-    </div>
-  </section>\n
-  <section class="Accordion__section">
-    <h3 class="Accordion__heading">
-      <button data-component-part="panel-toggle" class="Accordion__button" id="section-2-button" aria-controls="section-2-panel">
-        Section 2\n
-        <span class="Icon Accordion__icon">
-          <!-- Icon code copied from src/tcds/icons/chevron-down.svg --\>
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square">
-            <path d="M6 9l6 6 6-6"/>
-          </svg>
-        </span>
-      </button>
-    </h3>\n
-    <div data-component-part="panel" class="Accordion__panel" id="section-2-panel" aria-labelledby="section-2-button">
-      <div class="Accordion__content">
-        Lorem ipsum is simply dummy text of the printing and typesetting industry ...
-      </div>
-    </div>
-  </section>\n
-  <section class="Accordion__section">
-    <h3 class="Accordion__heading">
-      <button data-component-part="panel-toggle" class="Accordion__button" id="section-3-button" aria-controls="section-3-panel">
-        Section 3\n
-        <span class="Icon Accordion__icon">
-          <!-- Icon code copied from src/tcds/icons/chevron-down.svg --\>
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square">
-            <path d="M6 9l6 6 6-6"/>
-          </svg>
-        </span>
-      </button>
-    </h3>\n
-    <div data-component-part="panel" class="Accordion__panel" id="section-3-panel" aria-labelledby="section-3-button">
-      <div class="Accordion__content">
-        Contrary to popular belief, lorem ipsum is not simply random text. It has ...
-      </div>
-    </div>
-  </section>
-</div>',
-  },
-} %}
-  {% block result %}
-    {{ include("@tcds/components/accordion/accordion.html.twig", {
-      sections: [
-        {
-          heading: "Section 1",
-          content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-        },
-        {
-          heading: "Section 2",
-          content: "Lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
-        },
-        {
-          heading: "Section 3",
-          content: "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.",
-        },
-      ],
-    }) }}
-  {% endblock %}
-{% endembed %}
-
-
+<h2 id="usage">Usage</h2>
 <h3 id="multiselectable">Multiselectable</h3>
-<p>To allow multiple panels to open at one time, use the <a href="#modifiers-property"><code>multiselectable</code> modifier</a>. This works best if a user may want to compare two or more panels at a time.</p>
+<p>To allow multiple panels to open at one time, set the <a href="#mode-property"><code>mode</code> property</a> to <code>multiselectable</code>.</p>
 <p>As a usability requirement, controls to expand or collapse all panels at once are automatically added.</p>
 
-{% embed "@tch/includes/example-box/example-box.html.twig" with {
-  transparent_background: true,
-  examples: {
-    "Twig": '{{ include("@tcds/components/accordion/accordion.html.twig", {
-  heading_level: "3",
-  modifiers: ["multiselectable"],
-  sections: [
-    {
-      heading: "Multiselectable section 1",
-      content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod ...",
-    },
-    {
-      heading: "Multiselectable section 2",
-      content: "Lorem ipsum is simply dummy text of the printing and typesetting industry ...",
-    },
-    {
-      heading: "Multiselectable section 3",
-      content: "Contrary to popular belief, lorem ipsum is not simply random text. It has ...",
-    },
-  ],
-}) }}',
-    "HTML": '<div class="Accordion Accordion--multiselectable" data-component="Accordion">
-  <ul class="Accordion__controls" aria-label="Accordion controls">
-    <li><button data-component-part="expand-all" class="Accordion__control Button Button--small Button--ghost Button--round">expand all</button></li>
-    <li><button data-component-part="collapse-all" class="Accordion__control Button Button--small Button--ghost Button--round">collapse all</button></li>
-  </ul>\n
-  <section class="Accordion__section">
-    <h3 class="Accordion__heading">
-      <button data-component-part="panel-toggle" class="Accordion__button" id="multiselectable-section-1-button" aria-controls="multiselectable-section-1-panel">
-        Multiselectable section 1\n
-        <span class="Icon Accordion__icon">
-          <!-- Icon code copied from src/tcds/icons/chevron-down.svg --\>
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square">
-            <path d="M6 9l6 6 6-6"/>
-          </svg>
-        </span>
-      </button>
-    </h3>\n
-    <div data-component-part="panel" class="Accordion__panel" id="multiselectable-section-1-panel" aria-labelledby="multiselectable-section-1-button">
-      <div class="Accordion__content">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod ...
-      </div>
-    </div>
-  </section>\n
-  <section class="Accordion__section">
-    <h3 class="Accordion__heading">
-      <button data-component-part="panel-toggle" class="Accordion__button" id="multiselectable-section-2-button" aria-controls="multiselectable-section-2-panel">
-        Multiselectable section 2\n
-        <span class="Icon Accordion__icon">
-          <!-- Icon code copied from src/tcds/icons/chevron-down.svg --\>
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square">
-            <path d="M6 9l6 6 6-6"/>
-          </svg>
-        </span>
-      </button>
-    </h3>\n
-    <div data-component-part="panel" class="Accordion__panel" id="multiselectable-section-2-panel" aria-labelledby="multiselectable-section-2-button">
-      <div class="Accordion__content">
-        Lorem ipsum is simply dummy text of the printing and typesetting industry ...
-      </div>
-    </div>
-  </section>\n
-  <section class="Accordion__section">
-    <h3 class="Accordion__heading">
-      <button data-component-part="panel-toggle" class="Accordion__button" id="multiselectable-section-3-button" aria-controls="multiselectable-section-3-panel">
-        Multiselectable section 3\n
-        <span class="Icon Accordion__icon">
-          <!-- Icon code copied from src/tcds/icons/chevron-down.svg --\>
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square">
-            <path d="M6 9l6 6 6-6"/>
-          </svg>
-        </span>
-      </button>
-    </h3>\n
-    <div data-component-part="panel" class="Accordion__panel" id="multiselectable-section-3-panel" aria-labelledby="multiselectable-section-3-button">
-      <div class="Accordion__content">
-        Contrary to popular belief, lorem ipsum is not simply random text. It has ...
-      </div>
-    </div>
-  </section>
-</div>',
-  },
-} %}
-  {% block result %}
-    {{ include("@tcds/components/accordion/accordion.html.twig", {
-      modifiers: ["multiselectable"],
-      sections: [
-        {
-          heading: "Multiselectable section 1",
-          content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-        },
-        {
-          heading: "Multiselectable section 2",
-          content: "Lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
-        },
-        {
-          heading: "Multiselectable section 3",
-          content: "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.",
-        },
-      ],
-    }) }}
-  {% endblock %}
+{% embed "@tch/includes/example.html.twig" %}
+{% block content %}
+<tcds-accordion mode="multiselectable">
+  <tcds-accordion-section label="Multiselectable section 1">
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+      eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+      enim ad minim veniam, quis nostrud exercitation ullamco laboris
+      nisi ut aliquip ex ea commodo consequat.
+    </p>
+  </tcds-accordion-section>
+  <tcds-accordion-section label="Multiselectable section 2">
+    <p>
+      Lorem ipsum is simply dummy text of the printing and typesetting
+      industry. Lorem ipsum has been the industry's standard dummy text
+      ever since the 1500s, when an unknown printer took a galley of 
+      type and scrambled it to make a type specimen book.
+    </p>
+  </tcds-accordion-section>
+  <tcds-accordion-section label="Multiselectable section 3">
+    <p>
+      Contrary to popular belief, Lorem Ipsum is not simply random text.
+      It has roots in a piece of classical Latin literature from 45 BC,
+      making it over two millennia old.
+    </p>
+  </tcds-accordion-section>
+</tcds-accordion>
+{% endblock %}
 {% endembed %}
 
 
-<h3 id="slots">Slots</h3>
-<p>Normally, with the <a href="#sections-content-property"><code>content</code> property</a>, you are limited to a static string. With slots, you can insert fully custom code, such as HTML or additional Twig components. This requires that you <code>embed</code> the component rather than <code>include</code> it, define a new block, then reference that block in a section&#39;s object using the <a href="#sections-block-property"><code>block</code> property</a>.</p>
-
-{% embed "@tch/includes/example-box/example-box.html.twig" with {
-  transparent_background: true,
-  examples: {
-    "Twig": '{% embed "@tcds/components/accordion/accordion.html.twig" with {
-  heading_level: "3",
-  sections: [
-    {
-      heading: "Slot example 1",
-      block: "content_1",
-    },
-    {
-      heading: "Slot example 2",
-      content: "With the content property, you are restricted to a plain text string.",
-    },
-  ],
-} %}
-  {% block content_1 %}
-    With slots, you can <strong>insert custom code</strong>. You can use additional components, or <em>plain HTML</em>.
-  {% endblock %}
-{% endembed %}',
-    "HTML": '<div class="Accordion" data-component="Accordion">
-  <section class="Accordion__section">
-    <h3 class="Accordion__heading">
-      <button data-component-part="panel-toggle" class="Accordion__button" id="slot-example-1-button" aria-controls="slot-example-1-panel">
-        Slot example 1\n
-        <span class="Icon Accordion__icon">
-          <!-- Icon code copied from src/tcds/icons/chevron-down.svg --\>
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square">
-            <path d="M6 9l6 6 6-6"/>
-          </svg>
-        </span>
-      </button>
-    </h3>\n
-    <div data-component-part="panel" class="Accordion__panel" id="slot-example-1-panel" aria-labelledby="slot-example-1-button">
-      <div class="Accordion__content">
-        With slots, you can <strong>insert custom code</strong>. You can use additional components, or <em>plain HTML</em>.
-      </div>
-    </div>
-  </section>\n
-  <section class="Accordion__section">
-    <h3 class="Accordion__heading">
-      <button data-component-part="panel-toggle" class="Accordion__button" id="slot-example-2-button" aria-controls="slot-example-2-panel">
-        Slot example 2\n
-        <span class="Icon Accordion__icon">
-          <!-- Icon code copied from src/tcds/icons/chevron-down.svg --\>
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square">
-            <path d="M6 9l6 6 6-6"/>
-          </svg>
-        </span>
-      </button>
-    </h3>\n
-    <div data-component-part="panel" class="Accordion__panel" id="slot-example-2-panel" aria-labelledby="slot-example-2-button">
-      <div class="Accordion__content">
-        With the content property, you are restricted to a plain text string.
-      </div>
-    </div>
-  </section>
-</div>',
-  },
-} %}
-  {% block result %}
-    {% embed "@tcds/components/accordion/accordion.html.twig" with {
-      sections: [
-        {
-          heading: "Slot example 1",
-          block: "content_1",
-        },
-        {
-          heading: "Slot example 2",
-          content: "With the content property, you are restricted to a plain text string.",
-        },
-      ],
-    } %}
-      {% block content_1 %}
-        With slots, you can <strong>insert custom code</strong>. You can use additional components, or <em>plain HTML</em>.
-      {% endblock %}
-    {% endembed %}
-  {% endblock %}
-{% endembed %}
-
-
+<h2 id="implementation">Implementation</h2>
+<h3 id="progressive-enhancement">Progressive enhancement</h3>
+<p>The Accordion is by default</p>
+<ul>
+<li>vertically-stacked sections of plain content with headings</li>
+</ul>
+<p>to which the component will be limited when</p>
+<ul>
+<li>the browser does not support the techniques required for the additional features, or</li>
+<li>the client fails to load the required assets (poor network connection, etc.)</li>
+</ul>
+<h3 id="accessibility">Accessibility</h3>
+<p>The Accordion component was implemented according to the <a href="https://www.w3.org/WAI/ARIA/apg/patterns/accordion/">ARIA Authoring Practices Guide</a>.</p>
 <h2 id="api">API</h2>
+<h3 id="accordion">Accordion</h3>
+ {{ include("@tch/includes/api.html.twig", {
+  properties: [
+    {
+      name: "mode",
+      type: "string",
+      description: "Available option is <code>multiselectable</code>.",
+      required: "no",
+    },
+  ],
+}) }} 
 
-{{ include("@tch/includes/api-table/api-table.html.twig", {
-  properties: {
-    specific: [
-      {
-        name: "heading_level",
-        value: "2–6",
-        type: "string",
-        description: "The <a href='https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements' title='<h1>–<h6>: The HTML Section Heading elements'>HTML heading level</a> of the panel toggle buttons. Not strictly required, but recommended to preserve the accordion content's place in the overall document outline.",
-        required: "no",
-      },
-      {
-        name: "sections",
-        value: "—",
-        type: "array",
-        description: "An array of objects containing information for an accordion section.",
-        required: "yes",
-      },
-      {
-        name: "sections[].heading",
-        value: "—",
-        type: "string",
-        description: "The heading of the accordion section.",
-        required: "yes",
-      },
-      {
-        name: "sections[].content",
-        value: "—",
-        type: "string",
-        description: "The plain text content of the accordion section. Only required if the <code>block</code> property is not used.",
-        required: "no",
-      },
-      {
-        name: "sections[].block",
-        value: "—",
-        type: "string",
-        description: "The name of a custom block used as a content slot (must be used with an <code>embed</code>, see <a href='#slots'>&sect; Slots</a>). Only required if the <code>content</code> property is not used.",
-        required: "no",
-      },
-    ],
-    global: [
-      {
-        name: "modifiers",
-        value: "<ul>
-          <li><code>multiselectable</code></li>
-        </ul>",
-        type: "array",
-        description: "Modifiers specific to the accordion component.",
-        required: "no",
-      },
-      {
-        name: "custom_classes",
-        value: "—",
-        type: "array",
-        description: "Custom classes to add to the component's root element. This may be useful for adding global utilities or custom modifiers.",
-        required: "no",
-      },
-      {
-        name: "custom_attributes",
-        value: "—",
-        type: "array",
-        description: "Custom attributes to add to the component's root element. This may be useful for adding custom JavaScript hooks.",
-        required: "no",
-      },
-    ],
-  }
-}) }}
-
+<h3 id="accordion-section">Accordion section</h3>
+ {{ include("@tch/includes/api.html.twig", {
+  properties: [
+    {
+      name: "label",
+      type: "string",
+      description: "The label of the section.",
+      required: "yes",
+    },
+    {
+      name: "heading-level",
+      type: "integer",
+      description: "The heading level, 1 through 6, of the section headings. Default is 3.",
+      required: "no",
+    },
+  ],
+}) }} 
 
 <h2 id="citations">Citations</h2>
  {{ include("@tch/components/footnotes/footnotes.html.twig") }} 
 
-<h2 id="further-reading">Further reading</h2>
-<p>Additional research, techniques, and guidelines considered in the creation of this component.</p>
-<ul>
-<li><a href="https://www.w3.org/TR/wai-aria-practices-1.2/#accordion">WAI-ARIA Authoring Practices 1.2 &sect; 3.1 Accordion</a> — W3.org</li>
-<li><a href="https://www.nngroup.com/articles/progressive-disclosure/">Progressive Disclosure</a> — Nielsen Norman Group</li>
-</ul>
 <!--
 * https://www.nngroup.com/articles/accordion-icons/ 
 * https://www.nngroup.com/articles/accordions-complex-content/
