@@ -70,7 +70,6 @@ Instead, prefer visually descriptive information:
 Note that there is a place for narrative descriptions like the former example: [thumbnail captions](/primitives/images#thumbnail-captions). These are marked up with `figcaption` elements, and are visibly displayed (usually beneath the image). Their purpose is to provide deeper meaning to the image that places it in context. It should be information given to all users, sighted and visually impaired alike.
 
 ## Further reading
-* [Lower-Literacy Users: Writing for a Broad Consumer Audience](https://www.nngroup.com/articles/writing-for-lower-literacy-users/) — Nielsen Norman Group
 * [Designing for Screen Reader Compatibility &sect; How Screen Readers Read Content](https://webaim.org/techniques/screenreader/#how) — WebAIM
 * [Alternative text](https://webaim.org/techniques/alttext/) — WebAIM
 
