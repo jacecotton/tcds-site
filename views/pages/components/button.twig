@@ -194,29 +194,16 @@ playPause.addEventListener("click", () => {
 {% endembed %}
 
 
-<h2 id="accessibility">Accessibility</h2>
-<h3 id="control-button-association">Control button association</h3>
-<p>If you&#39;re using a button to control the visibility of another element, like to toggle a navigation menu, ensure that the relationship is properly communicated to assistive technology. Specify the ID of the element being manipulated in the button&#39;s <a href="#controls-property"><code>controls</code> property</a> (which corresponds to the <a href="https://www.w3.org/TR/wai-aria-1.1/#aria-controls"><code>aria-controls</code> attribute</a> in HTML).</p>
-
-{% embed "@tch/includes/example.html.twig" %}
-{% block result %}
-<div class="column gap-normal">
-  <tcds-button controls="nav-menu">Toggle navigation</tcds-button>
-  <nav id="nav-menu">toggleable navigation here...</nav>
-</div>
-{% endblock %}
-{% block code %}
-<tcds-button controls="nav-menu">Toggle navigation</tcds-button>
-<nav id="nav-menu">...</nav>
-{% endblock %}
-{% endembed %}
-
-
-<h3 id="touch-target-size">Touch target size</h3>
+<h2 id="implementation">Implementation</h2>
+<h3 id="graceful-degradation">Graceful degradation</h3>
+<p>Because Safari does not support customizing built-in elements, the Button component gracefully degrades where autonomous custom elements are not supported (IE 11), rather than progressively enhances where they are.</p>
+<p>In IE 11, <code>tcds-button</code> elements are queried and replaced with <code>button[data-tcds-button]</code> elements (or <code>a[data-tcds-button]</code> if the <code>link</code> property is present). The Button will function as a button or link, but will not retain any additional features.</p>
+<h3 id="accessibility">Accessibility</h3>
+<h4 id="touch-target-size">Touch target size</h4>
 <p>Research shows touch targets should be a minimum of 1cm &times; 1cm,<span data-footnote><a href="https://www.nngroup.com/articles/touch-target-size/">Touch Targets on Touch Screens</a> — Nielsen Norman Group</span> which is enforced by this component&#39;s stylesheet. Having a sufficient touch target size increases general usability for all users, but most notably accomodates users with motor function and vision impairments.</p>
-<h3 id="icon-only-buttons">Icon-only buttons</h3>
-<p>Always provide a text label for buttons, even if you only want an icon to display. The <code>only</code> value of the <code>icon</code> attribute will visually hide the label, using it instead as the <a href="https://www.w3.org/TR/WCAG20-TECHS/ARIA14.html">ARIA label</a> for screen readers, and the <code>title</code> tooltip for mouse users.</p>
-<p>While icon-only buttons are possible, try to always keep the text label visible; what an icon is supposed to represent may not be clear to users of different backgrounds and abilities.</p>
+<h4 id="icon-only-buttons">Icon-only buttons</h4>
+<p>Always provide a text label for buttons, even if you only want an icon to display. The <code>only</code> value of the <code>icon</code> attribute will visually hide the label, using it instead as the <a href="https://www.w3.org/TR/WCAG20-TECHS/ARIA14.html"><code>aria-label</code> attribute</a> for screen readers, and the <code>title</code> tooltip for mouse users.</p>
+<p>While icon-only buttons are possible, try to always keep the text label visible; what an icon is supposed to represent may not be clear or efficiently understood.</p>
 <h2 id="api">API</h2>
 
 {{ include("@tch/includes/api.html.twig", {

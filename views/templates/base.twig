@@ -13,6 +13,25 @@
   <link href="/favicon.png" rel="shortcut icon" type="image/png">
   <meta name="theme-color" content="#da2530">
 
+  <script>
+    if(window.MSInputMethodContext && document.documentMode) {
+      document.write(
+        "<link href='/styles/ie/tcds.ie.css' rel='stylesheet'>"
+        + "<script src='https://cdn.jsdelivr.net/gh/nuxodin/ie11CustomProperties@4.1.0/ie11CustomProperties.min.js'><\x2fscript>"
+      );
+
+      if("NodeList" in window && !NodeList.prototype.forEach) {
+        NodeList.prototype.forEach = function(callback, thisArg) {
+          thisArg = thisArg || window;
+
+          for(var i = 0; i < this.length; i++) {
+            callback.call(thisArg, this[i], i, this);
+          }
+        }
+      }
+    }
+  </script>
+
   {% block head %}{% endblock %}
 </head>
 <body class="page-{{ title|clean_class }} category-{{ category|clean_class }} line-numbers preload">
@@ -51,6 +70,25 @@
     </aside>
   </main>
 
+<script>
+if(window.MSInputMethodContext && document.documentMode) {
+  document.querySelectorAll("tcds-button").forEach(function(tcdsButton) {
+    if(tcdsButton.hasAttribute("link")) {
+      var a = document.createElement("a");
+      a.setAttribute("data-tcds-button", "");
+      a.setAttribute("href", tcdsButton.getAttribute("link"));
+      a.innerHTML = tcdsButton.innerHTML;
+      tcdsButton.parentNode.replaceChild(a, tcdsButton);
+    } else {
+      var button = document.createElement("button");
+      button.setAttribute("data-tcds-button", "");
+      button.setAttribute("type", tcdsButton.getAttribute("type") || "button");
+      button.innerHTML = tcdsButton.innerHTML;
+      tcdsButton.parentNode.replaceChild(button, tcdsButton);
+    }
+  });
+}
+</script>
 <script async src="/scripts/main.js"></script>
 {% block scripts %}{% endblock %}
 </body>

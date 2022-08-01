@@ -207,32 +207,20 @@ playPause.addEventListener("click", () => {
 {% endembed %}
 twig-->
 
-## Accessibility
-### Control button association
-If you're using a button to control the visibility of another element, like to toggle a navigation menu, ensure that the relationship is properly communicated to assistive technology. Specify the ID of the element being manipulated in the button's [`controls` property](#controls-property) (which corresponds to the [`aria-controls` attribute](https://www.w3.org/TR/wai-aria-1.1/#aria-controls) in HTML).
+## Implementation
+### Graceful degradation
+Because Safari does not support customizing built-in elements, the Button component gracefully degrades where autonomous custom elements are not supported (IE 11), rather than progressively enhances where they are.
 
-<!--twig
-{% embed "@tch/includes/example.html.twig" %}
-{% block result %}
-<div class="column gap-normal">
-  <tcds-button controls="nav-menu">Toggle navigation</tcds-button>
-  <nav id="nav-menu">toggleable navigation here...</nav>
-</div>
-{% endblock %}
-{% block code %}
-<tcds-button controls="nav-menu">Toggle navigation</tcds-button>
-<nav id="nav-menu">...</nav>
-{% endblock %}
-{% endembed %}
-twig-->
+In IE 11, `tcds-button` elements are queried and replaced with `button[data-tcds-button]` elements (or `a[data-tcds-button]` if the `link` property is present). The Button will function as a button or link, but will not retain any additional features.
 
-### Touch target size
+### Accessibility
+#### Touch target size
 Research shows touch targets should be a minimum of 1cm &times; 1cm,<span data-footnote>[Touch Targets on Touch Screens](https://www.nngroup.com/articles/touch-target-size/) — Nielsen Norman Group</span> which is enforced by this component's stylesheet. Having a sufficient touch target size increases general usability for all users, but most notably accomodates users with motor function and vision impairments.
 
-### Icon-only buttons
-Always provide a text label for buttons, even if you only want an icon to display. The `only` value of the `icon` attribute will visually hide the label, using it instead as the [ARIA label](https://www.w3.org/TR/WCAG20-TECHS/ARIA14.html) for screen readers, and the `title` tooltip for mouse users.
+#### Icon-only buttons
+Always provide a text label for buttons, even if you only want an icon to display. The `only` value of the `icon` attribute will visually hide the label, using it instead as the [`aria-label` attribute](https://www.w3.org/TR/WCAG20-TECHS/ARIA14.html) for screen readers, and the `title` tooltip for mouse users.
 
-While icon-only buttons are possible, try to always keep the text label visible; what an icon is supposed to represent may not be clear to users of different backgrounds and abilities.
+While icon-only buttons are possible, try to always keep the text label visible; what an icon is supposed to represent may not be clear or efficiently understood.
 
 ## API
 <!--twig
