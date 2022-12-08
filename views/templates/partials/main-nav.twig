@@ -11,7 +11,7 @@
             {% set page_route = page.route ?: "/" ~ category_route ~ "/" ~ page.title|clean_class %}
             <li class="main-nav__item {{ page_route == route ? "active" }}">
               <a
-                class="main-nav__link {{ page.disabled ? 'disabled' }}"
+                class="main-nav__link {{ page.disabled ? 'main-nav__link--disabled' }}"
                 {% if page.disabled %}
                   title="Coming soon"
                 {% else %}

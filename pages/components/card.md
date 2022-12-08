@@ -1,8 +1,10 @@
-<!--lead The Card component displays a snippet for content of a different page, including its associated image, title, description, and link. lead-->
+<!--lede
+  Cards display snippets of content, typically including the meta information of a linked page, such as an image, title, description, and link.
+lede-->
 
 <!--twig
-{% embed "@tch/includes/example.html.twig" %}
-{% block result %}
+{% embed "@tch/includes/example.twig" %}
+{% block content %}
 <tcds-card>
   <img slot="image" src="https://www.texaschildrensurgentcare.org/sites/urgentcare/files/2022-07/MyChart%20video%20visits.png" alt="">
   <a slot="title" href="#some-page">Card title</a>
@@ -26,17 +28,17 @@
 twig-->
 
 ## Usage
-Cards are native web components usable through the `<tcds-card>` custom element. The `image`, `title`, `link`, and `description` slots are provided to insert respective content into the Card body (see examples).
-
 ### Small card
-To create a more compact Card, the `size` attribute may be set to `small`.
+A compact card can be created by setting the [`size` attribute](#size-attribute) to `small`.
 
 <!--twig
-{% embed "@tch/includes/example.html.twig" %}
-{% block result %}
+{% embed "@tch/includes/example.twig" with {
+  line_highlight: "1",
+} %}
+{% block content %}
 <tcds-card size="small">
   <img slot="image" src="https://www.texaschildrensurgentcare.org/sites/urgentcare/files/2022-07/MyChart%20video%20visits.png" alt="">
-  <a slot="title" href="#some-page">Example small card</a>
+  <a slot="title" href="#some-page">Small card example</a>
   <p slot="description">
     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
     eiusmod tempor incididunt.
@@ -46,7 +48,7 @@ To create a more compact Card, the `size` attribute may be set to `small`.
 {% block code %}
 <tcds-card size="small">
   <img slot="image" src="image.jpg" alt="">
-  <a slot="title" href="#some-page">Example small card</a>
+  <a slot="title" href="#some-page">Small card example</a>
   <p slot="description">
     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
     eiusmod tempor incididunt.
@@ -56,17 +58,17 @@ To create a more compact Card, the `size` attribute may be set to `small`.
 {% endembed %}
 twig-->
 
-### Responsive orientation
-The Card's orientation is vertical (image above content) by default, but will become horizontal (image to the left of content) if its parent container is wider than 600px.
-
-You can lock the Card into a particular orientation by setting the `orientation` property to either `horizontal` or `vertical`.
+### Large card
+A large card can be created by setting the `size` attribute to `large`.
 
 <!--twig
-{% embed "@tch/includes/example.html.twig" %}
-{% block result %}
-<tcds-card orientation="vertical">
+{% embed "@tch/includes/example.twig" with {
+  line_highlight: "1",
+} %}
+{% block content %}
+<tcds-card size="large">
   <img slot="image" src="https://www.texaschildrensurgentcare.org/sites/urgentcare/files/2022-07/MyChart%20video%20visits.png" alt="">
-  <a slot="title" href="#some-page">Example vertically locked card</a>
+  <a slot="title" href="#some-page">Large card example</a>
   <p slot="description">
     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
     eiusmod tempor incididunt.
@@ -74,9 +76,9 @@ You can lock the Card into a particular orientation by setting the `orientation`
 </tcds-card>
 {% endblock %}
 {% block code %}
-<tcds-card orientation="vertical">
+<tcds-card size="large">
   <img slot="image" src="image.jpg" alt="">
-  <a slot="title" href="#some-page">Example vertically locked card</a>
+  <a slot="title" href="#some-page">Large card example</a>
   <p slot="description">
     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
     eiusmod tempor incididunt.
@@ -86,15 +88,19 @@ You can lock the Card into a particular orientation by setting the `orientation`
 {% endembed %}
 twig-->
 
-### Background colors
-By default, the Card's background color is [Gray 0](/design/color#palette). The `background` attribute can be set to either `none` (transparent) or `reverse` (white).
+### Orientation
+The card's orientation is responsive to its container. If below 600px, it will be vertical (image above content), while if above, it will be horizontal (image to the left of content).
+
+You can lock the card into a particular orientation by setting the [`orientation` attribute](#orientation-attribute) to either `horizontal` or `vertical`.
 
 <!--twig
-{% embed "@tch/includes/example.html.twig" %}
-{% block result %}
-<tcds-card background="reverse">
+{% embed "@tch/includes/example.twig" with {
+  line_highlight: "1",
+} %}
+{% block content %}
+<tcds-card orientation="vertical">
   <img slot="image" src="https://www.texaschildrensurgentcare.org/sites/urgentcare/files/2022-07/MyChart%20video%20visits.png" alt="">
-  <a slot="title" href="#some-page">Example card with white background</a>
+  <a slot="title" href="#some-page">Vertically locked card</a>
   <p slot="description">
     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
     eiusmod tempor incididunt.
@@ -102,9 +108,73 @@ By default, the Card's background color is [Gray 0](/design/color#palette). The 
 </tcds-card>
 {% endblock %}
 {% block code %}
-<tcds-card background="reverse">
+<tcds-card orientation="vertical">
   <img slot="image" src="image.jpg" alt="">
-  <a slot="title" href="#some-page">Example card with white background</a>
+  <a slot="title" href="#some-page">Vertically locked card</a>
+  <p slot="description">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+    eiusmod tempor incididunt.
+  </p>
+</tcds-card>
+{% endblock %}
+{% endembed %}
+twig-->
+
+### Variants
+Cards used more for UI, rather than content, have a `ui` option available with the [`variant` attribute](#variant-attribute).
+
+<!--twig
+{% embed "@tch/includes/example.twig" with {
+  line_highlight: "1",
+} %}
+{% block content %}
+<tcds-card variant="ui">
+  <img slot="image" src="https://www.texaschildrensurgentcare.org/sites/urgentcare/files/2022-07/MyChart%20video%20visits.png" alt="">
+  <a slot="title" href="#some-page">UI card title</a>
+  <p slot="description">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+    eiusmod tempor incididunt.
+  </p>
+</tcds-card>
+{% endblock %}
+{% block code %}
+<tcds-card variant="ui">
+  <img slot="image" src="image.jpg" alt="">
+  <a slot="title" href="#some-page">UI card title</a>
+  <p slot="description">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+    eiusmod tempor incididunt.
+  </p>
+</tcds-card>
+{% endblock %}
+{% endembed %}
+twig-->
+
+In practice, this simply changes the typeface of the card to our UI font (see [Typography](/design/typography)).
+
+### Tag
+A tag can be added to a card with the `tag` slot. Tags often contain dates or category labels.
+
+<!--twig
+{% embed "@tch/includes/example.twig" with {
+  line_highlight: "2",
+} %}
+{% block content %}
+<tcds-card>
+  <span slot="tag">Jan 1</span>
+  <img slot="image" src="https://www.texaschildrensurgentcare.org/sites/urgentcare/files/2022-07/MyChart%20video%20visits.png" alt="">
+  <a slot="title" href="#some-page">Card title</a>
+  <p slot="description">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+    eiusmod tempor incididunt.
+  </p>
+</tcds-card>
+{% endblock %}
+{% block code %}
+<tcds-card>
+  <span slot="tag">Jan 1</span>
+  <img slot="image" src="image.jpg" alt="">
+  <a slot="title" href="#some-page">Card title</a>
   <p slot="description">
     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
     eiusmod tempor incididunt.
@@ -115,14 +185,18 @@ By default, the Card's background color is [Gray 0](/design/color#palette). The 
 twig-->
 
 ### Custom footer
-By default, the footer will simply show a "Read more" label. However, a fully customizable `footer` slot is provided, which should be marked up with the `footer` tag.
+By default, the footer will simply contain a button, labeled "Read more" unless specified otherwise with the [`action-label` attribute](#action-label-attribute).
+
+However, a fully customizable `footer` slot is provided, which should be marked up with the `footer` tag.
 
 <!--twig
-{% embed "@tch/includes/example.html.twig" %}
-{% block result %}
+{% embed "@tch/includes/example.twig" with {
+  line_highlight: "8-11",
+} %}
+{% block content %}
 <tcds-card>
   <img slot="image" src="https://www.texaschildrensurgentcare.org/sites/urgentcare/files/2022-07/MyChart%20video%20visits.png" alt="">
-  <a slot="title" href="#some-page">Example card with custom footer</a>
+  <a slot="title" href="#some-page">Custom footer card</a>
   <p slot="description">
     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
     eiusmod tempor incididunt.
@@ -136,7 +210,7 @@ By default, the footer will simply show a "Read more" label. However, a fully cu
 {% block code %}
 <tcds-card>
   <img slot="image" src="image.jpg" alt="">
-  <a slot="title" href="#some-page">Example card with custom footer</a>
+  <a slot="title" href="#some-page">Custom footer card</a>
   <p slot="description">
     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
     eiusmod tempor incididunt.
@@ -150,59 +224,169 @@ By default, the footer will simply show a "Read more" label. However, a fully cu
 {% endembed %}
 twig-->
 
-Note that any links added inside the footer (or description) will be "elevated" above the Card surface's primary link added from the title.
+To completely omit the footer, set the `action-label` attribute to an empty string.
 
-## Implementation
-### Progressive enhancement
-The Card is by default
-* a simple container with an image floated to the left of plain text content
+<!--twig
+{% embed "@tch/includes/example.twig" with {
+  line_highlight: "1",
+} %}
+{% block content %}
+<tcds-card action-label="">
+  <img slot="image" src="https://www.texaschildrensurgentcare.org/sites/urgentcare/files/2022-07/MyChart%20video%20visits.png" alt="">
+  <a slot="title" href="#some-page">No footer card</a>
+  <p slot="description">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+    eiusmod tempor incididunt.
+  </p>
+</tcds-card>
+{% endblock %}
+{% block code %}
+<tcds-card action-label="">
+  <img slot="image" src="image.jpg" alt="">
+  <a slot="title" href="#some-page">No footer card</a>
+  <p slot="description">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+    eiusmod tempor incididunt.
+  </p>
+</tcds-card>
+{% endblock %}
+{% endembed %}
+twig-->
 
-to which the component will be limited when
-* the browser does not support the techniques required for the additional features, or
-* the client fails to load the required assets (poor network connection, etc.)
+### Image fit and size
+The [`image` attribute](#image-attribute) can be used to adjust the fit and size of the card's image.
+
+By default, the card crops the image using [`cover` fitting](https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit). Alternatively, `contain` can be used to ensure the entire image fits within the container.
+
+<!--twig
+{% embed "@tch/includes/example.twig" with {
+  line_highlight: "1",
+} %}
+{% block content %}
+<tcds-card image="contain">
+  <img slot="image" src="https://www.texaschildrensurgentcare.org/sites/urgentcare/files/2022-07/MyChart%20video%20visits.png" alt="">
+  <a slot="title" href="#some-page">Contained image card</a>
+  <p slot="description">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+    eiusmod tempor incididunt.
+  </p>
+</tcds-card>
+{% endblock %}
+{% block code %}
+<tcds-card image="contain">
+  <img slot="image" src="image.jpg" alt="">
+  <a slot="title" href="#some-page">Contained image card</a>
+  <p slot="description">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+    eiusmod tempor incididunt.
+  </p>
+</tcds-card>
+{% endblock %}
+{% endembed %}
+twig-->
+
+For horizontal cards, the `image` attribute can be set to `half` to make the image take up half the available width.
+
+<!--twig
+{% embed "@tch/includes/example.twig" with {
+  line_highlight: "1",
+} %}
+{% block content %}
+<tcds-card image="half">
+  <img slot="image" src="https://www.texaschildrensurgentcare.org/sites/urgentcare/files/2022-07/MyChart%20video%20visits.png" alt="">
+  <a slot="title" href="#some-page">Half-width image card</a>
+  <p slot="description">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+    eiusmod tempor incididunt.
+  </p>
+</tcds-card>
+{% endblock %}
+{% block code %}
+<tcds-card image="half">
+  <img slot="image" src="image.jpg" alt="">
+  <a slot="title" href="#some-page">Half-width image card</a>
+  <p slot="description">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+    eiusmod tempor incididunt.
+  </p>
+</tcds-card>
+{% endblock %}
+{% endembed %}
+twig-->
 
 ## API
-<!--twig
-{{ include("@tch/includes/api.html.twig", {
-  properties: [
+<!--twig {{ include("@tch/includes/api.twig", {
+  attributes: [
     {
       name: "size",
-      type: "string",
-      description: "Available option is <code>small</code>.",
+      type: ["prop", "string"],
+      description: "One of <code>small</code> or <code>large</code>.",
       required: "no",
     },
     {
       name: "orientation",
-      type: "string",
+      type: ["state", "string"],
       description: "One of <code>vertical</code> or <code>horizontal</code>.",
       required: "no",
     },
     {
-      name: "background",
-      type: "string",
-      description: "One of <code>none</code> (transparent) or <code>reverse</code> (white).",
+      name: "action-label",
+      type: ["prop", "string"],
+      description: "The label of the footer link. Defaults to <code>Read more</code>.",
+      required: "no",
+    },
+    {
+      name: "variant",
+      type: ["prop", "string"],
+      description: "Optionally <code>ui</code>.",
       required: "no",
     },
     {
       name: "divider",
-      type: "boolean",
-      description: "Adds an accentual divider between the image and content when vertically oriented. To enable, add the attribute with no value. To disable, omit the attribute.",
+      type: ["state", "boolean"],
+      description: "Adds an accentual red border between the image and content when in vertical orientation.",
       required: "no",
     },
     {
       name: "image",
-      type: "string",
-      description: "One of <code>contain</code> or <code>cover</code> (default) to determine how and whether to scale or crop the Card's image. See <a href='https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit'><code>object-fit</code> CSS property</a>.",
+      type: ["state", "string"],
+      description: "One of <code>contain</code> or <code>half</code>.",
       required: "no",
     },
-  ]
-}) }}
-twig-->
+  ],
+  slots: [
+    {
+      name: "tag",
+      multiple: "no",
+      description: "A label to add to an \"eyebrow\".",
+      required: "no",
+    },
+    {
+      name: "image",
+      multiple: "no",
+      description: "The card's image.",
+      required: "no",
+    },
+    {
+      name: "title",
+      multiple: "no",
+      description: "The card's title.",
+      required: "no",
+    },
+    {
+      name: "description",
+      multiple: "no",
+      description: "The card's description.",
+      required: "no",
+    },
+    {
+      name: "footer",
+      multiple: "no",
+      description: "A custom card footer.",
+      required: "no",
+    },
+  ],
+}) }} twig-->
 
-Source code: [Card.js](https://github.com/jacecotton/tcds/blob/main/assets/scripts/components/Card.js), [card.scss](https://github.com/jacecotton/tcds/blob/main/assets/styles/%40tcds/components/card.scss)
-
-<!--
-https://open-ui.org/components/card.research
-https://ant.design/components/card/
-https://www.lightningdesignsystem.com/components/cards/
--->
+## Resources
+[Source code on GitHub](https://github.com/jacecotton/tcds/blob/main/components/card/)

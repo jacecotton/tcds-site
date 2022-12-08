@@ -1,311 +1,189 @@
-<!--lead
+<!--
+/**
+ * @todo Document remaining variables and utilities (font weight, line height,
+ *   text align, etc.)
+ * @todo Document font asset location.
+ * @todo Document responsive scaler.
+ */
+-->
+
+<!--lede
   Good typography helps communicate ideas clearly and effectively. The Design System provides styles to establish and enforce visual hierarchy, consistency, and rhythm.
-lead-->
+lede-->
 
 ## Typeface
+Texas Children's fonts include the serif typeface [Calluna](https://fonts.adobe.com/fonts/calluna) and the sans-serif typeface [Mont](https://www.fontfabric.com/fonts/mont/).
 
-[Inter](https://fonts.google.com/specimen/Inter) is the default and used for copy and UI. [Metropolis](https://github.com/dw5/Metropolis) is used for headings and display text.
-
-### Font stack
-
-The Design System provides a set of font stacks based on the purpose of the text. While in practice some font stacks are the same as others, referring to them separately in the codebase provides for future-proof scalability.
-
-<table>
+<table class="typeface-table">
   <thead>
     <tr>
-      <th>Token</th>
-      <th>Font stack</th>
+      <th>Typeface</th>
       <th>Purpose</th>
+      <th>Token</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td><code>default</code></td>
-      <td><code>Inter, system-ui, sans-serif</code></td>
-      <td>General purpose</td>
-    </tr>
-    <tr>
-      <td><code>copy</code></td>
-      <td><code>Inter, system-ui, sans-serif</code></td>
-      <td>Body copy (paragraphs, captions, tables, etc.)</td>
-    </tr>
-    <tr>
-      <td><code>ui</code></td>
-      <td><code>Inter, system-ui, sans-serif</code></td>
-      <td>Interface elements (buttons, tabs, form labels, etc.)</td>
-    </tr>
-    <tr>
-      <td><code>headings</code></td>
-      <td><code>Metropolis, sans-serif</code></td>
-      <td>Heading elements (H1–H6)</td>
-    </tr>
-    <tr>
-      <td><code>display</code></td>
-      <td><code>Metropolis, sans-serif</code></td>
+      <td rowspan="3"><span class="font-display font-size-x-large">Calluna</span></td>
       <td>Display text (slogans, taglines, etc.)</td>
+      <td><code>display</code></td>
+    </tr>
+    <tr>
+      <td>Heading elements (H1–H6)</td>
+      <td><code>headings</code></td>
+    </tr>
+    <tr>
+      <td>Body copy (paragraphs, blockquotes, lists, captions, etc.)</td>
+      <td><code>copy</code></td>
+    </tr>
+    <tr>
+      <td><span class="font-ui font-size-x-large">Mont</span></td>
+      <td>Interface elements (buttons, tables, form labels, etc.)</td>
+      <td><code>ui</code></td>
     </tr>
   </tbody>
 </table>
 
-In the codebase, all `font-family` declarations should reference a font stack by its token using the `font-stack()` custom Sass function.
+Tokens can be used with utility classes in HTML (`.font-x`) and custom properties in CSS <span style="white-space: nowrap">(`--tcds-font-x`)</span>, where `x` is a font token. `serif` and `sans-serif` tokens are also available.
 
 <details>
   <summary>Example</summary>
-  <div>
 
-```css
-h1, h2, h3, h4, h5, h6 {
-  font-family: font-stack("headings");
-}
-```
-  </div>
-</details>
-
-These font stacks are overridable by setting `$theme-font-(token)` configuration variables when importing the Design System into a project.
-
-<details>
-  <summary>Example</summary>
-  <div>
-  
-```css
-@forward "@tcds" with (
-  $theme-font-headings: serif,
-  ...
-);
-```
-  </div>
+<!--twig
+{% embed "@tch/includes/example.twig" with {
+  open: true,
+} %}
+{% block content %}
+<p class="font-sans-serif">This is sans-serif text.</p>
+<p class="font-serif">This is serif text.</p>
+{% endblock %}
+{% endembed %}
+twig-->
 </details>
 
 ## Type scale
+The Design System provides tokens for setting type sizes. For accessibility reasons, type is set in `rem` (see [WCAG 2.1 Success Criterion 1.4.4](https://www.w3.org/WAI/WCAG21/Understanding/resize-text.html)), but the equivalent `px` sizes are shown below for reference.
 
-The Design System provides tokens for setting type sizes. For accessibility reasons, type is set in `rem` (see [WCAG 2.0 Success Criterion 1.4.4](https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-scale.html)), but the equivalent `px` sizes are shown below for reference.
+<!--twig
+{% set typescale = {
+  "x-small": "0.75",
+  "small": "0.875",
+  "medium": "1",
+  "medium-plus": "1.125",
+  "large": "1.5",
+  "x-large": "2",
+  "xx-large": "3",
+  "xxx-large": "6",
+} %}
 
-<table class="type-scale-table" data-in-viewport="false">
-  <thead>
+<table class="type-scale-table">
+  <tr>
+    <th aria-hidden="true"></th>
+    <th>Token</th>
+    <th>Size <span class="visually-hidden">in rem</span></th>
+    <th><span class="visually-hidden">Size in px</span></th>
+  </tr>
+  {% for token, size in typescale %}
     <tr>
-      <th aria-hidden="true">&nbsp;</th>
-      <th>Token</th>
-      <th colspan="2">Size</th>
+      <td aria-hidden="true">
+        <span class="font-size-{{ token }}">The quick brown fox jumps over the lazy sleeping dog</span>
+      </td>
+      <td><code>{{ token }}</code></td>
+      <td>{{ size }}rem</td>
+      <td>{{ 16 * size }}px</td>
     </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td aria-hidden="true" class="text-x-small"><span>The quick brown fox jumps over the lazy dog</span></td>
-      <td><code>x-small</code></td>
-      <td>0.75rem</td>
-      <td>12px</td>
-    </tr>
-    <tr>
-      <td aria-hidden="true" class="text-small"><span>The quick brown fox jumps over the lazy dog</span></td>
-      <td><code>small</code></td>
-      <td>0.875rem</td>
-      <td>14px</td>
-    </tr>
-    <tr>
-      <td aria-hidden="true" class="text-medium"><span>The quick brown fox jumps over the lazy dog</span></td>
-      <td><code>medium</code></td>
-      <td>1rem</td>
-      <td>16px</td>
-    </tr>
-    <tr>
-      <td aria-hidden="true" class="text-medium-plus"><span>The quick brown fox jumps over the lazy dog</span></td>
-      <td><code>medium-plus</code></td>
-      <td>1.25rem</td>
-      <td>20px</td>
-    </tr>
-    <tr>
-      <td aria-hidden="true" class="text-large"><span>The quick brown fox jumps over the lazy dog</span></td>
-      <td><code>large</code></td>
-      <td>1.5rem</td>
-      <td>24px</td>
-    </tr>
-    <tr>
-      <td aria-hidden="true" class="text-x-large"><span>The quick brown fox jumps over the lazy dog</span></td>
-      <td><code>x-large</code></td>
-      <td>2rem</td>
-      <td>32px</td>
-    </tr>
-    <tr>
-      <td aria-hidden="true" class="text-xx-large"><span>The quick brown fox jumps over the lazy dog</span></td>
-      <td><code>xx-large</code></td>
-      <td>2.5rem</td>
-      <td>40px</td>
-    </tr>
-  </tbody>
+  {% endfor %}
 </table>
+twig-->
 
-These can be used with the `font-size()` custom Sass function, or utility classes in the format of `.text-(token)`.
+Tokens can be used with utility classes in HTML (`.font-size-x`) and custom properties in CSS <span style="white-space: nowrap">(`--tcds-font-size-x`)</span>.
 
 <details>
   <summary>Example</summary>
-  <div>
 
 <!--twig
-{% embed "@tch/includes/example.html.twig" with {
-  show_first: true,
-  examples: {
-    "HTML": '<p class="text-x-large">This is extra large text.</p>
-<p class="text-medium">This is normal text.</p>
-<p class="text-x-small">And this is extra small text.</p>',
-    "CSS": '.text-x-small {
-  font-size: font-size("x-small");
-}
-
-...
-.text-medium {
-  font-size: font-size("medium");
-}
-
-...
-.text-x-large {
-  font-size: font-size("x-large");
-}',
-  },
+{% embed "@tch/includes/example.twig" with {
+  open: true,
 } %}
-  {% block result %}
-    <p class="text-x-large">This is extra large text.</p>
-    <p class="text-medium">This is normal text.</p>
-    <p class="text-x-small">And this is extra small text.</p>
-  {% endblock %}
+{% block content %}
+<p class="font-size-x-large">This is extra large text.</p>
+<p class="font-size-medium">This is medium text.</p>
+<p class="font-size-x-small">This is extra small text.</p>
+{% endblock %}
 {% endembed %}
 twig-->
-  </div>
 </details>
 
-### Headings
+## Headings
+Heading styles use the above type scale, with a combination of weight, leading, and tracking. The Design System also provides utility classes for each heading style, in order to replicate the design without the semantic meaning.
 
-Heading styles use the above type scale, with a combination of weight, letter spacing, and line height (click to see details). The Design System also provides utility classes for each heading style, in order to replicate the design without the semantic meaning.
+<!--twig
+{% set headings = {
+  "1": {
+    size: "xx-large",
+    weight: "700",
+    line_height: "1.2",
+    letter_spacing: "-0.025em",
+  },
+  "2": {
+    size: "x-large",
+    weight: "600",
+    line_height: "1.2",
+    letter_spacing: "-0.0125em",
+  },
+  "3": {
+    size: "large",
+    weight: "600",
+    line_height: "1.2",
+    letter_spacing: "0",
+  },
+  "4": {
+    size: "medium-plus",
+    weight: "600",
+    line_height: "1.6",
+    letter_spacing: "0",
+  },
+  "5": {
+    size: "medium",
+    weight: "600",
+    line_height: "1.6",
+    letter_spacing: "0",
+  },
+  "6": {
+    size: "small",
+    weight: "600",
+    line_height: "1.6",
+    letter_spacing: "0",
+  },
+} %}
 
-<div data-component="Accordion" class="typography-accordion">
-  <section>
-    <button data-component-part="panel-toggle" id="heading-1-button" aria-controls="heading-1-panel" class="h1">Heading 1</button>
-    <div data-component-part="panel" id="heading-1-panel" aria-labelledby="heading-1-button" class="typography-accordion__panel">
-      <table>
+<details>
+  <summary>See details</summary>
+
+  <div style="background-color: var(--tcds-color-gray-x-light); border-radius: 10px; padding: 1px 2rem">
+    {% for level, heading in headings %}
+      <table class="heading-table">
+        <tr>
+          <td colspan="5">
+            <p class="h{{ level }}">Heading {{ level }}</p>
+          </td>
+        </tr>
         <tr>
           <th>Size</th>
           <th>Weight</th>
-          <th>Letter spacing</th>
           <th>Line height</th>
+          <th>Letter spacing</th>
           <th>Utility class</th>
         </tr>
         <tr>
-          <td><code>xx-large</code></td>
-          <td><code>700</code></td>
-          <td><code>-.025em</code></td>
-          <td><code>1.25</code></td>
-          <td><code>.h1</code></td>
+          <td>{{ heading.size }}</td>
+          <td>{{ heading.weight }}</td>
+          <td>{{ heading.line_height }}</td>
+          <td>{{ heading.letter_spacing }}</td>
+          <td><code>.h{{ level }}</code></td>
         </tr>
       </table>
-    </div>
-  </section>
-
-  <section>
-    <button data-component-part="panel-toggle" id="heading-2-button" aria-controls="heading-2-panel" class="h2">Heading 2</button>
-    <div data-component-part="panel" id="heading-2-panel" aria-labelledby="heading-2-button" class="typography-accordion__panel">
-      <table>
-        <tr>
-          <th>Size</th>
-          <th>Weight</th>
-          <th>Letter spacing</th>
-          <th>Line height</th>
-          <th>Utility class</th>
-        </tr>
-        <tr>
-          <td><code>x-large</code></td>
-          <td><code>700</code></td>
-          <td><code>-.0125em</code></td>
-          <td><code>1.25</code></td>
-          <td><code>.h2</code></td>
-        </tr>
-      </table>
-    </div>
-  </section>
-
-  <section>
-    <button data-component-part="panel-toggle" id="heading-3-button" aria-controls="heading-3-panel" class="h3">Heading 3</button>
-    <div data-component-part="panel" id="heading-3-panel" aria-labelledby="heading-3-button" class="typography-accordion__panel">
-      <table>
-        <tr>
-          <th>Size</th>
-          <th>Weight</th>
-          <th>Letter spacing</th>
-          <th>Line height</th>
-          <th>Utility class</th>
-        </tr>
-        <tr>
-          <td><code>large</code></td>
-          <td><code>400</code></td>
-          <td><code>0</code></td>
-          <td><code>1.25</code></td>
-          <td><code>.h3</code></td>
-        </tr>
-      </table>
-    </div>
-  </section>
-
-  <section>
-    <button data-component-part="panel-toggle" id="heading-4-button" aria-controls="heading-4-panel" class="h4">Heading 4</button>
-    <div data-component-part="panel" id="heading-4-panel" aria-labelledby="heading-4-button" class="typography-accordion__panel">
-      <table>
-        <tr>
-          <th>Size</th>
-          <th>Weight</th>
-          <th>Letter spacing</th>
-          <th>Line height</th>
-          <th>Utility class</th>
-        </tr>
-        <tr>
-          <td><code>medium-plus</code></td>
-          <td><code>400</code></td>
-          <td><code>0</code></td>
-          <td><code>1.6</code></td>
-          <td><code>.h4</code></td>
-        </tr>
-      </table>
-    </div>
-  </section>
-
-  <section>
-    <button data-component-part="panel-toggle" id="heading-5-button" aria-controls="heading-5-panel" class="h5">Heading 5</button>
-    <div data-component-part="panel" id="heading-5-panel" aria-labelledby="heading-5-button" class="typography-accordion__panel">
-      <table>
-        <tr>
-          <th>Size</th>
-          <th>Weight</th>
-          <th>Letter spacing</th>
-          <th>Line height</th>
-          <th>Utility class</th>
-        </tr>
-        <tr>
-          <td><code>medium</code></td>
-          <td><code>700</code></td>
-          <td><code>0</code></td>
-          <td><code>1.6</code></td>
-          <td><code>.h5</code></td>
-        </tr>
-      </table>
-    </div>
-  </section>
-
-  <section>
-    <button data-component-part="panel-toggle" id="heading-6-button" aria-controls="heading-6-panel" class="h6">Heading 6</button>
-    <div data-component-part="panel" id="heading-6-panel" aria-labelledby="heading-6-button" class="typography-accordion__panel">
-      <table>
-        <tr>
-          <th>Size</th>
-          <th>Weight</th>
-          <th>Letter spacing</th>
-          <th>Line height</th>
-          <th>Utility class</th>
-        </tr>
-        <tr>
-          <td><code>small</code></td>
-          <td><code>700</code></td>
-          <td><code>0</code></td>
-          <td><code>1.6</code></td>
-          <td><code>.h6</code></td>
-        </tr>
-      </table>
-    </div>
-  </section>
-</div>
+    {% endfor %}
+  </div>
+</details>
+twig-->

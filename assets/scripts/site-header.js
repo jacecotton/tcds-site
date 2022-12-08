@@ -1,35 +1,46 @@
-import Toggleable from "@tcds/components/Toggleable.js";
+(function() {
+  const breakpoint = window.matchMedia("(max-width: 1024px)");
+  const siteHeader = document.getElementById("local-site-header");
+  const siteHeaderToggle = document.querySelector("[controls=local-site-header]");
 
-class SiteHeader {
-  constructor(element) {
-    this.element = element;
+  handleSiteHeader(breakpoint);
+  breakpoint.addListener(handleSiteHeader);
 
-    this.toggleableHeader = new Toggleable(this.element, {
-      animation: {
-        open: "slide-in-right",
-        close: "slide-out-left",
-      },
-      closeOnClickOutside: false,
-      openOnload: true,
-    });
-
-    const breakpoint = window.matchMedia("(max-width: 1024px)");
-
-    this.handleHeaderMenu(breakpoint);
-    breakpoint.addListener(this.handleHeaderMenu.bind(this));
-  }
-
-  handleHeaderMenu(breakpoint) {
+  function handleSiteHeader(breakpoint) {
     if(breakpoint.matches) {
-      this.element.hidden = true;
-      this.toggleableHeader.close();
+      close();
+      siteHeaderToggle.addEventListener("click", toggle);
     } else {
-      this.toggleableHeader.open();
+      open();
+      siteHeaderToggle.removeEventListener("click", toggle);
     }
   }
-}
 
-(function() {
-  const instance = document.getElementById("site-header");
-  instance && new SiteHeader(instance);
+  function close() {
+    siteHeaderToggle.setAttribute("expanded", "false");
+    document.body.classList.remove("site-header-open");
+
+    siteHeader.ontransitionend = () => {
+      siteHeader.hidden = true;
+      siteHeader.ontransitionend = null;
+    };
+  }
+
+  function open() {
+    siteHeaderToggle.setAttribute("expanded", "true");
+    siteHeader.ontransitionend = null;
+    siteHeader.hidden = false;
+
+    requestAnimationFrame(() => {
+      document.body.classList.add("site-header-open");
+    });
+  }
+
+  function toggle() {
+    if(siteHeaderToggle.getAttribute("expanded") === "true") {
+      close();
+    } else {
+      open();
+    }
+  }
 }());

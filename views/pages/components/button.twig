@@ -2,9 +2,9 @@
 file and run the gulp process to compile (either `gulp` or `npm run dev` from
 the terminal). #}
 {% extends "@tch/base.twig" %}
-{% block lead %}Buttons allow users to trigger an action with a single tap, click, or keypress. They are useful to call attention to some action, or to prompt users to make an affirmative choice.{% endblock %}
+{% block lede %}Buttons allow users to trigger an action with a single tap, click, or keypress. They are useful to call attention to some action or to provide controls for an interface or form.{% endblock %}
 {% block body %}
-{% embed "@tch/includes/example.html.twig" %}
+{% embed "@tch/includes/example.twig" %}
 {% block content %}
 <tcds-button>Example button</tcds-button>
 {% endblock %}
@@ -12,255 +12,180 @@ the terminal). #}
 
 
 <h2 id="best-practices">Best practices</h2>
-<p><strong>Use concise, accurate, and specific labels.</strong> Avoid vague and abstract language like &quot;Get started&quot; or &quot;Learn more&quot;. Prefer explicit labels instead, like &quot;Find doctor&quot; or &quot;Schedule appointment&quot;. Accurate and specific language improves user confidence and engagement,<span data-footnote><a href="https://www.nngroup.com/articles/information-scent/#:~:text=Perhaps%20the%20most,to%20click%20it.">Information Scent: How Users Decide Where to Go Next</a> — Nielsen Norman Group</span> while overly broad calls to action can fail to interest, mislead, or confuse users.<span data-footnote><a href="https://www.nngroup.com/articles/get-started/">Get Started Stops Users</a> — Nielsen Norman Group</span></p>
-<p><strong>Use sentence case.</strong> All-uppercase text is slower and more difficult to read for all users,<span data-footnote><a href="https://www.w3.org/TR/low-vision-needs/#capitalization">Accessibility Requirements for People with Low Vision § 3.3.4 Capitalization</a> — W3.org</span> but particularly for those with dyslexia.<span data-footnote><a href="https://www.bdadyslexia.org.uk/advice/employers/creating-a-dyslexia-friendly-workplace/dyslexia-friendly-style-guide#:~:text=Avoid%20text%20in%20uppercase/capital%20letters%20and%20small%20caps%2C%20which%20can%20be%20less%20familiar%20to%20the%20reader%20and%20harder%20to%20read.">Creating a dyslexia friendly workplace</a> — British Dyslexia Association</span> Furthermore, screen readers sometimes interpret certain uppercased words as common initialisms (such as ADD or US), and will spell out those words letter by letter.<span data-footnote><a href="https://webaim.org/techniques/screenreader/#:~:text=Screen%20readers%20try%20to%20pronounce%20acronyms%2C%20if%20there%20are%20sufficient%20vowels/consonants%20to%20be%20pronounceable.%20Otherwise%2C%20they%20spell%20out%20the%20letters.">Designing for Screen Reader Compatibility § How Screen Readers Read Content</a> — WebAIM</span></p>
+<p><strong>Use concise, accurate, and specific labels.</strong> Avoid vague and abstract language like &quot;Get started&quot; or &quot;Learn more&quot;. Prefer explicit labels instead, like &quot;Find doctor&quot; or &quot;Schedule appointment&quot;. Accurate and specific language improves user confidence and engagement (<a href="https://www.nngroup.com/articles/information-scent/#:~:text=Perhaps%20the%20most,to%20click%20it." title="Information Scent: How Users Decide Where to Go Next - Nielsen Norman Group">1</a>), while overly broad calls to action can mislead, confuse, and fail to interest users (<a href="https://www.nngroup.com/articles/get-started/" title="Get Started Stops Users - Nielsen Norman Group">2</a>).</p>
+<p><strong>Use sentence case.</strong> All-uppercase text is slower and more difficult to read for all users (<a href="https://www.w3.org/TR/low-vision-needs/#capitalization">3</a>) but particularly for those with dyslexia (<a href="https://www.bdadyslexia.org.uk/advice/employers/creating-a-dyslexia-friendly-workplace/dyslexia-friendly-style-guide#:~:text=Avoid%20text%20in%20uppercase/capital%20letters%20and%20small%20caps%2C%20which%20can%20be%20less%20familiar%20to%20the%20reader%20and%20harder%20to%20read.">4</a>). Furthermore, screen readers sometimes interpret certain uppercased words as common initialisms (such as ADD or US), and may erroneously spell out those words letter by letter (<a href="https://webaim.org/techniques/screenreader/#:~:text=Screen%20readers%20try%20to%20pronounce%20acronyms%2C%20if%20there%20are%20sufficient%20vowels/consonants%20to%20be%20pronounceable.%20Otherwise%2C%20they%20spell%20out%20the%20letters.">5</a>).</p>
 <h2 id="usage">Usage</h2>
-<h3 id="form-types">Form types</h3>
-<p>The <a href="#type-property"><code>type</code> property</a> allows you to set a valid <a href="https://www.w3.org/TR/2011/WD-html5-20110525/the-button-element.html#attr-button-type"><code>type</code> HTML attribute</a> on the button. For example, a submit button for a form:</p>
+<h3 id="links">Links</h3>
+<p>A button can point to a link using the <a href="#link-attribute"><code>link</code> attribute</a>.</p>
+<p>Optionally, the link can be opened in a new tab with the <a href="#new-tab-attribute"><code>new-tab</code> attribute</a>.</p>
 
-{% embed "@tch/includes/example.html.twig" %}
+{% embed "@tch/includes/example.twig" %}
 {% block content %}
-<tcds-button type="submit">Submit form</tcds-button>
+<tcds-button link="https://www.texaschildrens.org/" new-tab>Go to texaschildrens.org</tcds-button>
 {% endblock %}
 {% endembed %}
 
 
-<h3 id="link-buttons">Link buttons</h3>
-<p>A button can point to a link using the <a href="#link-property"><code>link</code> property</a>.</p>
+<h3 id="icons">Icons</h3>
+<p><a href="/components/icon#library">Icons</a> can be added to a button with the <a href="#icon-attribute"><code>icon</code> attribute</a>.</p>
 
-{% embed "@tch/includes/example.html.twig" %}
+{% embed "@tch/includes/example.twig" %}
 {% block content %}
-<tcds-button link="https://www.texaschildrens.org/">Go to texaschildrens.org</tcds-button>
+<tcds-button icon="info">Icon button</tcds-button>
 {% endblock %}
 {% endembed %}
 
 
-<h3 id="size-variants">Size variants</h3>
-<p>The <code>size</code> property can be set to <code>small</code> or <code>large</code> to establish visual hierarchy, clean up an interface, and influence attention.</p>
-<p>Note that small buttons only decrease in height on devices with &quot;fine&quot; primary pointers, such as mice or styluses. For devices with &quot;coarse&quot; primary pointers, such as touch screens, the tappable area remains the same as a normal button (see <a href="#touch-target-size">&sect; Touch target size</a>).</p>
+<p>Icons can be right-aligned by including the word <code>right</code> in the <code>icon</code> attribute.</p>
 
-{% embed "@tch/includes/example.html.twig" %}
+{% embed "@tch/includes/example.twig" %}
 {% block content %}
-<tcds-button size="small">Small button</tcds-button>
+<tcds-button icon="right chevron-right">Right icon</tcds-button>
 {% endblock %}
 {% endembed %}
 
 
-<p>Large buttons increase efficiency by creating a larger touch target (see <a href="https://www.nngroup.com/videos/fittss-law-links-buttons/" title="Using Fitts&#39;s Law to Make Links and Buttons Easier to Click (video) - Nielsen Norman Group">Fitts&#39;s law</a>).</p>
+<p>Button labels can be hidden when using an icon by including the word <code>only</code> in the <code>icon</code> attribute. However, a text label must still be provided for assistive technology (see <a href="#icon-only-buttons">&sect; Icon-only buttons</a>).</p>
 
-{% embed "@tch/includes/example.html.twig" %}
-{% block content %}
-<tcds-button size="large">Large button</tcds-button>
-{% endblock %}
-{% endembed %}
-
-
-<p>The <code>size</code> property can also include <code>full-width</code> (in addition to or without the other size values), making the button fill the entire available space of its container. These should be used sparingly, as their size could potentially lead to more errant clicks.</p>
-
-{% embed "@tch/includes/example.html.twig" %}
-{% block content %}
-<tcds-button size="full-width">Full-width button</tcds-button>
-{% endblock %}
-{% endembed %}
-
-
-<h3 id="color-variants">Color variants</h3>
-<p>The <code>color</code> property allows you to set different background colors on the Button. Using different colors can help establish visual hierarchy, as well as differentiate action types (primary vs. secondary).</p>
-<p>Available values are:</p>
-<ul>
-<li>One of any <a href="/design/color#by-theme-alias">theme alias</a>, <code>primary</code> (default), <code>secondary</code>, or <code>tertiary</code>.</li>
-<li><code>reverse</code> inverts the primary button color, creating a white background with red text.</li>
-<li><code>ghost</code> makes the button transparent, and translucent black when hovered. The text color is inherited from the parent.</li>
-</ul>
-
-{% embed "@tch/includes/example.html.twig" %}
-{% block result %}
-<div class="row gap-normal">
-  <tcds-button>Primary button</tcds-button>
-  <tcds-button color="reverse">Reversed color</tcds-button>
-  <tcds-button color="ghost">Ghost button</tcds-button>
-</div>
-{% endblock %}
-{% block code %}
-<tcds-button>Primary button</tcds-button>
-<tcds-button color="reverse">Reversed color</tcds-button>
-<tcds-button color="ghost">Ghost button</tcds-button>
-{% endblock %}
-{% endembed %}
-
-
-<p>Note that all colors darken on-hover.</p>
-<h3 id="shape-variants">Shape variants</h3>
-<p>The <code>round</code> attribute makes the Button into a pill shape by rounding off the corners.</p>
-
-{% embed "@tch/includes/example.html.twig" %}
-{% block content %}
-<tcds-button round>Pill button</tcds-button>
-{% endblock %}
-{% endembed %}
-
-
-<h3 id="icon-buttons">Icon buttons</h3>
-<p>The <code>icon</code> property lets you set an <a href="/components/icon">icon</a> on a button, along with details about how that icon is used. Icons are useful as complementary visual aids.</p>
-<p>Button icons should be left-aligned (default) when:</p>
-<ul>
-<li>Used purely as a decorative aid (e.g.  {{ include("@tcds/components/icon/icon.html.twig", { icon: "info", label: "i inside circle" }) }} &nbsp;for info,  {{ include("@tcds/components/icon/icon.html.twig", { icon: "check", label: "Checkmark" }) }} &nbsp;for success).</li>
-<li>Used to indicate a regressive or destructive action (e.g.  {{ include("@tcds/components/icon/icon.html.twig", { icon: "chevron-left", label: "Left" }) }} &nbsp;for back,  {{ include("@tcds/components/icon/icon.html.twig", { icon: "x", label: "X" }) }} &nbsp;for cancel).</li>
-</ul>
-
-{% embed "@tch/includes/example.html.twig" %}
-{% block content %}
-<tcds-button icon="info">Open information</tcds-button>
-{% endblock %}
-{% endembed %}
-
-
-<p>Button icons can be right-aligned by including the word <code>right</code> in the <code>icon</code> attribute. Icons should be right-aligned when:</p>
-<ul>
-<li>Used to indicate a progressive action (e.g.  {{ include("@tcds/components/icon/icon.html.twig", { icon: "chevron-right", label: "Right" }) }} &nbsp;for proceed,  {{ include("@tcds/components/icon/icon.html.twig", { icon: "chevron-down", label: "Down" }) }} &nbsp;for dropdown).</li>
-</ul>
-
-{% embed "@tch/includes/example.html.twig" %}
-{% block content %}
-<tcds-button icon="right arrow-right">Next</tcds-button>
-{% endblock %}
-{% endembed %}
-
-
-<p>Icons can be inlined next to the text label by including the word <code>inline</code> in the <code>icon</code> attribute.</p>
-
-{% embed "@tch/includes/example.html.twig" %}
-{% block content %}
-<tcds-button icon="inline arrow-down">Download button</tcds-button>
-{% endblock %}
-{% endembed %}
-
-
-<p>To conserve space, button labels can be hidden when using an icon by including the word <code>only</code> in the <code>icon</code> attribute. However, a label must still be provided for assistive technology (see <a href="#icon-only-buttons">&sect; Icon-only buttons</a>).</p>
-
-{% embed "@tch/includes/example.html.twig" %}
+{% embed "@tch/includes/example.twig" %}
 {% block content %}
 <tcds-button icon="only x">Close</tcds-button>
 {% endblock %}
 {% endembed %}
 
 
-<h3 id="reactive-label">Reactive label</h3>
-<p>Labels should generally be added by placing text between the <code>tcds-button</code> tags. However, this only renders a static label. The label will not update if changed by a parent component. If you want to set a dynamic label, you can use the <a href="#label-property"><code>label</code> property</a> instead. Like all properties, this property is reactive, and will trigger a re-render when changed.</p>
-<p>You can do this imperatively (<code>button.setAttribute(&quot;label&quot;, &quot;Pause&quot;)</code>), though it&#39;s most useful (and a best practice) to do so declaratively.</p>
-<p>The below example demonstrates setting both the <code>icon</code> property and <code>label</code> property according to the current state of a Button&#39;s parent component.</p>
+<h3 id="variants">Variants</h3>
+<p>Secondary, ghost, and UI buttons can be created with the <a href="#variant-attribute"><code>variant</code> attribute</a>.</p>
 
-{% embed "@tch/includes/example.html.twig" %}
-{% block code %}
-<script>
-class SomeComponent extends WebComponent {
-  constructor() {
-    super();
-    this.state.playing = false;
-  }
-
-  render() {
-    return `
-      <tcds-button
-        part="play-pause"
-        icon="${this.state.playing ? "pause" : "play"}"
-        label="${this.state.playing ? "Pause" : "Play"}">
-      </tcds-button>
-    `;
-  }
-
-  mounted() {
-    const button = this.shadowRoot.querySelector("[part=play-pause]");
-    button.addEventListener("click", () => {
-      this.state.playing = !this.state.playing;
-    });
-  }
-}
-</script>
+{% embed "@tch/includes/example.twig" %}
+{% block content %}
+<div class="row gap-loose">
+  <tcds-button variant="secondary">Secondary button</tcds-button>
+  <tcds-button variant="ghost" icon="right chevron-right">Ghost button</tcds-button>
+  <tcds-button variant="ui" icon="only x">UI button</tcds-button>
+</div>
 {% endblock %}
-{% block result %}
-<tcds-button id="play-pause" icon="play" label="Play"></tcds-button>
-
-<script>
-const playPause = document.getElementById("play-pause");
-
-playPause.addEventListener("click", () => {
-  const state = playPause.getAttribute("icon");
-  playPause.setAttribute("icon", state === "play" ? "pause" : "play");
-  playPause.setAttribute("label", state === "play" ? "Pause" : "Play");
-});
-</script>
+{% block code %}
+<tcds-button variant="secondary">Secondary button</tcds-button>
+<tcds-button variant="ghost" icon="right chevron-right">Ghost button</tcds-button>
+<tcds-button variant="ui" icon="only x">UI button</tcds-button>
 {% endblock %}
 {% endembed %}
 
 
-<h2 id="implementation">Implementation</h2>
-<h3 id="graceful-degradation">Graceful degradation</h3>
-<p>Because Safari does not support customizing built-in elements, the Button component gracefully degrades where autonomous custom elements are not supported (IE 11), rather than progressively enhances where they are.</p>
-<p>In IE 11, <code>tcds-button</code> elements are queried and replaced with <code>button[data-tcds-button]</code> elements (or <code>a[data-tcds-button]</code> if the <code>link</code> property is present). The Button will function as a button or link, but will not retain any additional features.</p>
-<h3 id="accessibility">Accessibility</h3>
-<h4 id="touch-target-size">Touch target size</h4>
-<p>Research shows touch targets should be a minimum of 1cm &times; 1cm,<span data-footnote><a href="https://www.nngroup.com/articles/touch-target-size/">Touch Targets on Touch Screens</a> — Nielsen Norman Group</span> which is enforced by this component&#39;s stylesheet. Having a sufficient touch target size increases general usability for all users, but most notably accomodates users with motor function and vision impairments.</p>
-<h4 id="icon-only-buttons">Icon-only buttons</h4>
-<p>Always provide a text label for buttons, even if you only want an icon to display. The <code>only</code> value of the <code>icon</code> attribute will visually hide the label, using it instead as the <a href="https://www.w3.org/TR/WCAG20-TECHS/ARIA14.html"><code>aria-label</code> attribute</a> for screen readers, and the <code>title</code> tooltip for mouse users.</p>
-<p>While icon-only buttons are possible, try to always keep the text label visible; what an icon is supposed to represent may not be clear or efficiently understood.</p>
-<h2 id="api">API</h2>
+<h3 id="sizes">Sizes</h3>
+<p>Small and large buttons can be created with the <a href="#size-attribute"><code>size</code> attribute</a>.</p>
 
-{{ include("@tch/includes/api.html.twig", {
-  properties: [
+{% embed "@tch/includes/example.twig" %}
+{% block content %}
+<div class="column gap-normal">
+  <tcds-button size="small">Small button</tcds-button>
+  <tcds-button>Default button</tcds-button>
+  <tcds-button size="large">Large button</tcds-button>
+</div>
+{% endblock %}
+{% block code %}
+<tcds-button size="small">Small button</tcds-button>
+<tcds-button>Default button</tcds-button>
+<tcds-button size="large">Large button</tcds-button>
+{% endblock %}
+{% endembed %}
+
+
+<p>Full width buttons can be created, optionally in combination with any <code>size</code>:</p>
+
+{% embed "@tch/includes/example.twig" %}
+{% block content %}
+<tcds-button size="large full-width">Large full-width button</tcds-button>
+{% endblock %}
+{% endembed %}
+
+
+<h3 id="form-types">Form types</h3>
+<p>The <a href="#type-attribute"><code>type</code> attribute</a> allows you to set a valid <a href="https://www.w3.org/TR/2011/WD-html5-20110525/the-button-element.html#attr-button-type"><code>type</code> HTML attribute</a> on the Button. For example, a submit button for a form:</p>
+
+{% embed "@tch/includes/example.twig" %}
+{% block content %}
+<tcds-button type="submit">Submit form</tcds-button>
+{% endblock %}
+{% endembed %}
+
+
+<h2 id="accessibility">Accessibility</h2>
+<h3 id="touch-target-size">Touch target size</h3>
+<p>Research shows touch targets should be a minimum of 1cm &times; 1cm (<a href="https://www.nngroup.com/articles/touch-target-size/" title="Touch Targets on Touch Screens - Nielsen Norman Group">1</a>), which is enforced by this component&#39;s stylesheet. Having a sufficient touch target size increases general usability for all users, but most notably accomodates users with motor function and vision impairments.</p>
+<h3 id="icon-only-buttons">Icon-only buttons</h3>
+<p>Always provide a text label for buttons, even if you only want an icon to display. The <code>only</code> value of the <code>icon</code> attribute will visually hide the label, using it instead as the <a href="https://www.w3.org/TR/WCAG20-TECHS/ARIA14.html"><code>aria-label</code> attribute</a> for screen readers, and the <code>title</code> tooltip for mouse users.</p>
+<p>While icon-only buttons are possible, try to always keep the text label visible; what an icon is supposed to represent may not be universally clear or efficiently understood.</p>
+<h2 id="api">API</h2>
+ {{ include("@tch/includes/api.twig", {
+  attributes: [
+    {
+      name: "label",
+      type: ["prop", "string"],
+      description: "The text label of the button.",
+      required: "no",
+    },
+    {
+      name: "controls",
+      type: ["prop", "string"],
+      description: "The ident of a controlled element, mapping to the <a href='https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls'><code>aria-controls</code> HTML attribute</a>.",
+      required: "no",
+    },
+    {
+      name: "expanded",
+      type: ["prop", "string"],
+      description: "One of <code>true</code> or <code>false</code>, mapping to the <a href='https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded'><code>aria-expanded</code> HTML attribute</a>.",
+      required: "no",
+    },
     {
       name: "type",
-      type: "string",
+      type: ["prop", "string"],
       description: "Any valid <a href='https://www.w3.org/TR/2011/WD-html5-20110525/the-button-element.html#attr-button-type'>HTML button type</a>. Defaults to <code>button</code>.",
       required: "no",
     },
     {
       name: "link",
-      type: "string",
-      description: "The URL for the Button to link to. Turns the root element into a <code>a</code>, rather than the default <code>button</code>.",
+      type: ["prop", "string"],
+      description: "The URL for the Button to link to. Turns the root into an <code>a</code> element, rather than the default <code>button</code>.",
       required: "no",
     },
     {
-      name: "size",
-      type: "string",
-      description: "Either of <code>small</code> or <code>large</code>, optionally in addition to <code>full-width</code>.",
-      required: "no",
-    },
-    {
-      name: "color",
-      type: "string",
-      description: "Either of <code>primary</code> (default), <code>secondary</code>, <code>tertiary</code>, <code>reverse</code>, or <code>ghost</code>.",
-      required: "no",
-    },
-    {
-      name: "round",
-      type: "boolean",
-      description: "Rounds the button's corners. To enable, set the attribute with no value. To disable, omit the attribute.",
+      name: "new-tab",
+      type: ["prop", "boolean"],
+      description: "Whether to open the link in a new tab. Adds a <a href='https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/rel'>relationship</a> of <code>noreferrer noopener</code>.",
       required: "no",
     },
     {
       name: "icon",
-      type: "string",
-      description: "Any <a href='/components/icon#icon-library'>icon token</a>, optionally in addition to any of <code>only</code>, <code>right</code>, and <code>inline</code>.",
+      type: ["prop", "array"],
+      description: "Any <a href='/components/icon#library'>icon token</a>, optionally in addition to one of <code>only</code> or <code>right</code>.",
       required: "no",
     },
     {
-      name: "controls",
-      type: "string",
-      description: "The ID of an element that the button programmatically controls.",
+      name: "variant",
+      type: ["prop", "string"],
+      description: "Any of <code>secondary</code>, <code>ghost</code>, or <code>ui</code>.",
       required: "no",
     },
     {
-      name: "label",
-      type: "string",
-      description: "The text label of the button. Only use if a <a href='#reactive-label'>reactive label</a> is needed.",
+      name: "size",
+      type: ["prop", "array"],
+      description: "One of <code>small</code> or <code>large</code>, optionally in combination with <code>full-width</code>.",
       required: "no",
     },
   ],
-}) }}
+  slots: [
+    {
+      name: "(default)",
+      multiple: "no",
+      description: "Content slot for button label.",
+      required: "no",
+    },
+  ],
+}) }} 
 
-
-<p>Source code: <a href="https://github.com/jacecotton/tcds/blob/main/assets/scripts/components/Button.js">Button.js</a>, <a href="https://github.com/jacecotton/tcds/blob/main/assets/styles/%40tcds/components/button.scss">button.scss</a></p>
-<h2 id="citations">Citations</h2>
- {{ include("@tch/components/footnotes/footnotes.html.twig") }}
+<h2 id="resources">Resources</h2>
+<p>This component was architected in conformance with <a href="https://www.w3.org/WAI/ARIA/apg/patterns/button/">ARIA Authoring Practices (APG) for button pattern</a>.</p>
+<p><a href="https://github.com/jacecotton/tcds/blob/main/components/button/">Source code on GitHub</a></p>
 {% endblock %}

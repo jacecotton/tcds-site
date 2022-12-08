@@ -2,6 +2,145 @@
 file and run the gulp process to compile (either `gulp` or `npm run dev` from
 the terminal). #}
 {% extends "@tch/base.twig" %}
+{% block lede %}Dialogs are overlays that restrict focus and interactivity to a popup window in order to prompt some user engagement.{% endblock %}
 {% block body %}
-<p><a href="https://css-tricks.com/dialog-components-roll-your-own/">https://css-tricks.com/dialog-components-roll-your-own/</a></p>
+{% embed "@tch/includes/example.twig" %}
+{% block content %}
+<tcds-dialog id="my-dialog">
+  <p>Hello world!</p>
+</tcds-dialog>
+
+<tcds-button controls="my-dialog">Open dialog</tcds-button>
+{% endblock %}
+{% endembed %}
+
+
+<h2 id="best-practices">Best practices</h2>
+<p><strong>Avoid opening on page load.</strong> dialogs that open on page load can be disruptive and intrusive, causing annoyance and increasing bounce rate. Prefer using dialogs only in connection with some user action, like clicking a button. If you open a dialog on page load, close it after 5 to 10 seconds with the <a href="#autoclose-attribute"><code>autoclose</code> prop</a>.</p>
+<p><strong>Keep the content short.</strong> Do not use dialogs to present complex content or lengthy forms. dialog content should be short and to the point, allowing the user to take decisive action within a short amount of time.</p>
+<h3 id="when-to-use">When to use</h3>
+<p><strong>Prompt user engagement.</strong> Dialogs are helpful to acquire information from users, like picking between two options (&quot;OK&quot; or &quot;Cancel&quot;, &quot;Accept&quot; or &quot;Reject&quot;, etc.), or getting some prerequisite information via a small form.</p>
+<p><strong>Offer warnings before proceeding.</strong> Dialogs can be used to help a user understand the consequences of proceeding with an action, such as clicking on an outbound link, consent to tracking cookies, etc.</p>
+<h3 id="when-not-to-use">When not to use</h3>
+<p><strong>Spotlight targeted content.</strong> Dialogs are not good options for promotions, campaigns, or ads. These have low click-through and high bounce rates.</p>
+<p><strong>Persistent UI.</strong> Dialog visibility is temporary, and does not &quot;float&quot; on a page like a normal window. Do not use dialogs to place content that should remain persistent through continuous user interactions.</p>
+<p><strong>Simple notifications.</strong> Do not use dialogs to provide simple notifications, like success or error messages. Use the <a href="/components/notification">Notification</a> component instead, or simple inline text.</p>
+<h2 id="usage">Usage</h2>
+<p>Always provide a unique ID to every dialog with the <code>id</code> attribute. This helps correspond the close button and other controls with the dialog.</p>
+<h3 id="opening">Opening</h3>
+<p>To open a dialog on page load, add the <a href="#open-attribute"><code>open</code> attribute</a>.</p>
+<pre><code class="language-html">&lt;tcds-dialog open&gt;
+  ...
+&lt;/tcds-dialog&gt;
+</code></pre>
+<p>If the user dismisses the dialog, it will not open again on repeated page loads. The dialog will remain closed unless it is opened through one of the following methods, its ID changes, or the user clears their local storage for the site.</p>
+<p>To control the dialog programmatically, you can add or remove the <code>open</code> attribute, or call the <a href="#open-method"><code>open</code></a> or <a href="#close-method"><code>close</code> methods</a>.</p>
+<pre><code class="language-html">&lt;tcds-dialog id=&quot;my-dialog&quot;&gt;
+  ...
+&lt;/tcds-dialog&gt;
+
+&lt;script&gt;
+  // Open on page load.
+  window[&quot;my-dialog&quot;].open();
+
+  // Close after 5 seconds.
+  setTimeout(() =&gt; {
+    window[&quot;my-dialog&quot;].close();
+  }, 5000);
+&lt;/script&gt;
+</code></pre>
+<p>To open a dialog on button click, set a button&#39;s <code>aria-controls</code> attribute (or the <a href="/components/button">Button component</a>&#39;s <code>controls</code> prop) to the <code>id</code> of the Dialog.</p>
+<pre><code class="language-html">&lt;button aria-controls=&quot;my-dialog&quot;&gt;Open dialog&lt;/button&gt;
+
+&lt;tcds-dialog id=&quot;my-dialog&quot;&gt;
+  ...
+&lt;/tcds-dialog&gt;
+</code></pre>
+<h2 id="styling">Styling</h2>
+<p>The dialog&#39;s basic styles can be changed with the following custom properties.</p>
+<table>
+  <tr>
+    <th>Custom property</th>
+    <th>Description</th>
+    <th>Default value</th>
+  </tr>
+  <tr>
+    <td><code style="white-space: nowrap">--tcds-dialog-background</code></td>
+    <td>The background color of the inner dialog box.</td>
+    <td><code>#fff</code></td>
+  </tr>
+  <tr>
+    <td><code style="white-space: nowrap">--tcds-dialog-padding</code></td>
+    <td>The padding of the inner dialog box.</td>
+    <td><code>var(--tcds-space-x-loose)</code></td>
+  </tr>
+  <tr>
+    <td><code style="white-space: nowrap">--tcds-dialog-base-width</code></td>
+    <td>The starting width of the dialog (above the <a href="/design/layout#breakpoints"><code>large</code> breakpoint</a>).</td>
+    <td><code>fit-content</code></td>
+  </tr>
+  <tr>
+    <td><code style="white-space: nowrap">--tcds-dialog-min-width</code></td>
+    <td>The minimum width of the dialog (above the <code>large</code> breakpoint).</td>
+    <td><code>500px</code></td>
+  </tr>
+  <tr>
+    <td><code style="white-space: nowrap">--tcds-dialog-max-width</code></td>
+    <td>The maximum width of the dialog (above the <code>large</code> breakpoint).</td>
+    <td><code>30vw</code></td>
+  </tr>
+</table>
+
+<h2 id="api">API</h2>
+ {{ include("@tch/includes/api.twig", {
+  attributes: [
+    {
+      name: "open",
+      type: ["state", "boolean"],
+      description: "The dialog is open. Useful for opening a dialog on page load.",
+      required: "no",
+    },
+    {
+      name: "autoclose",
+      type: ["prop", "number"],
+      description: "The time (in seconds) before closing the dialog after opening.",
+      required: "no",
+    },
+  ],
+  slots: [
+    {
+      name: "(default)",
+      multiple: "no",
+      description: "Default content slot.",
+      required: "no",
+    },
+  ],
+  methods: [
+    {
+      name: "open",
+      description: "Opens the dialog.",
+    },
+    {
+      name: "close",
+      description: "Closes the dialog.",
+    },
+  ],
+}) }} 
+
+<!--
+https://polaris.shopify.com/components/modal
+https://nordhealth.design/components/modal/
+https://opensource.adobe.com/spectrum-web-components/components/dialog-base/
+https://ant.design/components/modal/
+https://carbondesignsystem.com/components/modal/usage/
+https://designsystem.digital.gov/components/modal/
+https://atlassian.design/components/modal-dialog/examples
+https://developer.microsoft.com/en-us/fluentui#/controls/web/dialog
+https://baseweb.design/components/modal/
+https://protocol.mozilla.org/components/detail/modal.html
+-->
+
+<h2 id="resources">Resources</h2>
+<p>This component was architected in conformance with <a href="https://www.w3.org/WAI/ARIA/apg/patterns/dialogmodal/">ARIA Authoring Practices (APG) for dialog pattern</a>.</p>
+<p><a href="https://github.com/jacecotton/tcds/blob/main/components/dialog/">Source code on GitHub</a></p>
 {% endblock %}

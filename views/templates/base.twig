@@ -7,7 +7,8 @@
   <title>{{ meta_title ? "#{meta_title} - " }}Texas Children's Design System</title>
   <meta name="description" content="{{ description }}">
 
-  <link href="/styles/main.css" rel="stylesheet">
+  <link rel="stylesheet" href="/styles/tcds.css" title="tcds-base">
+  <link rel="stylesheet" href="/styles/main.css">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.19.0/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
 
   <link href="/favicon.png" rel="shortcut icon" type="image/png">
@@ -34,41 +35,60 @@
 
   {% block head %}{% endblock %}
 </head>
-<body class="page-{{ title|clean_class }} category-{{ category|clean_class }} line-numbers preload">
-  {{ include("@tch/partials/site-header.twig") }}
+<body class="page-{{ title|clean_class }} category-{{ category|clean_class }} line-numbers">
+  <div class="site-layout">
+    {{ include("@tch/partials/site-header.twig") }}
 
-  <main>
-    <header class="page-masthead">
-      {% if category and title != "Overview" and display_title != category %}
-        <p class="page-category">{{ category }}</p>
-      {% endif %}
+    <div class="page-content">
+      <header class="page-masthead">
+        {% if category and title != "Overview" and display_title != category %}
+          <p class="page-category">{{ category }}</p>
+        {% endif %}
 
-      {% if display_title == "" %}
-        <h1 class="visually-hidden">{{ title }}</h1>
-      {% else %}
-        <h1>{{ display_title }}</h1>
-      {% endif %}
+        {% if display_title == "" %}
+          <h1 class="visually-hidden">{{ title }}</h1>
+        {% else %}
+          <h1>{{ display_title }}</h1>
+        {% endif %}
 
-      {% if block("lead") %}
-        <p class="lead">
-          {% block lead %}{% endblock %}
-        </p>
-      {% endif %}
-    </header>
+        {% if block("lede") %}
+          <p class="lede">
+            {% block lede %}{% endblock %}
+          </p>
+        {% endif %}
+      </header>
 
-    <section class="page-article">
-      {% block body %}{% endblock %}
-    </section>
+      <main class>
+        {% block body %}{% endblock %}
 
-    <aside class="page-inner-sidebar">
-      <nav class="TOC" aria-labelledby="toc-label">
-        <h2 id="toc-label" class="TOC__label" data-toc-exclude>
-          {{ include("@tcds/components/icon/icon.html.twig", { icon: "list" }) }}
-          On this page
-        </h2>
-      </nav>
-    </aside>
-  </main>
+        <footer class="prev-next">
+          {% if previous_page.title %}
+            <a href="{{ previous_page.route }}" class="prev-next__prev">
+              <tcds-icon icon="arrow-left"></tcds-icon>
+              <small>{{ previous_page.category }}</small>
+              <b>{{ previous_page.title }}</b>
+            </a>
+          {% endif %}
+
+          {% if next_page.title %}
+            <a href="{{ next_page.route }}" class="prev-next__next">
+              <tcds-icon icon="arrow-right"></tcds-icon>
+              <small>{{ next_page.category }}</small>
+              <b>{{ next_page.title }}</b>
+            </a>
+          {% endif %}
+        </footer>
+      </main>
+
+      <aside class="page-inner-sidebar">
+        <tcds-toc></tcds-toc>
+      </aside>
+    </div>
+
+    <footer class="site-footer">
+      &copy; Texas Children's {{ "now"|date("Y") }}
+    </footer>
+  </div>
 
 <script>
 if(window.MSInputMethodContext && document.documentMode) {

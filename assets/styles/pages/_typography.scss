@@ -1,103 +1,22 @@
-@use "../" as *;
-
-.typography-accordion {
-  border: 1px solid color("gray", "100");
-  margin: space("x-loose") 0;
-
-  section {
-    background: none;
-    border-top: 1px solid transparent;
-    border-bottom: 1px solid transparent;
-    padding: space("normal") space("loose");
-    transition:
-      background animation("productive"),
-      border-color animation("productive");
-
-    &:hover,
-    &[data-open="true"] {
-      background: color("gray", "0");
-      border-top-color: color("shade", "0");
-      border-bottom-color: color("shade", "0");
-    }
-  }
-
-  &__panel {
-    overflow: hidden;
-    transition: height animation("productive");
-
-    table {
-      width: auto;
-      margin-top: space("normal");
-
-      th:not(:last-child),
-      td:not(:last-child) {
-        padding-right: space("loose");
-      }
-    }
-  }
-
-  button {
-    background: none;
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    text-align: left;
-    cursor: pointer;
+.typeface-table {
+  td:not([rowspan]) {
+    vertical-align: middle;
   }
 }
 
 .type-scale-table {
-  &[data-in-viewport="true"] td:first-child span {
-    animation: type-slide-up 1s animation("expressive-easing") forwards;
-  }
-  
-  td:first-child {
+  td:nth-child(1) {
     max-width: 500px;
-    overflow: hidden;
-    
+
     span {
       display: block;
       white-space: nowrap;
       overflow: hidden;
       position: relative;
-      opacity: 0;
-      transform-origin: 0 100%;
-      transform: translateY(100%);
-
-      @keyframes type-slide-up {
-        to {
-          transform: translateY(0);
-          opacity: 1;
-        }
-      }
     }
   }
 
-  tr:nth-of-type(1) td:first-child span {
-    animation-delay: 50ms;
-  }
-
-  tr:nth-of-type(2) td:first-child span {
-    animation-delay: 100ms;
-  }
-
-  tr:nth-of-type(3) td:first-child span {
-    animation-delay: 150ms;
-  }
-
-  tr:nth-of-type(4) td:first-child span {
-    animation-delay: 200ms;
-  }
-
-  tr:nth-of-type(5) td:first-child span {
-    animation-delay: 250ms;
-  }
-
-  tr:nth-of-type(6) td:first-child span {
-    animation-delay: 300ms;
-  }
-
-  tr:nth-of-type(7) td:first-child span {
-    animation-delay: 350ms;
+  td:nth-child(2) {
+    white-space: nowrap;
   }
 }

@@ -1,20 +1,15 @@
-<!--lead
+<!--lede
   How text content is written and rendered has significant accessibility implications. It can make the difference between an inclusive experience for users with disabilities, and one that's frustrating, excluding, or unusable.
-lead-->
+lede-->
 
-<!--twig
-  {{ include("@tcds/components/message/message.html.twig", {
-    content: "<strong>This document is not comprehensive.</strong> It is primarily aimed at authoring accessible text from a technical perspective. It does not cover prose and general editorial guidelines for accessibility.",
-    modifiers: ["attention"],
-  }) }}
-twig-->
+<strong>This document is not comprehensive.</strong> It is primarily aimed at authoring accessible text from a technical perspective. It does not cover prose and general editorial guidelines for accessibility.
 
 ## Headings
 Headings, H1 through H6, help break up and organize sections of content. It is important to include them to allow:
 
-- Sighted users to more efficiently scan a page.
-- Users of screen readers to skip to relevant content and understand the outline of a page.
-- Search engine algorithms to more deeply understand a page's content.
+* Sighted users to more efficiently scan a page.
+* Users of screen readers to skip to relevant content and understand the outline of a page.
+* Search engine algorithms to more deeply understand a page's content.
 
 Heading elements help _outline_ a page's landmark regions (navigation, main content, etc.) They should not be thought of as strictly related to their text size.
 
@@ -48,14 +43,14 @@ This provides two other benefits aside from accessibility. It helps search engin
 ## Alternative image text
 The `alt` attribute contains **alternative text** to images. It is used by:
 
-- Screen readers to communicate the meaning of an image to a visually impaired user.
-- Search engine algorithms to more deeply understand a page's content.
-- The browser to visually display to users when an image fails to load, which affords accessibility to situationally disabled users (e.g. poor internet connection).
+* Screen readers to communicate the meaning of an image to a visually impaired user.
+* Search engine algorithms to more deeply understand a page's content.
+* The browser to visually display to users when an image fails to load, which affords accessibility to situationally disabled users (e.g. poor internet connection).
 
 **All images must have an `alt` attribute.** All images that are not purely decorative must have text in this `alt` attribute. This is not only an accessibility mandate, but an SEO one.
 
 ### How to write alt text
-Alternative text should be a literal description of the image. While not overly sterilizing the tone of the text, the goal should be to convey the same _visual_ information to a visually impaired user as a sighted user would receive by looking at the image. In effect, the text should function as a suitable substitute to the image.
+Alternative text should be a literal description of the image. While not overly sterilizing the tone of the text, the goal should be to convey the same *visual* information to a visually impaired user as a sighted user would receive by looking at the image. In effect, the text should function as a suitable substitute to the image.
 
 Avoid narrative information:
 

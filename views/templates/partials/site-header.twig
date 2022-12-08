@@ -1,12 +1,12 @@
-<header class="site-sidebar-header" id="site-header">
-  <div class="site-branding">
-    <a href="/" rel="home" title="Home">
-      <img src="/images/tc-logo.svg" alt="Texas Children's" class="site-branding__logo" width="125">
-      <span class="site-branding__title">Design System</span>
+<header class="local-site-header" id="local-site-header">
+  <div class="site-logo">
+    <a href="/" rel="home" title="Home" class="site-logo__link">
+      <img src="/images/tc-logo.svg" alt="Texas Children's" width="125" class="site-logo__image">
+      <span class="site-logo__text">Design System</span>
     </a>
   </div>
 
   {{ include("@tch/partials/main-nav.twig") }}
 </header>
 
-<tcds-button controlss="site-header" icon="only hamburger" color="ghost" round class="site-header-toggle">Toggle menu</tcds-button>
+<tcds-button controls="local-site-header" expanded="false" icon="only hamburger" variant="ui">Toggle menu</tcds-button>

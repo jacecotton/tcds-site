@@ -1,0 +1,20 @@
+:root {
+  --site-header-width: 300px;
+}
+
+.site-layout {
+  display: grid;
+  grid-template-columns: var(--site-header-width) 1fr;
+  grid-template-areas:
+    "site-header page-content"
+    "site-header site-footer";
+  transition: grid-template-columns .15s ease-in;
+
+  @media (--below-large) {
+    grid-template-columns: 0 1fr;
+
+    .site-header-open & {
+      grid-template-columns: var(--site-header-width) 100vw;
+    }
+  }
+}

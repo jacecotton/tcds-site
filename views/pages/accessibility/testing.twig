@@ -1,0 +1,21 @@
+{# DO NOT EDIT. This file was compiled from Markdown; please edit the source .md
+file and run the gulp process to compile (either `gulp` or `npm run dev` from
+the terminal). #}
+{% extends "@tch/base.twig" %}
+{% block lede %}Accessibility testing is a required process in the creation of any component, page, or site for Texas Children's. It involves a combination of automated tests and manual checks, sometimes simple and objective, other times nuanced and complicated.{% endblock %}
+{% block body %}
+<tcds-dialog open id="testing-wip">
+  <h1>Notice</h1>
+
+  <p>
+    <strong>This page is a work in progress.</strong> Please check back later for updates.
+  </p>
+
+<p>  <tcds-button variant="secondary" controls="testing-wip">Okay</tcds-button>
+</tcds-dialog></p>
+<p><strong>Step 1: Automated checklist.</strong> To test for the most basic and easiest to fix problems, start by running a <a href="https://developer.chrome.com/docs/lighthouse/overview/">Lighthouse</a> audit, which uses <a href="https://www.deque.com/axe/">axe</a> criteria. This will provide reports for things like <a href="https://www.w3.org/WAI/standards-guidelines/aria/">ARIA</a> attribute validation, duplicate IDs, color contrast ratios, descending sequence of heading levels, presence of <code>alt</code> attributes, and so on.</p>
+<p><strong>Step 2: Keyboard navigation.</strong> Next, run a quick check for keyboard navigation experience using the tab key, shift key, arrow keys, enter key, and escape key. Ensure the tabbing order is logical, that all interactive elements are accessible from the tab key, that users will not get stuck tabbing through too many elements to get to more important content, that controls work as expected (enter activates an option, escape closes dialogs and popups), and so on.</p>
+<p><strong>Step 3: Browser and system checks.</strong> Ensure the web page cooperates well with browser controls and system preferences. The design should still work at 400% zoom level, font sizes should respond appropriately to configuration changes, reduced animation preference should be respected, and so on.</p>
+<p><strong>Step 4: Screen reader.</strong> Test your page with an actual screen reader, like <a href="https://www.apple.com/accessibility/vision/">VoiceOver</a> on macOS, <a href="https://support.microsoft.com/en-us/windows/complete-guide-to-narrator-e4397a0d-ef4f-b386-d8ae-c172f109bdb1">Narrator</a> on Windows, or <a href="https://www.freedomscientific.com/products/software/jaws/">JAWS</a>. Check for things like appropriate verbal descriptions for visual elements (images and icons), a natural and logical reading flow, sufficient punctuation and verbal indicators, interactive state communication, minimal disruptions, no confusing jumps or associations, etc.</p>
+<p><strong>Step 5: Manual technical checks.</strong> Lastly, check for more manual technical checks, like the appropriate use of ARIA patterns for components, contextually appropriate and sufficiently descriptive <a href="/accessibility/writing-accessible-text"><code>alt</code> text</a>, sufficiently descriptive links and control labels, etc.</p>
+{% endblock %}

@@ -1,13 +1,7 @@
-@use "../" as *;
-
 .icon-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(7.5rem, 1fr));
-  margin: space("loose") 0;
-
-  &[data-in-viewport="true"] &__item {
-    animation: icon-grid-icon-reveal animation("expressive") forwards;
-  }
+  margin: var(--tcds-space-x-loose) 0;
 
   &__item {
     aspect-ratio: 1 / 1;
@@ -17,25 +11,20 @@
     align-items: center;
     text-align: center;
     background-color: transparent;
-    transform: scale(1);
-    transition: background-color animation("productive");
+    transition: background-color .15s ease-in;
     user-select: none;
     cursor: pointer;
-    opacity: 0;
 
-    @keyframes icon-grid-icon-reveal {
-      from {
-        transform: scale(0);
-      } to {
-        opacity: 1;
-      }
-    }
-    
     &:hover {
-      background-color: color("gray", "0");
       --icon-grid-icon-translate-y: 0%;
       --icon-grid-icon-label-opacity: 1;
-      --icon-grid-icon-color: #{color("blue")};
+      --icon-grid-icon-color: var(--tcds-color-blue);
+
+      background-color: var(--tcds-color-gray-x-light);
+    }
+
+    &:active {
+      transform: scale(.97);
     }
 
     @media (hover: none) {
@@ -43,15 +32,11 @@
       --icon-grid-icon-label-opacity: 1;
     }
 
-    &:active {
-      transform: scale(.97);
-    }
-
-    .Icon {
-      display: inline-block;
+    tcds-icon {
       align-self: end;
+      justify-self: center;
       transform: translateY(var(--icon-grid-icon-translate-y, 50%));
-      transition: transform animation("expressive");
+      transition: transform var(--tcds-animation-expressive-duration) var(--tcds-animation-expressive-easing);
       font-size: 1.7em;
       color: var(--icon-grid-icon-color, inherit);
     }
@@ -61,10 +46,11 @@
     opacity: var(--icon-grid-icon-label-opacity, 0);
     transform: translateY(var(--icon-grid-icon-translate-y, 50%));
     transition:
-      opacity animation("expressive"),
-      transform animation("expressive");
+      opacity var(--tcds-animation-expressive-duration) var(--tcds-animation-expressive-easing),
+      transform var(--tcds-animation-expressive-duration) var(--tcds-animation-expressive-easing);
     transition-delay: 100ms;
-    font-size: font-size("small");
+    font-size: var(--tcds-font-size-small);
+    font-family: var(--tcds-font-ui);
     white-space: nowrap;
   }
 }

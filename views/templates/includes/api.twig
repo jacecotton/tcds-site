@@ -1,0 +1,57 @@
+<table class="api-table">
+  {% if attributes %}
+    <tr>
+      <th colspan="4">Attributes</th>
+    </tr>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Required?</th>
+    </tr>
+    {% for attribute in attributes %}
+      <tr id="{{ attribute.name|clean_id }}-attribute">
+        <td><code>{{ attribute.name }}</code></td>
+        <td>{{ attribute.type[0] }}: <code>{{ attribute.type[1] }}</code></td>
+        <td>{{ attribute.description|raw }}</td>
+        <td>{{ attribute.required }}</td>
+      </tr>
+    {% endfor %}
+  {% endif %}
+  {% if slots %}
+    <tr>
+      <th colspan="4">Slots</th>
+    </tr>
+    <tr>
+      <th>Name</th>
+      <th>Multiple?</th>
+      <th>Description</th>
+      <th>Required?</th>
+    </tr>
+    {% for slot in slots %}
+      <tr id="{{ slot.name|clean_id }}-slot">
+        <td>{{ slot.name != "(default)" ? "<code>" }}{{ slot.name }}{{ slot.name != "(default)" ? "</code>" }}</td>
+        <td>{{ slot.multiple }}</td>
+        <td>{{ slot.description|raw }}</td>
+        <td>{{ slot.required }}</td>
+      </tr>
+    {% endfor %}
+  {% endif %}
+  {% if methods %}
+    <tr>
+      <th colspan="4">Methods</th>
+    </tr>
+    <tr>
+      <th>Name</th>
+      <th>Return type</th>
+      <th colspan="2">Description</th>
+    </tr>
+    {% for method in methods %}
+      <tr id="{{ method.name|clean_id }}-method">
+        <td><code>{{ method.name }}</code></td>
+        <td><code>{{ method.return_type ?: "undefined" }}</code></td>
+        <td colspan="2">{{ method.description|raw }}</td>
+      </tr>
+    {% endfor %}
+  {% endif %}
+</table>

@@ -7,22 +7,29 @@
  * Additionally, if the current page isn't within the global nav's scroll
  * window, smooth scroll to it.
  */
-(function() {
+ (function() {
   // Get global nav.
-  const siteHeader = document.querySelector(".site-sidebar-header");
+  const siteHeader = document.getElementById("local-site-header");
   // Initialize scroll position variable (will be populated from cookie on
   // repeat views).
   let scrollPosition = null;
+  let timer = null;
 
   // When the user scrolls, store the position as a cookie.
   siteHeader.addEventListener("scroll", () => {
-    document.cookie = `siteHeaderScroll=${siteHeader.scrollTop}; path=/`;
-  });
+    if(timer !== null) {
+      clearTimeout(timer);
+    }
+
+    timer = setTimeout(() => {
+      localStorage.setItem("site_header_scroll", siteHeader.scrollTop);
+    }, 150);
+  }, false);
   
   // If the cookie exists on page load...
-  if(document.cookie) {
+  if(localStorage.getItem("site_header_scroll")) {
     // Get the position.
-    scrollPosition = document.cookie.split("; ").find((row) => row.startsWith("siteHeaderScroll=")).split("=")[1];
+    scrollPosition = localStorage.getItem("site_header_scroll");
   }
 
   // If we have a position, scroll to it.
@@ -61,5 +68,5 @@
   });
 
   // Observe the active link only.
-  scrollToActiveLink.observe(document.querySelector(".site-sidebar-header [aria-current]"));
+  scrollToActiveLink.observe(document.querySelector("#local-site-header [aria-current]"));
 }());

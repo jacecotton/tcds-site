@@ -1,5 +1,3 @@
-@use "../" as *;
-
 .timing-table {
   tr > td,
   tr > th {
@@ -11,22 +9,22 @@
 }
 
 .timing-graph {
-  background-color: color("blue", "0");
+  background-color: var(--tcds-color-blue-x-light);
   border-radius: 16px;
   margin: 0 auto;
 
   &.easing-function {
-    margin: space("normal") 0 0;
+    margin: var(--tcds-space-normal) 0 0;
   }
 
   .easing-curve {
     fill: none;
-    stroke: color("blue");
+    stroke: var(--tcds-color-blue);
     stroke-width: 6px;
     stroke-linecap: round;
   }
 
   .easing-pacer {
-    fill: color("blue");
+    fill: var(--tcds-color-blue);
   }
 }

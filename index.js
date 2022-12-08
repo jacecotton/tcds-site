@@ -7,13 +7,11 @@ import content from "./content.js";
 import { TwingEnvironment, TwingLoaderFilesystem } from "twing";
 import TwingDrupalFilters from "twing-drupal-filters";
 
-const MODE = "prod";
-
 // Configure template path.
 const loader = new TwingLoaderFilesystem("./views");
 // Configure custom namespace.
 loader.addPath("./views/templates", "tch");
-loader.addPath(`${MODE === "prod" ? "./node_modules/@txch/tcds" : "../tcds" }/assets/templates`, "tcds");
+// loader.addPath("./node_modules/@txch/tcds/templates", "tcds");
 
 // Set up Twing environment.
 const twing = new TwingEnvironment(loader);
@@ -27,19 +25,23 @@ const host = process.env.HOST || "localhost";
 
 app.use(express.static(join(resolve(), "public")));
 
+function getPageData(category, page) {
+  if(category && page) {
+    const categoryRoute = category.route || slugify(category.title, { lower: true });
+    const pageRoute = page.route || `/${categoryRoute}/${slugify(page.title, { lower: true })}`;
+    
+    return {
+      categoryRoute: categoryRoute,
+      pageRoute: pageRoute,
+    };
+  }
+}
+
 // Content from ./content.js. Each object is a category, which contains pages.
-content.forEach((category) => {
-  // Construct category route from the one provided, or from the slugified
-  // category title.
-  let categoryRoute = category.route || slugify(category.title, { lower: true });
-
-  category.pages.forEach((page) => {
-    // Construct page route by concatenating category route and slugified page
-    // title, unless a fully custom route is provided.
-    const route = page.route || `/${categoryRoute}/${slugify(page.title, { lower: true })}`;
-
+content.forEach((category, categoryIndex) => {
+  category.pages.forEach((page, pageIndex) => {
     // Set up route and handler for each page.
-    app.get(route, (req, res) => {
+    app.get(getPageData(category, page)?.pageRoute, (req, res) => {
       // Just some basic dummy auth for demonstration purposes. If at some point
       // we want to seriously lock it down, let's not do this here. 🙂
       const reject = () => {
@@ -60,9 +62,18 @@ content.forEach((category) => {
         return reject();
       }
 
+      const indexOfPreviousCategory = categoryIndex === 0 ? undefined : categoryIndex - 1;
+      const indexOfNextCategory = categoryIndex === content.length - 1 ? 0 : categoryIndex + 1;
+
+      const categoryOfNextPage = pageIndex !== category.pages.length - 1 ? category : content[indexOfNextCategory];
+      const categoryOfPreviousPage = pageIndex > 0 ? category : content[indexOfPreviousCategory];
+
+      const nextPage = pageIndex !== category.pages.length - 1 ? category.pages[pageIndex + 1] : categoryOfNextPage?.pages?.[0];
+      const previousPage = pageIndex > 0 ? category.pages[pageIndex - 1] : categoryOfPreviousPage?.pages[categoryOfPreviousPage.pages.length - 1];
+
       // Render the twig template based on the page route, or custom template
       // path if specified.
-      twing.render(`pages${page.template ? `/${page.template}` : route}.twig`, {
+      twing.render(`pages${page.template ? `/${page.template}` : getPageData(category, page)?.pageRoute}.twig`, {
         title: page.title,
         // Display title is for the <h1> displayed on the page. If not specified
         // use generic title.
@@ -76,14 +87,24 @@ content.forEach((category) => {
         description: page.description !== undefined ? page.description : "Default description",
         // Pass through some meta info to the template.
         category: category.title,
-        route: route,
+        route: getPageData(category, page)?.pageRoute,
         content: content,
+        next_page: {
+          title: nextPage?.title,
+          route: getPageData(categoryOfNextPage, nextPage)?.pageRoute,
+          category: categoryOfNextPage?.title,
+        },
+        previous_page: {
+          title: previousPage?.title,
+          route: getPageData(categoryOfPreviousPage, previousPage)?.pageRoute,
+          category: categoryOfPreviousPage?.title,
+        },
       }).then((output) => {
         // Minify output.
         output = minify(output, {
           removeComments: true,
           collapseWhitespace: true,
-          collapseBooleanAttributes: true,
+          collapseBooleanAttributes: false,
           removeAttributeQuotes: true,
           useShortDoctype: true,
           removeOptionalTags: true,

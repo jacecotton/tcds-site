@@ -1,5 +1,3 @@
-// Export array of content. Each object is a category, which contains a `pages`
-// array, which contains objects for page metadata.
 export default [
   {
     title: "Introduction",
@@ -10,7 +8,7 @@ export default [
         display_title: "Texas Children's Design System",
         route: "/",
         template: "index",
-        description: "Welcome to the Texas Children's Design System.",
+        description: "Welcome to Texas Children's Design System.",
       },
       {
         title: "Getting Started",
@@ -19,7 +17,6 @@ export default [
       {
         title: "Contributing",
         route: "/contributing",
-        disabled: true,
       },
     ],
   },
@@ -52,44 +49,35 @@ export default [
         display_title: "Components",
         route: "/components",
         template: "components/overview",
-        disabled: true,
       },
       { title: "Accordion" },
-      { title: "Action Bar", disabled: true },
-      // { title: "Breadcrumbs", disabled: true },
+      { title: "Action Bar" },
+      { title: "Alert Bar" },
+      { title: "Breadcrumbs", disabled: true },
       { title: "Button" },
-      { title: "Callout", disabled: true },
       { title: "Card" },
       { title: "Carousel" },
-      { title: "Dialog", disabled: true },
-      { title: "Hero", disabled: true },
+      { title: "Dialog" },
       { title: "Icon" },
-      // { title: "Message", disabled: true },
+      { title: "Mega Menu", disabled: true },
       { title: "Notification", disabled: true },
-      // { title: "Pagination", disabled: true },
+      { title: "Pagination", disabled: true },
+      { title: "Section" },
       { title: "Tabs" },
-      { title: "Tile", disabled: true },
     ],
   },
 
   {
-    title: "Primitives",
+    title: "Content",
     pages: [
-      {
-        title: "Overview",
-        meta_title: "Primitives",
-        display_title: "Primitives",
-        route: "/primitives",
-        template: "/primitives/overview",
-        disabled: true,
-      },
-      { title: "Blockquote", disabled: true },
-      { title: "Details", disabled: true },
+      { title: "Blockquote" },
+      { title: "Callout" },
+      { title: "Details" },
       { title: "Forms" },
-      { title: "Horizontal rule", disabled: true },
       { title: "Images", disabled: true },
-      { title: "Lists", disabled: true },
-      { title: "Tables", disabled: true },
+      { title: "Horizontal rule" },
+      { title: "Lists" },
+      { title: "Tables" },
     ],
   },
 
@@ -103,18 +91,18 @@ export default [
         route: "/accessibility",
         template: "accessibility/overview",
       },
-      { title: "Testing", disabled: true },
+      { title: "Testing" },
       { title: "Writing accessible text" },
     ],
   },
 
   {
-    title: "Style Guide",
+    title: "Style guide",
     pages: [
-      { title: "General", disabled: true },
-      { title: "HTML", disabled: true },
-      { title: "CSS", disabled: true },
-      { title: "JavaScript", disabled: true },
+      { title: "General" },
+      { title: "HTML" },
+      { title: "CSS" },
+      { title: "JavaScript" },
     ],
-  },
+  }
 ];

@@ -2,11 +2,15 @@
 file and run the gulp process to compile (either `gulp` or `npm run dev` from
 the terminal). #}
 {% extends "@tch/base.twig" %}
-{% block lead %}Layout is the arrangement, sizing, and spacing of elements on a page. The Design System provides utilities for implementing layouts in a consistent and responsive manner.{% endblock %}
+{% block lede %}Layout is the arrangement, sizing, and spacing of elements on a page. The Design System provides utilities for implementing layouts in a consistent and responsive manner.{% endblock %}
 {% block body %}
+<h2 id="content-wrapper">Content wrapper</h2>
+<p>Content wrappers include the <a href="/content/main"><code>main</code> element</a>, the <a href="/components/section">Section</a> component, and anything with a <code>.max-width</code> utility class.</p>
+<p>These content wrappers have a base width of 100% of the parent container, minus on either side a <code>--site-outer-gutter</code>, which is set to an <a href="#size-and-space"><code>x-loose</code> spacing</a>.</p>
+<p>Content wrappers are centered and constrained to a maximum width of <code>--site-container-max-width</code>, which is set to 1200px (the <a href="#breakpoints"><code>x-large</code> breakpoint</a>).</p>
 <h2 id="grid">Grid</h2>
 <p>The Design System provides <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout">CSS Grid</a>-based utility classes for creating responsive layouts.</p>
-<table class="table">
+<table>
   <thead>
     <tr>
       <th>Class</th>
@@ -31,16 +35,17 @@ the terminal). #}
 
 <style>
   .grid--example > div {
-    background: #d5e3ff;
+    background: var(--tcds-color-blue-x-light);
     padding: 1rem;
-    border-radius: .5rem;
+    border-radius: 10px;
     text-align: center;
+    font-family: var(--tcds-font-ui);
   }
 </style>
 
 
-{% embed "@tch/includes/example.html.twig" %}
-{% block result %}
+{% embed "@tch/includes/example.twig" %}
+{% block content %}
 <p><small>Resize the window to see responsive changes to the column spans.</small></p>
 
 <div class="grid grid--example gap-normal">
@@ -84,7 +89,7 @@ the terminal). #}
 
 
 <p>If you want grid items to fill whatever available cell is created by the grid container, you can set custom properties on the <code>.grid</code> container.</p>
-<table class="table">
+<table>
   <thead>
     <tr>
       <th>Custom property</th>
@@ -104,8 +109,8 @@ the terminal). #}
 </table>
 
 
-{% embed "@tch/includes/example.html.twig" %}
-{% block result %}
+{% embed "@tch/includes/example.twig" %}
+{% block content %}
 <p><small>Resize the window to see responsive changes to the grid column count.</small></p>
 
 <div class="grid grid--example gap-normal" style="
@@ -113,7 +118,8 @@ the terminal). #}
   --above-medium-grid-columns: 4;
   --above-large-grid-columns: 6;
 ">
-  <div class="column-2">1 – 2</div>
+  <div>1</div>
+  <div>2</div>
   <div>3</div>
   <div>4</div>
   <div>5</div>
@@ -129,7 +135,8 @@ the terminal). #}
   --above-medium-grid-columns: 4;
   --above-large-grid-columns: 6;
 ">
-  <div class="column-2">1 – 2</div>
+  <div>1</div>
+  <div>2</div>
   <div>3</div>
   <div>4</div>
   <div>5</div>
@@ -142,64 +149,85 @@ the terminal). #}
 {% endembed %}
 
 
-<p>This allows you to forgo adding any classes on the child items, unless you also want a particular item to span some number of columns.</p>
+<p>This allows you to avoid having to add any classes on the child items, with the grid specifications instead determined solely on the container.</p>
+<p>You can also combine both approaches:</p>
+
+{% embed "@tch/includes/example.twig" %}
+{% block content %}
+<p><small>Resize the window to see responsive changes to the grid column count.</small></p>
+
+<div class="grid grid--example gap-normal" style="
+  --grid-columns-default: 2;
+  --above-medium-grid-columns: 4;
+  --above-large-grid-columns: 6;
+">
+  <div class="column-2">1 – 2</div>
+  <div>3</div>
+  <div>4</div>
+  <div class="column-2">5 – 6</div>
+</div>
+{% endblock %}
+{% block code %}
+<div class="grid" style="
+  --grid-columns-default: 2;
+  --above-medium-grid-columns: 4;
+  --above-large-grid-columns: 6;
+">
+  <div class="column-2">1 – 2</div>
+  <div>3</div>
+  <div>4</div>
+  <div class="column-2">5 – 6</div>
+</div>
+{% endblock %}
+{% endembed %}
+
+
 <h2 id="breakpoints">Breakpoints</h2>
-<p>Breakpoints are used to apply styles based on the viewport size. The Design System provides a set of standard breakpoints, which can be accessed in Sass with a function or a mixin. Also, certain utility classes use breakpoint names to conditionally apply their styles (see below).</p>
-<p>Also provided are configuration variables which can override the breakpoint values on importing the Design System to a project (see <a href="/getting-started#sass">Getting Started &sect; Sass</a>).</p>
+<p>Breakpoints are used to apply styles based on the viewport size. The Design System provides a set of standard breakpoints, which can be accessed with custom media queries (<code>@media (--above-x)</code> and <code>@media (--below-x)</code>). Also, certain utility classes use breakpoint names to conditionally apply their styles.</p>
 <table>
   <thead>
     <tr>
-      <th style="width: 12ch">Breakpoint</th>
-      <th style="width: 12ch">Value</th>
-      <th>SCSS configuration variable</th>
+      <th>Breakpoint</th>
+      <th>Value</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td><code>small</code></td>
+      <td style="width: 19ch"><code>small</code></td>
       <td><code>640px</code></td>
-      <td><code>$theme-breakpoint-small</code></td>
     </tr>
     <tr>
       <td><code>medium</code></td>
       <td><code>768px</code></td>
-      <td><code>$theme-breakpoint-medium</code></td>
     </tr>
     <tr>
       <td><code>large</code></td>
-      <td><code>1024px</code></td>
-      <td><code>$theme-breakpoint-large</code></td>
+      <td><code>1000px</code></td>
     </tr>
     <tr>
       <td><code>x-large</code></td>
-      <td><code>1280px</code></td>
-      <td><code>$theme-breakpoint-x-large</code></td>
+      <td><code>1200px</code></td>
     </tr>
   </tbody>
 </table>
 
-<h3 id="sass-utilities">Sass utilities</h3>
-<p>The <code>breakpoint()</code> Sass function can be used to get the value of a breakpoint directly. However, breakpoints are generally more useful as <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries">media queries</a>, for which there are the <code>breakpoint-above()</code> and <code>breakpoint-below()</code> mixins. Example:</p>
-<pre><code class="language-css">@include breakpoint-above(&quot;small&quot;) {
-  // Applies only to screen sizes above 640px.
-}
+<h3 id="viewport-based-hiding">Viewport-based hiding</h3>
+<p>Breakpoint utilities are available for hiding content based on the screen size: <code>.hide-below-x</code> or <code>.hide-above-x</code>. Example:</p>
 
-@include breakpoint-below(&quot;large&quot;) {
-  // Applies only to screen sizes below 1024px.
-}
-</code></pre>
-<p>Because the majority of visitors are on handheld devices, <strong>we recommend a &quot;mobile-first&quot; approach to responsive strategy.</strong> Therefore, the <code>breakpoint-above()</code> mixin is recommended for most cases, <a href="https://developer.mozilla.org/en-US/docs/Glossary/Progressive_Enhancement" title="Progressive Enhancement - MDN Web Docs Glossary">progressively enhancing</a> designs as the screen gets wider. The older approach is &quot;desktop-first&quot;, <a href="https://developer.mozilla.org/en-US/docs/Glossary/Graceful_degradation" title="Graceful degradation - MDN Web Docs Glossary">gracefully degrading</a> a design as the screen gets smaller, which can still be done if necessary with the <code>breakpoint-below()</code> mixin.</p>
-<p><strong>Use custom breakpoints.</strong> The provided breakpoints are only reasonable defaults, not hard-set rules. Consider using custom breakpoints to optimize for the specific experience at hand. For custom breakpoints, standard CSS <code>@media</code> query syntax can be used, or a custom value can be passed to the mixins:</p>
-<pre><code class="language-css">@include breakpoint-above(&quot;123px&quot;) {
-  // Custom breakpoint.
-}
-</code></pre>
+{% embed "@tch/includes/example.twig" %}
+{% block content %}
+<p class="hide-below-medium">Content not for screen sizes below 768px.</p>
+<p class="hide-above-x-large">Content not for screen sizes above 1200px.</p>
+{% endblock %}
+{% endembed %}
+
+
+<p>Note these utilities are only intended to switch out actual content. Avoid duplicating elements just to adjust styling between different screen sizes. Instead, prefer adjusting the design of a single element in CSS with media queries.</p>
 <h2 id="size-and-space">Size and space</h2>
 <p>The Design System provides a collection of tokens for setting space (margin, padding, gap) and size (width, height) on elements. Each constant is a multiple of a base unit of 4px.</p>
 <div class="size-space-chart grid gap-x-loose align-center">
   <div class="column-2">
-    <span class="text-semibold">Size</span>
-    <span>(ex <code>height</code>)</span>
+    <span class="font-weight-semibold">Size</span>
   </div>
   <dl class="size-chart row gap-normal column-10">
     <div>
@@ -225,8 +253,7 @@ the terminal). #}
   </dl>
 
   <div class="column-2">
-    <span class="text-semibold">Space</span>
-    <span>(ex <code>padding</code>)</span>
+    <span class="font-weight-semibold">Space</span>
   </div>
   <dl class="space-chart row gap-normal column-10">
     <div>
@@ -252,99 +279,78 @@ the terminal). #}
   </dl>
 </div>
 
-
-  {{ include("@tcds/components/message/message.html.twig", {
-    content: "<strong>Tip:</strong> Because these tokens represent fixed constants at relatively low pixel sizes, they are most useful for micro-layouts. For example, setting spacing between or sizing on individual <a href='/components'>components</a>, <a href='/primitives/forms'>form elements</a>, etc. At the macro-level, layouts need to be <a href='/design/responsive'>responsive</a>, and should therefore use grid or <a href='#flexbox'>flexbox</a> with relative or flexible units and <a href='#breakpoints'>breakpoint sizes</a>.",
-  }) }}
-
-
-<p>Tokens are accessible via corresponding <code>size()</code> and <code>space()</code> custom Sass functions:</p>
-<details>
-  <summary>Syntax</summary>
-  <div>
-
-<ul>
-<li><code>size(&lt;token&gt;, &lt;unit&gt;?)</code><ul>
-<li><code>&lt;token&gt;</code> — <code>x-small</code> through <code>x-large</code>, corresponding to the measurements indicated above.</li>
-<li><code>&lt;unit&gt;</code> — the unit to get the measurement in, <code>px | em | rem</code> (defaults to <code>px</code>).</li>
-</ul>
-</li>
-<li><code>space(&lt;token&gt;, &lt;unit&gt;?)</code><ul>
-<li><code>&lt;token&gt;</code> — <code>x-tight</code> through <code>x-loose</code>, corresponding to the measurements indicated above.</li>
-<li><code>&lt;unit&gt;</code> — the unit to get the measurement in, <code>px | em | rem</code> (defaults to <code>px</code>).</div>
-</details></li>
-</ul>
-</li>
-</ul>
-<p>Spacing tokens are also available as utility classes for the <code>gap</code> property in grid or <a href="#flexbox">flexbox</a>.</p>
-<details>
-  <summary>Utility classes</summary>
-  <div>
-    <table>
-      <thead>
-        <tr>
-          <th style="width: 15ch">Utility class</th>
-          <th>Property</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><code>.gap-x-tight</code></td>
-          <td><code>gap: 4px</code></td>
-        </tr>
-        <tr>
-          <td><code>.gap-tight</code></td>
-          <td><code>gap: 8px</code></td>
-        </tr>
-        <tr>
-          <td><code>.gap-normal</code></td>
-          <td><code>gap: 16px</code></td>
-        </tr>
-        <tr>
-          <td><code>.gap-loose</code></td>
-          <td><code>gap: 24px</code></td>
-        </tr>
-        <tr>
-          <td><code>.gap-x-loose</code></td>
-          <td><code>gap: 32px</code></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</details>
-
-<h3 id="viewport-based-hiding">Viewport-based hiding</h3>
-<p>Breakpoint tokens are also available in utility classes for hiding content based on the screen size. The class format is <code>.hide-below-[breakpoint]</code> or <code>.hide-above-[breakpoint]</code>. Example:</p>
-
-{% embed "@tch/includes/example.html.twig" %}
-{% block content %}
-<span class="hide-below-small">Content not for screen sizes below 640px.</span>
-<span class="hide-above-medium">Content not for screen sizes above 768px.</span>
-{% endblock %}
-{% endembed %}
-
-
-<p>Note these utilities are only intended to switch out actual content. Avoid duplicating elements just to adjust styling between different screen sizes. Instead, prefer adjusting the design of a single element in CSS with media queries.</p>
-<h2 id="layout-utilities">Layout utilities</h2>
-<p>The following utilities apply to both grid and flexbox, and are used for alignment and spacing.</p>
+<p>Space and size tokens are usable via custom properties in CSS.</p>
 <table>
   <thead>
     <tr>
-      <th style="width: 22ch">Utility class</th>
+      <th>Custom property</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>--tcds-space-x</code></td>
+      <td>A space value corresponding to <code>x</code> size token.</td>
+    </tr>
+    <tr>
+      <td><code>--tcds-size-x</code></td>
+      <td>A size value corresponding to <code>x</code> size token.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Space tokens are usable via utility classes in HTML.</p>
+<table>
+  <thead>
+    <tr>
+      <th>Class</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>.gap-x</code></td>
+      <td>Sets the <code>gap</code> property to <code>x</code> space token.</td>
+    </tr>
+    <tr>
+      <td><code>.column-gap-x</code></td>
+      <td>Sets the <code>column-gap</code> property to <code>x</code> space token.</td>
+    </tr>
+    <tr>
+      <td><code>.row-gap-x</code></td>
+      <td>Sets the <code>row-gap</code> property to <code>x</code> space token.</td>
+    </tr>
+    <tr>
+      <td><code>.margin-bottom-x</code></td>
+      <td>Sets the <code>margin-bottom</code> property to <code>x</code> space token.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="alignment">Alignment</h2>
+<p>The Design System provides alignment utility classes for flexbox, grid, and floating.</p>
+<table>
+  <thead>
+    <tr>
+      <th style="width: 22ch">Class</th>
       <th>Property</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td><code>row</code></td>
+      <td><code>.row</code></td>
       <td><code>display: flex; flex-flow: row wrap;</code></td>
     </tr>
     <tr>
-      <td><code>column</code></td>
+      <td><code>.column</code></td>
       <td><code>display: flex; flex-direction: column;</code></td>
     </tr>
     <tr>
-      <td><code>.justify-space-between</code></td>
+      <td><code>.flex-x</code></td>
+      <td><code>flex: x</code>, where <code>x</code> is <code>1</code> through <code>12</code></td>
+    </tr>
+    <tr>
+      <td style="white-space: nowrap"><code>.justify-space-between</code></td>
       <td><code>justify-content: space-between;</code></td>
     </tr>
     <tr>
@@ -372,25 +378,25 @@ the terminal). #}
       <td><code>align-items: center;</code></td>
     </tr>
     <tr>
-      <td><code>.gap-x-tight</code></td>
-      <td><code>gap: 4px;</code></td>
+      <td><code>.float-left</code>*</td>
+      <td>
+<pre>
+float: left;
+margin: 0 var(--tcds-space-loose) var(--tcds-space-loose) 0;
+</pre>
+      </td>
     </tr>
     <tr>
-      <td><code>.gap-tight</code></td>
-      <td><code>gap: 8px;</code></td>
-    </tr>
-    <tr>
-      <td><code>.gap-normal</code></td>
-      <td><code>gap: 16px;</code></td>
-    </tr>
-    <tr>
-      <td><code>.gap-loose</code></td>
-      <td><code>gap: 24px;</code></td>
-    </tr>
-    <tr>
-      <td><code>.gap-x-loose</code></td>
-      <td><code>gap: 32px;</code></td>
+      <td><code>.float-right</code>*</td>
+      <td>
+<pre>
+float: left;
+margin: 0 0 var(--tcds-space-loose) var(--tcds-space-loose);
+</pre>
+      </td>
     </tr>
   </tbody>
 </table>
+
+<p><small>* Float utilities only apply above the <code>small</code> breakpoint. Below <code>small</code>, the element will be centered and given only a bottom margin.</small></p>
 {% endblock %}

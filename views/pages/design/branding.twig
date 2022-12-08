@@ -2,7 +2,22 @@
 file and run the gulp process to compile (either `gulp` or `npm run dev` from
 the terminal). #}
 {% extends "@tch/base.twig" %}
-{% block lead %}Nothing to see. Please check back later.{% endblock %}
 {% block body %}
-<p>Work in progress</p>
+<tcds-dialog open id="branding-wip">
+  <h1>Notice</h1>
+
+  <p>
+    <strong>This page is a work in progress.</strong> Please check back later for updates.
+  </p>
+
+<p>  <tcds-button variant="secondary" controls="branding-wip">Okay</tcds-button>
+</tcds-dialog></p>
+<ul>
+<li>Logo<ul>
+<li>Assets</li>
+<li>Use guidelines</li>
+<li>Example <a href="https://github.com/logos">https://github.com/logos</a></li>
+</ul>
+</li>
+</ul>
 {% endblock %}

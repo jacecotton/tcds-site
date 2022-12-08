@@ -3,8 +3,20 @@ file and run the gulp process to compile (either `gulp` or `npm run dev` from
 the terminal). #}
 {% extends "@tch/base.twig" %}
 {% block body %}
+<tcds-dialog open id="design-wip">
+  <h1>Notice</h1>
+
+  <p>
+    <strong>This page is a work in progress.</strong> Please check back later for updates.
+  </p>
+
+<p>  <tcds-button variant="secondary" controls="design-wip">Okay</tcds-button>
+</tcds-dialog></p>
 <ul>
-<li>Cover design tokens — design decisions represented as data for reference throughout the codebase. Can be used as Sass variables, mixins, functions, custom properties, or classes, depending on the specific token.</li>
-<li>The pages in this category more cover guidelines and best practices. They may sometimes include asset files and code snippets, but generally just explain the guiding principles/approach/philosophy/rules of design, as well as any global decisions made regarding common design challenges.</li>
+<li>Tokens<ul>
+<li>Utility classes</li>
+<li>Variables</li>
+</ul>
+</li>
 </ul>
 {% endblock %}

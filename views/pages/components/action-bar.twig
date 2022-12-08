@@ -1,0 +1,57 @@
+{# DO NOT EDIT. This file was compiled from Markdown; please edit the source .md
+file and run the gulp process to compile (either `gulp` or `npm run dev` from
+the terminal). #}
+{% extends "@tch/base.twig" %}
+{% block lede %}The action bar presents a list of prominent call-to-action links to efficiently triage visitors into more specific sections of a site.{% endblock %}
+{% block body %}
+<style>
+:is(#x, .tcds-action-bar) {
+  position: relative;
+  transform: none;
+  left: 0;
+  width: 100%;
+  max-width: none;
+}
+</style>
+
+
+{% embed "@tch/includes/example.twig" with {
+  full_screen: true,
+} %}
+{% block content %}
+<ul class="tcds-action-bar">
+  <li>
+    <a href="#find-a-doctor">
+      <tcds-icon icon="marker"></tcds-icon>
+      Find a doctor
+      <tcds-icon icon="chevron-right"></tcds-icon>
+    </a>
+  </li>
+  <li>
+    <a href="#schedule-appointment">
+      <tcds-icon icon="mychart"></tcds-icon>
+      Schedule appointment
+      <tcds-icon icon="chevron-right"></tcds-icon>
+    </a>
+  </li>
+  <li>
+    <a href="#get-a-vaccine">
+      <tcds-icon icon="plus"></tcds-icon>
+      Get a vaccine
+      <tcds-icon icon="chevron-right"></tcds-icon>
+    </a>
+  </li>
+</ul>
+{% endblock %}
+{% endembed %}
+
+
+<h2 id="best-practices">Best practices</h2>
+<p><strong>Include only relevant, useful links.</strong> The pages linked to from an action bar should be broad enough to apply to a general audience, but specific enough to be useful. Prefer links to pages that are actionable, rather than purely informational (e.g. &quot;Find a doctor&quot;, &quot;Schedule an appointment&quot;, etc.)</p>
+<h3 id="when-to-use">When to use</h3>
+<p><strong>On landing pages.</strong> Action bars are useful to help direct visitors to specific and more useful sections of the site from a general landing or home page.</p>
+<h3 id="when-not-to-use">When not to use</h3>
+<p><strong>On interior content pages.</strong> Opt for sidebars and breadcrumbs for internal navigation.</p>
+<h2 id="resources">Resources</h2>
+<p><a href="https://github.com/jacecotton/tcds/blob/main/styles/components/action-bar.scss">Source code on GitHub</a></p>
+{% endblock %}

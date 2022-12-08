@@ -3,11 +3,20 @@ file and run the gulp process to compile (either `gulp` or `npm run dev` from
 the terminal). #}
 {% extends "@tch/base.twig" %}
 {% block body %}
-{{ include("@tcds/components/message/message.html.twig", {
-  content: "This page is <strong>under construction</strong>. Please check back later.",
-  modifiers: ["attention"],
-}) }}
+<tcds-dialog open id="contributing-wip">
+  <h1>Notice</h1>
 
+  <p>
+    <strong>This page is a work in progress.</strong> Please check back later for updates.
+  </p>
 
-<!-- https://designsystem.digital.gov/about/product-roadmap/ -->
+<p>  <tcds-button variant="secondary" controls="contributing-wip">Okay</tcds-button>
+</tcds-dialog></p>
+<p>For technical contributions:</p>
+<ul>
+<li>Check out our open source <a href="https://github.com/jacecotton/tcds">Github repository</a>.</li>
+<li>Read our <a href="https://github.com/jacecotton/tcds/blob/main/CONTRIBUTING.md">contributing document</a> to learn how to get started with building on the Design System.</li>
+<li>File an <a href="https://github.com/jacecotton/tcds/issues">issue</a> or submit a <a href="https://github.com/jacecotton/tcds/pulls">pull request</a>.</li>
+</ul>
+<p>For feedback and feature requests, message the MPRP Web Team at <a href="mailto:webteam@texaschildrens.org">webteam@texaschildrens.org</a>.</p>
 {% endblock %}

@@ -1,11 +1,11 @@
-@use "../" as *;
-
 .size-space-chart {
-  margin: space("x-loose") 0;
+  margin: var(--tcds-space-loose) 0 3rem;
+  font-family: var(--tcds-font-ui);
 
   dl {
     &.size-chart {
-      height: 101px;
+      height: 100px;
+      margin: 0;
     }
 
     &.space-chart {
@@ -16,33 +16,16 @@
       display: flex;
       flex-flow: column-reverse;
       flex: 1;
-
-      &:nth-of-type(1) dd {
-        animation-delay: 0ms;
-      }
-
-      &:nth-of-type(2) dd {
-        animation-delay: 100ms;
-      }
-
-      &:nth-of-type(3) dd {
-        animation-delay: 200ms;
-      }
-
-      &:nth-of-type(4) dd {
-        animation-delay: 300ms;
-      }
-
-      &:nth-of-type(5) dd {
-        animation-delay: 400ms;
-      }
+      padding-bottom: 0;
+      border-bottom: 0;
     }
 
     dt {
-      border-top: 1px solid color("gray", "100");
+      border-top: 1px solid var(--tcds-color-gray-light);
       padding-top: .5rem;
       margin-top: .5rem;
       text-align: center;
+      font-weight: 400;
     }
 
     dd {
@@ -57,45 +40,31 @@
     }
 
     &.size-chart dd {
-      background: theme-color("secondary", "0");
-      height: 0px;
-      animation: size-chart-bar-grow 900ms animation("expressive-easing") forwards;
-    
-      @keyframes size-chart-bar-grow {
-        to {
-          height: var(--size-bar-height);
-          padding: .75rem;
-          color: theme-color("secondary", "400");
-        }
-      }
+      background: var(--tcds-color-blue-x-light);
+      height: var(--size-bar-height);
+      padding: .75rem;
+      color: var(--tcds-color-blue-dark);
     }
 
     &.space-chart dd {
       --polka-pattern-dot-size: .75px;
       --polka-pattern-dot-spacing: 8px;
-      --polka-pattern-dot-color: #{color("green", "300")};
-      --polka-pattern-bg: #{color("green", "0")};
+      --polka-pattern-dot-color: green;
+      --polka-pattern-bg: var(--tcds-color-blue-x-light);
 
       background-color: var(--polka-pattern-bg);
       background-image:  radial-gradient(var(--polka-pattern-dot-color) var(--polka-pattern-dot-size), transparent var(--polka-pattern-dot-size)), radial-gradient(var(--polka-pattern-dot-color) var(--polka-pattern-dot-size), var(--polka-pattern-bg) var(--polka-pattern-dot-size));
       background-size: var(--polka-pattern-dot-spacing) var(--polka-pattern-dot-spacing);
       background-position: 0 0, calc(var(--polka-pattern-dot-spacing) * 2) calc(var(--polka-pattern-dot-spacing) * 2);
-      padding: 0;
       width: fit-content;
       margin: 0 auto;
-      animation: space-chart-bar-grow 900ms animation("expressive-easing") forwards;
+      padding: var(--space-bar-padding);
+      color: var(--tcds-color-blue-dark);
 
       span {
-        background: theme-color("secondary", "0");
+        background: var(--tcds-color-blue-x-light);
         display: block;
-        padding: 0 space("x-tight");
-      }
-
-      @keyframes space-chart-bar-grow {
-        to {
-          padding: var(--space-bar-padding);
-          color: theme-color("secondary", "400");
-        }
+        padding: 0 var(--tcds-space-x-tight);
       }
     }
   }

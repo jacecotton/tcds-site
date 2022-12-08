@@ -1,70 +1,24 @@
-<!--lead
-  Icons are useful illustrative aids that can enhance understanding, supplement meaning, and reinforce brand tone and style. However, if used improperly, icons can be distracting, confusing, and potentially misleading.
-lead-->
+<!--lede
+  Icons are illustrative aids to enhance understanding, supplement meaning, and reinforce brand tone and style.
+lede-->
+
+<!--twig
+{% embed "@tch/includes/example.twig" %}
+{% block content %}
+<tcds-icon>texas-childrens</tcds-icon>
+{% endblock %}
+{% endembed %}
+twig-->
 
 ## Best practices
-
-**Avoid using icons by themselves.** Icons cannot be guaranteed to have universally (well) understood meaning.<span data-footnote>[Icon Usability](https://www.nngroup.com/articles/icon-usability/) — Nielsen Norman Group</span> Icons are best used as illustrative aids to *enhance* meaning (in addition to text), *not* to be the sole indicator of it.
+**Avoid using icons by themselves.** Icons cannot be guaranteed to have universally well-understood meaning ([1](https://www.nngroup.com/articles/icon-usability/ "Icon Usability - Nielsen Norman Group")). Icons are best used as illustrative aids to *enhance* meaning (in addition to text), *not* to be the sole indicator of it.
 
 **Ensure icons are meaningful and relevant.** An icon should, to the extent possible, independently and accurately reflect the sense of the accompanying text. Deduce the context-dependent [icon classification](https://www.nngroup.com/articles/classifying-icons/) (resemblance, symbolic, or conventional), and consider whether an icon of a different classification may be more effective.
 
-**Prefer simplicity and clarity over visual interest.** Icons that communicate an idea clearly and efficiently will benefit the user experience over icons that are busy or attention-drawing. Furthermore, avoid icons that are overly esoteric; users shouldn't need to solve a puzzle to understand an icon.<span data-footnote>[Bad Icons: How to Identify and Improve Them](https://www.nngroup.com/articles/bad-icons/) — Nielsen Norman Group</span>
+## Library
 
-## Example
-
-<!--twig
-{% embed "@tch/includes/example-box/example-box.html.twig" with {
-  examples: {
-    "Twig": '{{ include("@tcds/components/icon/icon.html.twig", {
-  icon: "info",
-}) }}',
-    "HTML": '<span class="Icon" data-component="Icon" aria-hidden="true" role="presentation">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4m0-4h0"></path></svg>
-</span>',
-  },
-} %}
-  {% block result %}
-    {{ include("@tcds/components/icon/icon.html.twig", {
-      icon: "info",
-    }) }}
-  {% endblock %}
-{% endembed %}
-twig-->
-
-<details>
-  <summary>Technical details</summary>
-  <div>
-
-The Icon component works by directly [`include`-ing](https://twig.symfony.com/doc/3.x/functions/include.html) an icon's SVG file as a Twig template, which outputs the code in the HTML. This is to avoid extra [HTTP requests](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods) and to allow for the direct styling of the icon with CSS.
-
-The default styling of an icon is based on its parent element. It inherits the text `color` for its `stroke` or `fill` (`currentColor`), and the `height` is set to `1em`, i.e. 100% of the parent's `font-size`.
-
-Alternatively, for no styling or HTML wrapping at all, bare icons can be directly included in Twig. All icons are placed in the `icons/` folder of the theme's `template/` directory (accessible from any directory via the configured [template namespace](https://www.drupal.org/docs/8/theming-drupal-8/including-part-template#s-the-recommended-method), e.g. `@tch`), with the extension `.svg.twig`.
-
-<!--twig
-{% embed "@tch/includes/example-box/example-box.html.twig" with {
-  examples: {
-    "Twig": '{{ include("@tcds/icons/info.svg.twig") }}',
-    "HTML": '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4m0-4h0"></path></svg>',
-  },
-} %}
-  {% block result %}
-    {{ include("@tcds/components/icon/icon.html.twig", {
-      icon: "info",
-    }) }}
-  {% endblock %}
-{% endembed %}
-twig-->
-
-Use caution when doing this—styling and [accessibility considerations](#accessibility) will have to be handled manually.
-</div>
-</details>
-
-
-## Icon library
-
-Many of the current icons in this set are adapted from [ICONSVG](https://iconsvg.xyz) by Gaddafi Rusli.
-
+<tcds-tabs size="large">
+  <tcds-tab label="UI icons">
 <!--twig
   {% set icons = [
     ["Arrows", [
@@ -81,47 +35,163 @@ Many of the current icons in this set are adapted from [ICONSVG](https://iconsvg
       "check",
       "code",
       "edit",
+      "external",
       "eye",
       "grid",
       "hamburger",
       "info",
       "list",
-      "marker-filled",
       "marker",
+      "marker-filled",
+      "minus",
       "pause",
+      "pdf",
       "play",
+      "plus",
       "search",
-      "x",
       "smartphone",
       "type",
+      "x",
       "wheelchair",
     ]],
     ["Brands", [
       "facebook",
       "instagram",
       "mychart",
+      "pinterest",
+      "texas-childrens",
+      "twitter",
       "youtube",
     ]],
   ] %}
   {% for category in icons %}
-    <h3 class="text-small">{{ category[0] }}</h3>
-    <ul class="icon-grid" data-in-viewport="false">
+    <h3 class="font-size-medium font-weight-bold">{{ category[0] }}</h3>
+    <ul class="icon-grid">
       {% for index, icon in category[1] %}
-        <li data-svg-snippet='{% autoescape %}{{ include("@tcds/icons/#{icon}.svg.twig") }}{% endautoescape %}' class="icon-grid__item" style="animation-delay: {{ (index + 1) * 50 }}ms" title="Click to copy SVG code">
-          {{ include("@tcds/components/icon/icon.html.twig", {
-            icon: icon,
-          }) }}
+        <li class="icon-grid__item" title="Click to copy code snippet">
+          <tcds-icon>{{ icon }}</tcds-icon>
           <span class="icon-grid__label">{{ icon }}</span>
         </li>
       {% endfor %}
     </ul>
   {% endfor %}
 twig-->
+  </tcds-tab>
+  <tcds-tab label="Display icons">
+    Nothing to see here
+  </tcds-tab>
+</tcds-tabs>
 
-## Accessibility
-The Icon component hides the icon itself from assistive technology with `aria-hidden=true` and `role=presentation`. This is because icons should only be used to supplement text,<span data-footnote>[Yes, Icons Need Text Labels](https://www.nngroup.com/videos/icon-text-labels/) (Video) — Nielsen Norman Group</span> in which case the text should serve as the icon's accessible label.
+## Usage
+### Fallback text
+The name of the icon in the [default slot](#default-slot) is what will render if the component fails to mount. It is also case-insensitive and allows for spaces, so it can be a good way to provide fallback text in instances where the JavaScript fails to load or run. The following example simulates a fallback scenario:
 
-The only allowed exception is when an icon is used in a button without text, such as with the [Button](/components/button) component's [<code>icon-only</code> modifier](/components/button#icon-buttons). In this case, the Button's `label` property is still required, but serves as the `aria-label` and `title` attributes rather than as a visible label.
+<!--twig
+{% embed "@tch/includes/example.twig" %}
+{% block content %}
+MyChart arrow right
+{% endblock %}
+{% block code %}
+<tcds-icon>MyChart</tcds-icon>
+<tcds-icon>arrow right</tcds-icon>
+{% endblock %}
+{% endembed %}
+twig-->
 
-## Citations
-<!--twig {{ include("@tch/components/footnotes/footnotes.html.twig") }} twig-->
+In some instances, it may be more desirable to render nothing at all if the component fails, in which case the icon can be specified with the [`icon` prop](#icon-attribute):
+
+<!--twig
+{% embed "@tch/includes/example.twig" %}
+{% block content %}
+(Nothing to see here)
+{% endblock %}
+{% block code %}
+<tcds-icon icon="mychart"></tcds-icon>
+{% endblock %}
+{% endembed %}
+twig-->
+
+Note that per [best practices](#best-practices), icons should always be optional regardless. However, in some situations it may or may not be useful to include the icon text as well.
+
+### Styling
+The icon can be styled directly from the `tcds-icon` element. The color can be changed with the `color` property, and is set to `inherit` by default. The size can be changed with the `font-size` property, and is set to `1em` by default (100% of the parent's `font-size`).
+
+<!--twig
+{% embed "@tch/includes/example.twig" %}
+{% block content %}
+<style>
+.icon-examples tcds-icon {
+  color: var(--tcds-color-blue);
+}
+
+.icon-examples tcds-icon:nth-child(1) {
+  font-size: 1rem;
+}
+
+.icon-examples tcds-icon:nth-child(2) {
+  font-size: 2rem;
+}
+
+.icon-examples tcds-icon:nth-child(3) {
+  font-size: 3rem;
+}
+</style>
+
+<div class="icon-examples row align-end gap-normal">
+<tcds-icon>mychart</tcds-icon>
+<tcds-icon>mychart</tcds-icon>
+<tcds-icon>mychart</tcds-icon>
+</div>
+{% endblock %}
+{% block code %}
+<style>
+  tcds-icon {
+    color: blue;
+  }
+
+  tcds-icon:nth-child(1) {
+    font-size: 1rem;
+  }
+
+  tcds-icon:nth-child(2) {
+    font-size: 2rem;
+  }
+
+  tcds-icon:nth-child(3) {
+    font-size: 3rem;
+  }
+</style>
+
+<tcds-icon>mychart</tcds-icon>
+<tcds-icon>mychart</tcds-icon>
+<tcds-icon>mychart</tcds-icon>
+{% endblock %}
+{% endembed %}
+twig-->
+
+To make icons styleable, they are not externally linked. To enhance performance, the SVG code isn't inserted into the DOM by the component, nor is a single large sprite used. Rather, icons are masks applied to an `::after` pseudo-element in CSS. The mask URLs are encoded and inlined, meaning no extra HTTP requests are made for icons.
+
+To make icon colors handled with `color` and size with `font-size`, the `background-color` of the masked element is set to `currentColor`, and the `width` and `height` are set to `1em`. These can technically be manipulated directly, but it's not recommended, as this ensures icons have a contextual default style through inheritance.
+
+## API
+<!--twig {{ include("@tch/includes/api.twig", {
+  attributes: [
+    {
+      name: "icon",
+      type: ["prop", "string"],
+      description: "The ident of the icon (see <a href='#library'>library</a>).",
+      required: "no",
+    },
+  ],
+  slots: [
+    {
+      name: "(default)",
+      multiple: "no",
+      description: "The ident of the icon (case-insensitive, spaces allowed).",
+      required: "no",
+    },
+  ],
+}) }} twig-->
+
+## Resources
+[Source code on GitHub](https://github.com/jacecotton/tcds/blob/main/components/icon/)

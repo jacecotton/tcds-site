@@ -1,33 +1,48 @@
-<!--lead
-  Tabs allow users to switch between panels of content from a horizontal list of tab buttons. They enable quick comparison between different pieces of content of the same context and information type.
-lead-->
+<!--lede
+  Tabs allow users to switch between panels of content from a horizontal list of labels. They enable quick comparison between different pieces of content within the same context and of the same information type.
+lede-->
 
 <!--twig
-{% embed "@tch/includes/example.html.twig" %}
+{% embed "@tch/includes/example.twig" %}
+{% block code %}
+<tcds-tabs>
+  <tcds-tab label="Example tab 1">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+    enim ad minim veniam, quis nostrud exercitation ullamco laboris
+    nisi ut aliquip ex ea commodo consequat.
+  </tcds-tab>
+  <tcds-tab label="Example tab 2">
+    Lorem ipsum is simply dummy text of the printing and typesetting
+    industry. Lorem ipsum has been the industry's standard dummy text
+    ever since the 1500s, when an unknown printer took a galley of 
+    type and scrambled it to make a type specimen book.
+  </tcds-tab>
+  <tcds-tab label="Example tab 3">
+    Contrary to popular belief, Lorem Ipsum is not simply random text.
+    It has roots in a piece of classical Latin literature from 45 BC,
+    making it over two millennia old.
+  </tcds-tab>
+</tcds-tabs>
+{% endblock %}
 {% block content %}
 <tcds-tabs>
   <tcds-tab label="Example tab 1">
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-      eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-      enim ad minim veniam, quis nostrud exercitation ullamco laboris
-      nisi ut aliquip ex ea commodo consequat.
-    </p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+    enim ad minim veniam, quis nostrud exercitation ullamco laboris
+    nisi ut aliquip ex ea commodo consequat.</p>
   </tcds-tab>
   <tcds-tab label="Example tab 2">
-    <p>
-      Lorem ipsum is simply dummy text of the printing and typesetting
-      industry. Lorem ipsum has been the industry's standard dummy text
-      ever since the 1500s, when an unknown printer took a galley of 
-      type and scrambled it to make a type specimen book.
-    </p>
+    <p>Lorem ipsum is simply dummy text of the printing and typesetting
+    industry. Lorem ipsum has been the industry's standard dummy text
+    ever since the 1500s, when an unknown printer took a galley of 
+    type and scrambled it to make a type specimen book.</p>
   </tcds-tab>
   <tcds-tab label="Example tab 3">
-    <p>
-      Contrary to popular belief, Lorem Ipsum is not simply random text.
-      It has roots in a piece of classical Latin literature from 45 BC,
-      making it over two millennia old.
-    </p>
+    <p>Contrary to popular belief, Lorem Ipsum is not simply random text.
+    It has roots in a piece of classical Latin literature from 45 BC,
+    making it over two millennia old.</p>
   </tcds-tab>
 </tcds-tabs>
 {% endblock %}
@@ -35,52 +50,67 @@ lead-->
 twig-->
 
 ## Best practices
-**Use specific but concise tab labels.** Ensure your labels are concise enough to be read quickly, but descriptive enough to provide a strong [information scent](https://www.nngroup.com/articles/information-scent/).
+**Use specific but concise tab labels.** There is an inherent [interaction cost](https://www.nngroup.com/articles/interaction-cost-definition/ "Interaction Cost - Nielsen Norman Group") to tabs that may cause users to miss or ignore the content. Aim for labels that are concise enough to be read quickly, but descriptive enough to provide a strong [information scent](https://www.nngroup.com/articles/information-scent/).
 
-**Use sentence case.** All-uppercase text is slower and more difficult to read for all users,<span data-footnote>[Accessibility Requirements for People with Low Vision § 3.3.4 Capitalization](https://www.w3.org/TR/low-vision-needs/#capitalization) — W3.org</span> but particularly for those with dyslexia.<span data-footnote>[Creating a dyslexia friendly workplace](https://www.bdadyslexia.org.uk/advice/employers/creating-a-dyslexia-friendly-workplace/dyslexia-friendly-style-guide#:~:text=Avoid%20text%20in%20uppercase/capital%20letters%20and%20small%20caps%2C%20which%20can%20be%20less%20familiar%20to%20the%20reader%20and%20harder%20to%20read.) — British Dyslexia Association</span> Furthermore, screen readers sometimes interpret certain uppercased words as common initialisms (such as ADD or US), and may erroneously spell out those words letter by letter.<span data-footnote>[Designing for Screen Reader Compatibility § How Screen Readers Read Content](https://webaim.org/techniques/screenreader/#:~:text=Screen%20readers%20try%20to%20pronounce%20acronyms%2C%20if%20there%20are%20sufficient%20vowels/consonants%20to%20be%20pronounceable.%20Otherwise%2C%20they%20spell%20out%20the%20letters.) — WebAIM</span>
+**Use sentence case.** All-uppercase text is slower and more difficult to read for all users ([1](https://www.w3.org/TR/low-vision-needs/#capitalization)) but particularly for those with dyslexia ([2](https://www.bdadyslexia.org.uk/advice/employers/creating-a-dyslexia-friendly-workplace/dyslexia-friendly-style-guide#:~:text=Avoid%20using%20all%20capital%20letters%20and%20uppercase%20letters%20for%20continuous%20text.%20Lower%20case%20letters%20are%20easier%20to%20read.)). Furthermore, screen readers sometimes interpret certain uppercased words as common initialisms (such as ADD or US), and may erroneously spell out those words letter by letter ([3](https://webaim.org/techniques/screenreader/#:~:text=Screen%20readers%20try%20to%20pronounce%20acronyms%2C%20if%20there%20are%20sufficient%20vowels/consonants%20to%20be%20pronounceable.%20Otherwise%2C%20they%20spell%20out%20the%20letters.)).
 
 ### When to use
 **Presenting different pieces of content of the same information category or type.** Tabs are most useful for quickly comparing alternative pieces of content belonging to the same category (e.g. switching between different campus locations, progressing through different steps in the same sequence, etc.) They allow users to select the version of a piece of content most relevant to them, rather than being presented with all available versions.
 
 ### When not to use
-**All tab content is intended for a page's general audience.** Because of the inherent [interaction cost](https://www.nngroup.com/articles/interaction-cost-definition/ "Interaction Cost - Nielsen Norman Group"), tabs past the first few may receive less engagement. Use tabs to selectively disclose information relevant to a targeted subset of the page's audience. For a wider audience, burying general purpose content in a tab can hinder discovery.
+**All tab content is intended for a page's general audience.** Because of the interaction cost, tabs past the first few may receive less engagement. Use tabs to selectively disclose information relevant to a targeted subset of the page's audience. For a wider audience, burying general purpose content behind a tab can hinder discovery.
 
 **Comparing content with minor variations.** Each content panel should include <em>distinct</em> content belonging to the same information category as its peer panels, not the same information with certain differences.
 
-**A different component better fits the use case.** For sequentially disclosing pieces of content that are not necessarily interrelated, the [Accordion](/components/accordion) may be a better choice. To allow for navigating content that is expected to more-or-less be read in full and in sequence, consider a [Table of Contents](/components/table-of-contents).<span data-footnote>["Anchors OK? Re-Assessing In-Page Links"](https://www.nngroup.com/articles/in-page-links/) — Nielsen Norman Group</span>
+**A different component better fits the use case.** For sequentially disclosing pieces of content that are not necessarily interrelated, the [Accordion](/components/accordion) may be a better choice.
 
 ## Usage
-Tabs are native web components usable through the `<tcds-tabs>` and `<tcds-tab>` custom elements. Each tab is labeled with an attribute in the tab element, e.g. `<tcds-tab label="My tab">`. 
-
 ### Small tabs
-For fitting tabs into compact spaces (useful in interfaces as opposed to web pages), the `size` attribute may be set to `small`.
+Small tabs can be created by setting the [`size` attribute](#size-attribute) to `small`. They may be most useful in interfaces as opposed to web pages.
 
 <!--twig
-{% embed "@tch/includes/example.html.twig" %}
+{% embed "@tch/includes/example.twig" with {
+  line_highlight: "1",
+} %}
+{% block code %}
+<tcds-tabs size="small">
+  <tcds-tab label="Small tab 1">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+    enim ad minim veniam, quis nostrud exercitation ullamco laboris
+    nisi ut aliquip ex ea commodo consequat.
+  </tcds-tab>
+  <tcds-tab label="Small tab 2">
+    Lorem ipsum is simply dummy text of the printing and typesetting
+    industry. Lorem ipsum has been the industry's standard dummy text
+    ever since the 1500s, when an unknown printer took a galley of 
+    type and scrambled it to make a type specimen book.
+  </tcds-tab>
+  <tcds-tab label="Small tab 3">
+    Contrary to popular belief, Lorem Ipsum is not simply random text.
+    It has roots in a piece of classical Latin literature from 45 BC,
+    making it over two millennia old.
+  </tcds-tab>
+</tcds-tabs>
+{% endblock %}
 {% block content %}
 <tcds-tabs size="small">
   <tcds-tab label="Small tab 1">
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-      eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-      enim ad minim veniam, quis nostrud exercitation ullamco laboris
-      nisi ut aliquip ex ea commodo consequat.
-    </p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+    enim ad minim veniam, quis nostrud exercitation ullamco laboris
+    nisi ut aliquip ex ea commodo consequat.</p>
   </tcds-tab>
   <tcds-tab label="Small tab 2">
-    <p>
-      Lorem ipsum is simply dummy text of the printing and typesetting
-      industry. Lorem ipsum has been the industry's standard dummy text
-      ever since the 1500s, when an unknown printer took a galley of 
-      type and scrambled it to make a type specimen book.
-    </p>
+    <p>Lorem ipsum is simply dummy text of the printing and typesetting
+    industry. Lorem ipsum has been the industry's standard dummy text
+    ever since the 1500s, when an unknown printer took a galley of 
+    type and scrambled it to make a type specimen book.</p>
   </tcds-tab>
   <tcds-tab label="Small tab 3">
-    <p>
-      Contrary to popular belief, Lorem Ipsum is not simply random text.
-      It has roots in a piece of classical Latin literature from 45 BC,
-      making it over two millennia old.
-    </p>
+    <p>Contrary to popular belief, Lorem Ipsum is not simply random text.
+    It has roots in a piece of classical Latin literature from 45 BC,
+    making it over two millennia old.</p>
   </tcds-tab>
 </tcds-tabs>
 {% endblock %}
@@ -88,34 +118,51 @@ For fitting tabs into compact spaces (useful in interfaces as opposed to web pag
 twig-->
 
 ### Large tabs
-To make tabs more prominent (useful for landing page sections), the `size` attribute may be set to `large`. This also justifies the tablist across the available space.
+Large tabs can be created by setting the [`size` attribute](#size-attribute) to `large`. They may be most useful in landing page sections, justifying the tablist across the available space.
 
 <!--twig
-{% embed "@tch/includes/example.html.twig" %}
+{% embed "@tch/includes/example.twig" with {
+  line_highlight: "1",
+} %}
+{% block code %}
+<tcds-tabs size="large">
+  <tcds-tab label="Large tab 1">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+    enim ad minim veniam, quis nostrud exercitation ullamco laboris
+    nisi ut aliquip ex ea commodo consequat.
+  </tcds-tab>
+  <tcds-tab label="Large tab 2">
+    Lorem ipsum is simply dummy text of the printing and typesetting
+    industry. Lorem ipsum has been the industry's standard dummy text
+    ever since the 1500s, when an unknown printer took a galley of 
+    type and scrambled it to make a type specimen book.
+  </tcds-tab>
+  <tcds-tab label="Large tab 3">
+    Contrary to popular belief, Lorem Ipsum is not simply random text.
+    It has roots in a piece of classical Latin literature from 45 BC,
+    making it over two millennia old.
+  </tcds-tab>
+</tcds-tabs>
+{% endblock %}
 {% block content %}
 <tcds-tabs size="large">
   <tcds-tab label="Large tab 1">
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-      eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-      enim ad minim veniam, quis nostrud exercitation ullamco laboris
-      nisi ut aliquip ex ea commodo consequat.
-    </p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+    enim ad minim veniam, quis nostrud exercitation ullamco laboris
+    nisi ut aliquip ex ea commodo consequat.</p>
   </tcds-tab>
   <tcds-tab label="Large tab 2">
-    <p>
-      Lorem ipsum is simply dummy text of the printing and typesetting
-      industry. Lorem ipsum has been the industry's standard dummy text
-      ever since the 1500s, when an unknown printer took a galley of 
-      type and scrambled it to make a type specimen book.
-    </p>
+    <p>Lorem ipsum is simply dummy text of the printing and typesetting
+    industry. Lorem ipsum has been the industry's standard dummy text
+    ever since the 1500s, when an unknown printer took a galley of 
+    type and scrambled it to make a type specimen book.</p>
   </tcds-tab>
   <tcds-tab label="Large tab 3">
-    <p>
-      Contrary to popular belief, Lorem Ipsum is not simply random text.
-      It has roots in a piece of classical Latin literature from 45 BC,
-      making it over two millennia old.
-    </p>
+    <p>Contrary to popular belief, Lorem Ipsum is not simply random text.
+    It has roots in a piece of classical Latin literature from 45 BC,
+    making it over two millennia old.</p>
   </tcds-tab>
 </tcds-tabs>
 {% endblock %}
@@ -123,110 +170,179 @@ To make tabs more prominent (useful for landing page sections), the `size` attri
 twig-->
 
 ### Initial active
-To set an initial active tab different from the default first tab, set the `active` boolean attribute on the desired tab.
+To set an initial active tab different from the default first tab, set the [`active` attribute](#active-attribute) on the desired tab.
 
 <!--twig
-{% embed "@tch/includes/example.html.twig" %}
+{% embed "@tch/includes/example.twig" with {
+  line_highlight: "8",
+} %}
+{% block code %}
+<tcds-tabs>
+  <tcds-tab label="Tab 1">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+    enim ad minim veniam, quis nostrud exercitation ullamco laboris
+    nisi ut aliquip ex ea commodo consequat.
+  </tcds-tab>
+  <tcds-tab active label="Tab 2">
+    Lorem ipsum is simply dummy text of the printing and typesetting
+    industry. Lorem ipsum has been the industry's standard dummy text
+    ever since the 1500s, when an unknown printer took a galley of 
+    type and scrambled it to make a type specimen book.
+  </tcds-tab>
+  <tcds-tab label="Tab 3">
+    Contrary to popular belief, Lorem Ipsum is not simply random text.
+    It has roots in a piece of classical Latin literature from 45 BC,
+    making it over two millennia old.
+  </tcds-tab>
+</tcds-tabs>
+{% endblock %}
 {% block content %}
 <tcds-tabs>
-  <tcds-tab label="First tab">
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-      eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-      enim ad minim veniam, quis nostrud exercitation ullamco laboris
-      nisi ut aliquip ex ea commodo consequat.
-    </p>
+  <tcds-tab label="Tab 1">
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+    enim ad minim veniam, quis nostrud exercitation ullamco laboris
+    nisi ut aliquip ex ea commodo consequat.</p>
   </tcds-tab>
-  <tcds-tab label="Second tab" active>
-    <p>
-      Lorem ipsum is simply dummy text of the printing and typesetting
-      industry. Lorem ipsum has been the industry's standard dummy text
-      ever since the 1500s, when an unknown printer took a galley of 
-      type and scrambled it to make a type specimen book.
-    </p>
+  <tcds-tab active label="Tab 2">
+    <p>Lorem ipsum is simply dummy text of the printing and typesetting
+    industry. Lorem ipsum has been the industry's standard dummy text
+    ever since the 1500s, when an unknown printer took a galley of 
+    type and scrambled it to make a type specimen book.</p>
   </tcds-tab>
-  <tcds-tab label="Third tab">
-    <p>
-      Contrary to popular belief, Lorem Ipsum is not simply random text.
-      It has roots in a piece of classical Latin literature from 45 BC,
-      making it over two millennia old.
-    </p>
+  <tcds-tab label="Tab 3">
+    <p>Contrary to popular belief, Lorem Ipsum is not simply random text.
+    It has roots in a piece of classical Latin literature from 45 BC,
+    making it over two millennia old.</p>
   </tcds-tab>
 </tcds-tabs>
 {% endblock %}
 {% endembed %}
 twig-->
 
-## Implementation
-### Responsive behavior
-Where the screen is too small to accomodate all the tab buttons, the tab list scrolls horizontally. Users on smaller devices can access all the tabs by swiping within the tab list and tapping on the desired tab.
+If multiple tabs have `active`, only the first will be active and the attribute will be removed from the others.
 
-The responsive behavior of each tab panel's content is not handled by the Tabs component itself, but instead by whatever content or components may be nested inside.
+To make no tab active by default, set the [`inactive` attribute](#inactive-attribute).
 
-### Progressive enhancement
-Tabs are by default
-* vertically-stacked sections of plain content with headings
+<!--twig
+{% embed "@tch/includes/example.twig" with {
+  line_highlight: "1",
+} %}
+{% block code %}
+<tcds-tabs inactive>
+  <tcds-tab label="Tab 1">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+    enim ad minim veniam, quis nostrud exercitation ullamco laboris
+    nisi ut aliquip ex ea commodo consequat.
+  </tcds-tab>
+  <tcds-tab label="Tab 2">
+    Lorem ipsum is simply dummy text of the printing and typesetting
+    industry. Lorem ipsum has been the industry's standard dummy text
+    ever since the 1500s, when an unknown printer took a galley of 
+    type and scrambled it to make a type specimen book.
+  </tcds-tab>
+  <tcds-tab label="Tab 3">
+    Contrary to popular belief, Lorem Ipsum is not simply random text.
+    It has roots in a piece of classical Latin literature from 45 BC,
+    making it over two millennia old.
+  </tcds-tab>
+</tcds-tabs>
+{% endblock %}
+{% block content %}
+<tcds-tabs inactive>
+  <tcds-tab label="Tab 1">
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+    enim ad minim veniam, quis nostrud exercitation ullamco laboris
+    nisi ut aliquip ex ea commodo consequat.</p>
+  </tcds-tab>
+  <tcds-tab label="Tab 2">
+    <p>Lorem ipsum is simply dummy text of the printing and typesetting
+    industry. Lorem ipsum has been the industry's standard dummy text
+    ever since the 1500s, when an unknown printer took a galley of 
+    type and scrambled it to make a type specimen book.</p>
+  </tcds-tab>
+  <tcds-tab label="Tab 3">
+    <p>Contrary to popular belief, Lorem Ipsum is not simply random text.
+    It has roots in a piece of classical Latin literature from 45 BC,
+    making it over two millennia old.</p>
+  </tcds-tab>
+</tcds-tabs>
+{% endblock %}
+{% endembed %}
+twig-->
 
-to which the component will be limited when
-* the browser does not support the techniques required for the additional features, or
-* the client fails to load the required assets (poor network connection, etc.)
-
-### Accessibility
-The Tabs component was designed and implemented according to the [ARIA Authoring Practices Guide](https://www.w3.org/WAI/ARIA/apg/patterns/tabpanel/). The `<tcds-tab>` custom element takes care of all the required implementation details, which are included here only for documentation purposes.
-
-When a tab (a `button` with a [`tab` ARIA role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/tab_role)) is activated, it is the only button in the tab list (a container with a [`tablist` ARIA role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/tablist_role)) that can be focused using the "tab" key. Next in the tabbing order is the active tab's associated panel (a `section` element with a [`tabpanel` ARIA role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/tabpanel_role), associated with its tab with corresponding `id` and `aria-controls` attribute values), so as to not require that keyboard users navigate through the tablist just to get to the content.
-
-To activate the next tab, keyboard users press the right and left arrow keys while focusing on a tab, which will focus on and automatically activate the appropriate tab. If selecting the "next" tab when focusing on the last tab, the first tab will activate. Vice versa, selecting the "previous" tab when focusing on the first tab will activate the last tab.
-
-Tab activation is handled by setting the `aria-expanded` attribute to `true` on the selected `tab`, and to `false` on the others. All tabpanels except the currently selected one receive a `hidden` attribute.
+## Styling
+### tcds-tab
+<table>
+  <tr>
+    <th>Custom property</th>
+    <th>Description</th>
+    <th>Default value</th>
+  </tr>
+  <tr>
+    <td><code style="white-space: nowrap">--tcds-tab-padding-top</code></td>
+    <td><code>padding-top</code> of the tab panel.</td>
+    <td><code>var(--tcds-space-normal)</code></td>
+  </tr>
+</table>
 
 ## API
-### Tabs
-<!--twig
-{{ include("@tch/includes/api.html.twig", {
-  properties: [
+### tcds-tabs
+<!--twig {{ include("@tch/includes/api.twig", {
+  attributes: [
     {
       name: "size",
-      type: "string",
+      type: ["prop", "string"],
       description: "One of <code>small</code> or <code>large</code>.",
       required: "no",
     },
-  ]
-}) }}
-twig-->
+    {
+      name: "inactive",
+      type: ["prop", "boolean"],
+      description: "No tab is active by default.",
+      required: "no",
+    },
+  ],
+  slots: [
+    {
+      name: "(default)",
+      multiple: "no",
+      description: "<code>tcds-tab</code> elements.",
+      required: "no",
+    },
+  ],
+}) }} twig-->
 
-### Tab
-<!--twig
-{{ include("@tch/includes/api.html.twig", {
-  properties: [
+### tcds-tab
+<!--twig {{ include("@tch/includes/api.twig", {
+  attributes: [
     {
       name: "label",
-      type: "string",
-      description: "The tab label.",
+      type: ["prop", "string"],
+      description: "The label of the content panel.",
       required: "yes",
     },
-  ]
-}) }}
-twig-->
+    {
+      name: "active",
+      type: ["state", "boolean"],
+      description: "Content panel is active.",
+      required: "no",
+    },
+  ],
+  slots: [
+    {
+      name: "(default)",
+      multiple: "no",
+      description: "Content slot for panel.",
+      required: "no",
+    },
+  ],
+}) }} twig-->
 
-Source code: [Tabs.js](https://github.com/jacecotton/tcds/blob/main/assets/scripts/components/Tabs.js), [tabs.scss](https://github.com/jacecotton/tcds/blob/main/assets/styles/%40tcds/components/tabs.scss)
+## Resources
+This component was architected in conformance with [ARIA Authoring Practices (APG) for tabs pattern](https://www.w3.org/WAI/ARIA/apg/patterns/tabpanel/).
 
-## Citations
-<!--twig {{ include("@tch/components/footnotes/footnotes.html.twig") }} twig-->
-
-<!--
-Other design system/pattern library implementations:
-https://ant.design/components/tabs/
-https://www.lightningdesignsystem.com/components/tabs/
-https://a11y-101.com/development/carousels
-https://material.io/components/tabs
-https://polaris.shopify.com/components/navigation/tabs#navigation
-https://www.carbondesignsystem.com/components/tabs/usage/
-https://atlassian.design/components/tabs/examples
-https://baseweb.design/components/tabs/
-https://ux.mailchimp.com/patterns/navigation#tabs
-https://design.gitlab.com/components/tabs
-http://react.etrade.design/?selectedKind=Tabs&selectedStory=Tabs%20documentation&full=0&addons=1&stories=1&panelRight=1&addonPanel=storybooks%2Fstorybook-addon-knobs
-https://design.wonderflow.ai/components/navigation/tab
-https://garden.zendesk.com/components/tabs
--->
+Source code on GitHub ([tabs](https://github.com/jacecotton/tcds/blob/main/components/tabs/), [tab](https://github.com/jacecotton/tcds/blob/main/components/tab/))

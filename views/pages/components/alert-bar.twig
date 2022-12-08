@@ -1,0 +1,106 @@
+{# DO NOT EDIT. This file was compiled from Markdown; please edit the source .md
+file and run the gulp process to compile (either `gulp` or `npm run dev` from
+the terminal). #}
+{% extends "@tch/base.twig" %}
+{% block lede %}The alert bar is a banner affixed to the top of a page, breaking down alerts by category, allowing users to investigate further or dismiss altogether.{% endblock %}
+{% block body %}
+{% embed "@tch/includes/example.twig" with {
+  full_screen: true,
+} %}
+{% block content %}
+<tcds-alert-bar>
+  <details slot="alert">
+    <summary>Severe weather notices</summary>
+    <article>
+      <p>
+        <span class="font-weight-bold">Harris County</span>: Tropical storm watch remains in effect. Locations have modified hours. <a href="#">Learn more</a>
+      </p>
+    </article>
+  </details>
+
+  <details slot="alert">
+    <summary>Scheduling</summary>
+    <article>
+      <p>
+        Video visit appointments available 7 days a week from 9:00am to 11:00pm. <a href="#">Learn more</a>
+      </p>
+    </article>
+  </details>
+
+  <details slot="alert">
+    <summary>COVID-19 Updates</summary>
+    <article>
+      <p>
+        Get the latest on vaccine information, in-person appointments, video visits and more. <a href="#">Learn more</a>
+      </p>
+    </article>
+  </details>
+</tcds-alert-bar>
+{% endblock %}
+{% endembed %}
+
+
+<h2 id="best-practices">Best practices</h2>
+<p><strong>Use specific but concise category names.</strong> Aim for labels that are concise enough to be read quickly, but descriptive enough to provide a strong <a href="https://www.nngroup.com/articles/information-scent/" title="Information Scent - Nielsen Norman Group">information scent</a>.</p>
+<h2 id="usage">Usage</h2>
+<h3 id="default-open">Default open</h3>
+<p>To open an alert by default, add the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details#attr-open"><code>open</code> attribute</a> to the associated <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details"><code>details</code> element</a>.</p>
+
+{% embed "@tch/includes/example.twig" with {
+  full_screen: true,
+  line_highlight: "2",
+} %}
+{% block content %}
+<tcds-alert-bar>
+  <details slot="alert" open>
+    <summary>Severe weather notices</summary>
+    <article>
+      <p>
+        <span class="font-weight-bold">Harris County</span>: Tropical storm watch remains in effect. Locations have modified hours. <a href="#">Learn more</a>
+      </p>
+    </article>
+  </details>
+
+  <details slot="alert">
+    <summary>Scheduling</summary>
+    <article>
+      <p>
+        Video visit appointments available 7 days a week from 9:00am to 11:00pm. <a href="#">Learn more</a>
+      </p>
+    </article>
+  </details>
+
+  <details slot="alert">
+    <summary>COVID-19 Updates</summary>
+    <article>
+      <p>
+        Get the latest on vaccine information, in-person appointments, video visits and more. <a href="#">Learn more</a>
+      </p>
+    </article>
+  </details>
+</tcds-alert-bar>
+{% endblock %}
+{% endembed %}
+
+
+<h2 id="api">API</h2>
+ {{ include("@tch/includes/api.twig", {
+  slots: [
+    {
+      name: "alert",
+      multiple: "yes",
+      description: "<code>details</code> elements for each alert.",
+      required: "no",
+    },
+  ],
+  methods: [
+    {
+      name: "close",
+      description: "Dismisses the alert bar.",
+    },
+  ],
+}) }} 
+
+<h2 id="resources">Resources</h2>
+<p><a href="https://github.com/jacecotton/tcds/blob/main/components/alert-bar/">Source code on GitHub</a></p>
+{% endblock %}

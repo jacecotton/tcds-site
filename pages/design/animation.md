@@ -1,92 +1,36 @@
-<!--lead
-  Animation engages users, creates memorable experiences, focuses attention, and adds expressiveness. Use wisely, however: animation can distracting and annoying if used improperly, especially for users with vestibular disorders.
-lead-->
+<!--
+/**
+ * @todo Add keyframe library (with interactive demos).
+ * @todo Replace AnimateElement with WAAPI-based utility (better composition,
+ *   less/no DOM manipulation, etc.)
+ */
+-->
+
+<!--lede
+  Used appropriately, animation engages users, focuses attention, and enriches experiences with expressiveness and memorability. However, it can be distracting and exclusionary if used improperly.
+lede-->
 
 ## Best practices
+**Use with consistency.** Animation can impart a sense of dimensionality unless used inconsistently, in which case it can have the opposite effect.
 
-**Use with consistency.** Animation can impart a sense of elegance and dimensionality. However, if used inconsistently, this illusion can be shattered and it will have the opposite effect.
+**Strive for meaningfulness and credibility.** Avoid unnecessary, complex, or lengthy animations, which can be distracting and inhibitive.
 
-**Strive for meaningfulness and credibility.** Avoid unnecessary, complex, or overly lengthy animations, which can be distracting and inhibit a user's productivity.
-
-**Use as an enhancement, not a requirement.** Before using animation, ensure that the design works well and the content is accessible, then use animation as a [progressive enhancement](https://www.smashingmagazine.com/2009/04/progressive-enhancement-what-it-is-and-how-to-use-it/ "Progressive Enhancement: What It Is, And How To Use It? — Smashing Magazine").
+**Use as an enhancement, not requirement.** Before using animation, ensure the design is effective and the content is accessible without it. Then, use it as a [progressive enhancement](https://www.smashingmagazine.com/2009/04/progressive-enhancement-what-it-is-and-how-to-use-it/ "Progressive Enhancement: What It Is, And How To Use It? — Smashing Magazine").
 
 ### When to use
+**Draw attention and direct focus.** Motion attracts the eye and can help overcome [change blindness](https://www.nngroup.com/articles/change-blindness-definition/ "Change Blindness in UX — Nielsen Norman Group") and [tunnel vision](https://www.nngroup.com/articles/tunnel-vision-and-selective-attention/) in users.
 
-**Draw attention and direct focus.** Motion attracts the eye and can combat phenomena like [change blindness](https://www.nngroup.com/articles/change-blindness-definition/ "Change Blindness in UX — Nielsen Norman Group") and [tunnel vision](https://www.nngroup.com/articles/tunnel-vision-and-selective-attention/).
+**Establish and convey relationships.** Animation can hint towards and reinforce cause-and-effect relationships between elements and events.
 
-**Establish relationships and provide visual cues.** Animation can both hint towards and affirm a cause-and-effect relationship between elements. This can help users more efficiently identify and learn design patterns in an interface.
-
-**Add expressiveness and interactivity.** Animation can be used to convey brand expression and tone, turning mundane experiences into memorable and engaging ones (just remember to follow [best practices](#best-practices)).
+**Provide rich visual feedback.** Animation can help make interactions more engaging and informative by responding to user behavior with reinforcing visual cues.
 
 ### When not to use
+**User has indicated reduced motion preference.** Respect user preferences by disabling animations or providing alternatives with reduced activity. See [&sect; Accessibility](#accessibility).
 
-**A user indicates reduced motion preference.** Always either disable animations or provide alternatives with reduced activity if a user has set the relevant system preference (see [&sect; Accessibility](#accessibility)).
-
-**No contextual meaning or clear purpose.** Do not use animation for the sake of it; rather, use it to accomplish an articulated goal.
-
-## Keyframe library
-
-<!--twig
-  {{ include("@tcds/components/message/message.html.twig", {
-    content: "<b>Coming soon.</b> Check back later for documentation of the library of prebuilt keyframe animations provided by the Design System.",
-  }) }}
-twig-->
-
-### Utility classes
-
-Utility classes are available for every keyframe set in the library. The classes consist of a prefix to specify how the animation is triggered, then the name of the animation, separated by a colon. For example, `class="on-enter:fade-in"`.
-
-<table>
-  <thead>
-    <tr>
-      <th>Prefix</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>on-enter:</code></td>
-      <td>Plays the animation the first time its element is scrolled into view (or immediately if already in view).</td>
-    </tr>
-    <tr>
-      <td><code style="white-space: nowrap">on-every-enter:</code></td>
-      <td>Plays the animation every time its element is scrolled out of then back into view.</td>
-    </tr>
-    <tr>
-      <td><code>click:</code></td>
-      <td>Plays the animation when the element is tapped or clicked.</td>
-    </tr>
-    <tr>
-      <td><code>hover:</code></td>
-      <td>Plays the animation when the user's mouse hovers over the element.</td>
-    </tr>
-  </tbody>
-</table>
-
-Alternatively, an animation can be outright added to an element with no particular trigger by adding a class prefixed with `animation-`, then the animation name (e.g. `class="animation-fade-in"`).
-
-### AnimateElement
-
-`AnimateElement` is a utility function provided by the Design System. It allows you to implement the keyframe library programmatically, which can cover conditions for triggering an animation not provided by utility classes. The other benefit over utility classes is it makes animation composable on a single element. With utility classes, only one animation can be added at a time.
-
-The function accepts three parameters: the element to animate, the animation name(s) (string or array), and an options object for controlling the trigger behavior. It returns a promise, allowing a user-defined callback function to run when the animation ends.
-
-By default, it runs only once and only when the element is in the viewport (using the IntersectionObserver API), and undoes all DOM mutations when the animation is complete.
-
-Example:
-
-```javascript
-import AnimateElement from "@tcds/animation/AnimateElement.js";
-
-AnimateElement(element, "fade-in", {
-  // Configuration here...
-}).then(() => {
-  // Do something after the animation is complete.
-});
-```
+**Lack of contextual meaning or clear purpose.** Do not use animation for the sake of it; rather, use it to meaningfully improve the user experience.
 
 ## Timing
-Timing consists of **duration** (total time) and **easing** (variation in speed over the course of the duration). The Design System provides two timing presets, based on the intended purpose and feel of the animation:
+Timing consists of **duration** (total time) and **easing** (variation in speed over duration). The Design System provides two timing presets, based on the intended purpose and feel of the animation:
 
 **Expressive** animations feel smooth and relaxed, and are useful for attracting attention and conveying expression and tone.
 
@@ -95,7 +39,7 @@ Timing consists of **duration** (total time) and **easing** (variation in speed 
 <table class="timing-table">
   <thead>
     <tr>
-      <th>Timing preset</th>
+      <th>Timing token</th>
       <th>Easing function</th>
       <th>Duration</th>
       <th>Example (click to play)</th>
@@ -127,7 +71,7 @@ Timing consists of **duration** (total time) and **easing** (variation in speed 
         </svg><br>
         ease-in-out
       </td>
-      <td>0.15s</td>
+      <td>0.1s</td>
       <td>
         <svg width="200" height="30" class="timing-graph" xmlns="http://www.w3.org/2000/svg">
           <circle r="6" cx="20" cy="15" class="easing-pacer"">
@@ -153,61 +97,44 @@ Timing consists of **duration** (total time) and **easing** (variation in speed 
 }());
 </script>
 
-Timing presets can be accessed with the `animation()` custom Sass function, referencing the timing preset token.
+These values are accessible from the CSS custom properties `--tcds-animation-x-duration` and `--tcds-animation-x-easing`, where `x` is a timing token.
 
-<details>
-  <summary>Example</summary>
-  <div>
+## AnimateElement
+`AnimateElement` is a utility function provided by the Design System. It allows you to implement the keyframe library programmatically, which can cover conditions for triggering an animation not provided by utility classes. It also allows you to make animations composable on a single element, unlike utility classes.
 
-```css
-/* Input SCSS. */
-p {
-  transition: all animation("expressive");
-}
+The function accepts three parameters: the element to animate, the animation name(s) (string or array), and an options object for controlling the trigger behavior. It returns a promise, allowing a user-defined callback function to run when the animation ends.
 
-/* Output CSS. */
-p {
-  transition: all .8s cubic-bezier(0, 1, .4, 1);
-}
+By default, it runs only once and only when the element is in the viewport (using the IntersectionObserver API), and undoes all DOM mutations when the animation is complete.
+
+Example:
+
+```js
+import { AnimateElement } from "@txch/tcds";
+
+AnimateElement(element, ["fade-in", "zoom-in"], {
+  // Configuration here...
+}).then(() => {
+  // Animation finished.
+});
 ```
-  </div>
-</details>
 
 ## Accessibility
+Respect a user's "reduced motion" system preference with the [`prefers-reduced-motion` query](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion). Note that *reduced motion* does not mean *no motion*; don't outright disable all animations when this preference is set. Rather, provide alternative animations with reduced intensity, distance, and speed.
 
-Always respect a user's "reduced motion" system preference. Note that reduced motion does not mean no motion. Don't outright disable all animations when this preference is set. Rather, provide alternative animations that reduce the intensity, distance, and speed of an animation.
-
-Users affected include those with vestibular disorders and photosensitive conditions such as epilepsy and migraine disorders. Animations that involve large moving objects and intense or rapid changes in light can trigger nausea, vertigo, headaches, and other symptoms.
-
-The reduced motion preference is an operating system-level setting. It can be detected with the `prefers-reduced-motion: reduce` media query. Alternatively, the Design System provides custom Sass mixins for convenience:
-
-```css
-@include motion-ok {
-  // Applies only if `prefers-reduced-motion` is not set.
-  // (Add animation here.)
-}
-
-@include reduced-motion {
-  // Applies only if `prefers-reduced-motion` is set to `reduce`.
-  // (Reduce or remove animation here.)
-}
-```
+Users affected include those with vestibular disorders and photosensitive conditions, such as epilepsy and migraine disorders. Animations that involve large moving objects and intense or rapid changes in light can be disorienting and induce headaches, nausea, and other symptoms.
 
 ## Performance
+Try to only animate and transition properties related to the **compositing** process of the browser's rendering pipeline. These are the `transform` and `opacity` properties, and are the cheapest to calculate. `transform` allows animation of `scale`, `rotate`, and `translate`, which should be sufficient for most animation needs.
 
-To get the most performant, consistently 60 fps animations (in modern browsers), only animate and transition properties calculated in the **compositing** process of a browser's rendering pipeline. These are the `transform` and `opacity` properties, and are the cheapest for browsers to calculate. `transform` allows you to animate an element with `scale`, `rotate`, and `translate`, and should be sufficient for most animation needs.
-
-Animating properties that trigger recalculations of style, layout, or paint (such as `width`, `font-size`, etc.) are considerably less efficient, and will likely appear choppy or slow. Avoid animating these properties when possible.
+Animating properties related to style, layout, or paint (such as `height`, `font-size`, `margin`, etc.) are much less efficient, and will likely appear choppy or slow. Avoid animating these properties when possible.
 
 <!--
-Further reading:
 https://www.designsystems.com/5-steps-for-including-motion-design-in-your-system/
 https://xd.adobe.com/ideas/wp-content/uploads/2021/06/Animation-in-Design-Systems.pdf
 https://www.smashingmagazine.com/2019/02/animation-design-system/
 https://www.invisionapp.com/inside-design/motion-design-systems/
 https://medium.com/@aviadtend/motion-design-system-practical-guide-8c15599262fe
 
-Examples:
 https://ant.design/docs/spec/motion
 https://material.io/design/motion/understanding-motion.html#principles
 https://www.carbondesignsystem.com/guidelines/motion/overview/

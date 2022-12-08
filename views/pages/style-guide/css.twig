@@ -1,0 +1,60 @@
+{# DO NOT EDIT. This file was compiled from Markdown; please edit the source .md
+file and run the gulp process to compile (either `gulp` or `npm run dev` from
+the terminal). #}
+{% extends "@tch/base.twig" %}
+{% block lede %}Writing CSS for Texas Children's products.{% endblock %}
+{% block body %}
+<p>The following style guide applies to hand-authored, source (S)CSS.</p>
+<h2 id="formatting">Formatting</h2>
+<p>Download and use the <a href="https://github.com/jacecotton/tcds/blob/main/.stylelintrc">.stylelintrc</a> file to take care of the more basic formatting rules automatically.</p>
+<ul>
+<li>Never use the Sass syntax (<code>.sass</code>); only SCSS (<code>.scss</code>).</li>
+<li>White space and returns: <ul>
+<li>Use exactly one empty line (two returns) between rulesets.</li>
+<li>Use exactly one return after each selector except the last in a selector list.</li>
+<li>Use exactly one space and no return between the last or only selector and an opening brace.</li>
+<li>Use exactly one return after an opening brace and before a closing brace.</li>
+<li>Use exactly one return after each declaration.</li>
+<li>Use no space between a property and a colon, nor a value and a semicolon.</li>
+<li>Use exactly one space between a colon and a value.</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-css">/* Correct */
+.selector-1,
+.selector-2 {
+  property-a: value-a;
+  property-b: value-b;
+}
+
+.selector-3 {
+  property-c: value-c;
+}
+
+/* Incorrect */
+.selector-1, .selector-2
+{
+  property-a : value-a;
+}
+
+.selector-3{property-b:value-b}
+</code></pre>
+<ul>
+<li>Ordering<ul>
+<li>Group declarations roughly according to concern (layout and spacing, then typography, then color, etc.) The ordering of one group over another doesn&#39;t matter.</li>
+<li>Order declarations first according to precedence or dependency (e.g. <code>display</code> before <code>align-items</code>, <code>box-sizing</code> before <code>padding</code>, <code>position</code> before <code>top</code>, etc.), then alphabetically.</li>
+<li>Include any mixins at the top of the ruleset, above all other declarations.</li>
+<li>Define any custom properties above all other declarations but below mixin inclusions.</li>
+</ul>
+</li>
+<li>Always use a semicolon after the last declaration in a ruleset.</li>
+<li>Avoid nesting rulesets more than three levels deep.</li>
+</ul>
+<h2 id="case">Case</h2>
+<ul>
+<li>Use <code>kebab-case</code> for all naming (custom properties, variables, classes, idents, mixins, etc.)</li>
+<li>Use lowercase for all syntax (properties, values, custom properties, functions, etc.)</li>
+</ul>
+<h2 id="naming">Naming</h2>
+<p>See <a href="/style-guide/html#naming">HTML style guide &sect; Naming</a></p>
+{% endblock %}

@@ -2,14 +2,9 @@
 file and run the gulp process to compile (either `gulp` or `npm run dev` from
 the terminal). #}
 {% extends "@tch/base.twig" %}
-{% block lead %}How text content is written and rendered has significant accessibility implications. It can make the difference between an inclusive experience for users with disabilities, and one that's frustrating, excluding, or unusable.{% endblock %}
+{% block lede %}How text content is written and rendered has significant accessibility implications. It can make the difference between an inclusive experience for users with disabilities, and one that's frustrating, excluding, or unusable.{% endblock %}
 {% block body %}
-{{ include("@tcds/components/message/message.html.twig", {
-    content: "<strong>This document is not comprehensive.</strong> It is primarily aimed at authoring accessible text from a technical perspective. It does not cover prose and general editorial guidelines for accessibility.",
-    modifiers: ["attention"],
-  }) }}
-
-
+<p><strong>This document is not comprehensive.</strong> It is primarily aimed at authoring accessible text from a technical perspective. It does not cover prose and general editorial guidelines for accessibility.</p>
 <h2 id="headings">Headings</h2>
 <p>Headings, H1 through H6, help break up and organize sections of content. It is important to include them to allow:</p>
 <ul>

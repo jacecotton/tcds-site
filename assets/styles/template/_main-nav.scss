@@ -1,63 +1,61 @@
-@use "../" as *;
-
 .main-nav {
-  padding-left: space("x-loose");
-  
+  padding-left: var(--tcds-space-x-loose);
+
   &__list {
     list-style: none;
   }
 
   &__item {
-    @include font-size("small");
+    font-size: var(--tcds-font-size-small);
+    font-family: var(--tcds-font-ui);
   }
-  
+
   &__category {
-    padding: space("tight") 0;
+    padding: var(--tcds-space-tight) 0;
     display: block;
-    font-weight: font-weight("semibold");
-    margin-top: space("loose");
+    font-weight: var(--tcds-font-weight-semibold);
+    margin-top: var(--tcds-space-loose);
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    font-size: font-size("x-small");
+    font-size: var(--tcds-font-size-x-small);
   }
 
   &__link {
     display: block;
-    text-decoration: none;
-    color: inherit;
-    padding: space("tight") 0;
+    color: var(--tcds-color-secondary);
+    padding: var(--tcds-space-tight) 0;
 
-    &:hover {
-      text-decoration: underline;
+    &:not(:hover) {
+      text-decoration: none;
     }
 
     &[aria-current] {
-      font-weight: font-weight("semibold");
-      color: theme-color("primary");
-      box-shadow: inset -4px 0 theme-color("primary");
+      font-weight: var(--tcds-font-weight-semibold);
+      color: var(--tcds-color-primary);
+      box-shadow: inset -4px 0 var(--tcds-color-primary);
     }
 
-    &.disabled {
-      color: color("gray", "200");
+    &--disabled {
+      color: #999;
       cursor: default;
       position: relative;
 
       &::after {
         content: "Coming soon";
         display: inline-block;
-        margin-left: space("normal");
+        margin-left: var(--tcds-space-normal);
         text-transform: uppercase;
-        font-size: font-size("x-small");
-        font-weight: font-weight("semibold");
-        background: color("blue", "100");
-        color: color("blue", "300");
-        padding: 0 3px;
+        font-size: var(--tcds-font-size-x-small);
+        font-weight: var(--tcds-font-weight-semibold);
+        background:  var(--tcds-color-blue-x-light);
+        color: var(--tcds-color-blue);
+        padding: 3px;
         border-radius: 3px;
         transform: translateX(20%);
         opacity: 0;
         transition:
-          transform animation("productive-duration") animation("expressive-easing"),
-          opacity animation("productive-duration") animation("expressive-easing");
+          transform var(--tcds-animation-productive-duration) var(--tcds-animation-expressive-easing),
+          opacity var(--tcds-animation-productive-duration) var(--tcds-animation-expressive-easing);
         transition-delay: 400ms;
       }
 

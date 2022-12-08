@@ -1,25 +1,14 @@
-@use "../" as *;
-
-.api {
-  td:nth-of-type(1) code {
+.api-table {
+  td:nth-child(1),
+  td:nth-child(2) {
     white-space: nowrap;
   }
 
-  th:last-child {
-    width: 10ch;
-  }
+  th {
+    white-space: nowrap;
 
-  tr:target {
-    border-left: 4px solid transparent;
-    animation: api-highlight 2s ease-in forwards;
-
-    @keyframes api-highlight {
-      from {
-        background-color: theme-color("secondary", "100");
-      } to {
-        background-color: theme-color("secondary", "0");
-        border-color: theme-color("secondary");
-      }
+    &[colspan="4"] {
+      text-align: center;
     }
   }
 }

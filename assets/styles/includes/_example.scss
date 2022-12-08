@@ -1,20 +1,22 @@
-@use "../" as *;
-
 .example {
-  border: 1px solid color("gray", "100");
-  margin-bottom: space("loose");
+  border: 1px solid var(--tcds-color-gray-light);
+  margin-bottom: var(--tcds-space-loose);
+  max-width: calc(100vw - (var(--site-outer-gutter) * 2));
+  border-radius: 10px;
 
   :root & pre[class*="language-"] {
     margin: 0;
   }
 
   &__result {
-    border-bottom: 1px solid color("gray", "100");
-    padding: space("loose");
+    --content-inner-gutter: var(--tcds-space-loose);
+
+    border-bottom: 1px solid var(--tcds-color-gray-light);
+    padding: var(--content-inner-gutter);
   }
 
   &__code {
-    padding: 0 space("normal");
+    padding: 0 var(--tcds-space-normal);
   }
 }
 
@@ -22,13 +24,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: color("blue", "0");
-  color: color("blue", "400");
-  font-size: font-size("small");
-  font-weight: font-weight("semibold");
+  background: var(--tcds-color-blue-x-light);
+  color: var(--tcds-color-blue);
+  font-size: var(--tcds-font-size-small);
+  font-weight: var(--tcds-font-weight-semibold);
   border-radius: 3px;
   height: 100%;
   line-height: 0;
-  padding: space("x-loose");
+  padding: var(--tcds-space-x-loose);
   text-align: center;
 }

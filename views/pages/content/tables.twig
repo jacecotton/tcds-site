@@ -1,0 +1,93 @@
+{# DO NOT EDIT. This file was compiled from Markdown; please edit the source .md
+file and run the gulp process to compile (either `gulp` or `npm run dev` from
+the terminal). #}
+{% extends "@tch/base.twig" %}
+{% block lede %}The Design System provides styling for <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table">tables</a>, which is used for rendering tabular data.{% endblock %}
+{% block body %}
+{% embed "@tch/includes/example.twig" %}
+{% block content %}
+<table>
+  <thead>
+    <tr>
+      <th>Column 1</th>
+      <th>Column 2</th>
+      <th>Column 3</th>
+      <th>Column 4</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Data 1, 1</td>
+      <td>Data 1, 2</td>
+      <td>Data 1, 3</td>
+      <td>Data 1, 4</td>
+    </tr>
+    <tr>
+      <td>Data 2, 1</td>
+      <td>Data 2, 2</td>
+      <td>Data 2, 3</td>
+      <td>Data 2, 4</td>
+    </tr>
+    <tr>
+      <td>Data 3, 1</td>
+      <td>Data 3, 2</td>
+      <td>Data 3, 3</td>
+      <td>Data 3, 4</td>
+    </tr>
+  </tbody>
+</table>
+{% endblock %}
+{% endembed %}
+
+
+<h2 id="best-practices">Best practices</h2>
+<h3 id="when-to-use">When to use</h3>
+<p><strong>To present tabular data.</strong> Tabular data consists of rows and columns that are interrelated in a 2-dimensional matrix. Cell data should be associated with its column header, but also have an implicit relationship with the other data in its row. Avoid using tables simply for listing independent, unrelated columns side-by-side.</p>
+<h3 id="when-not-to-use">When not to use</h3>
+<p><strong>To create layouts.</strong> Assistive technology handles tables unlike normal content, under the assumption that the content is tabular data. This makes them unsuitable for general layouts, in addition to performance issues. To create table-like layouts, use CSS (we recommend grid, for which the Design System provides <a href="/design/layout#grid">grid utilities</a>).</p>
+<p><strong>To list key–value pairs.</strong> 1-dimensional tabular data, defining one value for every column, is better presented as rows of key–value pairs. The <a href="/content/lists">description list</a> fulfills this purpose better than tables.</p>
+<h2 id="usage">Usage</h2>
+<h3 id="alternating-row-backgrounds">Alternating row backgrounds</h3>
+<p>By default, rows will have a darkened background on-hover, allowing readers to more easily keep track of what row they&#39;re looking at (which is most helpful with large tables).</p>
+<p>Another technique for improving readability is alternating background colors for each row, which you can use the <code>.table--bg-alternate</code> modifier class.</p>
+
+{% embed "@tch/includes/example.twig" with { line_highlight: "1" } %}
+{% block content %}
+<table class="table--bg-alternate">
+  <thead>
+    <tr>
+      <th>Column 1</th>
+      <th>Column 2</th>
+      <th>Column 3</th>
+      <th>Column 4</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Data 1, 1</td>
+      <td>Data 1, 2</td>
+      <td>Data 1, 3</td>
+      <td>Data 1, 4</td>
+    </tr>
+    <tr>
+      <td>Data 2, 1</td>
+      <td>Data 2, 2</td>
+      <td>Data 2, 3</td>
+      <td>Data 2, 4</td>
+    </tr>
+    <tr>
+      <td>Data 3, 1</td>
+      <td>Data 3, 2</td>
+      <td>Data 3, 3</td>
+      <td>Data 3, 4</td>
+    </tr>
+  </tbody>
+</table>
+{% endblock %}
+{% endembed %}
+
+
+<p>Because this style adds higher visual density, it is recommended to not use this style for small or simple tables. It is most useful for lengthy or complex tables.</p>
+<h2 id="resources">Resources</h2>
+<p><a href="https://github.com/jacecotton/tcds/blob/main/styles/content/tables.scss">Source code on GitHub</a></p>
+{% endblock %}

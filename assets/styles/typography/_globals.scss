@@ -1,20 +1,15 @@
-@use "../" as *;
+pre:not([class*="language"]),
+code:not([class*="language"]) {
+  font-family: var(--tcds-font-monospace);
+  background-color: var(--tcds-color-shade-xx-weak);
+  color: var(--tcds-color-blue-x-dark);
+  border: 1px solid var(--tcds-color-shade-xx-weak);
 
-code,
-pre {
-  font-family: font-stack("monospace");
-
-  &:not([class*="language-"]) {
-    background: color("gray", "0");
-    border: 1px solid color("shade", "0");
+  :not(td) > & {
+    font-size: 90%;
   }
 }
 
-h1, .h1 {
-  font-weight: font-weight("semibold");
-}
-
-h2, h3, h4,
-.h2, .h3, .h4 {
-  font-weight: font-weight("normal");
+code:not([class*="language"]) {
+  padding: 1px 2px;
 }

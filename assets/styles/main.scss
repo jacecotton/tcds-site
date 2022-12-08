@@ -1,32 +1,26 @@
-@use "index" as *;
-@use "@tcds/tcds";
+@use "@txch/tcds/styles/layout/layout";
 
-@use "typography/globals";
-@use "typography/fonts";
-
-@use "color/utilities";
-
-@use "template/base";
-@use "template/site-sidebar-header";
+@use "template/site-layout";
+@use "template/site-header";
 @use "template/main-nav";
-@use "template/main-content";
+@use "template/page-content";
+@use "template/site-footer";
 
-@use "includes/comparison-box";
-@use "includes/example";
+@use "typography/typography";
+@use "typography/fonts";
+@use "typography/globals";
+
 @use "includes/api";
+@use "includes/example";
 
-@use "components/footnotes";
-@use "components/toc";
-
-@use "primitives/tables";
-
-@use "pages/color";
-@use "pages/typography";
-@use "pages/forms";
-@use "pages/home";
-@use "pages/icon";
 @use "pages/animation";
-@use "pages/layout";
+@use "pages/icon";
+@use "pages/typography" as *;
+@use "pages/layout" as *;
 
 @use "lib/prism";
 @use "lib/prism-override";
+
+:root {
+  --site-background-color: #fff;
+}

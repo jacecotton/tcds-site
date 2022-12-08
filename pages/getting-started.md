@@ -1,5 +1,4 @@
 ## Quick start (CDN)
-
 To start using the Design System with minimal setup, you can load the precompiled CSS and JavaScript bundles straight from a CDN.
 
 ```html
@@ -9,183 +8,105 @@ To start using the Design System with minimal setup, you can load the precompile
 </head>
 <body>
   ...
-  <script async src="https://unpkg.com/@txch/tcds/dist/scripts/tcds.js"></script>
+  <script src="https://unpkg.com/@txch/tcds/dist/scripts/tcds.js"></script>
 </body>
 ```
 
-Then, you can use the HTML snippets documented for each component, primitive, and utility class, with styling and functionality taken care of. For example, from the [Button component](/components/button):
+This allows you to use all components, utility classes, base styles, and content and form styles.
 
-```html
-<tcds-button>Click me</tcds-button>
-```
+However, to use Twig templates and local copies of static assets (images, fonts), you will need to install the Design System as a project dependency and set up a build process, or integrate it with an existing one.
 
-However, because the code is precompiled, you are limited to HTML snippets, and have no options for configuration. To fully integrate the Design System, we recommend [installing it as a project dependency](#local-installation).
+## Local setup
+Installing the Design System locally gives you uncompiled assets that you will then need to bundle and compile with the rest of your project's code.
 
-## Local installation
-Installing the Design System locally gives you greater configuration options, uncompiled assets, and utilities for Sass and JavaScript. You can then import, bundle, and compile the Design System along with your project's other code.
+### Build system
+We use [npm](https://www.npmjs.com/) for front-end package management, for which you will need to install [Node.js](https://nodejs.org/en/). We recommend using [gulp](https://www.npmjs.com/package/gulp) for the build system and [webpack](https://www.npmjs.com/package/webpack-stream) for module bundling. The below examples assume such a setup, though it is not required.
 
-### Step 1. Download project files
-Download the following files, and place them in whatever directory you keep the front-end code of your project (CSS, JavaScript, etc.) This could be the root folder of your project, or, in the case of a Drupal site, a custom theme folder.
+The only strictly necessary build tool is [sass](https://www.npmjs.com/package/sass), a stylesheet preprocessor.
 
-* <a download href="/downloads/package.json">Download package.json</a> — Specifies the necessary dependencies for the project (including the Design System).
-* <a download href="/downloads/gulpfile.js">Download gulpfile.js</a> — Sets up a build process for compiling the Design System along with your project's other code.
+For browser support, we also recommend using our [.browserslistrc](https://github.com/jacecotton/tcds/blob/main/.browserslistrc) config and [postcss](https://www.npmjs.com/package/postcss) with [autoprefixer](https://www.npmjs.com/package/autoprefixer) and [custom-media](https://www.npmjs.com/package/postcss-custom-media) for CSS, and [babel](https://www.npmjs.com/package/babel-loader) ([core](https://www.npmjs.com/package/@babel/core), [preset-env](https://www.npmjs.com/package/@babel/preset-env)) for JavaScript. Without these, the Design System will function as expected only for the latest evergreen browsers. Otherwise, it will function for <em>at least</em> the following:
 
-<details>
-  <summary>Recommended file structure</summary>
-  <div>
+<!--twig
+{% set supported_browsers = {
+  "Chrome": ["https://upload.wikimedia.org/wikipedia/commons/e/e1/Google_Chrome_icon_%28February_2022%29.svg", "100+"],
+  "Edge": ["https://upload.wikimedia.org/wikipedia/commons/9/98/Microsoft_Edge_logo_%282019%29.svg", "100+"],
+  "Firefox": ["https://upload.wikimedia.org/wikipedia/commons/a/a0/Firefox_logo%2C_2019.svg", "&lt; 1 year"],
+  "Safari": ["https://upload.wikimedia.org/wikipedia/commons/5/52/Safari_browser_logo.svg", "13+"],
+  "Internet Explorer": ["https://upload.wikimedia.org/wikipedia/commons/1/18/Internet_Explorer_10%2B11_logo.svg", "🚫"],
+} %}
 
-It is recommended to structure your front-end code as follows.
+<ul class="row gap-x-loose justify-center" style="margin: 3rem 0">
+  {% for browser, data in supported_browsers %}
+    <li class="column gap-normal align-center" {% if data[1] == "🚫" %} style="opacity: .2" {% endif %}>
+      <img src="{{ data[0] }}" alt="{{ browser }} logo" title="{{ browser }}" width="24">
+      <span class="font-sans-serif font-size-small">{{ data[1]|raw }}</span>
+    </li>
+  {% endfor %}
+</ul>
+twig-->
 
-* (Your project's folder for front-end code)
-  * `package.json`
-  * `gulpfile.js`
-  * `assets/` — Uncompiled source code.
-    * `styles/` — Sass stylesheets.
-    * `scripts/` — JavaScript modules.
-    * `images/` — Theme image assets.
-  * `public/` — Compiled production code.
-    * `styles/` — CSS stylesheets.
-    * `scripts/` — JavaScript bundles.
-    * `images/` — Optimized theme images.
+### Installation
+Install the Design System by running the following from whatever directory you keep your front-end assets (theme folder, etc.):
 
-If you have a different structure, you will need to modify the gulpfile as instructed in the comments.
-  </div>
-</details>
-
-<details>
-  <summary>Already have an npm project or build process?</summary>
-  <div>
-
-The above files are not required to use—they are provided only for convenience. If you already have a `package.json` file, you can install the Design System directly by running:
-
-```command
+```terminal
 npm install --save-dev @txch/tcds
 ```
 
-If you already have your own build process, you will need to replicate the build steps in the provided `gulpfile.js`. The required ones are:
-* An ES module bundler, we use [webpack](https://www.npmjs.com/package/webpack-stream)
-* [Sass](https://www.npmjs.com/package/sass) for preprocessing and compiling source stylesheets
-* [Babel](https://babeljs.io/) for compiling next-generation JavaScript to backwards-compatible syntax
+This will install the [@txch/tcds](https://www.npmjs.com/package/@txch/tcds) package from the npm registry as a development dependency.
 
-Not required, but recommended:
-* [PostCSS](https://www.npmjs.com/package/gulp-postcss) for browser compatibility
-  </div>
-</details>
-
-### Step 2. Install dependencies
-Next, from a command line, `cd` into the folder you placed the downloads (e.g. `my-project/`):
-
-```command
-cd my-project
-```
-
-Make sure you have [installed Node.js and npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) (npm is a package manager used to manage the Design System as a dependency). Then, install the dependencies listed in the `package.json` file by running:
-
-```command
-npm install
-```
-
-### Step 3. Import, configure, and build
-
-Now, you should be able to import Design System assets from your front-end code.
-
-#### JavaScript
-From a JavaScript file, you can import the entire bundle from the `node_modules` folder:
-
-```javascript
-import "@txch/tcds/assets/scripts/index.js";
-```
-
-Or only the specific modules and/or utilities you actually need:
-
-```javascript
-import WebComponent from "@txch/tcds/assets/scripts/WebComponent/WebComponent.js";
-import AnimateElement from "@txch/tcds/assets/scripts/animation/AnimateElement.js";
-```
-
-#### Sass
-**Tip:** Familiarize yourself with Sass's [module system](https://sass-lang.com/blog/the-module-system-is-launched) (`@use` and `@forward`) before proceeding.
-
-From a Sass file, you can import the entire Design System bundle from the provided `@tcds` namespace:
+### Import and use
+Import the Design System in the main entry files for your stylesheet and scripts. Sass and webpack will both look inside the closest `node_modules` folder.
 
 ```css
-/* main.scss */
-@use "@tcds/tcds";
+// main.scss
+@use "~@txch/tcds";
 ```
 
-Alternatively, you can import specific package bundles:
+```js
+// main.js
+import "@txch/tcds";
+```
+
+#### Local asset location
+<!-- consider https://github.com/postcss/postcss-url for css static assets -->
+
+Note that [web components](/components) inject the Design System's base styles into their shadow trees by looking for a link to a `tcds.css` file in the `head` of the document. If none is found, it will be pulled from a CDN using [UNPKG](https://unpkg.com/).
+
+This is sub-optimal for performance, so to provide a local one, import the Design System package in a `tcds.scss` file, then link to it separately in your template's `head`:
 
 ```css
-/* main.scss */
-@use "@tcds/typography/bundle";
-@use "@tcds/components/bundle";
+// tcds.scss
+@use "~@txch/tcds";
 ```
 
-Or even specific modules within a package:
+```html
+<!-- index.html -->
+<head>
+  ...
+  <!-- A separate link for the Design System -->
+  <link rel="stylesheet" href="/styles/tcds.css">
+  <!-- All other project-specific styles -->
+  <link rel="stylesheet" href="/styles/main.css">
+</head>
+```
+
+#### Granular imports
+You can import only specific style and script modules if you do not need the entire Design System bundle:
 
 ```css
-/* main.scss */
-@use "@tcds/typography/globals";
-@use "@tcds/components/button";
+@use "~@txch/tcds/styles/color";
+@use "~@txch/tcds/styles/typography";
 ```
 
-To use and configure Sass abstracts (variables, functions, mixins, etc.), create a new `_index.scss` file and `@forward` the `@tcds/_index.scss` file (you only have to specify the path name, as `_index` files are loaded by default). You can set configuration variables via the `with` keyword:
-
-```css
-/* _index.scss */
-@forward "@tcds" with (
-  $theme-color-primary: "blue",
-);
+```js
+import "@txch/tcds/scripts/components/Button.js";
+import "@txch/tcds/scripts/components/Card.js";
 ```
 
-To apply these configurations to the TCDS style bundle, `@use` the `_index.scss` file before importing the Design System:
+You can also import specific utilities directly from the Design System package's entry file:
 
-```css
-/* main.scss */
-@use "_index" as *;
-@use "@tcds/tcds";
+```js
+import { WebComponent, AnimateElement } from "@txch/tcds";
 ```
 
-Now, from any file throughout your project's code, you can `@use` the forwarding file to bring in Design System utilities with the configurations. For example:
-
-```css
-/* partials/sidebar.scss */
-@use "../" as *;
-```
-
-You can also extend and overwrite Sass maps by creating a corresponding `variables` file, importing the respective `variables` file from the TCDS package, and then `map.merge`-ing the original map with your new map. For example:
-
-```css
-/* layout/_variables.scss */
-@use "sass:map";
-@use "@tcds/layout/abstracts/variables" as *;
-
-$breakpoints: map.merge($breakpoints, (
-  /* Overwrite the small breakpoint. */
-  "small": 360px,
-  /* Add an xx-large breakpoint. */
-  "xx-large": 1920px,
-));
-```
-
-Now in the root forwarding file, `@forward` your new `variables` file after the `@tcds/_index.scss` file:
-
-```css
-/* _index.scss */
-@forward "@tcds" with (
-  $theme-color-primary: "blue",
-);
-
-@forward "layout/variables";
-```
-
-In this example, the `small` breakpoint is now redefined as `360px`, and a new `1920px` breakpoint has been added. All breakpoint-relevant code utilities will be generated based off of this map.
-
-#### Compile and watch for changes
-Lastly, you can compile all your code together by running the following:
-
-```command
-npm run dev
-```
-
-This will build your front-end code from `assets/` to `public/` (unless otherwise configured), and will continuously watch for changes, recompiling on every save.
+JavaScript utilities are documented on their relevant pages.
