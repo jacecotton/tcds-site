@@ -4,11 +4,11 @@ To start using the Design System with minimal setup, you can load the precompile
 ```html
 <head>
   ...
-  <link rel="stylesheet" href="https://unpkg.com/@txch/tcds/dist/styles/tcds.css">
+  <link rel="stylesheet" href="https://unpkg.com/@txch/tcds/dist/tcds.css">
 </head>
 <body>
   ...
-  <script src="https://unpkg.com/@txch/tcds/dist/scripts/tcds.js"></script>
+  <script src="https://unpkg.com/@txch/tcds/dist/tcds.js"></script>
 </body>
 ```
 
@@ -20,11 +20,11 @@ However, to use Twig templates and local copies of static assets (images, fonts)
 Installing the Design System locally gives you uncompiled assets that you will then need to bundle and compile with the rest of your project's code.
 
 ### Build system
-We use [npm](https://www.npmjs.com/) for front-end package management, for which you will need to install [Node.js](https://nodejs.org/en/). We recommend using [gulp](https://www.npmjs.com/package/gulp) for the build system and [webpack](https://www.npmjs.com/package/webpack-stream) for module bundling. The below examples assume such a setup, though it is not required.
+We use [npm](https://www.npmjs.com/) for front-end package management, for which you will need to install [Node.js](https://nodejs.org/en/). We recommend using [Gulp](https://www.npmjs.com/package/gulp) for the build system and [Webpack](https://www.npmjs.com/package/webpack-stream) for module bundling and loading.
 
-The only strictly necessary build tool is [sass](https://www.npmjs.com/package/sass), a stylesheet preprocessor.
+The only strictly necessary dependency is [Sass](https://www.npmjs.com/package/sass), a stylesheet preprocessor. It is also necessary to use the [constructable-style-loader](https://github.com/alextech/constructable-style-loader) in your Webpack configuration for your scripts.
 
-For browser support, we also recommend using our [.browserslistrc](https://github.com/jacecotton/tcds/blob/main/.browserslistrc) config and [postcss](https://www.npmjs.com/package/postcss) with [autoprefixer](https://www.npmjs.com/package/autoprefixer) and [custom-media](https://www.npmjs.com/package/postcss-custom-media) for CSS, and [babel](https://www.npmjs.com/package/babel-loader) ([core](https://www.npmjs.com/package/@babel/core), [preset-env](https://www.npmjs.com/package/@babel/preset-env)) for JavaScript. Without these, the Design System will function as expected only for the latest evergreen browsers. Otherwise, it will function for <em>at least</em> the following:
+For browser support, we also recommend using our [.browserslistrc](https://github.com/jacecotton/tcds/blob/main/.browserslistrc) config and [PostCSS](https://www.npmjs.com/package/postcss) with [Autoprefixer](https://www.npmjs.com/package/autoprefixer) and [postcss-custom-media](https://www.npmjs.com/package/postcss-custom-media) for CSS, and [Babel](https://www.npmjs.com/package/babel-loader) ([core](https://www.npmjs.com/package/@babel/core), [preset-env](https://www.npmjs.com/package/@babel/preset-env)) for JavaScript. Without these, the Design System will function as expected only for the latest evergreen browsers. Otherwise, it will function for <em>at least</em> the following:
 
 <!--twig
 {% set supported_browsers = {
@@ -70,7 +70,7 @@ import "@txch/tcds";
 #### Local asset location
 <!-- consider https://github.com/postcss/postcss-url for css static assets -->
 
-Note that [web components](/components) inject the Design System's base styles into their shadow trees by looking for a link to a `tcds.css` file in the `head` of the document. If none is found, it will be pulled from a CDN using [UNPKG](https://unpkg.com/).
+Note that [web components](/components) inject the Design System's base styles into their shadow trees by looking for a `link` element in the `head` of the document with a `title` of `tcds-base`. If none is found, it will be pulled from a CDN using [UNPKG](https://unpkg.com/).
 
 This is sub-optimal for performance, so to provide a local one, import the Design System package in a `tcds.scss` file, then link to it separately in your template's `head`:
 
@@ -84,7 +84,7 @@ This is sub-optimal for performance, so to provide a local one, import the Desig
 <head>
   ...
   <!-- A separate link for the Design System -->
-  <link rel="stylesheet" href="/styles/tcds.css">
+  <link rel="stylesheet" href="/styles/tcds.css" title="tcds-base">
   <!-- All other project-specific styles -->
   <link rel="stylesheet" href="/styles/main.css">
 </head>
@@ -99,8 +99,8 @@ You can import only specific style and script modules if you do not need the ent
 ```
 
 ```js
-import "@txch/tcds/scripts/components/Button.js";
-import "@txch/tcds/scripts/components/Card.js";
+import "@txch/tcds/components/button/index.js";
+import "@txch/tcds/components/card/index.js";
 ```
 
 You can also import specific utilities directly from the Design System package's entry file:

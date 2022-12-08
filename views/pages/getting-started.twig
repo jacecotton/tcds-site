@@ -7,11 +7,11 @@ the terminal). #}
 <p>To start using the Design System with minimal setup, you can load the precompiled CSS and JavaScript bundles straight from a CDN.</p>
 <pre><code class="language-html">&lt;head&gt;
   ...
-  &lt;link rel=&quot;stylesheet&quot; href=&quot;https://unpkg.com/@txch/tcds/dist/styles/tcds.css&quot;&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;https://unpkg.com/@txch/tcds/dist/tcds.css&quot;&gt;
 &lt;/head&gt;
 &lt;body&gt;
   ...
-  &lt;script src=&quot;https://unpkg.com/@txch/tcds/dist/scripts/tcds.js&quot;&gt;&lt;/script&gt;
+  &lt;script src=&quot;https://unpkg.com/@txch/tcds/dist/tcds.js&quot;&gt;&lt;/script&gt;
 &lt;/body&gt;
 </code></pre>
 <p>This allows you to use all components, utility classes, base styles, and content and form styles.</p>
@@ -19,9 +19,9 @@ the terminal). #}
 <h2 id="local-setup">Local setup</h2>
 <p>Installing the Design System locally gives you uncompiled assets that you will then need to bundle and compile with the rest of your project&#39;s code.</p>
 <h3 id="build-system">Build system</h3>
-<p>We use <a href="https://www.npmjs.com/">npm</a> for front-end package management, for which you will need to install <a href="https://nodejs.org/en/">Node.js</a>. We recommend using <a href="https://www.npmjs.com/package/gulp">gulp</a> for the build system and <a href="https://www.npmjs.com/package/webpack-stream">webpack</a> for module bundling. The below examples assume such a setup, though it is not required.</p>
-<p>The only strictly necessary build tool is <a href="https://www.npmjs.com/package/sass">sass</a>, a stylesheet preprocessor.</p>
-<p>For browser support, we also recommend using our <a href="https://github.com/jacecotton/tcds/blob/main/.browserslistrc">.browserslistrc</a> config and <a href="https://www.npmjs.com/package/postcss">postcss</a> with <a href="https://www.npmjs.com/package/autoprefixer">autoprefixer</a> and <a href="https://www.npmjs.com/package/postcss-custom-media">custom-media</a> for CSS, and <a href="https://www.npmjs.com/package/babel-loader">babel</a> (<a href="https://www.npmjs.com/package/@babel/core">core</a>, <a href="https://www.npmjs.com/package/@babel/preset-env">preset-env</a>) for JavaScript. Without these, the Design System will function as expected only for the latest evergreen browsers. Otherwise, it will function for <em>at least</em> the following:</p>
+<p>We use <a href="https://www.npmjs.com/">npm</a> for front-end package management, for which you will need to install <a href="https://nodejs.org/en/">Node.js</a>. We recommend using <a href="https://www.npmjs.com/package/gulp">Gulp</a> for the build system and <a href="https://www.npmjs.com/package/webpack-stream">Webpack</a> for module bundling and loading.</p>
+<p>The only strictly necessary dependency is <a href="https://www.npmjs.com/package/sass">Sass</a>, a stylesheet preprocessor. It is also necessary to use the <a href="https://github.com/alextech/constructable-style-loader">constructable-style-loader</a> in your Webpack configuration for your scripts.</p>
+<p>For browser support, we also recommend using our <a href="https://github.com/jacecotton/tcds/blob/main/.browserslistrc">.browserslistrc</a> config and <a href="https://www.npmjs.com/package/postcss">PostCSS</a> with <a href="https://www.npmjs.com/package/autoprefixer">Autoprefixer</a> and <a href="https://www.npmjs.com/package/postcss-custom-media">postcss-custom-media</a> for CSS, and <a href="https://www.npmjs.com/package/babel-loader">Babel</a> (<a href="https://www.npmjs.com/package/@babel/core">core</a>, <a href="https://www.npmjs.com/package/@babel/preset-env">preset-env</a>) for JavaScript. Without these, the Design System will function as expected only for the latest evergreen browsers. Otherwise, it will function for <em>at least</em> the following:</p>
 
 {% set supported_browsers = {
   "Chrome": ["https://upload.wikimedia.org/wikipedia/commons/e/e1/Google_Chrome_icon_%28February_2022%29.svg", "100+"],
@@ -57,7 +57,7 @@ import &quot;@txch/tcds&quot;;
 <h4 id="local-asset-location">Local asset location</h4>
 <!-- consider https://github.com/postcss/postcss-url for css static assets -->
 
-<p>Note that <a href="/components">web components</a> inject the Design System&#39;s base styles into their shadow trees by looking for a link to a <code>tcds.css</code> file in the <code>head</code> of the document. If none is found, it will be pulled from a CDN using <a href="https://unpkg.com/">UNPKG</a>.</p>
+<p>Note that <a href="/components">web components</a> inject the Design System&#39;s base styles into their shadow trees by looking for a <code>link</code> element in the <code>head</code> of the document with a <code>title</code> of <code>tcds-base</code>. If none is found, it will be pulled from a CDN using <a href="https://unpkg.com/">UNPKG</a>.</p>
 <p>This is sub-optimal for performance, so to provide a local one, import the Design System package in a <code>tcds.scss</code> file, then link to it separately in your template&#39;s <code>head</code>:</p>
 <pre><code class="language-css">// tcds.scss
 @use &quot;~@txch/tcds&quot;;
@@ -66,7 +66,7 @@ import &quot;@txch/tcds&quot;;
 &lt;head&gt;
   ...
   &lt;!-- A separate link for the Design System --&gt;
-  &lt;link rel=&quot;stylesheet&quot; href=&quot;/styles/tcds.css&quot;&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;/styles/tcds.css&quot; title=&quot;tcds-base&quot;&gt;
   &lt;!-- All other project-specific styles --&gt;
   &lt;link rel=&quot;stylesheet&quot; href=&quot;/styles/main.css&quot;&gt;
 &lt;/head&gt;
@@ -76,8 +76,8 @@ import &quot;@txch/tcds&quot;;
 <pre><code class="language-css">@use &quot;~@txch/tcds/styles/color&quot;;
 @use &quot;~@txch/tcds/styles/typography&quot;;
 </code></pre>
-<pre><code class="language-js">import &quot;@txch/tcds/scripts/components/Button.js&quot;;
-import &quot;@txch/tcds/scripts/components/Card.js&quot;;
+<pre><code class="language-js">import &quot;@txch/tcds/components/button/index.js&quot;;
+import &quot;@txch/tcds/components/card/index.js&quot;;
 </code></pre>
 <p>You can also import specific utilities directly from the Design System package&#39;s entry file:</p>
 <pre><code class="language-js">import { WebComponent, AnimateElement } from &quot;@txch/tcds&quot;;
