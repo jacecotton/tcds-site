@@ -112,8 +112,8 @@ You can import only specific style and script modules if you do not need the ent
 ```
 
 ```js
-import "@txch/tcds/components/button/index.js";
-import "@txch/tcds/components/card/index.js";
+import "@txch/tcds/components/button";
+import "@txch/tcds/components/card";
 ```
 
 You can also import specific utilities directly from the Design System package's entry file:
