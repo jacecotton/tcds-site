@@ -77,7 +77,7 @@ Import the Design System in the main entry files for your stylesheet and scripts
 
 ```js
 // main.js
-import "@txch/tcds/index.js";
+import "@txch/tcds";
 ```
 
 #### Local asset location
