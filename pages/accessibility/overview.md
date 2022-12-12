@@ -6,10 +6,10 @@ Compliance with [Section 508 of the Rehabilitation Act](https://www.section508.g
 
 However, accessibility is also contextual, so further guidance beyond what can be guaranteed out of the box is laid out in this section. Furthermore, as accessibility is implicated across *every* aspect of the Design System, there is such guidance on nearly every documentation page. Content included there is not repeated here. For example, accessibility for users with low color sensitivity is covered in [Design &rarr; Color](/design/color), those with vestibular disorders in [Design &rarr; Animation](/design/animation), and so on.
 
-## Accessibility for whom?
+## Who accessibility is for
 While the practice of accessibility primarily aims to accommodate those with chronic medical conditions, quality accessibility and general usability are inextricably linked. Therefore, we aim beyond minimally required accessibility, and instead for *comprehensive inclusivity*.
 
-Some of the most common medical conditions impacting the design and development of a website include but are not limited to the following:
+This requires consideration both for chronic medical conditions and temporary or non-medical obstacles. Some of the most common medical conditions impacting the design and development of a website include but are not limited to the following:
 
 * **Visual impairment** such as low vision, color blindness, etc. Users with these conditions often use assistive technology such as screen readers, dictation software, or braille displays. They may set certain system or browser preferences, such as increasing font size, zoom level, or contrast.
 * **Audiological conditions** such as hearing loss, audio processing disorders, etc. Users with these conditions often require captions or text transcriptions for video and audio.
@@ -25,7 +25,7 @@ Beyond these, temporary or non-medical obstacles include but are not limited to 
 * **Background** such as age, culture, etc. Differences in background can impact understanding of abstract conventions in web design, such as [iconographic symbolism](/components/icon#best-practices), as well as metaphorical terms like "[accordion](/components/accordion)". Use caution when employing conceptual abstractions, as they may not be universally well-understood.
 
 ## Your responsibility
-While every element of the Design System has been built with accessibility in mind, a considerable portion of accessible design is up to the *context* in which something is used. The [Button component](/components/button) may be accessible *per se*, but the language of the label and the action associated with clicking it may not be.
+While every element of the Design System has been built with accessibility in mind, a considerable portion of accessible design is up to the *context* in which something is used. The [button component](/components/button) may be accessible *per se*, but the language of the label and the action associated with clicking it may not be.
 
 The Design System always seeks to provide relevant accessibility guidance just as much as technical documentation in these cases. Ultimately, however, creating accessible and inclusive experiences is an interdepartmental, multidisciplinary task, which requires perpetual adaptation and education.
 

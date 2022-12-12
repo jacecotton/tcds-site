@@ -26,7 +26,7 @@ twig-->
 
 ## Usage
 ### Theme
-To set the colors of the background and foreground elements (text, various components, and an overlay of the [Texas Children's logomark](/design/branding)), add a [background utility class](/design/color#utilities) and a `data-theme` attribute with the value `light` or `dark`.
+To set the colors of the background and foreground elements (text, various components, etc.), add a [background utility class](/design/color#utilities) and a `data-theme` attribute with the value `light` or `dark`.
 
 <!--twig
 {% embed "@tch/includes/example.twig" with {
@@ -50,7 +50,7 @@ To set the colors of the background and foreground elements (text, various compo
 {% endembed %}
 twig-->
 
-To disable the logomark overlay, set the [`watermark` prop](#watermark-attribute) to `none`.
+To add a decorative overlay of the [Texas Children's logomark](/design/branding), add the [`watermark` attribute](#watermark-attribute).
 
 <!--twig
 {% embed "@tch/includes/example.twig" with {
@@ -58,7 +58,7 @@ To disable the logomark overlay, set the [`watermark` prop](#watermark-attribute
   line_highlight: "1",
 } %}
 {% block content %}
-<tcds-section class="bg-tertiary" data-theme="light" watermark="none">
+<tcds-section class="bg-tertiary" data-theme="light" watermark>
   <p>
     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
     eiusmod tempor incididunt ut labore et dolore magna aliqua.
@@ -126,7 +126,7 @@ A "hero" pattern can be implemented through the use of available [slots](#api).
 
 The `heading` and `subheading` slots can be use to add enlarged text. In light-themed sections, the heading will be colored red.
 
-As heroes are typically the first section on a page, you may wish to make them bigger than other sections. This can be done by increasing the [`--tcds-section-vertical-padding` custom property](#styling) from the default `7rem`. You may also wish to enlarge the watermark by setting the [`watermark` prop](#watermark-attribute) to `large`.
+As heroes are typically the first section on a page, you may wish to make them bigger than other sections. This can be done by increasing the [`--tcds-section-vertical-padding` custom property](#styling) from the default `7rem`. You may also wish to enlarge the watermark by setting the [`watermark` attribute](#watermark-attribute) to `large`.
 
 <!--twig
 {% embed "@tch/includes/example.twig" with {
@@ -146,7 +146,7 @@ twig-->
 
 A decorative image can be added to the side (desktop) or on top (mobile) of the text content with the `image` slot. It is recommend to use a `picture` element with differently-arranged images at each [breakpoint](/design/layout#breakpoints).
 
-Call-to-action buttons can be added with the `cta` slot using the [Button](/components/button) component.
+Call-to-action buttons can be added with the `cta` slot using the [button component](/components/button).
 
 <!--twig
 {% embed "@tch/includes/example.twig" with {
@@ -235,7 +235,7 @@ The Section's basic styles can be changed with the following custom properties.
     {
       name: "watermark",
       type: ["prop", "string"],
-      description: "One of <code>large</code> or <code>none</code>.",
+      description: "Empty or <code>large</code>.",
       required: "no",
     },
   ],

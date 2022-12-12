@@ -3,11 +3,11 @@
 lede-->
 
 ## Content wrapper
-Content wrappers include the [`main` element](/content/main), the [Section](/components/section) component, and anything with a `.max-width` utility class.
+Content wrappers include the [`main` element](/content/main), the [section component](/components/section), and anything with a `.max-width` utility class.
 
 These content wrappers have a base width of 100% of the parent container, minus on either side a `--site-outer-gutter`, which is set to an [`x-loose` spacing](#size-and-space).
 
-Content wrappers are centered and constrained to a maximum width of `--site-container-max-width`, which is set to 1200px (the [`x-large` breakpoint](#breakpoints)).
+Content wrappers are centered and constrained to a maximum width of `--site-container-max-width`, which is set by default to 1200px (the [`x-large` breakpoint](#breakpoints)).
 
 ## Grid
 The Design System provides [CSS Grid](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout)-based utility classes for creating responsive layouts.
@@ -410,4 +410,4 @@ margin: 0 0 var(--tcds-space-loose) var(--tcds-space-loose);
   </tbody>
 </table>
 
-<small>* Float utilities only apply above the `small` breakpoint. Below `small`, the element will be centered and given only a bottom margin.</small>
+<small>* Float utilities only apply above the `medium` breakpoint. Below `medium`, the element will be centered and given only a bottom margin.</small>

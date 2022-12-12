@@ -25,7 +25,7 @@ the terminal). #}
 <p><strong>On interior content pages.</strong> The section component is not a generic wrapper for content, and should not be used inside containers that are already boxed and centered (use a <a href="/content/callout">callout</a> instead). It is specifically to create internally boxed sections with a full-bleed background that spans the full window width.</p>
 <h2 id="usage">Usage</h2>
 <h3 id="theme">Theme</h3>
-<p>To set the colors of the background and foreground elements (text, various components, and an overlay of the <a href="/design/branding">Texas Children&#39;s logomark</a>), add a <a href="/design/color#utilities">background utility class</a> and a <code>data-theme</code> attribute with the value <code>light</code> or <code>dark</code>.</p>
+<p>To set the colors of the background and foreground elements (text, various components, etc.), add a <a href="/design/color#utilities">background utility class</a> and a <code>data-theme</code> attribute with the value <code>light</code> or <code>dark</code>.</p>
 
 {% embed "@tch/includes/example.twig" with {
   full_screen: true,
@@ -48,14 +48,14 @@ the terminal). #}
 {% endembed %}
 
 
-<p>To disable the logomark overlay, set the <a href="#watermark-attribute"><code>watermark</code> prop</a> to <code>none</code>.</p>
+<p>To add a decorative overlay of the <a href="/design/branding">Texas Children&#39;s logomark</a>, add the <a href="#watermark-attribute"><code>watermark</code> attribute</a>.</p>
 
 {% embed "@tch/includes/example.twig" with {
   full_screen: true,
   line_highlight: "1",
 } %}
 {% block content %}
-<tcds-section class="bg-tertiary" data-theme="light" watermark="none">
+<tcds-section class="bg-tertiary" data-theme="light" watermark>
   <p>
     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
     eiusmod tempor incididunt ut labore et dolore magna aliqua.
@@ -116,7 +116,7 @@ the terminal). #}
 <h3 id="hero-section">Hero section</h3>
 <p>A &quot;hero&quot; pattern can be implemented through the use of available <a href="#api">slots</a>.</p>
 <p>The <code>heading</code> and <code>subheading</code> slots can be use to add enlarged text. In light-themed sections, the heading will be colored red.</p>
-<p>As heroes are typically the first section on a page, you may wish to make them bigger than other sections. This can be done by increasing the <a href="#styling"><code>--tcds-section-vertical-padding</code> custom property</a> from the default <code>7rem</code>. You may also wish to enlarge the watermark by setting the <a href="#watermark-attribute"><code>watermark</code> prop</a> to <code>large</code>.</p>
+<p>As heroes are typically the first section on a page, you may wish to make them bigger than other sections. This can be done by increasing the <a href="#styling"><code>--tcds-section-vertical-padding</code> custom property</a> from the default <code>7rem</code>. You may also wish to enlarge the watermark by setting the <a href="#watermark-attribute"><code>watermark</code> attribute</a> to <code>large</code>.</p>
 
 {% embed "@tch/includes/example.twig" with {
   full_screen: true,
@@ -134,7 +134,7 @@ the terminal). #}
 
 
 <p>A decorative image can be added to the side (desktop) or on top (mobile) of the text content with the <code>image</code> slot. It is recommend to use a <code>picture</code> element with differently-arranged images at each <a href="/design/layout#breakpoints">breakpoint</a>.</p>
-<p>Call-to-action buttons can be added with the <code>cta</code> slot using the <a href="/components/button">Button</a> component.</p>
+<p>Call-to-action buttons can be added with the <code>cta</code> slot using the <a href="/components/button">button component</a>.</p>
 
 {% embed "@tch/includes/example.twig" with {
   full_screen: true,
@@ -221,7 +221,7 @@ the terminal). #}
     {
       name: "watermark",
       type: ["prop", "string"],
-      description: "One of <code>large</code> or <code>none</code>.",
+      description: "Empty or <code>large</code>.",
       required: "no",
     },
   ],

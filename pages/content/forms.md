@@ -5,7 +5,7 @@ lede-->
 ## Best practices
 **Always provide labels for inputs.** Use the `label` element with a `[for]` attribute matching the `[id]` of the associated `input`.
 
-**Avoid using placeholder text.** Placeholder text has poor usability and accessibility ([1](https://www.w3.org/WAI/GL/low-vision-a11y-tf/wiki/Placeholder_Research "Placeholder Research, Low Vision Accessibility Task Force - W3.org")), and should never be used as a substitute for label. To provide examples, instructional, or other supplemental information in addition to a label, see [&sect; Supplemental information](#supplemental-information).
+**Avoid using placeholder text.** Placeholder text has poor usability and accessibility ([1](https://www.w3.org/WAI/GL/low-vision-a11y-tf/wiki/Placeholder_Research "Placeholder Research, Low Vision Accessibility Task Force - W3.org")), and should never be used as a substitute for a label. To provide example, instructional, or other supplemental information in addition to a label, see [&sect; Supplemental information](#supplemental-information).
 
 ## Usage
 ### Buttons

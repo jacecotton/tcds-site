@@ -1,28 +1,50 @@
 ## Quick start (CDN)
 To start using the Design System with minimal setup, you can load the precompiled CSS and JavaScript bundles straight from a CDN.
 
-```html
-<head>
-  ...
-  <link rel="stylesheet" href="https://unpkg.com/@txch/tcds/dist/tcds.css">
-</head>
-<body>
-  ...
-  <script src="https://unpkg.com/@txch/tcds/dist/tcds.js"></script>
-</body>
-```
+**Warning:** Make sure to load the Design System stylesheet with `title="tcds-base"`.
 
-This allows you to use all components, utility classes, base styles, and content and form styles.
+<!--twig
+<pre class="language-html line-numbers">
+<code class="language-html">&lt;head>
+  ...
+  &lt;link rel="stylesheet" href="https://unpkg.com/@txch/tcds@{{ tcds_version }}/dist/tcds.css" title="tcds-base">
+&lt;/head>
+&lt;body>
+  ...
+  &lt;script src="https://unpkg.com/@txch/tcds@{{ tcds_version }}/dist/tcds.js">&lt/script>
+&lt;/body></code>
+</pre>
+twig-->
 
-However, to use Twig templates and local copies of static assets (images, fonts), you will need to install the Design System as a project dependency and set up a build process, or integrate it with an existing one.
+This allows you to use all components, utility classes, base styles, and content styles.
 
 ## Local setup
-Installing the Design System locally gives you uncompiled assets that you will then need to bundle and compile with the rest of your project's code.
+Instead of linking from a CDN, you can install the Design System as a dependency and import and link to local copies of the assets.
+
+```terminal
+npm install --save-dev @txch/tcds
+```
+
+This will install the [@txch/tcds](https://www.npmjs.com/package/@txch/tcds) package from the npm registry as a development dependency.
+
+The Design System package ships with compiled and uncompiled code. If you do not wish to set up a build process or integrate the Design System with an existing one, you can simply import the built assets:
+
+```js
+// tcds.js
+import "@txch/tcds/dist/tcds.js";
+```
+
+```css
+// tcds.scss
+@use "~@txch/tcds/dist/tcds.css";
+```
+
+To have more control over the Design System—how it's built, which parts are imported, pre-compile configuration—as well as access to Twig templates and local copies of static assets (images, fonts), you will need to set up your own build system or integrate the Design System with your current one.
 
 ### Build system
-We use [npm](https://www.npmjs.com/) for front-end package management, for which you will need to install [Node.js](https://nodejs.org/en/). We recommend using [Gulp](https://www.npmjs.com/package/gulp) for the build system and [Webpack](https://www.npmjs.com/package/webpack-stream) for module bundling and loading.
+We recommend using [Gulp](https://www.npmjs.com/package/gulp) for the build system and [Webpack](https://www.npmjs.com/package/webpack-stream) for module bundling and loading.
 
-The only strictly necessary dependency is [Sass](https://www.npmjs.com/package/sass), a stylesheet preprocessor. It is also necessary to use the [constructable-style-loader](https://github.com/alextech/constructable-style-loader) in your Webpack configuration for your scripts (however, this doesn't need to be installed separately—it is installed as a peer dependency along with the Design System package).
+The only strictly necessary dependency is [Sass](https://www.npmjs.com/package/sass), a stylesheet preprocessor. It is also necessary to use the [constructable-style-loader](https://github.com/alextech/constructable-style-loader) in your Webpack configuration for your scripts (however, this doesn't need to be installed separately).
 
 For browser support, we also recommend using our [.browserslistrc](https://github.com/jacecotton/tcds/blob/main/.browserslistrc) config and [PostCSS](https://www.npmjs.com/package/postcss) with [Autoprefixer](https://www.npmjs.com/package/autoprefixer) and [postcss-custom-media](https://www.npmjs.com/package/postcss-custom-media) for CSS, and [Babel](https://www.npmjs.com/package/babel-loader) ([core](https://www.npmjs.com/package/@babel/core), [preset-env](https://www.npmjs.com/package/@babel/preset-env)) for JavaScript. Without these, the Design System will function as expected only for the latest evergreen browsers. Otherwise, it will function for <em>at least</em> the following:
 
@@ -45,17 +67,8 @@ For browser support, we also recommend using our [.browserslistrc](https://githu
 </ul>
 twig-->
 
-### Installation
-Install the Design System by running the following from whatever directory you keep your front-end assets (theme folder, etc.):
-
-```terminal
-npm install --save-dev @txch/tcds
-```
-
-This will install the [@txch/tcds](https://www.npmjs.com/package/@txch/tcds) package from the npm registry as a development dependency.
-
 ### Import and use
-Import the Design System in the main entry files for your stylesheet and scripts. Sass and webpack will both look inside the closest `node_modules` folder.
+Import the Design System in the main entry files for your stylesheet and scripts. Sass and Webpack will both look inside the closest `node_modules` folder.
 
 ```css
 // main.scss
@@ -64,15 +77,15 @@ Import the Design System in the main entry files for your stylesheet and scripts
 
 ```js
 // main.js
-import "@txch/tcds";
+import "@txch/tcds/index.js";
 ```
 
 #### Local asset location
 <!-- consider https://github.com/postcss/postcss-url for css static assets -->
 
-Note that [web components](/components) inject the Design System's base styles into their shadow trees by looking for a `link` element in the `head` of the document with a `title` of `tcds-base`. If none is found, it will be pulled from a CDN using [UNPKG](https://unpkg.com/).
+Note that [web components](/components) inject the Design System's base styles into their shadow trees by looking for a stylesheet with a `title` of `tcds-base`. So you will need to link to the Design System stylesheet separately from your other styles.
 
-This is sub-optimal for performance, so to provide a local one, import the Design System package in a `tcds.scss` file, then link to it separately in your template's `head`:
+To do so, import the Design System package in a `tcds.scss` file, then link to it separately in your template's `head`:
 
 ```css
 // tcds.scss
@@ -106,7 +119,7 @@ import "@txch/tcds/components/card/index.js";
 You can also import specific utilities directly from the Design System package's entry file:
 
 ```js
-import { WebComponent, AnimateElement } from "@txch/tcds";
+import { WebComponent, AnimateElement } from "@txch/tcds/index.js";
 ```
 
 JavaScript utilities are documented on their relevant pages.

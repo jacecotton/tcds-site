@@ -62,7 +62,7 @@ twig-->
 
 **Comparing content with minor variations.** Each content panel should include <em>distinct</em> content belonging to the same information category as its peer panels, not the same information with certain differences.
 
-**A different component better fits the use case.** For sequentially disclosing pieces of content that are not necessarily interrelated, the [Accordion](/components/accordion) may be a better choice.
+**A different component better fits the use case.** For sequentially disclosing pieces of content that are not necessarily interrelated, the [accordion component](/components/accordion) may be a better choice.
 
 ## Usage
 ### Small tabs

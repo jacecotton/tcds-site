@@ -145,7 +145,7 @@ These custom properties will be documented on each component's page above the AP
 Some styles are set by props, like the button's `size` prop. However, in these cases it is often multiple properties and sometimes multiple elements that are affected. For instance, the `size` prop, depending on its value, changes the `height`, `font-size`, `width`, and `padding` of the button.
 
 ## Component authoring
-The Design System provides the [`WebComponent`](https://github.com/jacecotton/tcds/tree/main/scripts/WebComponent/WebComponent.js) base class to make authoring your own custom elements easier. You can read more about how to use it on a technical level at its [documentation page](https://github.com/jacecotton/tcds/tree/main/assets/scripts/WebComponent) in the Design System repository on GitHub. The following is a very basic example of its usage:
+The Design System provides the [`WebComponent`](https://github.com/jacecotton/tcds/blob/main/scripts/WebComponent/WebComponent.js) base class to make authoring your own custom elements easier. You can read more about how to use it on a technical level at its [documentation page](https://github.com/jacecotton/tcds/tree/main/scripts/WebComponent) in the Design System repository on GitHub. The following is a very basic example of its usage:
 
 <!--twig
 {% embed "@tch/includes/example.twig" %}

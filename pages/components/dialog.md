@@ -63,7 +63,7 @@ To control the dialog programmatically, you can add or remove the `open` attribu
 </script>
 ```
 
-To open a dialog on button click, set a button's `aria-controls` attribute (or the [Button component](/components/button)'s `controls` prop) to the `id` of the Dialog.
+To open a dialog on button click, set a button's `aria-controls` attribute (or the [button component](/components/button)'s `controls` prop) to the `id` of the Dialog.
 
 ```html
 <button aria-controls="my-dialog">Open dialog</button>

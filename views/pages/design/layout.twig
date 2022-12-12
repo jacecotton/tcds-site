@@ -5,9 +5,9 @@ the terminal). #}
 {% block lede %}Layout is the arrangement, sizing, and spacing of elements on a page. The Design System provides utilities for implementing layouts in a consistent and responsive manner.{% endblock %}
 {% block body %}
 <h2 id="content-wrapper">Content wrapper</h2>
-<p>Content wrappers include the <a href="/content/main"><code>main</code> element</a>, the <a href="/components/section">Section</a> component, and anything with a <code>.max-width</code> utility class.</p>
+<p>Content wrappers include the <a href="/content/main"><code>main</code> element</a>, the <a href="/components/section">section component</a>, and anything with a <code>.max-width</code> utility class.</p>
 <p>These content wrappers have a base width of 100% of the parent container, minus on either side a <code>--site-outer-gutter</code>, which is set to an <a href="#size-and-space"><code>x-loose</code> spacing</a>.</p>
-<p>Content wrappers are centered and constrained to a maximum width of <code>--site-container-max-width</code>, which is set to 1200px (the <a href="#breakpoints"><code>x-large</code> breakpoint</a>).</p>
+<p>Content wrappers are centered and constrained to a maximum width of <code>--site-container-max-width</code>, which is set by default to 1200px (the <a href="#breakpoints"><code>x-large</code> breakpoint</a>).</p>
 <h2 id="grid">Grid</h2>
 <p>The Design System provides <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout">CSS Grid</a>-based utility classes for creating responsive layouts.</p>
 <table>
@@ -398,5 +398,5 @@ margin: 0 0 var(--tcds-space-loose) var(--tcds-space-loose);
   </tbody>
 </table>
 
-<p><small>* Float utilities only apply above the <code>small</code> breakpoint. Below <code>small</code>, the element will be centered and given only a bottom margin.</small></p>
+<p><small>* Float utilities only apply above the <code>medium</code> breakpoint. Below <code>medium</code>, the element will be centered and given only a bottom margin.</small></p>
 {% endblock %}

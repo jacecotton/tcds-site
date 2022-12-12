@@ -23,7 +23,7 @@ twig-->
 **To progressively disclose a single section of content.** Details elements are useful for toggling independent sections to improve readability and navigation.
 
 ### When not to use
-**As an accordion.** Details elements should not be used in groups to create makeshift accordions. They lack the proper semantics and assistive technology support, do not require that only one in a group opens at a time, and do not have the necessary UX features for accommodating multiple open sections at a time. Use the [accordion](/components/accordion) component instead.
+**As an accordion.** Details elements should not be used in groups to create makeshift accordions. They lack the proper semantics and assistive technology support, do not require that only one in a group opens at a time, and do not have the necessary UX features for accommodating multiple open sections at a time. Use the [accordion component](/components/accordion) instead.
 
 ## Resources
 [Source code on GitHub](https://github.com/jacecotton/tcds/blob/main/styles/content/details.scss)
