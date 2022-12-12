@@ -3,7 +3,7 @@ import { join, resolve } from "path";
 import { minify } from "html-minifier";
 import slugify from "slugify";
 import content from "./content.js";
-import nodeInfo from "./package.json" assert { type: "json" };
+// import nodeInfo from "./package.json" assert { type: "json" };
 
 import { TwingEnvironment, TwingLoaderFilesystem } from "twing";
 import TwingDrupalFilters from "twing-drupal-filters";
@@ -100,7 +100,8 @@ content.forEach((category, categoryIndex) => {
           route: getPageData(categoryOfPreviousPage, previousPage)?.pageRoute,
           category: categoryOfPreviousPage?.title,
         },
-        tcds_version: nodeInfo.devDependencies["@txch/tcds"].substring(1),
+        // tcds_version: nodeInfo.devDependencies["@txch/tcds"].substring(1),
+        tcds_version: "1.0.12",
       }).then((output) => {
         // Minify output.
         output = minify(output, {
