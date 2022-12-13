@@ -20,7 +20,7 @@
   "devDependencies": {
     "@babel/core": "^7.17.4",
     "@babel/preset-env": "^7.16.11",
-    "@txch/tcds": "^1.0.12",
+    "@txch/tcds": "^1.0.15",
     "autoprefixer": "^10.4.2",
     "babel-loader": "^8.2.3",
     "concurrently": "^7.0.0",
