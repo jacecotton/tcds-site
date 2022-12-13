@@ -101,7 +101,7 @@ content.forEach((category, categoryIndex) => {
           category: categoryOfPreviousPage?.title,
         },
         // tcds_version: nodeInfo.devDependencies["@txch/tcds"].substring(1),
-        tcds_version: "1.0.12",
+        tcds_version: "1.0.15",
       }).then((output) => {
         // Minify output.
         output = minify(output, {
