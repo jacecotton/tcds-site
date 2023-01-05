@@ -15,9 +15,9 @@ lede-->
 twig-->
 
 ## Best practices
-**Avoid opening on page load.** dialogs that open on page load can be disruptive and intrusive, causing annoyance and increasing bounce rate. Prefer using dialogs only in connection with some user action, like clicking a button. If you open a dialog on page load, close it after 5 to 10 seconds with the [`autoclose` prop](#autoclose-attribute).
+**Avoid opening on page load.** Dialogs that open on page load can be disruptive and intrusive, causing annoyance and increasing bounce rate. Prefer using dialogs only in connection with some user action, like clicking a button. If you open a dialog on page load, close it after 5 to 10 seconds with the [`autoclose` prop](#autoclose-attribute).
 
-**Keep the content short.** Do not use dialogs to present complex content or lengthy forms. dialog content should be short and to the point, allowing the user to take decisive action within a short amount of time.
+**Keep the content short.** Do not use dialogs to present complex content or lengthy forms. Dialog content should be short and to the point, allowing the user to take decisive action within a short amount of time.
 
 ### When to use
 **Prompt user engagement.** Dialogs are helpful to acquire information from users, like picking between two options ("OK" or "Cancel", "Accept" or "Reject", etc.), or getting some prerequisite information via a small form.
@@ -29,7 +29,7 @@ twig-->
 
 **Persistent UI.** Dialog visibility is temporary, and does not "float" on a page like a normal window. Do not use dialogs to place content that should remain persistent through continuous user interactions.
 
-**Simple notifications.** Do not use dialogs to provide simple notifications, like success or error messages. Use the [Notification](/components/notification) component instead, or simple inline text.
+**Simple notifications.** Do not use dialogs to provide simple notifications, like success or error messages. Use the [notification](/components/notification) component instead, or simple inline text.
 
 ## Usage
 Always provide a unique ID to every dialog with the `id` attribute. This helps correspond the close button and other controls with the dialog.
@@ -63,7 +63,7 @@ To control the dialog programmatically, you can add or remove the `open` attribu
 </script>
 ```
 
-To open a dialog on button click, set a button's `aria-controls` attribute (or the [button component](/components/button)'s `controls` prop) to the `id` of the Dialog.
+To open a dialog on button click, set a button's `aria-controls` attribute (or the [button component](/components/button)'s `controls` prop) to the `id` of the dialog.
 
 ```html
 <button aria-controls="my-dialog">Open dialog</button>

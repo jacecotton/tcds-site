@@ -1,7 +1,7 @@
 import { WebComponent } from "@txch/tcds";
 
 class ClickCounter extends WebComponent(HTMLElement) {
-  connected() {
+  connectedCallback() {
     this.state.count = 0;
   }
 
@@ -11,7 +11,7 @@ class ClickCounter extends WebComponent(HTMLElement) {
     `;
   }
 
-  mounted() {
+  mountedCallback() {
     this.shadowRoot.querySelector("button").addEventListener("click", () => {
       this.state.count++;
     });

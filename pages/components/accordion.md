@@ -128,7 +128,7 @@ To open a section by default, add the [`open` attribute](#open-attribute).
 } %}
 {% block code %}
 <tcds-accordion>
-  <tcds-accordion-section open label="Default open example 1">
+  <tcds-accordion-section label="Default open example 1" open>
     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
     eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
     enim ad minim veniam, quis nostrud exercitation ullamco laboris

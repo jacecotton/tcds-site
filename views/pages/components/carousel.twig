@@ -89,7 +89,7 @@ the terminal). #}
   line_highlight: "1",
 } %}
 {% block content %}
-<tcds-carousel playing timing="5">
+<tcds-carousel timing="5" playing>
   <tcds-slide>
     <p>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -116,7 +116,7 @@ the terminal). #}
 </tcds-carousel>
 {% endblock %}
 {% block code %}
-<tcds-carousel playing timing="5">
+<tcds-carousel timing="5" playing>
   <tcds-slide>
     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
     eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
@@ -233,13 +233,14 @@ the terminal). #}
 <li>The carousel is paused by default if the <code>playing</code> attribute is absent, &quot;reduced motion&quot; preference is set, <em>or</em> the device&#39;s primary pointer device cannot hover (i.e. touchscreen).</li>
 <li>Responsive play state. If playing:<ol>
 <li>The carousel will temporarily pause itself when any of the following occurs, <em>and</em> will resume when they are no longer true <em>or</em> when the inverse occurs:<ol>
-<li>The user hovers over the slide container (mouse or trackpad only).</li>
+<li>The user hovers over the slide container (pointing device only).</li>
 <li>An element inside the slide container receives keyboard focus.</li>
 <li>The carousel is not fully in view (due to scrolling).</li>
 <li>The user navigates away from the browser tab or window.</li>
+<li>A <a href="/components/dialog">dialog</a> is open.</li>
 </ol>
 </li>
-<li>The carousel will stop when any of the following occurs until the user presses the play button:<ol>
+<li>The carousel will stop until the user presses the play button when any of the following occurs:<ol>
 <li>The user presses the pause button.</li>
 <li>The user presses the next or previous buttons.</li>
 <li>The user selects an indicator (clicks or navigates using the arrow keys).</li>

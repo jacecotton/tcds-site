@@ -48,19 +48,19 @@ the terminal). #}
 <h3 id="attributes">Attributes</h3>
 <p>Custom element attributes allow component users to specify the look and behavior of a component. Besides standard attributes (like <code>class</code>, <code>id</code>, <code>data-</code> attributes, etc.), there are two types of attributes:</p>
 <ul>
-<li><strong>Props</strong> — these are static configuration options that component users specify and are not changed by the component code, such as the <code>size</code> of a button or the <code>label</code> of a <a href="/components/tabs">Tab</a>.</li>
-<li><strong>State</strong> — a component&#39;s internal state is sometimes reflected as an attribute on the component&#39;s node, such as whether a <a href="/components/dialog">Dialog</a> is currently <code>open</code>. In these cases, the initial state of a component can be specified by its user by setting the corresponding attribute. The component&#39;s state can also be programmatically manipulated by changing the attribute.</li>
+<li><strong>Props</strong> — these are static configuration options that component users specify and are not changed by the component code, such as the <code>size</code> of a button or the <code>label</code> of a <a href="/components/tabs">tab</a>.</li>
+<li><strong>State</strong> — a component&#39;s internal state is sometimes reflected as an attribute on the component&#39;s DOM element, such as whether a <a href="/components/dialog">dialog</a> is currently <code>open</code>. In these cases, the initial state of a component can be specified by its user by setting the corresponding attribute. The component&#39;s state can also be programmatically manipulated by changing the attribute.</li>
 </ul>
 <p>The &quot;Attributes&quot; section of a component&#39;s API table (usually found at the bottom of the documentation page) will specify whether an attribute is a prop or state. It will also specify the <a href="#attribute-types">value type</a> expected, permitted values, and whether the attribute is required.</p>
 <h4 id="attribute-types">Attribute types</h4>
 <p>Technically, all HTML attribute values are either <a href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/Strings">strings</a> or <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/null">null</a>.</p>
 <p>Sometimes, a component&#39;s API will specify that an attribute needs to be of the type <code>number</code>, <code>boolean</code>, or <code>array</code>. In these cases, the attribute value itself will still be added as a string, but the value will need to be such that it can be converted to or parsed as the specified type by the component code.</p>
-<p>If <code>number</code> is specified, provide only a whole integer inside the string. For instance, the <code>timing</code> attribute of the <a href="/components/carousel">Carousel</a> component will be used as the auto-forwarding interval by parsing the value with <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseInt"><code>parseInt</code></a>, transforming <code>timing=&quot;5&quot;</code> into the number <code>5</code>.</p>
+<p>If <code>number</code> is specified, provide only a whole integer inside the string. For instance, the <code>timing</code> attribute of the <a href="/components/carousel">carousel</a> component will be used as the auto-forwarding interval by parsing the value with <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseInt"><code>parseInt</code></a>, transforming <code>timing=&quot;5&quot;</code> into the number <code>5</code>.</p>
 <p>If <code>boolean</code> is specified, that means the attribute is a <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes#boolean_attributes">boolean attribute</a> like in normal HTML. The presence of the attribute, while technically an empty string, implies <code>true</code>. The absence of the attribute, while technically <code>null</code>, implies <code>false</code>.</p>
 <p>If <code>array</code> is specified, that means that the attribute expects a space-separated list within the string value. So for example, the button component&#39;s <code>icon=&quot;right check&quot;</code> will be converted to the array <code>[&quot;right&quot;, &quot;check&quot;]</code>.</p>
 <h3 id="slots">Slots</h3>
 <p>Each custom element takes care of its own internal markup structure so that you don&#39;t have to. All you have to provide is the data, in the form of attributes and <a href="https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_templates_and_slots">slotted content</a>.</p>
-<p>The &quot;Slots&quot; section of each component&#39;s API table will specify what available slots there are, and how to mark them up. For instance, you provide the image, title, and description of a <a href="/components/card">Card</a> with the following slot names and elements:</p>
+<p>The &quot;Slots&quot; section of each component&#39;s API table will specify what available slots there are, and how to mark them up. For instance, you provide the image, title, and description of a <a href="/components/card">card</a> with the following slot names and elements:</p>
 <pre><code class="language-html">&lt;tcds-card&gt;
   &lt;img slot=&quot;image&quot; ...&gt;
   &lt;a slot=&quot;title&quot; ...&gt;...&lt;/a&gt;
@@ -70,13 +70,13 @@ the terminal). #}
 &lt;/tcds-card&gt;
 </code></pre>
 <p>The component code will look for elements with those slot names, and automatically insert them into its internal markup structure (the <a href="https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_shadow_DOM">shadow DOM</a> in most cases).</p>
-<p>In many cases, slots are unnamed, and the component simply reflects whatever is between its opening and closing tags. For instance, the Dialog component:</p>
+<p>In many cases, slots are unnamed, and the component simply reflects whatever is between its opening and closing tags. For instance, the dialog component:</p>
 <pre><code class="language-html">&lt;tcds-dialog&gt;
   &lt;p&gt;This unnamed element is going to be inserted into the default slot.&lt;/p&gt;
 &lt;/tcds-dialog&gt;
 </code></pre>
-<p>The paragraph in that case will simply be reflected inside the Dialog&#39;s content area.</p>
-<p>In other cases, the default slot doesn&#39;t expect specific names, but specific child elements. For instance, the <a href="/components/accordion">Accordion</a> component&#39;s <code>tcds-accordion</code> element expects only <code>tcds-accordion-section</code> child elements, and will only render those.</p>
+<p>The paragraph in that case will simply be reflected inside the dialog&#39;s content area.</p>
+<p>In other cases, the default slot doesn&#39;t expect specific names, but specific child elements. For instance, the <a href="/components/accordion">accordion</a> component&#39;s <code>tcds-accordion</code> element expects only <code>tcds-accordion-section</code> child elements, and will only render those.</p>
 <pre><code class="language-html">&lt;tcds-accordion&gt;
   &lt;p&gt;This is ignored.&lt;/p&gt;
 
@@ -87,7 +87,7 @@ the terminal). #}
 </code></pre>
 <h3 id="methods">Methods</h3>
 <p>Every instance of a custom element is a DOM object, and this object can be accessed in JavaScript. Some components will have public methods which allow you to programmatically control the component.</p>
-<p>For example, the Dialog component has public <code>open</code> and <code>close</code> methods, which can be accessed directly from the node. The following example accesses a particular Dialog, opens it, and then closes it after 3 seconds:</p>
+<p>For example, the dialog component has public <code>open</code> and <code>close</code> methods, which can be accessed directly from the node. The following example accesses a particular dialog, opens it, and then closes it after 3 seconds:</p>
 <pre><code class="language-html">&lt;tcds-dialog id=&quot;some-dialog&quot;&gt;...&lt;/tcds-dialog&gt;
 </code></pre>
 <pre><code class="language-js">const dialog = document.getElementById(&quot;some-dialog&quot;);
@@ -102,7 +102,7 @@ setTimeout(function() {
 <h3 id="styling">Styling</h3>
 <p>Most components use the shadow DOM to encapsulate styling, significantly limiting the component user&#39;s ability to customize a component&#39;s styling from the &quot;outside&quot;. This is intentional, as it ensures all components look and function the same no matter the site or page they&#39;re used on.</p>
 <p>In instances where component styles <em>should</em> be customizable by the component user, predetermined <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/--*">custom properties</a> will be exposed, which allow component users to make sanctioned style adjustments.</p>
-<p>These custom properties will be documented on each component&#39;s page above the API table. They should be set inline via the <code>style</code> attribute on the component element. For instance, to set the top and bottom padding of the <a href="/components/section">Section</a> component:</p>
+<p>These custom properties will be documented on each component&#39;s page above the API table. They should be set inline via the <code>style</code> attribute on the component element. For instance, to set the top and bottom padding of the <a href="/components/section">section</a> component:</p>
 <pre><code class="language-html">&lt;tcds-section style=&quot;--tcds-section-vertical-padding: 9rem&quot;&gt;
   ...
 &lt;/tcds-section&gt;
@@ -122,7 +122,7 @@ setTimeout(function() {
 import { WebComponent } from "@txch/tcds";
 
 class ClickCounter extends WebComponent(HTMLElement) {
-  connected() {
+  connectedCallback() {
     this.state.count = 0;
   }
 
@@ -132,7 +132,7 @@ class ClickCounter extends WebComponent(HTMLElement) {
     `;
   }
 
-  mounted() {
+  mountedCallback() {
     this.shadowRoot.querySelector("button").addEventListener("click", () => {
       this.state.count++;
     });

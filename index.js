@@ -44,7 +44,7 @@ content.forEach((category, categoryIndex) => {
     // Set up route and handler for each page.
     app.get(getPageData(category, page)?.pageRoute, (req, res) => {
       // Just some basic dummy auth for demonstration purposes. If at some point
-      // we want to seriously lock it down, let's not do this here. 🙂
+      // we want to seriously lock it down, let's not do this here.
       const reject = () => {
         res.setHeader("www-authenticate", "Basic");
         res.sendStatus(401);
@@ -101,7 +101,7 @@ content.forEach((category, categoryIndex) => {
           category: categoryOfPreviousPage?.title,
         },
         // tcds_version: nodeInfo.devDependencies["@txch/tcds"].substring(1),
-        tcds_version: "1.0.15",
+        tcds_version: "1.1.6",
       }).then((output) => {
         // Minify output.
         output = minify(output, {

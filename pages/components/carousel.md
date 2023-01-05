@@ -93,7 +93,7 @@ By default, the user will have to click the play button for the carousel to begi
   line_highlight: "1",
 } %}
 {% block content %}
-<tcds-carousel playing timing="5">
+<tcds-carousel timing="5" playing>
   <tcds-slide>
     <p>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -120,7 +120,7 @@ By default, the user will have to click the play button for the carousel to begi
 </tcds-carousel>
 {% endblock %}
 {% block code %}
-<tcds-carousel playing timing="5">
+<tcds-carousel timing="5" playing>
   <tcds-slide>
     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
     eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
@@ -230,11 +230,12 @@ The UX behavior of the carousel is as follows.
         1. The carousel is paused by default if the `playing` attribute is absent, "reduced motion" preference is set, *or* the device's primary pointer device cannot hover (i.e. touchscreen).
         1. Responsive play state. If playing:
             1. The carousel will temporarily pause itself when any of the following occurs, *and* will resume when they are no longer true *or* when the inverse occurs:
-                1. The user hovers over the slide container (mouse or trackpad only).
+                1. The user hovers over the slide container (pointing device only).
                 1. An element inside the slide container receives keyboard focus.
                 1. The carousel is not fully in view (due to scrolling).
                 1. The user navigates away from the browser tab or window.
-            1. The carousel will stop when any of the following occurs until the user presses the play button:
+                1. A [dialog](/components/dialog) is open.
+            1. The carousel will stop until the user presses the play button when any of the following occurs:
                 1. The user presses the pause button.
                 1. The user presses the next or previous buttons.
                 1. The user selects an indicator (clicks or navigates using the arrow keys).

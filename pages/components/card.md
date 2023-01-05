@@ -350,7 +350,7 @@ twig-->
     {
       name: "image",
       type: ["state", "string"],
-      description: "One of <code>contain</code> or <code>half</code>.",
+      description: "Any or both of <code>contain</code> or <code>half</code>.",
       required: "no",
     },
   ],

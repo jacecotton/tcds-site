@@ -16,15 +16,15 @@ the terminal). #}
 
 
 <h2 id="best-practices">Best practices</h2>
-<p><strong>Avoid opening on page load.</strong> dialogs that open on page load can be disruptive and intrusive, causing annoyance and increasing bounce rate. Prefer using dialogs only in connection with some user action, like clicking a button. If you open a dialog on page load, close it after 5 to 10 seconds with the <a href="#autoclose-attribute"><code>autoclose</code> prop</a>.</p>
-<p><strong>Keep the content short.</strong> Do not use dialogs to present complex content or lengthy forms. dialog content should be short and to the point, allowing the user to take decisive action within a short amount of time.</p>
+<p><strong>Avoid opening on page load.</strong> Dialogs that open on page load can be disruptive and intrusive, causing annoyance and increasing bounce rate. Prefer using dialogs only in connection with some user action, like clicking a button. If you open a dialog on page load, close it after 5 to 10 seconds with the <a href="#autoclose-attribute"><code>autoclose</code> prop</a>.</p>
+<p><strong>Keep the content short.</strong> Do not use dialogs to present complex content or lengthy forms. Dialog content should be short and to the point, allowing the user to take decisive action within a short amount of time.</p>
 <h3 id="when-to-use">When to use</h3>
 <p><strong>Prompt user engagement.</strong> Dialogs are helpful to acquire information from users, like picking between two options (&quot;OK&quot; or &quot;Cancel&quot;, &quot;Accept&quot; or &quot;Reject&quot;, etc.), or getting some prerequisite information via a small form.</p>
 <p><strong>Offer warnings before proceeding.</strong> Dialogs can be used to help a user understand the consequences of proceeding with an action, such as clicking on an outbound link, consent to tracking cookies, etc.</p>
 <h3 id="when-not-to-use">When not to use</h3>
 <p><strong>Spotlight targeted content.</strong> Dialogs are not good options for promotions, campaigns, or ads. These have low click-through and high bounce rates.</p>
 <p><strong>Persistent UI.</strong> Dialog visibility is temporary, and does not &quot;float&quot; on a page like a normal window. Do not use dialogs to place content that should remain persistent through continuous user interactions.</p>
-<p><strong>Simple notifications.</strong> Do not use dialogs to provide simple notifications, like success or error messages. Use the <a href="/components/notification">Notification</a> component instead, or simple inline text.</p>
+<p><strong>Simple notifications.</strong> Do not use dialogs to provide simple notifications, like success or error messages. Use the <a href="/components/notification">notification</a> component instead, or simple inline text.</p>
 <h2 id="usage">Usage</h2>
 <p>Always provide a unique ID to every dialog with the <code>id</code> attribute. This helps correspond the close button and other controls with the dialog.</p>
 <h3 id="opening">Opening</h3>
@@ -49,7 +49,7 @@ the terminal). #}
   }, 5000);
 &lt;/script&gt;
 </code></pre>
-<p>To open a dialog on button click, set a button&#39;s <code>aria-controls</code> attribute (or the <a href="/components/button">button component</a>&#39;s <code>controls</code> prop) to the <code>id</code> of the Dialog.</p>
+<p>To open a dialog on button click, set a button&#39;s <code>aria-controls</code> attribute (or the <a href="/components/button">button component</a>&#39;s <code>controls</code> prop) to the <code>id</code> of the dialog.</p>
 <pre><code class="language-html">&lt;button aria-controls=&quot;my-dialog&quot;&gt;Open dialog&lt;/button&gt;
 
 &lt;tcds-dialog id=&quot;my-dialog&quot;&gt;

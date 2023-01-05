@@ -16,7 +16,6 @@ twig-->
 **Ensure icons are meaningful and relevant.** An icon should, to the extent possible, independently and accurately reflect the sense of the accompanying text. Deduce the context-dependent [icon classification](https://www.nngroup.com/articles/classifying-icons/) (resemblance, symbolic, or conventional), and consider whether an icon of a different classification may be more effective.
 
 ## Library
-
 <tcds-tabs size="large">
   <tcds-tab label="UI icons">
 <!--twig

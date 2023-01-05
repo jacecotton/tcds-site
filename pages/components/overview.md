@@ -53,8 +53,8 @@ The API is generally self-explanatory if you're familiar with [custom elements](
 ### Attributes
 Custom element attributes allow component users to specify the look and behavior of a component. Besides standard attributes (like `class`, `id`, `data-` attributes, etc.), there are two types of attributes:
 
-* **Props** — these are static configuration options that component users specify and are not changed by the component code, such as the `size` of a button or the `label` of a [Tab](/components/tabs).
-* **State** — a component's internal state is sometimes reflected as an attribute on the component's node, such as whether a [Dialog](/components/dialog) is currently `open`. In these cases, the initial state of a component can be specified by its user by setting the corresponding attribute. The component's state can also be programmatically manipulated by changing the attribute.
+* **Props** — these are static configuration options that component users specify and are not changed by the component code, such as the `size` of a button or the `label` of a [tab](/components/tabs).
+* **State** — a component's internal state is sometimes reflected as an attribute on the component's DOM element, such as whether a [dialog](/components/dialog) is currently `open`. In these cases, the initial state of a component can be specified by its user by setting the corresponding attribute. The component's state can also be programmatically manipulated by changing the attribute.
 
 The "Attributes" section of a component's API table (usually found at the bottom of the documentation page) will specify whether an attribute is a prop or state. It will also specify the [value type](#attribute-types) expected, permitted values, and whether the attribute is required.
 
@@ -63,7 +63,7 @@ Technically, all HTML attribute values are either [strings](https://developer.mo
 
 Sometimes, a component's API will specify that an attribute needs to be of the type `number`, `boolean`, or `array`. In these cases, the attribute value itself will still be added as a string, but the value will need to be such that it can be converted to or parsed as the specified type by the component code.
 
-If `number` is specified, provide only a whole integer inside the string. For instance, the `timing` attribute of the [Carousel](/components/carousel) component will be used as the auto-forwarding interval by parsing the value with [`parseInt`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseInt), transforming `timing="5"` into the number `5`.
+If `number` is specified, provide only a whole integer inside the string. For instance, the `timing` attribute of the [carousel](/components/carousel) component will be used as the auto-forwarding interval by parsing the value with [`parseInt`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseInt), transforming `timing="5"` into the number `5`.
 
 If `boolean` is specified, that means the attribute is a [boolean attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes#boolean_attributes) like in normal HTML. The presence of the attribute, while technically an empty string, implies `true`. The absence of the attribute, while technically `null`, implies `false`.
 
@@ -72,7 +72,7 @@ If `array` is specified, that means that the attribute expects a space-separated
 ### Slots
 Each custom element takes care of its own internal markup structure so that you don't have to. All you have to provide is the data, in the form of attributes and [slotted content](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_templates_and_slots).
 
-The "Slots" section of each component's API table will specify what available slots there are, and how to mark them up. For instance, you provide the image, title, and description of a [Card](/components/card) with the following slot names and elements:
+The "Slots" section of each component's API table will specify what available slots there are, and how to mark them up. For instance, you provide the image, title, and description of a [card](/components/card) with the following slot names and elements:
 
 ```html
 <tcds-card>
@@ -86,7 +86,7 @@ The "Slots" section of each component's API table will specify what available sl
 
 The component code will look for elements with those slot names, and automatically insert them into its internal markup structure (the [shadow DOM](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_shadow_DOM) in most cases).
 
-In many cases, slots are unnamed, and the component simply reflects whatever is between its opening and closing tags. For instance, the Dialog component:
+In many cases, slots are unnamed, and the component simply reflects whatever is between its opening and closing tags. For instance, the dialog component:
 
 ```html
 <tcds-dialog>
@@ -94,9 +94,9 @@ In many cases, slots are unnamed, and the component simply reflects whatever is 
 </tcds-dialog>
 ```
 
-The paragraph in that case will simply be reflected inside the Dialog's content area.
+The paragraph in that case will simply be reflected inside the dialog's content area.
 
-In other cases, the default slot doesn't expect specific names, but specific child elements. For instance, the [Accordion](/components/accordion) component's `tcds-accordion` element expects only `tcds-accordion-section` child elements, and will only render those.
+In other cases, the default slot doesn't expect specific names, but specific child elements. For instance, the [accordion](/components/accordion) component's `tcds-accordion` element expects only `tcds-accordion-section` child elements, and will only render those.
 
 ```html
 <tcds-accordion>
@@ -111,7 +111,7 @@ In other cases, the default slot doesn't expect specific names, but specific chi
 ### Methods
 Every instance of a custom element is a DOM object, and this object can be accessed in JavaScript. Some components will have public methods which allow you to programmatically control the component.
 
-For example, the Dialog component has public `open` and `close` methods, which can be accessed directly from the node. The following example accesses a particular Dialog, opens it, and then closes it after 3 seconds:
+For example, the dialog component has public `open` and `close` methods, which can be accessed directly from the node. The following example accesses a particular dialog, opens it, and then closes it after 3 seconds:
 
 ```html
 <tcds-dialog id="some-dialog">...</tcds-dialog>
@@ -134,7 +134,7 @@ Most components use the shadow DOM to encapsulate styling, significantly limitin
 
 In instances where component styles *should* be customizable by the component user, predetermined [custom properties](https://developer.mozilla.org/en-US/docs/Web/CSS/--*) will be exposed, which allow component users to make sanctioned style adjustments.
 
-These custom properties will be documented on each component's page above the API table. They should be set inline via the `style` attribute on the component element. For instance, to set the top and bottom padding of the [Section](/components/section) component:
+These custom properties will be documented on each component's page above the API table. They should be set inline via the `style` attribute on the component element. For instance, to set the top and bottom padding of the [section](/components/section) component:
 
 ```html
 <tcds-section style="--tcds-section-vertical-padding: 9rem">
@@ -159,7 +159,7 @@ The Design System provides the [`WebComponent`](https://github.com/jacecotton/tc
 import { WebComponent } from "@txch/tcds";
 
 class ClickCounter extends WebComponent(HTMLElement) {
-  connected() {
+  connectedCallback() {
     this.state.count = 0;
   }
 
@@ -169,7 +169,7 @@ class ClickCounter extends WebComponent(HTMLElement) {
     `;
   }
 
-  mounted() {
+  mountedCallback() {
     this.shadowRoot.querySelector("button").addEventListener("click", () => {
       this.state.count++;
     });
