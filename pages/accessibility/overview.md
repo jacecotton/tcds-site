@@ -27,7 +27,7 @@ Beyond these, temporary or non-medical obstacles include but are not limited to 
 ## Your responsibility
 While every element of the Design System has been built with accessibility in mind, a considerable portion of accessible design is up to the *context* in which something is used. The [button component](/components/button) may be accessible *per se*, but the language of the label and the action associated with clicking it may not be.
 
-The Design System always seeks to provide relevant accessibility guidance just as much as technical documentation in these cases. Ultimately, however, creating accessible and inclusive experiences is an interdepartmental, multidisciplinary task, which requires perpetual adaptation and education.
+The Design System always seeks to provide relevant accessibility guidance just as much as technical documentation in these cases. Ultimately, however, creating accessible and inclusive experiences is an interdepartmental, multidisciplinary task, which requires constant, proactive diligence.
 
 ## Further reading
 * [Section 508 of the Rehabilitation Act — FCC.gov](https://www.fcc.gov/general/section-508-rehabilitation-act)
