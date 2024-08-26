@@ -1,0 +1,14 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Mono&display=swap");
+
+:root {
+  --tcds-font-monospace: "DM Mono", monospace;
+}
+
+code:not([class*="language"]) {
+  background: rgb(0 0 0 / 2%);
+  border: 1px solid rgb(0 0 0 / 10%);
+  padding: 1px 2px;
+  border-radius: 4px;
+  opacity: .8;
+  font-family: var(--tcds-font-monospace);
+}

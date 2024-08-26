@@ -1,0 +1,318 @@
+[
+  {
+    "title": "Introduction",
+    "pages": [
+      {
+        "title": "Overview",
+        "meta_title": "",
+        "display_title": "Texas Children's Design System",
+        "description": "Texas Children's Design System is the single source of truth for website design and front-end development at Texas Children's. It serves as a centralized library of web components, design resources, and best practice guidelines. Its purpose is to enhance standardization, efficiency, and scalability by offering a unified reference and a custom development framework.",
+        "route": "/",
+        "template": "index",
+        "menu_title": "Overview"
+      }
+    ]
+  },
+  {
+    "title": "Accessibility",
+    "pages": [
+      {
+        "title": "Accessibility",
+        "menu_title": "Overview",
+        "description": "Texas Children's is committed to providing intuitive and pleasant digital experiences to users of diverse abilities and backgrounds.",
+        "route": "/accessibility",
+        "template": "accessibility/index",
+        "display_title": "Accessibility",
+        "meta_title": "Accessibility"
+      },
+      {
+        "title": "Writing accessible content",
+        "description": "The way text content is written and rendered has significant accessibility implications. It can determine whether users with disabilities have an inclusive and seamless experience or face frustration, exclusion, and usability issues.",
+        "display_title": "Writing accessible content",
+        "meta_title": "Writing accessible content",
+        "menu_title": "Writing accessible content",
+        "route": "/accessibility/writing"
+      }
+    ]
+  },
+  {
+    "title": "Brand",
+    "pages": [
+      {
+        "title": "Animation",
+        "description": "Animation can be used to engage users, focus attention, and enrich experiences with expression and depth. Used improperly, however, it can be distracting and exclusionary.",
+        "display_title": "Animation",
+        "meta_title": "Animation",
+        "menu_title": "Animation",
+        "route": "/brand/animation"
+      },
+      {
+        "title": "Color",
+        "description": "Color is used to establish brand identity and create pleasing designs. It can also be used to convey meaning and tone, as well as influence focus and emotion. Used inconsistently or improperly, color can negatively impact user experience or brand integrity.",
+        "display_title": "Color",
+        "meta_title": "Color",
+        "menu_title": "Color",
+        "route": "/brand/color"
+      },
+      {
+        "title": "Icons",
+        "description": "Icons are illustrative aids to enhance understanding, supplement meaning, and reinforce brand tone and style.",
+        "display_title": "Icons",
+        "meta_title": "Icons",
+        "menu_title": "Icons",
+        "route": "/brand/icons"
+      },
+      {
+        "title": "Logos",
+        "display_title": "Logos",
+        "meta_title": "Logos",
+        "menu_title": "Logos",
+        "description": "Default description",
+        "route": "/brand/logos"
+      },
+      {
+        "title": "Shape and shadow",
+        "description": "Box shadows create depth that assists in understanding the layout of an interface. Rounded corners work well aesthetically with box shadows, and reflect the rounded design language of the Texas Children's brand.",
+        "display_title": "Shape and shadow",
+        "meta_title": "Shape and shadow",
+        "menu_title": "Shape and shadow",
+        "route": "/brand/shape-and-shadow"
+      },
+      {
+        "title": "Typography",
+        "description": "Typography establishes brand identity and tone, as well as visual hierarchy and rhythm in a design. Good typography helps communicate ideas more clearly and effectively.",
+        "display_title": "Typography",
+        "meta_title": "Typography",
+        "menu_title": "Typography",
+        "route": "/brand/typography"
+      }
+    ]
+  },
+  {
+    "title": "Components",
+    "pages": [
+      {
+        "title": "Components",
+        "menu_title": "Overview",
+        "description": "Components are reusable building blocks for creating pages and interfaces. They are intended to be configurable, content-agnostic, and context-aware, while also being consistent and predictable. Using a component-based approach to building pages and interfaces, you can more quickly and easily deliver consistent, quality-controlled experiences to end users.",
+        "route": "/components",
+        "template": "components/index",
+        "display_title": "Components",
+        "meta_title": "Components"
+      },
+      {
+        "title": "Accordion",
+        "description": "Accordions collapse content under headings, allowing users to selectively toggle the content according to their interest.",
+        "display_title": "Accordion",
+        "meta_title": "Accordion",
+        "menu_title": "Accordion",
+        "route": "/components/accordion"
+      },
+      {
+        "title": "Alert Bar",
+        "description": "The Alert Bar is a banner located at the top of the page that categorizes alerts, enabling users to explore details or dismiss them as needed.",
+        "display_title": "Alert Bar",
+        "meta_title": "Alert Bar",
+        "menu_title": "Alert Bar",
+        "route": "/components/alert-bar"
+      },
+      {
+        "title": "Block quote",
+        "description": "Block quotes are used to display extended quotations. They are visually highlighted to draw the reader's attention.",
+        "display_title": "Block quote",
+        "meta_title": "Block quote",
+        "menu_title": "Block quote",
+        "route": "/components/block-quote"
+      },
+      {
+        "title": "Button",
+        "description": "Buttons allow users to trigger an action with a single tap, click, or keypress. They are useful to call attention to some action or to provide controls for an interface or form. Links navigate users to another page, and can be styled to look like buttons.",
+        "display_title": "Button",
+        "meta_title": "Button",
+        "menu_title": "Button",
+        "route": "/components/button"
+      },
+      {
+        "title": "Callout",
+        "display_title": "Callout",
+        "meta_title": "Callout",
+        "menu_title": "Callout",
+        "description": "Default description",
+        "route": "/components/callout"
+      },
+      {
+        "title": "Card",
+        "display_title": "Card",
+        "meta_title": "Card",
+        "menu_title": "Card",
+        "description": "Default description",
+        "route": "/components/card"
+      },
+      {
+        "title": "Carousel",
+        "description": "Carousels rotate through slides of content, allowing users to advance forward or backward, play or pause, and select specific slides from a row of indicator buttons.",
+        "display_title": "Carousel",
+        "meta_title": "Carousel",
+        "menu_title": "Carousel",
+        "route": "/components/carousel"
+      },
+      {
+        "title": "Details",
+        "display_title": "Details",
+        "meta_title": "Details",
+        "menu_title": "Details",
+        "description": "Default description",
+        "route": "/components/details"
+      },
+      {
+        "title": "Dialog",
+        "display_title": "Dialog",
+        "meta_title": "Dialog",
+        "menu_title": "Dialog",
+        "description": "Default description",
+        "route": "/components/dialog"
+      },
+      {
+        "title": "Form elements",
+        "display_title": "Form elements",
+        "meta_title": "Form elements",
+        "menu_title": "Form elements",
+        "description": "Default description",
+        "route": "/components/form-elements"
+      },
+      {
+        "title": "Gallery",
+        "display_title": "Gallery",
+        "meta_title": "Gallery",
+        "menu_title": "Gallery",
+        "description": "Default description",
+        "route": "/components/gallery"
+      },
+      {
+        "title": "Grid",
+        "display_title": "Grid",
+        "meta_title": "Grid",
+        "menu_title": "Grid",
+        "description": "Default description",
+        "route": "/components/grid"
+      },
+      {
+        "title": "Icon",
+        "display_title": "Icon",
+        "meta_title": "Icon",
+        "menu_title": "Icon",
+        "description": "Default description",
+        "route": "/components/icon"
+      },
+      {
+        "title": "Map",
+        "display_title": "Map",
+        "meta_title": "Map",
+        "menu_title": "Map",
+        "description": "Default description",
+        "route": "/components/map"
+      },
+      {
+        "title": "Quick links",
+        "display_title": "Quick links",
+        "meta_title": "Quick links",
+        "menu_title": "Quick links",
+        "description": "Default description",
+        "route": "/components/quick-links"
+      },
+      {
+        "title": "Section",
+        "description": "The Section component creates a boxed container with a full-bleed background and vertical padding, useful for creating distinct sections on landing pages, as well as large introductory sections such as heroes and profile mastheads. Accordingly, it also increases the font size of paragraphs and list items.",
+        "display_title": "Section",
+        "meta_title": "Section",
+        "menu_title": "Section",
+        "route": "/components/section"
+      },
+      {
+        "title": "Separator",
+        "description": "Separators, also known as horizontal rules (HRs) or dividers, indicate a thematic break between sections of content.",
+        "display_title": "Separator",
+        "meta_title": "Separator",
+        "menu_title": "Separator",
+        "route": "/components/separator"
+      },
+      {
+        "title": "Site footer",
+        "display_title": "Site footer",
+        "meta_title": "Site footer",
+        "menu_title": "Site footer",
+        "description": "Default description",
+        "route": "/components/site-footer"
+      },
+      {
+        "title": "Site header",
+        "display_title": "Site header",
+        "meta_title": "Site header",
+        "menu_title": "Site header",
+        "description": "Default description",
+        "route": "/components/site-header"
+      },
+      {
+        "title": "Submenu",
+        "display_title": "Submenu",
+        "meta_title": "Submenu",
+        "menu_title": "Submenu",
+        "description": "Default description",
+        "route": "/components/submenu"
+      },
+      {
+        "title": "Tabs",
+        "description": "Tabs allow users to switch between panels of content from a horizontal list of labels. They enable quick comparison between different pieces of content within the same context and of the same information type.",
+        "display_title": "Tabs",
+        "meta_title": "Tabs",
+        "menu_title": "Tabs",
+        "route": "/components/tabs"
+      }
+    ]
+  },
+  {
+    "title": "Layout",
+    "pages": [
+      {
+        "title": "Aspect ratio",
+        "description": "The Design System provides a set of standard aspect ratios, based on industry standards. Using standard ratios can help with responsive designs by ensuring elements, such as images, videos, containers, and other components, can scale to the window or their container while preserving their intended proportions.",
+        "display_title": "Aspect ratio",
+        "meta_title": "Aspect ratio",
+        "menu_title": "Aspect ratio",
+        "route": "/layout/aspect-ratio"
+      },
+      {
+        "title": "Breakpoints",
+        "display_title": "Breakpoints",
+        "meta_title": "Breakpoints",
+        "menu_title": "Breakpoints",
+        "description": "Default description",
+        "route": "/layout/breakpoints"
+      },
+      {
+        "title": "Grid",
+        "description": "Guidance and utilities for grid system for Texas Children's products.",
+        "display_title": "Grid",
+        "meta_title": "Grid",
+        "menu_title": "Grid",
+        "route": "/layout/grid"
+      },
+      {
+        "title": "Space and size",
+        "display_title": "Space and size",
+        "meta_title": "Space and size",
+        "menu_title": "Space and size",
+        "description": "Default description",
+        "route": "/layout/space-size"
+      },
+      {
+        "title": "Z-Index",
+        "display_title": "Z-Index",
+        "meta_title": "Z-Index",
+        "menu_title": "Z-Index",
+        "description": "Default description",
+        "route": "/layout/z-index"
+      }
+    ]
+  }
+]

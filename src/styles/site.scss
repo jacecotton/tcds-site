@@ -1,0 +1,14 @@
+@use "partials/page-content" as *;
+
+@use "includes/example" as *;
+
+@use "lib/prism" as *;
+
+@use "theme/code" as *;
+@use "theme/prism" as *;
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}

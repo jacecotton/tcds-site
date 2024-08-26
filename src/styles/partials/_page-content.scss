@@ -1,0 +1,89 @@
+.page-content {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  grid-template-areas: "main main";
+  gap: 3rem;
+  margin: var(--tcds-micro-xl) 0;
+}
+
+.page-content:has(.tcds-side-menu) {
+  @media (min-width: 1280px) {
+    grid-template-areas: "side-menu main";
+  }
+}
+
+main {
+  grid-area: main;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.tcds-side-menu {
+  @media (max-width: 1280px) {
+    position: fixed;
+    left: 1rem;
+    bottom: 1rem;
+    z-index: 999;
+    
+    details {
+      --tcds-side-menu-border-radius: 3rem;
+      --tcds-side-menu-border-radius-alt: 3rem;
+      --tcds-side-menu-toggle-background: #fff;
+      --tcds-side-menu-toggle-color: "inherit";
+      
+      background: #fff;
+      box-shadow: var(--tcds-box-shadow-m) var(--tcds-shade-medium);
+      height: 3rem;
+      border-radius: var(--tcds-side-menu-border-radius);
+      overflow-y: auto;
+      overscroll-behavior-y: none;
+  
+      &[open] {
+        --tcds-side-menu-border-radius: var(--tcds-border-radius-m);
+        --tcds-side-menu-border-radius-alt: 0;
+        --tcds-side-menu-toggle-background: var(--tcds-color-primary);
+        --tcds-side-menu-toggle-color: #fff;
+        --tcds-side-menu-toggle-icon: var(--tcds-icon-utility-x);
+        --tcds-side-menu-toggle-padding: 1.25rem 1.25rem 1rem 1rem;
+
+        width: 300px;
+        height: calc(100vh - 1rem * 2);
+
+        summary {
+          --tcds-side-menu-toggle-padding: 1rem 1.75rem 1rem 1rem;
+
+          position: absolute;
+          bottom: 0;
+          left: 0;
+        }
+      }
+
+      &:not([open]) {
+        summary {
+          height: 100%;
+        }
+      }
+  
+      summary {
+        margin: 0;
+        padding: var(--tcds-side-menu-toggle-padding, 0 1rem);
+        background: var(--tcds-side-menu-toggle-background);
+        color: var(--tcds-side-menu-toggle-color);
+        border-radius: var(--tcds-side-menu-border-radius);
+        border-top-left-radius: var(--tcds-side-menu-border-radius-alt);
+        border-bottom-right-radius: var(--tcds-side-menu-border-radius-alt);
+        border-top-right-radius: 3rem;
+
+        &::before {
+          width: 1em;
+          height: 1em;
+          mask-image: var(--tcds-side-menu-toggle-icon, var(--tcds-icon-utility-list));
+        }
+      }
+    }
+
+    ul {
+      padding: 10px 10px 3rem 10px;
+    }
+  }
+}

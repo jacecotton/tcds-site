@@ -1,49 +1,32 @@
 {# DO NOT EDIT. This file was compiled from Markdown; please edit the source .md
-file and run the gulp process to compile (either `gulp` or `npm run dev` from
-the terminal). #}
-{% extends "@tch/base.twig" %}
-{% block lede %}Accordions collapse sections of content under associated headings. Users can then click the headings to disclose the content.{% endblock %}
+file and run the gulp process to compile (either `gulp` or `npm run dev`). #}
+{% extends "@tc/base.twig" %}
 {% block body %}
-{% embed "@tch/includes/example.twig" %}
-{% block code %}
+{% embed "@tc/includes/example.twig" %}
+{% block content %}
 <tcds-accordion>
   <tcds-accordion-section label="Example section 1">
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-    enim ad minim veniam, quis nostrud exercitation ullamco laboris
-    nisi ut aliquip ex ea commodo consequat.
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+      eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+      enim ad minim veniam, quis nostrud exercitation ullamco laboris
+      nisi ut aliquip ex ea commodo consequat.
+    </p>
   </tcds-accordion-section>
   <tcds-accordion-section label="Example section 2">
-    Lorem ipsum is simply dummy text of the printing and typesetting
-    industry. Lorem ipsum has been the industry's standard dummy text
-    ever since the 1500s, when an unknown printer took a galley of 
-    type and scrambled it to make a type specimen book.
+    <p>
+      Lorem ipsum is simply dummy text of the printing and typesetting
+      industry. Lorem ipsum has been the industry's standard dummy text
+      ever since the 1500s, when an unknown printer took a galley of 
+      type and scrambled it to make a type specimen book.
+    </p>
   </tcds-accordion-section>
   <tcds-accordion-section label="Example section 3">
-    Contrary to popular belief, Lorem Ipsum is not simply random text.
-    It has roots in a piece of classical Latin literature from 45 BC,
-    making it over two millennia old.
-  </tcds-accordion-section>
-</tcds-accordion>
-{% endblock %}
-{% block content %}
-<tcds-accordion heading-level="2">
-  <tcds-accordion-section label="Example section 1">
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-    enim ad minim veniam, quis nostrud exercitation ullamco laboris
-    nisi ut aliquip ex ea commodo consequat.</p>
-  </tcds-accordion-section>
-  <tcds-accordion-section label="Example section 2">
-    <p>Lorem ipsum is simply dummy text of the printing and typesetting
-    industry. Lorem ipsum has been the industry's standard dummy text
-    ever since the 1500s, when an unknown printer took a galley of 
-    type and scrambled it to make a type specimen book.</p>
-  </tcds-accordion-section>
-  <tcds-accordion-section label="Example section 3">
-    <p>Contrary to popular belief, Lorem Ipsum is not simply random text.
-    It has roots in a piece of classical Latin literature from 45 BC,
-    making it over two millennia old.</p>
+    <p>
+      Contrary to popular belief, Lorem Ipsum is not simply random text.
+      It has roots in a piece of classical Latin literature from 45 BC,
+      making it over two millennia old.
+    </p>
   </tcds-accordion-section>
 </tcds-accordion>
 {% endblock %}
@@ -51,9 +34,8 @@ the terminal). #}
 
 
 <h2 id="best-practices">Best practices</h2>
-<p><strong>Use specific but concise section labels.</strong> There is an inherent <a href="https://www.nngroup.com/articles/interaction-cost-definition/" title="Interaction Cost - Nielsen Norman Group">interaction cost</a> to accordions that may cause users to miss or ignore the content. Aim for labels that are concise enough to be read quickly, but descriptive enough to provide a strong <a href="https://www.nngroup.com/articles/information-scent/" title="Information Scent - Nielsen Norman Group">information scent</a>.</p>
-<p><strong>Use sentence case.</strong> All-uppercase text is slower and more difficult to read for all users (<a href="https://www.w3.org/TR/low-vision-needs/#capitalization">1</a>) but particularly for those with dyslexia (<a href="https://www.bdadyslexia.org.uk/advice/employers/creating-a-dyslexia-friendly-workplace/dyslexia-friendly-style-guide#:~:text=Avoid%20text%20in%20uppercase/capital%20letters%20and%20small%20caps%2C%20which%20can%20be%20less%20familiar%20to%20the%20reader%20and%20harder%20to%20read.">2</a>). Furthermore, screen readers sometimes interpret certain uppercased words as common initialisms (such as ADD or US), and may erroneously spell out those words letter by letter (<a href="https://webaim.org/techniques/screenreader/#:~:text=Screen%20readers%20try%20to%20pronounce%20acronyms%2C%20if%20there%20are%20sufficient%20vowels/consonants%20to%20be%20pronounceable.%20Otherwise%2C%20they%20spell%20out%20the%20letters.">3</a>).</p>
-<p><strong>Do not use the word &quot;accordion&quot; to refer to contained content.</strong> The term &quot;accordion&quot; is a common web design convention, but is not part of the common English vernacular. To direct users to content inside an accordion, use more generic descriptors, like &quot;collapsible sections&quot;.</p>
+<p><strong>Write section labels in sentence case.</strong> All-uppercase text is slower and more difficult to read (<a href="https://www.w3.org/TR/low-vision-needs/#capitalization">1</a>). Furthermore, screen readers sometimes interpret certain uppercased words as common initialisms (such as ADD or US), and may erroneously spell out those words letter by letter (<a href="https://webaim.org/techniques/screenreader/#:~:text=Screen%20readers%20try%20to%20pronounce%20acronyms%2C%20if%20there%20are%20sufficient%20vowels/consonants%20to%20be%20pronounceable.%20Otherwise%2C%20they%20spell%20out%20the%20letters.">2</a>).</p>
+<p><strong>Do not use the word &quot;accordion&quot; to refer end users to contained content.</strong> The term &quot;accordion&quot; is a common web design convention, but is not part of the common English vernacular. To direct users to content inside an accordion, use more generic descriptors, like &quot;collapsible sections&quot;.</p>
 <h3 id="when-to-use">When to use</h3>
 <p><strong>Progressive disclosure.</strong> In cases where only certain sections of content might be relevant to given audience segments, despite all sections being relevant to the topic of a page (e.g. a &quot;Frequently Asked Questions&quot; page), it is helpful to present a user with a choice before revealing content.</p>
 <p><strong>Navigation assistance.</strong> Sometimes, a page may become too long to be comfortably navigated. If it cannot be simplified or split into multiple pages, an accordion can help condense content to make it less cumbersome to navigate.</p>
@@ -64,48 +46,60 @@ the terminal). #}
 <h3 id="allow-multiple-sections">Allow multiple sections</h3>
 <p>To allow multiple sections to be opened at one time, add the <a href="#multiple-attribute"><code>multiple</code> attribute</a>.</p>
 
-{% embed "@tch/includes/example.twig" with {
+{% embed "@tc/includes/example.twig" with {
   line_highlight: "1",
 } %}
 {% block code %}
 <tcds-accordion multiple>
   <tcds-accordion-section label="Multiselectable example 1">
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-    enim ad minim veniam, quis nostrud exercitation ullamco laboris
-    nisi ut aliquip ex ea commodo consequat.
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+      eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+      enim ad minim veniam, quis nostrud exercitation ullamco laboris
+      nisi ut aliquip ex ea commodo consequat.
+    </p>
   </tcds-accordion-section>
   <tcds-accordion-section label="Multiselectable example 2">
-    Lorem ipsum is simply dummy text of the printing and typesetting
-    industry. Lorem ipsum has been the industry's standard dummy text
-    ever since the 1500s, when an unknown printer took a galley of 
-    type and scrambled it to make a type specimen book.
+    <p>
+      Lorem ipsum is simply dummy text of the printing and typesetting
+      industry. Lorem ipsum has been the industry's standard dummy text
+      ever since the 1500s, when an unknown printer took a galley of 
+      type and scrambled it to make a type specimen book.
+    </p>
   </tcds-accordion-section>
   <tcds-accordion-section label="Multiselectable example 3">
-    Contrary to popular belief, Lorem Ipsum is not simply random text.
-    It has roots in a piece of classical Latin literature from 45 BC,
-    making it over two millennia old.
+    <p>
+      Contrary to popular belief, Lorem Ipsum is not simply random text.
+      It has roots in a piece of classical Latin literature from 45 BC,
+      making it over two millennia old.
+    </p>
   </tcds-accordion-section>
 </tcds-accordion>
 {% endblock %}
 {% block content %}
 <tcds-accordion multiple heading-level="4">
   <tcds-accordion-section label="Multiselectable example 1">
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-    enim ad minim veniam, quis nostrud exercitation ullamco laboris
-    nisi ut aliquip ex ea commodo consequat.</p>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+      eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+      enim ad minim veniam, quis nostrud exercitation ullamco laboris
+      nisi ut aliquip ex ea commodo consequat.
+    </p>
   </tcds-accordion-section>
   <tcds-accordion-section label="Multiselectable example 2">
-    <p>Lorem ipsum is simply dummy text of the printing and typesetting
-    industry. Lorem ipsum has been the industry's standard dummy text
-    ever since the 1500s, when an unknown printer took a galley of 
-    type and scrambled it to make a type specimen book.</p>
+    <p>
+      Lorem ipsum is simply dummy text of the printing and typesetting
+      industry. Lorem ipsum has been the industry's standard dummy text
+      ever since the 1500s, when an unknown printer took a galley of 
+      type and scrambled it to make a type specimen book.
+    </p>
   </tcds-accordion-section>
   <tcds-accordion-section label="Multiselectable example 3">
-    <p>Contrary to popular belief, Lorem Ipsum is not simply random text.
-    It has roots in a piece of classical Latin literature from 45 BC,
-    making it over two millennia old.</p>
+    <p>
+      Contrary to popular belief, Lorem Ipsum is not simply random text.
+      It has roots in a piece of classical Latin literature from 45 BC,
+      making it over two millennia old.
+    </p>
   </tcds-accordion-section>
 </tcds-accordion>
 {% endblock %}
@@ -115,7 +109,7 @@ the terminal). #}
 <h3 id="default-open">Default open</h3>
 <p>To open a section by default, add the <a href="#open-attribute"><code>open</code> attribute</a>.</p>
 
-{% embed "@tch/includes/example.twig" with {
+{% embed "@tc/includes/example.twig" with {
   line_highlight: "2",
 } %}
 {% block code %}
@@ -164,87 +158,4 @@ the terminal). #}
 
 
 <p>If <code>multiple</code> is not added to the parent but multiple sections have <code>open</code>, only the first will be opened and the attribute will be removed from the others.</p>
-<h2 id="accessibility">Accessibility</h2>
-<h3 id="heading-level">Heading level</h3>
-<p>By default, the label for each accordion section is an H3. When using an accordion, consider the document outline, and change the heading level appropriately using the <a href="#heading-level-attribute"><code>heading-level</code> attribute</a>.</p>
-<h2 id="api">API</h2>
-<h3 id="tcds-accordion">tcds-accordion</h3>
- {{ include("@tch/includes/api.twig", {
-  attributes: [
-    {
-      name: "multiple",
-      type: ["prop", "boolean"],
-      description: "Allows multiple sections to be open at one time, and renders controls for opening or closing all sections at once.",
-      required: "no",
-    },
-    {
-      name: "heading-level",
-      type: ["prop", "string"],
-      description: "A number 2 through 6, default 3.",
-      required: "no",
-    },
-  ],
-  slots: [
-    {
-      name: "(default)",
-      multiple: "no",
-      description: "<code>tcds-accordion-section</code> elements.",
-      required: "no",
-    },
-  ],
-  methods: [
-    {
-      name: "openAll",
-      description: "Opens all content sections.",
-    },
-    {
-      name: "closeAll",
-      description: "Closes all content sections.",
-    },
-  ],
-}) }} 
-
-<h3 id="tcds-accordion-section">tcds-accordion-section</h3>
- {{ include("@tch/includes/api.twig", {
-  attributes: [
-    {
-      name: "label",
-      type: ["prop", "string"],
-      description: "The section heading of the content panel.",
-      required: "yes",
-    },
-    {
-      name: "open",
-      type: ["state", "boolean"],
-      description: "Content panel is open.",
-      required: "no",
-    },
-  ],
-  slots: [
-    {
-      name: "(default)",
-      multiple: "no",
-      description: "Content slot for panel.",
-      required: "no",
-    },
-  ],
-  methods: [
-    {
-      name: "open",
-      description: "Opens the content section.",
-    },
-    {
-      name: "close",
-      description: "Closes the content section.",
-    },
-    {
-      name: "toggle",
-      description: "Opens if closed, closes if open.",
-    },
-  ],
-}) }} 
-
-<h2 id="resources">Resources</h2>
-<p>This component was architected in conformance with <a href="https://www.w3.org/WAI/ARIA/apg/patterns/accordion/">ARIA Authoring Practices (APG) for accordion pattern</a>.</p>
-<p>Source code on GitHub (<a href="https://github.com/jacecotton/tcds/blob/main/components/accordion/">accordion</a>, <a href="https://github.com/jacecotton/tcds/blob/main/components/accordion-section/">accordion-section</a>)</p>
 {% endblock %}

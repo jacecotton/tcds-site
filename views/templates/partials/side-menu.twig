@@ -1,0 +1,22 @@
+{% set section = [] %}
+
+{% for _category in content %}
+  {% if category == _category.title %}
+    {% set section = _category %}
+  {% endif %}
+{% endfor %}
+
+{% if section.pages|length > 1 %}
+  <nav class="tcds-submenu tcds-side-menu">
+    <details>
+      <summary>
+        {{ category }}
+      </summary>
+      <ul>
+        {% for page in section.pages %}
+          <li><a href="{{ page.route }}" {{ page.route == route ? 'class="active"' }}>{{ page.menu_title }}</a></li>
+        {% endfor %}
+      </ul>
+    </details>
+  </nav>
+{% endif %}

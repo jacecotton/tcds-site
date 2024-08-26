@@ -1,12 +1,14 @@
-<header class="local-site-header" id="local-site-header">
-  <div class="site-logo">
-    <a href="/" rel="home" title="Home" class="site-logo__link">
-      <img src="/images/tc-logo.svg" alt="Texas Children's" width="125" class="site-logo__image">
-      <span class="site-logo__text">Design System</span>
-    </a>
-  </div>
+<tcds-site-header data-theme="auto">
+  <a id="site-header-logo" href="/" rel="home" title="Go home">
+    <img src="/images/tc-horizontal.svg" alt="Texas Children's Design System" width="386" height="90">
+  </a>
 
-  {{ include("@tch/partials/main-nav.twig") }}
-</header>
-
-<tcds-button controls="local-site-header" expanded="false" icon="only hamburger" variant="ui">Toggle menu</tcds-button>
+  <details open id="site-header-nav">
+    <summary>
+      <span class="visually-hidden">Toggle menus</span>
+    </summary>
+    <div>
+      {{ include("@tc/partials/site-menu.twig") }}
+    </div>
+  </details>
+</tcds-site-header>

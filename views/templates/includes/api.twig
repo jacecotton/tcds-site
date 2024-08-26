@@ -1,56 +1,109 @@
+<style>
+table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: var(--tcds-font-size-small);
+  font-family: var(--tcds-font-ui);
+  line-height: var(--tcds-line-height-normal);
+
+  &:where(:not(:only-child)) {
+    margin: 2rem 0;
+  }
+}
+
+td {
+  vertical-align: top;
+  transition: background-color var(--tcds-animation-productive-duration) var(--tcds-animation-productive-easing);
+}
+
+:not(thead) > tr:last-child td {
+  border-bottom: none;
+}
+
+th {
+  text-align: left;
+}
+
+td,
+th {
+  padding: .75rem 1rem;
+}
+
+th[colspan="5"] {
+  text-align: center;
+}
+
+tr > td:only-child {
+  font-size: var(--tcds-font-size-s);
+  color: var(--tcds-color-gray-4);
+}
+
+tr > td:only-child,
+th {
+  border-bottom: 1px solid var(--tcds-color-gray);
+}
+</style>
+
 <table class="api-table">
   {% if attributes %}
     <tr>
-      <th colspan="4">Attributes</th>
+      <th colspan="5">Attributes</th>
     </tr>
     <tr>
       <th>Name</th>
       <th>Type</th>
-      <th>Description</th>
+      <th>Values</th>
+      <th>Default</th>
       <th>Required?</th>
     </tr>
     {% for attribute in attributes %}
       <tr id="{{ attribute.name|clean_id }}-attribute">
         <td><code>{{ attribute.name }}</code></td>
         <td>{{ attribute.type[0] }}: <code>{{ attribute.type[1] }}</code></td>
-        <td>{{ attribute.description|raw }}</td>
+        <td>{{ attribute.values ? "<code>#{attribute.values}</code>"|raw : attribute.type[1] == "boolean" ? "—" : "any" }}</td>
+        <td>{{ attribute.default ? "<code>#{attribute.default}</code>"|raw : "—" }}</td>
         <td>{{ attribute.required }}</td>
+      </tr>
+      <tr>
+        <td colspan="5">{{ attribute.description|raw }}</td>
       </tr>
     {% endfor %}
   {% endif %}
   {% if slots %}
     <tr>
-      <th colspan="4">Slots</th>
+      <th colspan="5">Slots</th>
     </tr>
     <tr>
-      <th>Name</th>
+      <th colspan="3">Name</th>
       <th>Multiple?</th>
-      <th>Description</th>
       <th>Required?</th>
     </tr>
     {% for slot in slots %}
       <tr id="{{ slot.name|clean_id }}-slot">
-        <td>{{ slot.name != "(default)" ? "<code>" }}{{ slot.name }}{{ slot.name != "(default)" ? "</code>" }}</td>
+        <td colspan="3">{{ slot.name != "(default)" ? "<code>"|raw }}{{ slot.name }}{{ slot.name != "(default)" ? "</code>"|raw }}</td>
         <td>{{ slot.multiple }}</td>
-        <td>{{ slot.description|raw }}</td>
         <td>{{ slot.required }}</td>
+      </tr>
+      <tr>
+        <td colspan="5">{{ slot.description|raw }}</td>
       </tr>
     {% endfor %}
   {% endif %}
   {% if methods %}
     <tr>
-      <th colspan="4">Methods</th>
+      <th colspan="5">Methods</th>
     </tr>
     <tr>
-      <th>Name</th>
+      <th colspan="4">Name</th>
       <th>Return type</th>
-      <th colspan="2">Description</th>
     </tr>
     {% for method in methods %}
       <tr id="{{ method.name|clean_id }}-method">
-        <td><code>{{ method.name }}</code></td>
-        <td><code>{{ method.return_type ?: "undefined" }}</code></td>
-        <td colspan="2">{{ method.description|raw }}</td>
+        <td colspan="4"><code>{{ method.name }}</code></td>
+        <td><code>{{ method.return_type ?: "void" }}</code></td>
+      </tr>
+      <tr>
+        <td colspan="5">{{ method.description|raw }}</td>
       </tr>
     {% endfor %}
   {% endif %}

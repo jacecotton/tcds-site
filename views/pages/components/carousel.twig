@@ -1,20 +1,8 @@
 {# DO NOT EDIT. This file was compiled from Markdown; please edit the source .md
-file and run the gulp process to compile (either `gulp` or `npm run dev` from
-the terminal). #}
-{% extends "@tch/base.twig" %}
-{% block lede %}Carousels rotate through slides of content, allowing users to advance forward or backward, play or pause, and select specific slides from a row of dots.{% endblock %}
+file and run the gulp process to compile (either `gulp` or `npm run dev`). #}
+{% extends "@tc/base.twig" %}
 {% block body %}
-<!--
-/**
- * @todo Separate functionality and slotting between tcds-carousel and
- *   tcds-slide, same as was done for Accordion and Tabs.
- */
--->
-
-
-
-
-{% embed "@tch/includes/example.twig" %}
+{% embed "@tc/includes/example.twig" %}
 {% block content %}
 <tcds-carousel>
   <tcds-slide>
@@ -39,27 +27,6 @@ the terminal). #}
       It has roots in a piece of classical Latin literature from 45 BC,
       making it over two millennia old.
     </p>
-  </tcds-slide>
-</tcds-carousel>
-{% endblock %}
-{% block code %}
-<tcds-carousel>
-  <tcds-slide>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-    enim ad minim veniam, quis nostrud exercitation ullamco laboris
-    nisi ut aliquip ex ea commodo consequat.
-  </tcds-slide>
-  <tcds-slide>
-    Lorem ipsum is simply dummy text of the printing and typesetting
-    industry. Lorem ipsum has been the industry's standard dummy text
-    ever since the 1500s, when an unknown printer took a galley of 
-    type and scrambled it to make a type specimen book.
-  </tcds-slide>
-  <tcds-slide>
-    Contrary to popular belief, Lorem Ipsum is not simply random text.
-    It has roots in a piece of classical Latin literature from 45 BC,
-    making it over two millennia old.
   </tcds-slide>
 </tcds-carousel>
 {% endblock %}
@@ -70,22 +37,23 @@ the terminal). #}
 <p><strong>Use with general caution.</strong> Even when properly implemented, research shows that users seldom interact with carousels, especially beyond the first slide (<a href="https://erikrunyon.com/2013/01/carousel-interaction-stats/" title="Carousel Interaction Stats — Erik Runyon">1</a>). Furthermore, carousels have a high <a href="https://www.nngroup.com/articles/interaction-cost-definition/" title="Interaction cost – Nielsen Norman Group">interaction cost</a>, potentially causing inconvenience (<a href="https://www.nngroup.com/articles/auto-forwarding/" title="Auto-Forwarding Carousels and Accordions Annoy Users and Reduce Visibility Nielsen Norman Group">2</a>).</p>
 <p><strong>Curate relevant and high quality content for each slide.</strong> Carousel content that the user perceives to be irrelevant, redundant, or unhelpful will discourage them from investigating and interacting further. This can contribute to a <a href="https://www.nngroup.com/articles/tunnel-vision-and-selective-attention/" title="Tunnel Vision and Selective Attention – Nielsen Norman Group">banner blindness</a> that will reduce perception and engagement of carousels elsewhere on the website (<a href="https://www.smashingmagazine.com/2016/07/ten-requirements-for-making-home-page-carousels-work-for-end-users/" title="10 Requirements For Making Home Page Carousels Work For End Users (If Needed) - Smashing Magazine">3</a>).</p>
 <p><strong>Prioritize slide order, and limit the number of slides.</strong> Most users will not see all the content in a carousel (<a href="https://www.smashingmagazine.com/2016/07/ten-requirements-for-making-home-page-carousels-work-for-end-users/" title="10 Requirements For Making Home Page Carousels Work For End Users (If Needed) - Smashing Magazine">3</a>). Put the most important and engaging slides first, and avoid adding too many slides to begin with (as the more there are, the less likely they are to be discovered).</p>
-<p><strong>Allow sufficient time between slides.</strong> The <a href="#autoplaying">autoplay</a> interval should be based on a generous approximation of how long the slide with the most content takes to read, understand, and interact with.</p>
+<p><strong>Allow sufficient time between slides.</strong> The <a href="#auto-forwarding">timing</a> interval should be based on a generous approximation of how long the slide with the most content takes to read, understand, and interact with.</p>
 <h3 id="when-to-use">When to use</h3>
-<p><strong>When presenting a series of inessential or sample content.</strong> Examples include decorative pictures or testimonials. Only use a carousel for presenting content that users were not likely searching for when they navigated to the page, and may only be interested in consuming in a passive manner.</p>
+<p><strong>When presenting a series of sample or interchangeable content.</strong> Examples include decorative pictures or testimonials. Only use a carousel for presenting content that users were not likely searching for when they navigated to the page, and may only be interested in consuming in a passive manner.</p>
 <h3 id="when-not-to-use">When not to use</h3>
-<p><strong>When presenting important or user goal-oriented content.</strong> Because slides are not labeled, users are unlikely to find content buried in carousels if they&#39;re looking for it. Furthermore, users are highly likely to miss content they may be looking for if the carousel autoplays (<a href="https://www.nngroup.com/articles/auto-forwarding/" title="Auto-Forwarding Carousels and Accordions Annoy Users and Reduce Visibility Nielsen Norman Group">2</a>). However, carousels are often useful to condense content into one container, and then progressively or selectively disclose it. If the content of a slide is supposed to serve a user goal, consider a different component that achieves a similar purpose, such as:</p>
+<p><strong>When presenting important or user goal-oriented content.</strong> Because slides are not labeled, users are unlikely to find content buried in carousels if they&#39;re looking for it. Furthermore, users are highly likely to miss content they may be looking for if the carousel autoplays (<a href="https://www.nngroup.com/articles/auto-forwarding/" title="Auto-Forwarding Carousels and Accordions Annoy Users and Reduce Visibility Nielsen Norman Group">2</a>).</p>
+<p><strong>A different component better fits the use case.</strong> Carousels are often useful to condense content into one container, and then progressively or selectively disclose it. If the content of a slide is supposed to serve a user goal, consider a different component that achieves a similar purpose, such as:</p>
 <ul>
 <li><a href="/components/tabs">Tabs</a>, useful for quick comparison between different content of the same information type.</li>
 <li><a href="/components/accordion">Accordion</a>, useful for collapsing multiple sections of content under headers, allowing users to quickly scan a page and choose whether or not to see the content.</li>
 </ul>
 <p>Note that both the above components label their sections, imparting <a href="https://www.nngroup.com/articles/information-scent/" title="Information scent – Nielsen Norman Group">information scent</a> that makes it more likely a user will find what they&#39;re looking for if it&#39;s contained therein.</p>
 <h2 id="usage">Usage</h2>
-<h3 id="autoplaying">Autoplaying</h3>
-<p>To allow the user to play the carousel, set the <a href="#timing-attribute"><code>timing</code> attribute</a> (in seconds). A button will appear that toggles between play and pause when clicked.</p>
-<p>By default, the user will have to click the play button for the carousel to begin auto-forwarding. To have it play by default (subject to <a href="#usability-checklist">certain conditions</a>), add the <code>playing</code> state attribute.</p>
+<h3 id="auto-forwarding">Auto-forwarding</h3>
+<p>To allow the user to play (auto-forward) the carousel, set the <a href="#timing-attribute"><code>timing</code> attribute</a> in seconds. A button will appear that toggles between play and pause when clicked.</p>
+<p>By default, the user will have to click the play button for the carousel to begin auto-forwarding. To have it play by default (subject to <a href="#usability-checklist">certain conditions</a>), add the <a href="#playing-attribute"><code>playing</code> attribute</a>.</p>
 
-{% embed "@tch/includes/example.twig" with {
+{% embed "@tc/includes/example.twig" with {
   line_highlight: "1",
 } %}
 {% block content %}
@@ -115,24 +83,80 @@ the terminal). #}
   </tcds-slide>
 </tcds-carousel>
 {% endblock %}
-{% block code %}
-<tcds-carousel timing="5" playing>
+{% endembed %}
+
+
+<h3 id="multiple-slides">Multiple slides</h3>
+<p>You can show multiple slides in the viewport at once by adding the <a href="#multiple-attribute"><code>multiple</code> attribute</a>.</p>
+<p>By default, the slides are a minimum of 700px (or 70% of the screen, whichever is smaller). You can change this by setting the <code>--tcds-carousel-slide-size</code> property.</p>
+<p>The gap between the slides is 4% of the screen by default. You can change this by setting the <code>--tcds-carousel-slide-gap</code> property.</p>
+
+{% embed "@tc/includes/example.twig" with {
+  line_highlight: "1-3",
+} %}
+{% block content %}
+<tcds-carousel multiple style="
+  --tcds-carousel-slide-size: min(400px, 70vw);
+  --tcds-carousel-slide-gap: 1rem;
+">
   <tcds-slide>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-    enim ad minim veniam, quis nostrud exercitation ullamco laboris
-    nisi ut aliquip ex ea commodo consequat.
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+      eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+      enim ad minim veniam, quis nostrud exercitation ullamco laboris
+      nisi ut aliquip ex ea commodo consequat.
+    </p>
   </tcds-slide>
   <tcds-slide>
-    Lorem ipsum is simply dummy text of the printing and typesetting
-    industry. Lorem ipsum has been the industry's standard dummy text
-    ever since the 1500s, when an unknown printer took a galley of 
-    type and scrambled it to make a type specimen book.
+    <p>
+      Lorem ipsum is simply dummy text of the printing and typesetting
+      industry. Lorem ipsum has been the industry's standard dummy text
+      ever since the 1500s, when an unknown printer took a galley of 
+      type and scrambled it to make a type specimen book.
+    </p>
   </tcds-slide>
   <tcds-slide>
-    Contrary to popular belief, Lorem Ipsum is not simply random text.
-    It has roots in a piece of classical Latin literature from 45 BC,
-    making it over two millennia old.
+    <p>
+      Contrary to popular belief, Lorem Ipsum is not simply random text.
+      It has roots in a piece of classical Latin literature from 45 BC,
+      making it over two millennia old.
+    </p>
+  </tcds-slide>
+</tcds-carousel>
+{% endblock %}
+{% endembed %}
+
+
+<h3 id="default-selected">Default selected</h3>
+<p>You can change which slide is selected by default by setting the <a href="#selected-attribute"><code>selected</code> attribute</a> on the desired slide.</p>
+
+{% embed "@tc/includes/example.twig" with {
+  line_highlight: "10",
+} %}
+{% block content %}
+<tcds-carousel>
+  <tcds-slide>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+      eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+      enim ad minim veniam, quis nostrud exercitation ullamco laboris
+      nisi ut aliquip ex ea commodo consequat.
+    </p>
+  </tcds-slide>
+  <tcds-slide selected>
+    <p>
+      Lorem ipsum is simply dummy text of the printing and typesetting
+      industry. Lorem ipsum has been the industry's standard dummy text
+      ever since the 1500s, when an unknown printer took a galley of 
+      type and scrambled it to make a type specimen book.
+    </p>
+  </tcds-slide>
+  <tcds-slide>
+    <p>
+      Contrary to popular belief, Lorem Ipsum is not simply random text.
+      It has roots in a piece of classical Latin literature from 45 BC,
+      making it over two millennia old.
+    </p>
   </tcds-slide>
 </tcds-carousel>
 {% endblock %}
@@ -142,7 +166,7 @@ the terminal). #}
 <h3 id="control-position">Control position</h3>
 <p>By default, the indicator buttons and navigation arrows are placed beneath the slides and horizontally centered. You can also place them on top of the slides and shifted to the right by setting the <a href="#navigation-attribute"><code>navigation</code> attribute</a> to <code>top right</code>.</p>
 
-{% embed "@tch/includes/example.twig" with {
+{% embed "@tc/includes/example.twig" with {
   line_highlight: "1",
 } %}
 {% block content %}
@@ -169,27 +193,6 @@ the terminal). #}
       It has roots in a piece of classical Latin literature from 45 BC,
       making it over two millennia old.
     </p>
-  </tcds-slide>
-</tcds-carousel>
-{% endblock %}
-{% block code %}
-<tcds-carousel navigation="top right">
-  <tcds-slide>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-    enim ad minim veniam, quis nostrud exercitation ullamco laboris
-    nisi ut aliquip ex ea commodo consequat.
-  </tcds-slide>
-  <tcds-slide>
-    Lorem ipsum is simply dummy text of the printing and typesetting
-    industry. Lorem ipsum has been the industry's standard dummy text
-    ever since the 1500s, when an unknown printer took a galley of 
-    type and scrambled it to make a type specimen book.
-  </tcds-slide>
-  <tcds-slide>
-    Contrary to popular belief, Lorem Ipsum is not simply random text.
-    It has roots in a piece of classical Latin literature from 45 BC,
-    making it over two millennia old.
   </tcds-slide>
 </tcds-carousel>
 {% endblock %}
@@ -230,7 +233,6 @@ the terminal). #}
 <li>The carousel skips to a specific slide when its associated indicator dot is selected.</li>
 <li>Autoplay<ol>
 <li>The carousel automatically begins playing if <code>timing</code> attribute is given, the <code>playing</code> attribute is present, &quot;reduced motion&quot; preference is <em>not</em> set, <em>and</em> the device is hover-enabled (i.e. not touchscreen).</li>
-<li>The carousel is paused by default if the <code>playing</code> attribute is absent, &quot;reduced motion&quot; preference is set, <em>or</em> the device&#39;s primary pointer device cannot hover (i.e. touchscreen).</li>
 <li>Responsive play state. If playing:<ol>
 <li>The carousel will temporarily pause itself when any of the following occurs, <em>and</em> will resume when they are no longer true <em>or</em> when the inverse occurs:<ol>
 <li>The user hovers over the slide container (pointing device only).</li>
@@ -260,16 +262,30 @@ the terminal). #}
 </details>
 
 <h3 id="screen-reader-behavior">Screen reader behavior</h3>
-<p>When the carousel is not playing, the element that contains the slides (<code>[part=viewport]</code>) has an <code>aria-live</code> attribute of <code>polite</code>. The result is that, when using a screen reader, after a new slide becomes visible (by selecting an indicator or arrow button), it is read to the user after the user becomes idle (so as to not interrupt other announcements).</p>
+<p>When the carousel is not playing, the element that contains the slides has an <code>aria-live</code> attribute of <code>polite</code>. The result is that, when using a screen reader, after a new slide becomes visible (by selecting an indicator or arrow button), it is read to the user after the user becomes idle (so as to not interrupt other announcements).</p>
 <p>However, if a carousel is playing, <code>aria-live</code> is set to <code>off</code> so that changes are not announced. The user would have to focus inside the carousel for the slide contents to be read, at which point the carousel will pause itself due to the received focus. This is to limit intrusiveness and interruptions, and simplify the screen reader experience.</p>
 <h2 id="api">API</h2>
+<h3 id="tcds-carousel"><code>tcds-carousel</code></h3>
 
-{{ include("@tch/includes/api.twig", {
+{{ include("@tc/includes/api.twig", {
   attributes: [
+    {
+      name: "multiple",
+      type: ["prop", "boolean"],
+      description: "Whether to show multiple slides in the viewport at once.",
+      required: "no",
+    },
     {
       name: "navigation",
       type: ["prop", "string"],
-      description: "The position of the navigation controls. Available option is <code>top right</code>.",
+      values: "top right",
+      required: "no",
+      description: "The position of the navigation controls.",
+    },
+    {
+      name: "playing",
+      type: ["state", "boolean"],
+      description: "Whether the carousel is playing (auto-forwarding). Corresponds to <code>playing</code> JavaScript property, which is a string with values <code>playing</code>, <code>stopped</code>, or <code>paused</code>.",
       required: "no",
     },
     {
@@ -278,19 +294,69 @@ the terminal). #}
       description: "The time between switching slides (in seconds) when playing. Required if <code>playing</code> is present.",
       required: "no",
     },
+  ],
+  slots: [
     {
-      name: "playing",
+      name: "(default)",
+      multiple: "yes",
+      required: "yes",
+      description: "Use to insert <code>tcds-slide</code> elements.",
+    },
+  ],
+  methods: [
+    {
+      name: "play",
+      description: "Begin auto-forwarding the carousel. <code>timing</code> must be specified.",
+    },
+    {
+      name: "stop",
+      description: "Stop auto-forwarding the carousel (will not resume until play button is clicked).",
+    },
+    {
+      name: "toggle",
+      description: "Begin if stopped, or stop if auto-forwarding, the carousel.",
+    },
+    {
+      name: "pause",
+      description: "Temporarily stop auto-forwarding the carousel. Internal component logic will resume auto-forwarding according to certain criteria.",
+    },
+    {
+      name: "resume",
+      description: "Begin auto-forwarding the carousel only if paused, not if stopped.",
+    },
+    {
+      name: "select",
+      description: "Selects a given slide. Parameters:<br><br><code>slide</code>: <code>HTMLElement</code> object that must be a <code>tcds-slide</code> element.<br><br><code>{}.scroll</code>: Scroll to the selected slide within the carousel viewport (default is <code>true</code>). Set to <code>false</code> to only update internal state.",
+    },
+  ],
+}) }}
+
+
+<h3 id="tcds-slide"><code>tcds-slide</code></h3>
+
+{{ include("@tc/includes/api.twig", {
+  attributes: [
+    {
+      name: "selected",
       type: ["state", "boolean"],
-      description: "Whether the carousel is playing (auto-forwarding).",
+      description: "Whether the slide is currently selected (scrolled-to and centered) in the carousel viewport.",
       required: "no",
     },
-  ]
+  ],
+  slots: [
+    {
+      name: "(default)",
+      multiple: "yes",
+      required: "no",
+      description: "Use to insert slide content.",
+    },
+  ],
 }) }}
 
 
 <!--
 Other design system/pattern library implementations:
-https://www.audi.com/ci/en/guides/user-interface/components/slideshow.html
+https://styleguide.audi.com/document/2442#/-/slideshow
 https://ant.design/components/carousel/
 https://www.oracle.com/webfolder/ux/mobile/component/carousel.html
 https://www.lightningdesignsystem.com/components/carousel/
@@ -301,5 +367,5 @@ https://a11y-101.com/development/carousels
 
 <h2 id="resources">Resources</h2>
 <p>This component was architected in conformance with <a href="https://www.w3.org/WAI/ARIA/apg/patterns/carousel/">ARIA Authoring Practices (APG) for carousel pattern</a>.</p>
-<p>Source code on GitHub (<a href="https://github.com/jacecotton/tcds/blob/main/components/carousel/">carousel</a>, <a href="https://github.com/jacecotton/tcds/blob/main/components/slide/">slide</a>)</p>
+<p>Source code on GitHub (<a href="https://github.com/jacecotton/tcds/blob/main/src/02-components/carousel/">carousel</a>, <a href="https://github.com/jacecotton/tcds/blob/main/src/02-components/carousel/slide/">slide</a>)</p>
 {% endblock %}

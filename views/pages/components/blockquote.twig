@@ -1,0 +1,24 @@
+{# DO NOT EDIT. This file was compiled from Markdown; please edit the source .md
+file and run the gulp process to compile (either `gulp` or `npm run dev`). #}
+{% extends "@tc/base.twig" %}
+{% block body %}
+{% embed "@tc/includes/example.twig" %}
+{% block content %}
+<figure class="tcds-blockquote">
+  <blockquote class="tcds-blockquote__quote">
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+      eiusmod tempor incididunt ut labore et dolore magna aliqua.
+    </p>
+  </blockquote>
+  <figcaption class="tcds-blockquote__attribution">
+    <img src="https://www.texaschildrens.org/sites/tc/files/styles/person_pic_desktop_webp/public/2024-01/Dr_Johnson_%2525281%252529.jpg.webp" alt="">
+    <p>
+      <span class="tcds-blockquote__title">Abby C. Johnson, MD, FAAP</span>
+      <span class="tcds-blockquote__subtitle">Pediatric Medicine</span>
+    </p>
+  </figcaption>
+</figure>
+{% endblock %}
+{% endembed %}
+{% endblock %}

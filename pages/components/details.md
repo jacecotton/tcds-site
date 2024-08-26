@@ -1,0 +1,4 @@
+---
+title: Details
+category: Components
+---

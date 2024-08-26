@@ -1,283 +1,88 @@
-<!--lede
-  The section component creates a boxed container with a full-bleed background and vertical padding, useful for creating distinct sections on landing pages.
-lede-->
+---
+title: Section
+category: Components
+description: The Section component creates a boxed container with a full-bleed background and vertical padding, useful for creating distinct sections on landing pages, as well as large introductory sections such as heroes and profile mastheads. Accordingly, it also increases the font size of paragraphs and list items.
+---
 
 <!--twig
-{% embed "@tch/includes/example.twig" with {
-  full_screen: true,
-} %}
+{% embed "@tc/includes/example.twig" with {full_screen: true} %}
 {% block content %}
-<tcds-section>
+<section class="tcds-section">
+  <h2>This is a section</h2>
   <p>
     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
     eiusmod tempor incididunt ut labore et dolore magna aliqua.
   </p>
-</tcds-section>
+</section>
 {% endblock %}
 {% endembed %}
 twig-->
 
 ## Best practices
 ### When to use
-**On landing pages and home pages.** The section component is a good option for distinguishing sections of content on full-width landing pages.
+**On landing and home pages.** The Section component is a good option for distinguishing sections of content on full-width landing pages.
+
+<details>
+  <summary>For developers and maintainers</summary>
+
+**To build other components and page templates.** Sections are highly versatile and extensible, allowing you to use them as a base for things like profile mastheads, article ledes, footers, etc.
+</details>
 
 ### When not to use
-**On interior content pages.** The section component is not a generic wrapper for content, and should not be used inside containers that are already boxed and centered (use a [callout](/content/callout) instead). It is specifically to create internally boxed sections with a full-bleed background that spans the full window width.
+**On interior content pages.** The Section component is not a generic wrapper for content, and should not be used inside containers that are already internally boxed. Consider using a [Callout](/components/callout) for this purpose.
 
 ## Usage
-### Theme
-To set the colors of the background and foreground elements (text, various components, etc.), add a [background utility class](/design/color#utilities) and a `data-theme` attribute with the value `light` or `dark`.
+### Backgrounds
+To add a background color to a section, use a [background utility](/brand/color#utilities). Note that colors are referenced by their semantic theme alias ("primary" is pink/red, "secondary" is blue/navy, etc.)
 
 <!--twig
-{% embed "@tch/includes/example.twig" with {
-  full_screen: true,
-  line_highlight: "1,7",
-} %}
-{% block content %}
-<tcds-section class="bg-primary" data-theme="light">
-  <p>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-    eiusmod tempor incididunt ut labore et dolore magna aliqua.
-  </p>
-</tcds-section>
-<tcds-section class="bg-secondary" data-theme="dark">
-  <p>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-    eiusmod tempor incididunt ut labore et dolore magna aliqua.
-  </p>
-</tcds-section>
-{% endblock %}
-{% endembed %}
-twig-->
-
-To add a decorative overlay of the [Texas Children's logomark](/design/branding), add the [`watermark` attribute](#watermark-attribute).
-
-<!--twig
-{% embed "@tch/includes/example.twig" with {
+{% embed "@tc/includes/example.twig" with {
   full_screen: true,
   line_highlight: "1",
 } %}
 {% block content %}
-<tcds-section class="bg-tertiary" data-theme="light" watermark>
+<section class="tcds-section bg-secondary">
   <p>
     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
     eiusmod tempor incididunt ut labore et dolore magna aliqua.
   </p>
-</tcds-section>
+</section>
 {% endblock %}
 {% endembed %}
 twig-->
 
-### Background image
-Background images can be used instead of the watermark pattern with the `background` slot. It is recommended to use a `picture` or `video` element with `source` children that specify optimized files at different breakpoints.
-
-In most cases, background images impart a "dark" average color and thus need light text, so the `data-theme` attribute should almost always be set to `dark`. If it is not explicitly set to `light`, it will be set to `dark` automatically.
-
-If the contrast is still not sufficient between the background and the text, use the `overlay` attribute and one or any of the values `darken`, `desaturate`, or `bottom-gradient`.
+To use a dark theme, combine the background utility with a `data-theme` attribute of `dark` (or `auto` to follow the user's system preference).
 
 <!--twig
-{% embed "@tch/includes/example.twig" with {
+{% embed "@tc/includes/example.twig" with {
   full_screen: true,
-  line_highlight: "1-6",
+  line_highlight: "1",
 } %}
 {% block content %}
-<tcds-section overlay="darken desaturate bottom-gradient">
-  <picture slot="background">
-    <source srcset="https://www.texaschildrensurgentcare.org/sites/urgentcare/files/2022-06/2k22-0013-AK7_3571.jpg" media="(max-width: 768px)">
-    <source srcset="https://www.texaschildrensurgentcare.org/sites/urgentcare/files/2022-06/2k22-0013-AK7_3571.jpg" media="(max-width: 1200px)">
-    <img srcset="https://www.texaschildrensurgentcare.org/sites/urgentcare/files/2022-06/2k22-0013-AK7_3571.jpg" src="" alt="">
-  </picture>
-
+<section class="tcds-section bg-secondary" data-theme="dark">
   <p>
     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
     eiusmod tempor incididunt ut labore et dolore magna aliqua.
   </p>
-</tcds-section>
+</section>
 {% endblock %}
-{% block code %}
-<tcds-section overlay="darken desaturate bottom-gradient">
-  <picture slot="background">
-    <source srcset="some-mobile-image.jpg" media="(max-width: 768px)">
-    <source srcset="some-tablet-image.jpg" media="(max-width: 1200px)">
-    <img srcset="some-desktop-image.jpg" src="" alt="">
-  </picture>
+{% endembed %}
+twig-->
 
+To add a [Texas Children's logomark](/brand/logos) flourish, add the [`logomark` modifier](#logomark-modifier).
+
+<!--twig
+{% embed "@tc/includes/example.twig" with {
+  full_screen: true,
+  line_highlight: "1",
+} %}
+{% block content %}
+<section class="tcds-section tcds-section--logomark bg-secondary">
   <p>
     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
     eiusmod tempor incididunt ut labore et dolore magna aliqua.
   </p>
-</tcds-section>
+</section>
 {% endblock %}
 {% endembed %}
 twig-->
-
-If a background image is provided, the section will size according to a fixed aspect ratio.
-
-* By default, the aspect ratio is 4:3 (standard).
-* Above the [`medium` breakpoint](/design/layout#breakpoints) (768px), the aspect ratio is 16:9 (wide).
-* Above the `x-large` breakpoint (1200px), the aspect ratio is 16:5 (ultra-wide).
-
-For the best experience, ensure your images meet these aspect ratios at the respective widths.
-
-<b>Note:</b> if a background video is used, add the `muted`, `loop`, and `autoplay` attributes, and do not add `controls`.
-
-### Hero section
-A "hero" pattern can be implemented through the use of available [slots](#api).
-
-The `heading` and `subheading` slots can be use to add enlarged text. In light-themed sections, the heading will be colored red.
-
-As heroes are typically the first section on a page, you may wish to make them bigger than other sections. This can be done by increasing the [`--tcds-section-vertical-padding` custom property](#styling) from the default `7rem`. You may also wish to enlarge the watermark by setting the [`watermark` attribute](#watermark-attribute) to `large`.
-
-<!--twig
-{% embed "@tch/includes/example.twig" with {
-  full_screen: true,
-} %}
-{% block content %}
-<tcds-section class="bg-secondary" data-theme="light" watermark="large" style="--tcds-section-vertical-padding: 9rem">
-  <h2 slot="heading">Lorem ipsum dolor sit amet</h2>
-  <p slot="subheading">
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-    eiusmod tempor incididunt ut labore et dolore magna aliqua.
-  </p>
-</tcds-section>
-{% endblock %}
-{% endembed %}
-twig-->
-
-A decorative image can be added to the side (desktop) or on top (mobile) of the text content with the `image` slot. It is recommend to use a `picture` element with differently-arranged images at each [breakpoint](/design/layout#breakpoints).
-
-Call-to-action buttons can be added with the `cta` slot using the [button component](/components/button).
-
-<!--twig
-{% embed "@tch/includes/example.twig" with {
-  full_screen: true,
-  line_highlight: "8-12,14-15",
-} %}
-{% block content %}
-<tcds-section class="bg-secondary" data-theme="light" watermark="large" style="--tcds-section-vertical-padding: 9rem">
-  <h2 slot="heading">Lorem ipsum dolor sit amet</h2>
-  <p slot="subheading">
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-    eiusmod tempor incididunt ut labore et dolore magna aliqua.
-  </p>
-
-  <picture slot="image">
-    <source srcset="https://tchmain2ode1.prod.acquia-sites.com/sites/tc/files/styles/webp/public/2022-09/Pediatrics%20Landing%20-%20Hero%20Circle%20-%20Tablet.png.webp?itok=1t1u7shN" media="(min-width: 768px) and (max-width: 1199px)">
-    <source srcset="https://tchmain2ode1.prod.acquia-sites.com/sites/tc/files/styles/webp/public/2022-09/Pediatrics%20Landing%20-%20Hero%20Circle%20-%20Desktop.png.webp?itok=VAeEI8Ni" media="(min-width: 1200px)">
-    <img srcset="https://tchmain2ode1.prod.acquia-sites.com/sites/tc/files/styles/webp/public/2022-09/Pediatrics%20Landing%20-%20Hero%20Circle%20-%20Mobile.png.webp?itok=vPsgGRa0" src="" alt="">
-  </picture>
-
-  <tcds-button slot="cta" size="large">Primary action</tcds-button>
-  <tcds-button slot="cta" size="large" variant="ghost" icon="chevron-right right">Secondary action</tcds-button>
-</tcds-section>
-{% endblock %}
-{% block code %}
-<tcds-section class="bg-secondary" data-theme="light" watermark="large" style="--tcds-section-vertical-padding: 9rem">
-  <h2 slot="heading">Lorem ipsum dolor sit amet</h2>
-  <p slot="subheading">
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-    eiusmod tempor incididunt ut labore et dolore magna aliqua.
-  </p>
-  
-  <picture slot="image">
-    <source srcset="some-tablet-image.jpg" media="(min-width: 768px) and (max-width: 1199px)">
-    <source srcset="some-desktop-image.jpg" media="(min-width: 1200px)">
-    <img srcset="some-mobile-image.jpg" src="" alt="">
-  </picture>
-
-  <tcds-button slot="cta" size="large">Primary action</tcds-button>
-  <tcds-button slot="cta" size="large" variant="ghost" icon="chevron-right right">Secondary action</tcds-button>
-</tcds-section>
-{% endblock %}
-{% endembed %}
-twig-->
-
-## Styling
-The Section's basic styles can be changed with the following custom properties.
-
-<table>
-  <tr>
-    <th>Custom property</th>
-    <th>Description</th>
-    <th style="white-space: nowrap">Default value</th>
-  </tr>
-  <tr>
-    <td><code style="white-space: nowrap">--tcds-section-vertical-padding</code></td>
-    <td><code>padding-top</code> and <code>padding-bottom</code>.</td>
-    <td><code>7rem</code></td>
-  </tr>
-  <tr>
-    <td><code style="white-space: nowrap">--tcds-section-vertical-align</code></td>
-    <td>The vertical alignment of the content.</td>
-    <td><code>center</code></td>
-  </tr>
-  <tr>
-    <td><code style="white-space: nowrap">--tcds-section-text-align</code></td>
-    <td>The horizontal justification of the heading and subheading.</td>
-    <td><code>left</code> (<code>center</code> below the <a href="/design/layout#breakpoints"><code>large</code> breakpoint</a>)</td>
-  </tr>
-  <tr>
-    <td><code style="white-space: nowrap">--tcds-section-overlay-opacity</code></td>
-    <td>The opacity (as a percent) of the background overlay if the <a href="#overlay-attribute"><code>overlay</code> attribute</a> includes <code>darken</code>.</td>
-    <td><code>60%</code></td>
-  </tr>
-</table>
-
-## API
-<!--twig {{ include("@tch/includes/api.twig", {
-  attributes: [
-    {
-      name: "overlay",
-      type: ["prop", "string"],
-      description: "One or any of <code>darken</code>, <code>desaturate</code>, or <code>bottom-gradient</code>.",
-      required: "no",
-    },
-    {
-      name: "watermark",
-      type: ["prop", "string"],
-      description: "Empty or <code>large</code>.",
-      required: "no",
-    },
-  ],
-  slots: [
-    {
-      name: "(default)",
-      multiple: "no",
-      description: "Default content slot.",
-      required: "no",
-    },
-    {
-      name: "background",
-      multiple: "no",
-      description: "An <code>img</code>, <code>picture</code>, or <code>video</code> element to use as the background.",
-      required: "no",
-    },
-    {
-      name: "heading",
-      multiple: "no",
-      description: "An <code>h1</code> or <code>h2</code> element to use as an enlarged headline.",
-      required: "no",
-    },
-    {
-      name: "subheading",
-      multiple: "no",
-      description: "A <code>p</code> element to use as an enlarged subhead.",
-      required: "no",
-    },
-    {
-      name: "image",
-      multiple: "no",
-      description: "An <code>img</code> or <code>picture</code> element to use as an image placed to the right of (desktop) or above (mobile) the content.",
-      required: "no",
-    },
-    {
-      name: "cta",
-      multiple: "yes",
-      description: "<code>tcds-button</code> (or <code>a</code> or <code>button</code>) elements to use as the calls-to-action beneath the heading and subheading.",
-      required: "no",
-    },
-  ],
-}) }} twig-->
-
-## Resources
-[Source code on GitHub](https://github.com/jacecotton/tcds/blob/main/components/section/)

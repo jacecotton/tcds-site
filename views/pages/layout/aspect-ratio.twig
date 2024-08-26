@@ -1,0 +1,52 @@
+{# DO NOT EDIT. This file was compiled from Markdown; please edit the source .md
+file and run the gulp process to compile (either `gulp` or `npm run dev`). #}
+{% extends "@tc/base.twig" %}
+{% block body %}
+<ul>
+<li>Used in image styles. We crop images not only for predetermined sizes (see <a href="/layout/breakpoints">breakpoints</a>), but also for each aspect ratio.</li>
+<li>Thumbnail images</li>
+<li>Hero component</li>
+<li>Card component</li>
+</ul>
+
+{% set aspect_ratios = [
+  {
+    ratio: "1 / 1",
+    name: "square",
+    description: "Most useful for illustrations and profile pictures, which are often fully rounded.",
+  },
+  {
+    ratio: "4 / 3",
+    name: "landscape",
+    description: "Best for regular photography.",
+  },
+  {
+    ratio: "3 / 4",
+    name: "portrait",
+    description: "",
+  },
+  {
+    ratio: "16 / 9",
+    name: "widescreen",
+    description: "",
+  },
+  {
+    ratio: "21 / 9",
+    name: "ultrawide",
+    description: "",
+  },
+] %}
+
+<table>
+  {% for aspect_ratio in aspect_ratios %}
+    <tr>
+      <td>{{ aspect_ratio.ratio }}</td>
+      <td><code>{{ aspect_ratio.name }}</code></td>
+      <td>{{ aspect_ratio.description }}</td>
+    </tr>
+  {% endfor %}
+</table>
+
+
+<p>The Design System&#39;s CSS provides access to aspect ratio values through custom properties named <code>--tcds-aspect-ratio-x</code> where <code>x</code> is one of the above names in the table above.</p>
+{% endblock %}

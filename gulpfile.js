@@ -1,38 +1,39 @@
 import gulp from "gulp";
-const { task, watch, src, dest, series } = gulp;
-import { join, resolve } from "path";
+const {task, watch, src, dest, series} = gulp;
+import {join, resolve} from "path";
 
 import markdown from "gulp-markdown";
+import frontmatter from "gulp-front-matter";
 import map from "map-stream";
 import rename from "gulp-rename";
-
-import webpack from "webpack-stream";
 
 import postcss from "gulp-postcss";
 import custommedia from "postcss-custom-media";
 import autoprefixer from "autoprefixer";
 import dartsass from "sass";
 import gulpsass from "gulp-sass";
+import jsonsass from "node-sass-json-importer";
 const sass = gulpsass(dartsass);
 
+import imagemin from "gulp-imagemin";
+
+import webpack from "webpack-stream";
+
 const tasks = {
-  "pages": () => {
+  pages: () => {
     return src("./pages/**/*.md")
+      .pipe(frontmatter({remove: true}))
       .pipe(markdown())
       .pipe(rename(path => path.extname = ".twig"))
       .pipe(map((page, callback) => {
-        // Stringify the contents of the page so it can be manipulated.
+        // Stringify the contents of the page so that it can be manipulated.
         let contents = page.contents.toString();
 
-        // Define the gates for protected twig code and lede block.
+        // Define the gates for protected twig code.
         const twigStart = "<!--twig";
         const twigEnd = "twig-->";
-        const ledeStart = "<!--lede";
-        const ledeEnd = "lede-->";
 
-        // Define twig syntax delimiters for encoding/substitution. Note that it
-        // doesn't really matter what the placeholder is. Just chose something
-        // that was unlikely to be coincidentally typed in a markdown file.
+        // Define twig syntax delimiters for encoding/substitution.
         const twigSyntax = [
           {
             delimiter: "{%",
@@ -56,35 +57,26 @@ const tasks = {
           },
         ];
 
-        // If a starting twig gate exists...
         if(contents.includes(twigStart)) {
-          // Get the content between the gates (returns an array of each
-          // twig block, without the signifiers).
+          // Get the contents between the gates (returns an array of each twig
+          // block, without the signifiers).
           const twigBlocks = contents.match(new RegExp(twigStart + "(.*?)" + twigEnd, "gs")).map((result) => {
-            // Strip the start and end signifiers (only from the string, not
-            // the file output).
-            result = result.replace(new RegExp(twigStart, "gs"), "");
-            result = result.replace(new RegExp(twigEnd, "gs"), "");
-
-            return result;
+            return result.replace(new RegExp(twigStart, "gs"), "").replace(new RegExp(twigEnd, "gs"), "");
           });
 
           // Substitute twig syntax delimiters to protect from encoding.
           twigBlocks.forEach((twigBlock) => {
-            let twigBlockSubstituted = twigBlock;
+            let twigBlockSubst = twigBlock;
 
             twigSyntax.forEach((delimiter) => {
-              twigBlockSubstituted = twigBlockSubstituted.replace(new RegExp(delimiter.delimiter, "g"), delimiter.placeholder);
+              twigBlockSubst = twigBlockSubst.replace(new RegExp(delimiter.delimiter, "g"), delimiter.placeholder);
             });
 
-            // Replace the original/unsubstituted twig block with the
-            // substituted block in the output file.
-            contents = contents.replace(twigBlock, twigBlockSubstituted);
+            contents = contents.replace(twigBlock, twigBlockSubst);
           });
         }
 
-        // Now, encode all remaining twig code (that code which was not placed
-        // between <!--twig twig--> signifiers).
+        // Now encode all remaining twig code (code not placed between gates).
         twigSyntax.forEach((delimiter) => {
           contents = contents.replace(new RegExp(delimiter.delimiter, "g"), delimiter.encode);
         });
@@ -97,116 +89,95 @@ const tasks = {
           });
         }
 
-        // Now that the twig has been "trojan horsed", we can remove the twig
-        // start and end comments.
+        // Now that the twig has been trojaned, we can remove the twig gates
+        // (uncommenting the twig) and cleanup.
         contents = contents.replace(new RegExp(twigStart, "g"), "");
         contents = contents.replace(new RegExp(twigEnd, "g"), "");
-
-        // Initialize a variable for the lede content for the template block.
-        let lede;
-
-        // If a lede exists...
-        if(contents.includes(ledeStart)) {
-          // Get the content between the signifiers.
-          lede = contents.substring(contents.lastIndexOf(ledeStart) + ledeStart.length, contents.lastIndexOf(ledeEnd));
-
-          // Remove the content and the signifiers from the output file (to be
-          // reinserted later).
-          contents = contents.replace(new RegExp(ledeStart + "(.*?)" + ledeEnd, "gs"), "");
-        }
-
-        // Trim the body and lede content.
         contents = contents.trim();
-        lede = lede && lede.trim();
 
-        // Add a warning comment, extend the base template, add the lede in the
-        // lede block, and the body content in the body block.
-        contents = `{# DO NOT EDIT. This file was compiled from Markdown; please edit the source .md\nfile and run the gulp process to compile (either \`gulp\` or \`npm run dev\` from\nthe terminal). #}\n{% extends "@tch/base.twig" %}\n${lede ? `{% block lede %}${lede}{% endblock %}\n` : ""}{% block body %}\n${contents}\n{% endblock %}`;
+        // Add explanatory comment and extend base twig template.
+        contents = `{# DO NOT EDIT. This file was compiled from Markdown; please edit the source .md\nfile and run the gulp process to compile (either \`gulp\` or \`npm run dev\`). #}\n{% extends "@tc/base.twig" %}\n{% block body %}\n${contents}\n{% endblock %}`;
 
-        // Replace the page content with the manipulated content.
+        // Replace the page contents with the manipulated content.
         page.contents = new Buffer(contents);
 
-        // Finish.
         callback(null, page);
       }))
       .pipe(dest("./views/pages/"));
   },
 
-  "styles": () => {
-    return src("./assets/styles/**/*.scss")
+  styles: () => {
+    return src("./src/styles/**/*.scss")
       .pipe(sass({
         includePaths: ["node_modules"],
         outputStyle: "compressed",
+        importer: jsonsass(),
       }))
       .pipe(postcss([
         autoprefixer(),
         custommedia({
-          importFrom: "./node_modules/@txch/tcds/styles/layout/layout",
+          importFrom: "./node_modules/@txch/tcds/src/01-layout/props",
         }),
       ]))
-      .pipe(dest("./public/styles/"));
+      .pipe(dest("./public/styles"));
   },
 
-  "scripts": () => {
-    return src("./assets/scripts/index.js")
+  javascript: () => {
+    return src("./src/scripts/index.js")
       .pipe(webpack({
-        entry: ["./assets/scripts/index.js"],
+        entry: ["./src/scripts/index.js"],
         module: {
           rules: [
             {
               test: /\.js$/,
               exclude: /(node_modules)/,
               use: [
-                // Use Babel for transpiling to older syntax.
                 {
                   loader: "babel-loader",
                   options: {
                     presets: ["@babel/preset-env"],
                   },
-                },
+                }
               ],
-            },
-            {
-              test: /\.css$/i,
-              use: ["constructable-style-loader"],
             },
           ],
         },
-        // resolve: {
-        //   alias: {
-        //     "@txch": resolve(join(), "../"),
-        //   },
-        // },
+        resolve: {
+          alias: {
+            "@txch": resolve(join(), "./node_modules/@txch/"),
+          },
+        },
         output: {
-          filename: "main.js",
+          filename: "site.js",
         },
       }))
       .pipe(dest("./public/scripts/"));
   },
 
-  "fonts": () => {
-    return src("./node_modules/@txch/tcds/assets/fonts/**/*")
-      .pipe(dest("./public/fonts/"));
+  fonts: () => {
+    return src("./node_modules/@txch/tcds/dist/fonts/**/*")
+      .pipe(dest("./public/fonts"));
   },
 
-  "images": () => {
-    return src("./assets/images/**/*")
-      .pipe(dest("./public/images/"));
+  images: () => {
+    return src("./src/images/**/*")
+      .pipe(imagemin())
+      .pipe(dest("./public/images"));
   },
 };
 
-task("pages", tasks["pages"]);
-task("styles", tasks["styles"]);
-task("scripts", tasks["scripts"]);
-task("fonts", tasks["fonts"]);
-task("images", tasks["images"]);
+task("pages", tasks.pages);
+task("styles", tasks.styles);
+task("javascript", tasks.javascript);
+task("fonts", tasks.fonts);
+task("images", tasks.images);
 
 task("watch", function watcher() {
-  watch("./pages/", tasks["pages"]);
-  watch("./assets/styles/", tasks["styles"]);
-  watch("./assets/scripts/", tasks["scripts"]);
-  watch("./assets/images/", tasks["images"]);
+  watch("./pages/", tasks.pages);
+  watch("./src/styles/", tasks.styles);
+  watch("./src/scripts/", tasks.javascript);
+  watch("./src/images/", tasks.images);
 });
 
-task("build", series(["pages", "styles", "scripts", "fonts", "images"]))
+task("build", series(["pages", "styles", "javascript", "fonts", "images"]));
 task("default", series(["build", "watch"]));

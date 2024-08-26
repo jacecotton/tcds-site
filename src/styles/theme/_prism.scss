@@ -1,0 +1,103 @@
+/**
+ * Overrides for the Prism library.
+ */
+
+ :root {
+  $prism-code: "code[class*='language-']";
+  $prism-pre: "pre[class*='language-']";
+
+  #{$prism-code},
+  #{$prism-pre} {
+    font-size: var(--tcds-font-size-s);
+    font-family: var(--tcds-font-monospace);
+    line-height: 2;
+    text-shadow: none;
+    color: var(--tcds-color-gray-3);
+    overflow-y: hidden;
+
+    .line-marker {
+      pointer-events: none;
+      user-select: none;
+      opacity: .5;
+    }
+  }
+
+  :not(pre) > #{$prism-code},
+  #{$prism-pre} {
+    background: #f5f5f5;
+  }
+
+  #{$prism-pre} {
+    margin: 0 0 1rem;
+    padding: .5rem 0 .5rem 50px;
+    border: 1px solid var(--tcds-shade-weak);
+    border-radius: var(--tcds-border-radius-s);
+  }
+
+  .line-numbers .line-numbers-rows {
+    border-right: none;
+    font-size: var(--tcds-font-size-s);
+    display: grid;
+    grid-auto-rows: 2em;
+    line-height: 1.3;
+
+    > span::before {
+      color: var(--tcds-color-gray-3);
+    }
+  }
+
+  .line-highlight {
+    margin-top: 0;
+    background-image: linear-gradient(to right, rgb(213 218 230 / 30%) 70%, transparent);
+    mix-blend-mode: darken;
+  }
+
+  .token {
+    &.comment,
+    &.prolog,
+    &.doctype,
+    &.cdata {
+      color: var(--tcds-color-gray-3);
+    }
+
+    &.punctuation {
+      color: var(--tcds-color-gray-3);
+    }
+
+    &.property,
+    &.tag,
+    &.boolean,
+    &.number,
+    &.constant,
+    &.symbol,
+    &.deleted {
+      color: #248142;
+    }
+
+    &.selector,
+    &.attr-name,
+    &.string,
+    &.char,
+    &.builtin,
+    &.inserted {
+      color: #004880;
+    }
+
+    &.function,
+    &.class-name {
+      color: #da2530;
+    }
+
+    &.regex,
+    &.important,
+    &.variable {
+      color: #886f24;
+    }
+
+    &.atrule,
+    &.attr-value,
+    &.keyword {
+      color: #2d73bc;
+    }
+  }
+}

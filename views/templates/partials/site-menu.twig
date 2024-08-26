@@ -1,0 +1,9 @@
+<nav>
+  <ul>
+    {% for category in content %}
+      <li>
+        <a href="{{ category.pages[0].route }}">{{ category.title }}</a>
+      </li>
+    {% endfor %}
+  </ul>
+</nav>

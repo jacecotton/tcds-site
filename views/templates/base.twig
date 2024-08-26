@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,109 +7,47 @@
   <title>{{ meta_title ? "#{meta_title} - " }}Texas Children's Design System</title>
   <meta name="description" content="{{ description }}">
 
-  <link rel="stylesheet" href="/styles/tcds.css" title="tcds-base">
-  <link rel="stylesheet" href="/styles/main.css">
+  <link rel="stylesheet" href="/styles/tcds.css" title="tcds">
+  <link rel="stylesheet" href="/styles/site.css">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.19.0/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
 
   <link href="/favicon.png" rel="shortcut icon" type="image/png">
   <meta name="theme-color" content="#da2530">
 
-  <script>
-    if(window.MSInputMethodContext && document.documentMode) {
-      document.write(
-        "<link href='/styles/ie/tcds.ie.css' rel='stylesheet'>"
-        + "<script src='https://cdn.jsdelivr.net/gh/nuxodin/ie11CustomProperties@4.1.0/ie11CustomProperties.min.js'><\x2fscript>"
-      );
-
-      if("NodeList" in window && !NodeList.prototype.forEach) {
-        NodeList.prototype.forEach = function(callback, thisArg) {
-          thisArg = thisArg || window;
-
-          for(var i = 0; i < this.length; i++) {
-            callback.call(thisArg, this[i], i, this);
-          }
-        }
-      }
-    }
-  </script>
-
   {% block head %}{% endblock %}
 </head>
 <body class="page-{{ title|clean_class }} category-{{ category|clean_class }} line-numbers">
-  <div class="site-layout">
-    {{ include("@tch/partials/site-header.twig") }}
+  {{ include("@tc/partials/site-header.twig") }}
 
-    <div class="page-content">
-      <header class="page-masthead">
+  <section class="tcds-section tcds-section--raised tcds-section--masthead bg-secondary" data-theme="auto">
+    <h1 class="accent--inline-start">
+      {% if display_title == "" %}
+        <span class="visually-hidden">{{ title }}</span>
+      {% else %}
         {% if category and title != "Overview" and display_title != category %}
-          <p class="page-category">{{ category }}</p>
+          <small>{{ category }}</small>
         {% endif %}
+        {{ display_title }}
+      {% endif %}
+    </h1>
+    {% if description %}
+      <p>
+        {{ description }}
+      </p>
+    {% endif %}
+  </section>
 
-        {% if display_title == "" %}
-          <h1 class="visually-hidden">{{ title }}</h1>
-        {% else %}
-          <h1>{{ display_title }}</h1>
-        {% endif %}
+  <div class="max-width page-content">
+    {{ include("@tc/partials/side-menu.twig") }}
 
-        {% if block("lede") %}
-          <p class="lede">
-            {% block lede %}{% endblock %}
-          </p>
-        {% endif %}
-      </header>
-
-      <main class="main--unstyled">
-        {% block body %}{% endblock %}
-
-        <footer class="prev-next">
-          {% if previous_page.title %}
-            <a href="{{ previous_page.route }}" class="prev-next__prev">
-              <tcds-icon icon="arrow-left"></tcds-icon>
-              <small>{{ previous_page.category }}</small>
-              <b>{{ previous_page.title }}</b>
-            </a>
-          {% endif %}
-
-          {% if next_page.title %}
-            <a href="{{ next_page.route }}" class="prev-next__next">
-              <tcds-icon icon="arrow-right"></tcds-icon>
-              <small>{{ next_page.category }}</small>
-              <b>{{ next_page.title }}</b>
-            </a>
-          {% endif %}
-        </footer>
-      </main>
-
-      <aside class="page-inner-sidebar">
-        <tcds-toc></tcds-toc>
-      </aside>
-    </div>
-
-    <footer class="site-footer">
-      &copy; Texas Children's {{ "now"|date("Y") }}
-    </footer>
+    <main>
+      {% block body %}{% endblock %}
+    </main>
   </div>
 
-<script>
-if(window.MSInputMethodContext && document.documentMode) {
-  document.querySelectorAll("tcds-button").forEach(function(tcdsButton) {
-    if(tcdsButton.hasAttribute("link")) {
-      var a = document.createElement("a");
-      a.setAttribute("data-tcds-button", "");
-      a.setAttribute("href", tcdsButton.getAttribute("link"));
-      a.innerHTML = tcdsButton.innerHTML;
-      tcdsButton.parentNode.replaceChild(a, tcdsButton);
-    } else {
-      var button = document.createElement("button");
-      button.setAttribute("data-tcds-button", "");
-      button.setAttribute("type", tcdsButton.getAttribute("type") || "button");
-      button.innerHTML = tcdsButton.innerHTML;
-      tcdsButton.parentNode.replaceChild(button, tcdsButton);
-    }
-  });
-}
-</script>
-<script async src="/scripts/main.js"></script>
+  {{ include("@tc/partials/site-footer.twig") }}
+
+<script async src="/scripts/site.js"></script>
 {% block scripts %}{% endblock %}
 </body>
 </html>

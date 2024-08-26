@@ -1,108 +1,43 @@
-export default [
-  {
-    title: "Introduction",
-    pages: [
-      {
-        title: "Overview",
-        meta_title: "",
-        display_title: "Texas Children's Design System",
-        route: "/",
-        template: "index",
-        description: "Welcome to Texas Children's Design System.",
-      },
-      {
-        title: "Getting Started",
-        route: "/getting-started",
-      },
-      {
-        title: "Contributing",
-        route: "/contributing",
-      },
-    ],
-  },
+import fs from "fs";
+import frontmatter from "front-matter";
 
-  {
-    title: "Design",
-    pages: [
-      {
-        title: "Overview",
-        meta_title: "Design",
-        display_title: "Design",
-        route: "/design",
-        template: "design/overview",
-        disabled: true,
-      },
-      { title: "Animation" },
-      { title: "Branding", disabled: true },
-      { title: "Color" },
-      { title: "Layout" },
-      { title: "Typography" },
-    ],
-  },
+const files = fs.readdirSync("./pages/", {recursive: true, withFileTypes: true});
 
-  {
-    title: "Components",
-    pages: [
-      {
-        title: "Overview",
-        meta_title: "Components",
-        display_title: "Components",
-        route: "/components",
-        template: "components/overview",
-      },
-      { title: "Accordion" },
-      { title: "Action Bar" },
-      { title: "Alert Bar" },
-      { title: "Breadcrumbs", disabled: true },
-      { title: "Button" },
-      { title: "Card" },
-      { title: "Carousel" },
-      { title: "Dialog" },
-      { title: "Icon" },
-      { title: "Mega Menu", disabled: true },
-      { title: "Notification", disabled: true },
-      { title: "Pagination", disabled: true },
-      { title: "Section" },
-      { title: "Tabs" },
-    ],
-  },
+const content = [];
 
-  {
-    title: "Content",
-    pages: [
-      { title: "Blockquote" },
-      { title: "Callout" },
-      { title: "Details" },
-      { title: "Forms" },
-      { title: "Images", disabled: true },
-      { title: "Horizontal rule" },
-      { title: "Lists" },
-      { title: "Tables" },
-    ],
-  },
+files.filter(file => file.name.includes(".md")).forEach((file) => {
+  // Normalize all paths and append file name.
+  const path = `${file.path.startsWith("./") ? "" : "./"}${file.path}${file.path.endsWith("/") ? "" : "/"}${file.name}`;
 
-  {
-    title: "Accessibility",
-    pages: [
-      {
-        title: "Overview",
-        meta_title: "Accessibility",
-        display_title: "Accessibility",
-        route: "/accessibility",
-        template: "accessibility/overview",
-      },
-      { title: "Testing" },
-      { title: "Writing accessible text" },
-    ],
-  },
+  // Add leading slash, remove file system-only elements, remove ".md" extension
+  // from file names.
+  const route = `/${path.split("/").filter(e => ![".", "pages"].includes(e)).join("/").replace(".md", "")}`;
 
-  {
-    title: "Style guide",
-    pages: [
-      { title: "General" },
-      { title: "HTML" },
-      { title: "CSS" },
-      { title: "JavaScript" },
-    ],
+  const metadata = frontmatter(fs.readFileSync(path, "utf8")).attributes;
+
+  if(metadata.category) {
+    const indexOfCategory = content.findIndex(category => category.title === metadata.category);
+    const {category, ...rest} = metadata;
+
+    rest.display_title = rest.display_title || rest.title;
+    rest.meta_title = rest.meta_title === null || rest.meta_title === "" ? "" : rest.meta_title || rest.title;
+    rest.menu_title = rest.menu_title || rest.title;
+    rest.description = rest.description || "Default description";
+    rest.route = rest.route || route;
+  
+    if(indexOfCategory < 0) {
+      content.push({
+        title: metadata.category,
+        pages: [rest],
+      });
+    } else {
+      if(rest.route === `/${metadata.category.toLowerCase()}`) {
+        content[indexOfCategory].pages.unshift(rest);
+      } else {
+        content[indexOfCategory].pages.push(rest);
+      }
+    }
   }
-];
+});
+
+fs.writeFileSync("./content.json", JSON.stringify(content, null, 2));

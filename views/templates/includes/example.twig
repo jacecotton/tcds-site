@@ -1,5 +1,5 @@
 <section class="example" role="doc-example">
-  <div class="example__result" {% if full_screen %} style="overflow-x: auto" {% endif %}>
+  <div class="example__result" {{ full_screen ? 'style="overflow: auto hidden"' }}>
     {% if full_screen %} <div style="width: 100vw; max-width: 1200px"> {% endif %}
       {% block result %}
         {% block content %}{% endblock %}
@@ -7,7 +7,7 @@
     {% if full_screen %} </div> {% endif %}
   </div>
   <div class="example__code">
-    <details {% if open %} open {% endif %}>
+    <details {{ open ? "open" }}>
       <summary>View code</summary>
       <div>
         <pre class="line-numbers language-{{ language ? language|clean_class : "html" }}" {{ line_highlight ? "data-line=#{line_highlight}" }}><code class="language-{{ language ? language|clean_class : "html" }}">{{ block("code") is defined ? block("code")|escape : block("content")|escape }}</pre>
