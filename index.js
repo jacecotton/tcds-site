@@ -1,6 +1,5 @@
 import express from "express";
 import {join, resolve} from "path";
-import slugify from "slugify";
 import content from "./content.json" assert {type: "json"};
 
 import {TwingEnvironment, TwingLoaderFilesystem} from "twing";
@@ -13,7 +12,7 @@ const twing = new TwingEnvironment(loader);
 TwingDrupalFilters(twing);
 
 const app = express();
-const port = process.env.PORT || 3001;
+const port = process.env.PORT || 3000;
 const host = process.env.HOST || "localhost";
 
 app.use(express.static(join(resolve(), "public")));
