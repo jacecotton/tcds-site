@@ -1,6 +1,5 @@
 import express from "express";
 import {join, resolve} from "path";
-import {minify} from "html-minifier";
 import slugify from "slugify";
 import content from "./content.json" assert {type: "json"};
 
@@ -49,15 +48,6 @@ content.forEach((category) => {
         route: page.route,
         content: content,
       }).then((output) => {
-        output = minify(output, {
-          removeComments: true,
-          collapseWhitespace: true,
-          collapseBooleanAttributes: false,
-          removeAttributeQuotes: true,
-          useShortDoctype: true,
-          removeOptionalTags: true,
-        });
-
         res.end(output);
       }).catch((error) => {
         handle404(res);
