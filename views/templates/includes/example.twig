@@ -10,7 +10,7 @@
     <details {{ open ? "open" }}>
       <summary>View code</summary>
       <div>
-        <pre class="line-numbers language-{{ language ? language|clean_class : "html" }}" {{ line_highlight ? "data-line=#{line_highlight}" }}><code class="language-{{ language ? language|clean_class : "html" }}">{{ block("code") is defined ? block("code")|escape : block("content")|escape }}</pre>
+        <pre class="line-numbers language-{{ language ? language|clean_class : "html" }}" {{ line_highlight ? "data-line=#{line_highlight}" }}><code class="language-{{ language ? language|clean_class : "html" }}">{{ block("code") is defined ? block("code")|escape : block("content")|escape }}</code></pre>
       </div>
     </details>
   </div>

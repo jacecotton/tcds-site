@@ -6,7 +6,7 @@
         "title": "Overview",
         "meta_title": "",
         "display_title": "Texas Children's Design System",
-        "description": "Texas Children's Design System is the single source of truth for website design and front-end development at Texas Children's. It serves as a centralized library of web components, design resources, and best practice guidelines. Its purpose is to enhance standardization, efficiency, and scalability by offering a unified reference and a custom development framework.",
+        "description": "Texas Children's Design System is the single source of truth for web design and front-end development at Texas Children's. It provides a centralized library of web components, design resources, and best practice guidelines, aiming to enhance consistency, standardization, and time-to-launch for web projects at Texas Children's.",
         "route": "/",
         "template": "index",
         "menu_title": "Overview"
@@ -80,7 +80,7 @@
       },
       {
         "title": "Typography",
-        "description": "Typography establishes brand identity and tone, as well as visual hierarchy and rhythm in a design. Good typography helps communicate ideas more clearly and effectively.",
+        "description": "Good typography communicates ideas clearly and reinforces our brand. To these ends, the Design System provides styles that establish clear visual hierarchy, consistency, and rhythm, while reflecting brand identity and tone.",
         "display_title": "Typography",
         "meta_title": "Typography",
         "menu_title": "Typography",
@@ -290,12 +290,12 @@
         "route": "/layout/breakpoints"
       },
       {
-        "title": "Grid",
-        "description": "Guidance and utilities for grid system for Texas Children's products.",
-        "display_title": "Grid",
-        "meta_title": "Grid",
-        "menu_title": "Grid",
-        "route": "/layout/grid"
+        "title": "Grid and alignment",
+        "description": "Guidance and utilities for creating grid layouts and managing alignment.",
+        "display_title": "Grid and alignment",
+        "meta_title": "Grid and alignment",
+        "menu_title": "Grid and alignment",
+        "route": "/layout/grid-and-alignment"
       },
       {
         "title": "Space and size",
@@ -303,14 +303,14 @@
         "meta_title": "Space and size",
         "menu_title": "Space and size",
         "description": "Default description",
-        "route": "/layout/space-size"
+        "route": "/layout/space-and-size"
       },
       {
         "title": "Z-Index",
+        "description": "An element's z-index controls its stacking context, or how it layers over other elements.",
         "display_title": "Z-Index",
         "meta_title": "Z-Index",
         "menu_title": "Z-Index",
-        "description": "Default description",
         "route": "/layout/z-index"
       }
     ]

@@ -19,7 +19,7 @@
 <body class="page-{{ title|clean_class }} category-{{ category|clean_class }} line-numbers">
   {{ include("@tc/partials/site-header.twig") }}
 
-  <section class="tcds-section tcds-section--raised tcds-section--masthead bg-secondary" data-theme="auto">
+  <section class="tcds-section tcds-section--raised tcds-section--masthead bg-secondary bg-logo" data-theme="auto">
     <h1 class="accent--inline-start">
       {% if display_title == "" %}
         <span class="visually-hidden">{{ title }}</span>

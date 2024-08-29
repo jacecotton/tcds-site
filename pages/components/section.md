@@ -69,7 +69,7 @@ To use a dark theme, combine the background utility with a `data-theme` attribut
 {% endembed %}
 twig-->
 
-To add a [Texas Children's logomark](/brand/logos) flourish, add the [`logomark` modifier](#logomark-modifier).
+To add a [Texas Children's logomark](/brand/logos) flourish, add the [background utility](/brand/logos).
 
 <!--twig
 {% embed "@tc/includes/example.twig" with {
@@ -77,7 +77,7 @@ To add a [Texas Children's logomark](/brand/logos) flourish, add the [`logomark`
   line_highlight: "1",
 } %}
 {% block content %}
-<section class="tcds-section tcds-section--logomark bg-secondary">
+<section class="tcds-section bg-secondary bg-logo">
   <p>
     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
     eiusmod tempor incididunt ut labore et dolore magna aliqua.
