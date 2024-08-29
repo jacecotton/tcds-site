@@ -49,7 +49,7 @@ twig-->
 ### When not to use
 **Low engagement or low discoverability.** If there is evidence to suggest users cannot or are not accessing the content they're looking for, show it by default.
 
-**A different component better fits the use case.** For quickly comparing different pieces of content of the same information type, consider the [tabs component](/components/tabs). For collapsing only a single, independent section, consider [details](/content/details).
+**A different component better fits the use case.** For quickly comparing different pieces of content of the same information type, consider the [tabs component](/components/tabs). For collapsing only a single, independent section, consider [details](/components/details).
 
 ## Usage
 ### Allow multiple sections

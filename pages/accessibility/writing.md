@@ -17,7 +17,7 @@ Heading elements help <i>outline</i> a page's landmark regions (navigation, main
 
 **Look at the overall document and its existing headings.** Pick a level that best fits given the context of the existing outline. Order headings in sequence, and _do not skip descending heading levels_; i.e., do not jump from an H1 to an H3—it must be H1, then H2, then H3. (However, you can skip ascending heading levels, such as following an H4 with an H2.)
 
-**Do not use heading elements purely to change the text size.** If you need large text that doesn't strictly relate to a web page's outline, use CSS or a corresponding utility class (see [Typography &sect; Type scale](/design/typography#type-scale)) on the semantically appropriate element (e.g. `p`).
+**Do not use heading elements purely to change the text size.** If you need large text that doesn't strictly relate to a web page's outline, use CSS or a corresponding utility class (see [Typography &sect; Type scale](/brand/typography#type-scale)) on the semantically appropriate element (e.g. `p`).
 
 Inversely, you may sometimes need to use a heading element for its semantic meaning, but reduce its size to fit better within the page's design. Heading elements may even be visually hidden, and strictly used to convey semantic meaning to screen readers and search engines.
 
@@ -36,11 +36,19 @@ The text of a link should describe or fully label the page it points to. Some as
 
 Do not use vague or context-dependent words or sentences:
 
-> To get more information about vaccines, click [here](#example).
+<figure class="tcds-blockquote tcds-blockquote--small">
+  <blockquote class="tcds-blockquote__quote">
+    <p>To get more information about vaccines, click <a href="#example">here</a>.</p>
+  </blockquote>
+</figure>
 
 Instead, be explicit so the link makes sense without context:
 
-> Get more [information about vaccines](#example).
+<figure class="tcds-blockquote tcds-blockquote--small">
+  <blockquote class="tcds-blockquote__quote">
+    <p>Get more <a href="#example">information about vaccines</a>.</p>
+  </blockquote>
+</figure>
 
 This provides two other benefits aside from accessibility. It helps search engines better understand the purpose, intent, and content of a page's links, and improves usability for sighted users, providing a stronger [information scent](https://www.nngroup.com/articles/information-scent/ "Information Scent: How Users Decide Where to Go Next — Nielsen Norman Group") and, in most cases, a larger [touch target](https://www.w3.org/WAI/WCAG21/Understanding/target-size.html "Understanding Success Criterion 2.5.5: Target Size — W3.org").
 
@@ -58,15 +66,23 @@ Alternative text should be a literal description of the image. While not overly 
 
 Avoid narrative information:
 
-> Dr. Smith giving a patient an annual checkup.
+<figure class="tcds-blockquote tcds-blockquote--small">
+  <blockquote class="tcds-blockquote__quote">
+    <p>Dr. Smith giving a patient an annual checkup.</p>
+  </blockquote>
+</figure>
 
 This description leaves all visual details up to the user's imagination.
 
 Instead, prefer visually descriptive information:
 
-> Doctor applying stethoscope to patient's chest in her office.
+<figure class="tcds-blockquote tcds-blockquote--small">
+  <blockquote class="tcds-blockquote__quote">
+    <p>Doctor applying stethoscope to patient's chest in her office.</p>
+  </blockquote>
+</figure>
 
-Note that there is a place for narrative descriptions like the former example: [thumbnail captions](/primitives/images#thumbnail-captions). These are marked up with `figcaption` elements, and are visibly displayed (usually beneath the image). Their purpose is to provide deeper meaning to the image that places it in context. It should be information given to all users, sighted and visually impaired alike.
+Note that there is a place for narrative descriptions like the former example: thumbnail captions. These are marked up with `figcaption` elements, and are visibly displayed (usually beneath the image). Their purpose is to provide deeper meaning to the image that places it in context. It should be information given to all users, sighted and visually impaired alike.
 
 ## Further reading
 * [Designing for Screen Reader Compatibility &sect; How Screen Readers Read Content](https://webaim.org/techniques/screenreader/#how) — WebAIM

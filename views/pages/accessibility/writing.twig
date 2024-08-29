@@ -12,7 +12,7 @@ file and run the gulp process to compile (either `gulp` or `npm run dev`). #}
 </ul>
 <p>Heading elements help <i>outline</i> a page&#39;s landmark regions (navigation, main content, etc.) They should not be thought of as simply a way to change text size.</p>
 <p><strong>Look at the overall document and its existing headings.</strong> Pick a level that best fits given the context of the existing outline. Order headings in sequence, and <em>do not skip descending heading levels</em>; i.e., do not jump from an H1 to an H3—it must be H1, then H2, then H3. (However, you can skip ascending heading levels, such as following an H4 with an H2.)</p>
-<p><strong>Do not use heading elements purely to change the text size.</strong> If you need large text that doesn&#39;t strictly relate to a web page&#39;s outline, use CSS or a corresponding utility class (see <a href="/design/typography#type-scale">Typography &sect; Type scale</a>) on the semantically appropriate element (e.g. <code>p</code>).</p>
+<p><strong>Do not use heading elements purely to change the text size.</strong> If you need large text that doesn&#39;t strictly relate to a web page&#39;s outline, use CSS or a corresponding utility class (see <a href="/brand/typography#type-scale">Typography &sect; Type scale</a>) on the semantically appropriate element (e.g. <code>p</code>).</p>
 <p>Inversely, you may sometimes need to use a heading element for its semantic meaning, but reduce its size to fit better within the page&#39;s design. Heading elements may even be visually hidden, and strictly used to convey semantic meaning to screen readers and search engines.</p>
 <h3 id="using-h1">Using H1</h3>
 <p>There should only ever be one H1 on a page. It should contain the page&#39;s name or topic (even if it has to be visually hidden for the design, like on a home page). It should not be used to contain the website name, and it should not be used to simply make the biggest text possible.</p>
@@ -23,13 +23,19 @@ file and run the gulp process to compile (either `gulp` or `npm run dev`). #}
 <h2 id="links">Links</h2>
 <p>The text of a link should describe or fully label the page it points to. Some assistive technology, such as screen readers, provide their users with a list of links on a page to navigate. As such, these links need to be sensible without their surrounding context.</p>
 <p>Do not use vague or context-dependent words or sentences:</p>
-<blockquote>
-<p>To get more information about vaccines, click <a href="#example">here</a>.</p>
-</blockquote>
+<figure class="tcds-blockquote tcds-blockquote--small">
+  <blockquote class="tcds-blockquote__quote">
+    <p>To get more information about vaccines, click <a href="#example">here</a>.</p>
+  </blockquote>
+</figure>
+
 <p>Instead, be explicit so the link makes sense without context:</p>
-<blockquote>
-<p>Get more <a href="#example">information about vaccines</a>.</p>
-</blockquote>
+<figure class="tcds-blockquote tcds-blockquote--small">
+  <blockquote class="tcds-blockquote__quote">
+    <p>Get more <a href="#example">information about vaccines</a>.</p>
+  </blockquote>
+</figure>
+
 <p>This provides two other benefits aside from accessibility. It helps search engines better understand the purpose, intent, and content of a page&#39;s links, and improves usability for sighted users, providing a stronger <a href="https://www.nngroup.com/articles/information-scent/" title="Information Scent: How Users Decide Where to Go Next — Nielsen Norman Group">information scent</a> and, in most cases, a larger <a href="https://www.w3.org/WAI/WCAG21/Understanding/target-size.html" title="Understanding Success Criterion 2.5.5: Target Size — W3.org">touch target</a>.</p>
 <h2 id="alternative-image-text">Alternative image text</h2>
 <p>The <code>alt</code> attribute contains <strong>alternative text</strong> to images. It is used by:</p>
@@ -42,15 +48,21 @@ file and run the gulp process to compile (either `gulp` or `npm run dev`). #}
 <h3 id="how-to-write-alt-text">How to write alt text</h3>
 <p>Alternative text should be a literal description of the image. While not overly sterilizing the tone of the text, the goal should be to convey the same <em>visual</em> information to a visually impaired user as a sighted user would receive by looking at the image. In effect, the text should function as a suitable substitute to the image.</p>
 <p>Avoid narrative information:</p>
-<blockquote>
-<p>Dr. Smith giving a patient an annual checkup.</p>
-</blockquote>
+<figure class="tcds-blockquote tcds-blockquote--small">
+  <blockquote class="tcds-blockquote__quote">
+    <p>Dr. Smith giving a patient an annual checkup.</p>
+  </blockquote>
+</figure>
+
 <p>This description leaves all visual details up to the user&#39;s imagination.</p>
 <p>Instead, prefer visually descriptive information:</p>
-<blockquote>
-<p>Doctor applying stethoscope to patient&#39;s chest in her office.</p>
-</blockquote>
-<p>Note that there is a place for narrative descriptions like the former example: <a href="/primitives/images#thumbnail-captions">thumbnail captions</a>. These are marked up with <code>figcaption</code> elements, and are visibly displayed (usually beneath the image). Their purpose is to provide deeper meaning to the image that places it in context. It should be information given to all users, sighted and visually impaired alike.</p>
+<figure class="tcds-blockquote tcds-blockquote--small">
+  <blockquote class="tcds-blockquote__quote">
+    <p>Doctor applying stethoscope to patient's chest in her office.</p>
+  </blockquote>
+</figure>
+
+<p>Note that there is a place for narrative descriptions like the former example: thumbnail captions. These are marked up with <code>figcaption</code> elements, and are visibly displayed (usually beneath the image). Their purpose is to provide deeper meaning to the image that places it in context. It should be information given to all users, sighted and visually impaired alike.</p>
 <h2 id="further-reading">Further reading</h2>
 <ul>
 <li><a href="https://webaim.org/techniques/screenreader/#how">Designing for Screen Reader Compatibility &sect; How Screen Readers Read Content</a> — WebAIM</li>

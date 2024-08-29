@@ -2,52 +2,52 @@
 title: Aspect ratio
 category: Layout
 description: The Design System provides a set of standard aspect ratios, based on industry standards. Using standard ratios can help with responsive designs by ensuring elements, such as images, videos, containers, and other components, can scale to the window or their container while preserving their intended proportions.
-published: false
 ---
 
-* Used in image styles. We crop images not only for predetermined sizes (see [breakpoints](/layout/breakpoints)), but also for each aspect ratio.
-* Thumbnail images
-* Hero component
-* Card component
+WORK IN PROGRESS
+
+* Used for thumbnail images, hero component, card component?
+* Start using for image styles
+  * Replace all the ones we have currently with ones based on a combination between [macro sizes](/layout/space-and-size) and the following aspect ratios (or maybe just square, landscape, and portrait?)
 
 <!--twig
 {% set aspect_ratios = [
   {
-    ratio: "1 / 1",
-    name: "square",
-    description: "Most useful for illustrations and profile pictures, which are often fully rounded.",
+    token: "square",
+    value: "1 / 1",
+    description: "Most useful for illustrations and profile pictures, which are often fully rounded. Also best for Hero images and video backgrounds at <a href=\"/layout/breakpoints\">extra small breakpoints</a> and below.",
   },
   {
-    ratio: "4 / 3",
-    name: "landscape",
+    token: "landscape",
+    value: "4 / 3",
     description: "Best for regular photography.",
   },
   {
-    ratio: "3 / 4",
-    name: "portrait",
-    description: "",
+    token: "portrait",
+    value: "3 / 4",
+    description: "Best for regular photography.",
   },
   {
-    ratio: "16 / 9",
-    name: "widescreen",
-    description: "",
+    token: "widescreen",
+    value: "16 / 9",
+    description: "Best for Hero images and video backgrounds at medium breakpoints and below.",
   },
   {
-    ratio: "21 / 9",
-    name: "ultrawide",
-    description: "",
+    token: "ultrawide",
+    value: "21 / 9",
+    description: "Best for Hero images and video backgrounds at breakpoints above medium.",
   },
 ] %}
 
-<table>
+<table class="doc-table">
   {% for aspect_ratio in aspect_ratios %}
     <tr>
-      <td>{{ aspect_ratio.ratio }}</td>
-      <td><code>{{ aspect_ratio.name }}</code></td>
-      <td>{{ aspect_ratio.description }}</td>
+      <td><code>{{ aspect_ratio.token }}</code></td>
+      <td style="white-space: nowrap"><code>{{ aspect_ratio.value }}</code></td>
+      <td>{{ aspect_ratio.description|raw }}</td>
     </tr>
   {% endfor %}
 </table>
 twig-->
 
-The Design System's CSS provides access to aspect ratio values through custom properties named `--tcds-aspect-ratio-x` where `x` is one of the above names in the table above.
+* can access via custom props

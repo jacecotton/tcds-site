@@ -2,5 +2,72 @@
 file and run the gulp process to compile (either `gulp` or `npm run dev`). #}
 {% extends "@tc/base.twig" %}
 {% block body %}
-<p>Hello world!</p>
+<p>WORK IN PROGRESS</p>
+<ul>
+<li>in general go over responsive design guidance — maybe rename this page to responsive design? other pages are related to responsiveness (grid, size, etc.)<ul>
+<li>OR, create a layout overview page, go over responsive design there, covering info regarding breakpoints, grid, size, etc.</li>
+<li>responsive approach — mobile-first, progressive enhancement, experience parity</li>
+</ul>
+</li>
+<li>these breakpoints are just a starting point and a good way to coordinate broad changes between multiple different elements in a template or page — but we encourage the use of custom breakpoints that adapt to the specific needs of the component or other element being designed</li>
+<li>breakpoints only roughly correspond to general device type — exact device targeting is discouraged</li>
+<li>&quot;in the future&quot; section<ul>
+<li>custom media queries will get replaced with style queries</li>
+<li>window-based breakpoints will get phased out in favor of container queries</li>
+</ul>
+</li>
+</ul>
+
+{% set breakpoints = {
+  "xs": 640,
+  "s": 896,
+  "m": 1280,
+  "l": 1536,
+  "xl": 1920,
+} %}
+
+{% set breakpoints = [
+  {
+    name: "Extra small",
+    token: "xs",
+    value: 640,
+  },
+  {
+    name: "Small",
+    token: "s",
+    value: 896,
+  },
+  {
+    name: "Medium",
+    token: "m",
+    value: 1280,
+  },
+  {
+    name: "Large",
+    token: "l",
+    value: 1536,
+  },
+  {
+    name: "Extra large",
+    token: "xl",
+    value: 1920,
+  },
+] %}
+
+<table class="doc-table">
+  {% for breakpoint in breakpoints %}
+    <tr>
+      <td>{{ breakpoint.name }}</td>
+      <td><code>{{ breakpoint.token }}</code></td>
+      <td><code>{{ breakpoint.value }}px</code></td>
+    </tr>
+  {% endfor %}
+</table>
+
+
+<ul>
+<li>can access via custom props</li>
+<li>hide-above/below utility classes</li>
+<li>site studio settings?</li>
+</ul>
 {% endblock %}
