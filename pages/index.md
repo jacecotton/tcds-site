@@ -16,6 +16,7 @@ Texas Children's Design System is a <b>work in progress</b>. Please check back f
 In the meantime, check out our progress and feel free to leave feedback on our [GitHub repo](https://github.com/jacecotton/tcds/issues) or send it directly to [jxcotton@texaschildrens.org](mailto:jxcotton@texaschildrens.org).
 
 ## What this Design System is
+TBD...
 
 ## What this Design System is not
 **A general brand guideline.** It merely reflects and implements our brand guideline. It is the source of truth for Texas Children's design *on the web*, but is downstream from the organization's broader design authority. While feedback of all kinds is welcome, many aspects are beyond the remit of the web team.

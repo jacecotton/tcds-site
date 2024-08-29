@@ -14,7 +14,15 @@
       </summary>
       <ul>
         {% for page in section.pages %}
-          <li><a href="{{ page.route }}" {{ page.route == route ? 'class="active"' }}>{{ page.menu_title }}</a></li>
+          <li>
+            {% if page.published != false %}
+              <a href="{{ page.route }}" {{ page.route == route ? 'class="active"' }}>
+                {{ page.menu_title }}
+              </a>
+            {% else %}
+              <span>{{ page.menu_title }}</span>
+            {% endif %}
+          </li>
         {% endfor %}
       </ul>
     </details>

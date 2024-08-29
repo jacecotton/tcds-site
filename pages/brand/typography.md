@@ -56,6 +56,10 @@ Texas Children's typefaces include the serif [Calluna](https://fonts.adobe.com/f
     }
   }
 
+  .typeface-box p {
+    margin: 0;
+  }
+
   .typeface-box p span {
     display: block;
   }

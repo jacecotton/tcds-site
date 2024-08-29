@@ -40,4 +40,23 @@ files.filter(file => file.name.includes(".md")).forEach((file) => {
   }
 });
 
+const weights = {
+  "Introduction": 0,
+  "Brand": 1,
+  "Layout": 2,
+  "Components": 3,
+  "Templates": 4,
+  "Accessibility": 5,
+};
+
+content.sort((a, b) => {
+  return a.title in weights && b.title in weights && weights[a.title] < weights[b.title] ? -1 : 1;
+});
+
+content.forEach((category) => {
+  category.pages.sort((a, b) => {
+    return a.title === "Overview" || a.weight < b.weight ? -1 : 1;
+  });
+});
+
 fs.writeFileSync("./content.json", JSON.stringify(content, null, 2));

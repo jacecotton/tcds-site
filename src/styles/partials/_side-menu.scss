@@ -1,0 +1,28 @@
+.tcds-side-menu {
+  ul {
+    li {
+      > span {
+        cursor: default;
+        position: relative;
+        display: flex;
+        align-items: center;
+        filter: grayscale(1);
+        opacity: .6;
+
+        &::after {
+          content: "(coming soon)";
+          position: absolute;
+          right: 1rem;
+          font-size: var(--tcds-font-size-xs);
+          color: var(--tcds-color-gray-3);
+          opacity: 0;
+          transition: opacity .15s ease-in;
+        }
+
+        &:hover::after {
+          opacity: 1;
+        }
+      }
+    }
+  }
+}

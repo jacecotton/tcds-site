@@ -2,7 +2,7 @@
   <ul>
     {% for category in content %}
       <li>
-        <a href="{{ category.pages[0].route }}">{{ category.title }}</a>
+        <a href="{{ category.pages|filter(i => i.published != false)|first.route }}">{{ category.title }}</a>
       </li>
     {% endfor %}
   </ul>

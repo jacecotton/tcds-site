@@ -2,6 +2,7 @@
 title: Aspect ratio
 category: Layout
 description: The Design System provides a set of standard aspect ratios, based on industry standards. Using standard ratios can help with responsive designs by ensuring elements, such as images, videos, containers, and other components, can scale to the window or their container while preserving their intended proportions.
+published: false
 ---
 
 * Used in image styles. We crop images not only for predetermined sizes (see [breakpoints](/layout/breakpoints)), but also for each aspect ratio.

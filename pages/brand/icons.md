@@ -2,6 +2,7 @@
 category: Brand
 title: Icons
 description: Icons are illustrative aids to enhance understanding, supplement meaning, and reinforce brand tone and style.
+published: false
 ---
 
 ## Best practices
