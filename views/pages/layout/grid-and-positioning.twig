@@ -1,0 +1,21 @@
+{# DO NOT EDIT. This file was compiled from Markdown; please edit the source .md
+file and run the gulp process to compile (either `gulp` or `npm run dev`). #}
+{% extends "@tc/base.twig" %}
+{% block body %}
+<h2 id="positioning">Positioning</h2>
+<p>In web layout nomenclature, <strong>positioning</strong> has to do with the <em>alignment</em> and <em>justification</em> of an element.</p>
+<p>The <strong>alignment</strong> of an element is its position along the <em>cross axis</em>, or in the <em>block direction</em>.</p>
+<p>The <strong>justification</strong> of an element is its position along the <em>main axis</em>, or in the <em>inline direction</em>.</p>
+<p>In other words, by default and in most cases:</p>
+<ul>
+<li>&quot;alignment&quot; in web terms equals &quot;vertical alignment&quot; in plain English</li>
+<li>&quot;justification&quot; in web terms equals &quot;horizontal alignment&quot; in plain English</li>
+</ul>
+<p>There are two primary cases where the above are swapped:</p>
+<ul>
+<li>When the <code>flex-direction</code> of a flex container is set to <code>column</code></li>
+<li>In vertically-written languages (not generally applicable)</li>
+</ul>
+<h3 id="floating">Floating</h3>
+<p>Floating is neither positioning nor alignment, but rather describes how surrounding content should flow around an element.</p>
+{% endblock %}

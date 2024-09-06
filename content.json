@@ -103,20 +103,19 @@
       },
       {
         "title": "Breakpoints",
-        "description": "Breakpoints are used to apply styles and other settings based on the viewport size (window or screen). The Design System provides a set of standard breakpoints, custom media queries for them, as well as breakpoint-based utilities.",
+        "description": "The Design System uses a standard set of breakpoints internally, and exposes them externally through a variety of conditional component props and utility classes.",
         "display_title": "Breakpoints",
         "meta_title": "Breakpoints",
         "menu_title": "Breakpoints",
         "route": "/layout/breakpoints"
       },
       {
-        "title": "Grid and alignment",
-        "description": "Guidance and utilities for creating grid layouts and managing alignment.",
-        "published": false,
-        "display_title": "Grid and alignment",
-        "meta_title": "Grid and alignment",
-        "menu_title": "Grid and alignment",
-        "route": "/layout/grid-and-alignment"
+        "title": "Layout design",
+        "description": "Layouts are designed with grids, flexible distribution, and responsive positioning and sizing.",
+        "display_title": "Layout design",
+        "meta_title": "Layout design",
+        "menu_title": "Layout design",
+        "route": "/layout/layout-design"
       },
       {
         "title": "Space and size",

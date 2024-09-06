@@ -1,0 +1,168 @@
+{# DO NOT EDIT. This file was compiled from Markdown; please edit the source .md
+file and run the gulp process to compile (either `gulp` or `npm run dev`). #}
+{% extends "@tc/base.twig" %}
+{% block body %}
+<h2 id="grid-layout">Grid layout</h2>
+<p>A grid layout defines columns, rows, and regions within which elements can reside and be <a href="#positioning">positioned</a>.</p>
+<p>Typically, layouts should use a 12-column grid, with regions that span columns and rows as needed.</p>
+<style>
+.grid-demo {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: .5rem;
+  max-width: 650px;
+  margin: 1rem auto;
+  aspect-ratio: var(--tcds-aspect-ratio-widescreen);
+  background: rgb(0 0 0 / 2.5%);
+  padding: 1rem;
+  border-radius: var(--tcds-border-radius-m);
+}
+
+.grid-demo__column-fill {
+  grid-column: span 1;
+  border: 1px dashed var(--tcds-color-navy);
+  background: var(--tcds-color-baby-blue);
+  border-top: 0;
+  border-bottom: 0;
+  opacity: .2;
+  grid-row: 1 / 6;
+  z-index: 1;
+}
+
+.grid-demo__region {
+  background: rgb(255 0 15 / 12%);
+  border-radius: var(--tcds-border-radius-m);
+  display: grid;
+  place-items: center;
+  text-align: center;
+  font-family: var(--tcds-font-ui);
+  font-weight: var(--tcds-font-weight-semibold);
+  font-size: var(--tcds-font-size-s);
+  z-index: 2;
+  color: var(--tcds-color-gray-3);
+}
+
+.responsive-demo {
+  width: 100%;
+  margin: 1rem auto;
+  display: grid;
+  grid-template-columns: 1fr 2rem 1fr;
+  gap: 1rem;
+  place-items: center;
+  aspect-ratio: var(--tcds-aspect-ratio-ultrawide);
+}
+
+.responsive-demo .grid-demo {
+  margin: 0;
+}
+
+.grid-demo--desktop {
+  height: 50%;
+  width: 100%;
+}
+
+.grid-demo--mobile {
+  width: 50%;
+  height: 100%;
+}
+</style>
+
+<div class="grid-demo">
+  
+    {% for i in 1..12 %}
+      <div class="grid-demo__column-fill" style="grid-column: {{ i }} / {{ i + 1 }}"></div>
+    {% endfor %}
+  
+  <div class="grid-demo__region" style="grid-column: 1 / 9; grid-row: 1 / 4"></div>
+  <div class="grid-demo__region" style="grid-column: 9 / -1; grid-row: 1 / 2"></div>
+  <div class="grid-demo__region" style="grid-column: 9 / -1; grid-row: 2 / 3"></div>
+  <div class="grid-demo__region" style="grid-column: 9 / -1; grid-row: 3 / 4"></div>
+  <div class="grid-demo__region" style="grid-column: 1 / 7; grid-row: 4 / 6"></div>
+  <div class="grid-demo__region" style="grid-column: 7 / -1; grid-row: 4 / 6"></div>
+</div>
+
+<p>For creating responsive layouts, each column should be an even 12th of the container&#39;s available width, which may be flexible. Therefore, do not define column widths as a fixed number (like with a pixel value).</p>
+<p>From there, regions can be set to span a different number of columns and rows as the viewport shrinks and grows.</p>
+<div class="responsive-demo">
+  <div class="grid-demo grid-demo--desktop">
+    
+      {% for i in 1..12 %}
+        <div class="grid-demo__column-fill" style="grid-column: {{ i }} / {{ i + 1 }}"></div>
+      {% endfor %}
+    
+    <div class="grid-demo__region" style="grid-column: 1 / 9; grid-row: 1 / 4">
+      <span>8 cols / 3 rows</span>
+    </div>
+    <div class="grid-demo__region" style="grid-column: 9 / -1; grid-row: 1 / 2">
+      <span>4 cols / 1 row</span>
+    </div>
+    <div class="grid-demo__region" style="grid-column: 9 / -1; grid-row: 2 / 3">
+      <span>4 cols / 1 row</span>
+    </div>
+    <div class="grid-demo__region" style="grid-column: 9 / -1; grid-row: 3 / 4">
+      <span>4 cols / 1 row</span>
+    </div>
+    <div class="grid-demo__region" style="grid-column: 1 / 7; grid-row: 4 / 6">
+      <span>6 cols / 2 rows</span>
+    </div>
+    <div class="grid-demo__region" style="grid-column: 7 / -1; grid-row: 4 / 6">
+      <span>6 cols / 2 rows</span>
+    </div>
+  </div>
+  <tcds-icon icon="arrow-right"></tcds-icon>
+  <div class="grid-demo grid-demo--mobile">
+    
+      {% for i in 1..12 %}
+        <div class="grid-demo__column-fill" style="grid-column: {{ i }} / {{ i + 1 }}"></div>
+      {% endfor %}
+    
+    <div class="grid-demo__region" style="grid-column: 1 / -1; grid-row: 1 / 4">
+      <span>12 cols / 3 rows</span>
+    </div>
+    <div class="grid-demo__region" style="grid-column: 1 / 5; grid-row: 4 / 5">
+      <span>4 cols / 1 row</span>
+    </div>
+    <div class="grid-demo__region" style="grid-column: 5 / 9; grid-row: 4 / 5">
+      <span>4 cols / 1 row</span>
+    </div>
+    <div class="grid-demo__region" style="grid-column: 9 / -1; grid-row: 4 / 5">
+      <span>4 cols / 1 row</span>
+    </div>
+    <div class="grid-demo__region" style="grid-column: 1 / 7; grid-row: 5 / 6">
+      <span>6 cols / 1 row</span>
+    </div>
+    <div class="grid-demo__region" style="grid-column: 7 / -1; grid-row: 5 / 6">
+      <span>6 cols / 1 row</span>
+    </div>
+  </div>
+</div>
+
+<p><small style="display: block" class="text-center">INSERT ILLUSTRATION</small></p>
+<p>Grid layouts can also be used to create a smaller number of columns of equal size to evenly distribute elements, like a list of cards:</p>
+<p><small style="display: block" class="text-center">INSERT ILLUSTRATION</small></p>
+<p>Note that if the number of items exceeds the number of available columns, rows are automatically created (implicit rows):</p>
+<p><small style="display: block" class="text-center">INSERT ILLUSTRATION</small></p>
+<p>To create new rows as the available space shrinks, reduce the number of columns defined in the grid:</p>
+<p><small style="display: block" class="text-center">INSERT ILLUSTRATION</small></p>
+<h2 id="flex-layout">Flex layout</h2>
+<h2 id="positioning">Positioning</h2>
+<p>In web layout nomenclature, <strong>positioning</strong> has to do with the <em>alignment</em> and <em>justification</em> of an element.</p>
+<p>The <strong>alignment</strong> of an element is its position along the <em>cross axis</em>, or in the <em>block direction</em>.</p>
+<p>The <strong>justification</strong> of an element is its position along the <em>main axis</em>, or in the <em>inline direction</em>.</p>
+<p>In other words, by default and in most cases:</p>
+<ul>
+<li>&quot;alignment&quot; in web terms equals &quot;vertical alignment&quot; in plain English</li>
+<li>&quot;justification&quot; in web terms equals &quot;horizontal alignment&quot; in plain English</li>
+</ul>
+<p>There are two primary cases where the above are swapped:</p>
+<ul>
+<li>When the <code>flex-direction</code> of a flex container is set to <code>column</code></li>
+<li>In vertically-written languages (not generally applicable)</li>
+</ul>
+<h3 id="floating">Floating</h3>
+<p>Floating is neither positioning nor alignment, but rather describes how surrounding content should flow around an element.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://fluent2.microsoft.design/layout">https://fluent2.microsoft.design/layout</a></li>
+</ul>
+{% endblock %}

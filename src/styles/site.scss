@@ -9,6 +9,9 @@
 @use "theme/doc-table" as *;
 @use "theme/prism" as *;
 
+@use "pages/breakpoints" as *;
+@use "pages/typography" as *;
+
 body {
   display: flex;
   flex-direction: column;

@@ -4,35 +4,13 @@ category: Brand
 description: Good typography communicates ideas clearly and reinforces our brand. To these ends, the Design System provides styles that establish clear visual hierarchy, consistency, and rhythm, while reflecting brand identity and tone.
 ---
 
-<style>
-  .typeface-demo {
-    position: relative;
-    z-index: 1;
-    padding: 3rem;
-    border-radius: var(--tcds-border-radius-l);
-  }
-
-  .typeface-demo span:nth-of-type(1) {
-    display: block;
-    color: var(--tcds-color-navy);
-  }
-
-  .typeface-demo span:nth-of-type(2) {
-    color: var(--tcds-color-red);
-    position: relative;
-  }
-
-  .typeface-demo span small {
-    position: absolute;
-    top: 1.75rem;
-  }
-</style>
-
-<div class="typeface-demo bg-secondary bg-logo line-height-xs">
-  <span class="font-subheadings font-size-xl font-weight-semibold">The difference is</span>
-  <span class="font-display font-size-3xl font-weight-semibold">
-    life changing <small class="font-size-m">&trade;</small>
-  </span>
+<div class="typography-demo bg-secondary bg-logo line-height-xs">
+  <p class="font-weight-semibold">
+    <span class="font-subheadings font-size-xl">The difference is</span><br>
+    <span class="font-display font-size-3xl">
+      life changing <sup class="font-size-m">&trade;</sup>
+    </span>
+  </p>
   <p class="font-copy font-size-m">At <b>Texas Children's Hospital</b>, we're proud to be recognized as one of the nation's best children's hospitals.</p>
   <p class="font-ui font-size-xs font-weight-semibold">Button or small text</p>
 </div>
@@ -42,58 +20,8 @@ The above demonstrates an effective visual hierarchy through the combination of 
 ## Typefaces
 Texas Children's typefaces include the serif [Calluna](https://fonts.adobe.com/fonts/calluna) and the sans-serif [Mont](https://www.fontfabric.com/fonts/mont/).
 
-<style>
-  .typeface-box {
-    padding: 4rem 3rem;
-    margin-bottom: 1.5rem;
-    display: grid;
-    align-items: center;
-  }
-
-  @media (min-width: 720px) {
-    .typeface-box {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-
-  .typeface-box p {
-    margin: 0;
-  }
-
-  .typeface-box p span {
-    display: block;
-  }
-
-  .typeface-box p small:first-of-type {
-    margin-right: 1ch;
-  }
-
-  .typeface-box ul {
-    letter-spacing: .3px;
-    margin: 2rem 0 0 2rem;
-  }
-
-  @media (min-width: 720px) {
-    .typeface-box ul {
-      margin: 0;
-    }
-  }
-
-  .typeface-box ::marker {
-    color: var(--tcds-color-primary);
-    font-size: 1.5rem;
-    line-height: 0;
-  }
-
-  @media (min-width: 720px) {
-    .typeface-box li {
-      padding-left: 1rem;
-    }
-  }
-</style>
-
-<div class="typeface-box bg-secondary">
-  <p class="font-serif line-height-s">
+<div class="typeface-demo bg-secondary">
+  <p class="font-serif line-height-xs">
     <span class="font-size-3xl">Calluna</span>
     <small class="font-weight-semibold font-size-m">Calluna Semibold</small>
     <small class="font-weight-bold font-size-m">Calluna Bold</small>
@@ -105,8 +33,8 @@ Texas Children's typefaces include the serif [Calluna](https://fonts.adobe.com/f
   </ul>
 </div>
 
-<div class="typeface-box bg-secondary">
-  <p class="font-sans-serif line-height-s">
+<div class="typeface-demo bg-secondary">
+  <p class="font-sans-serif line-height-xs">
     <span class="font-size-3xl">Mont</span>
     <small class="font-weight-semibold font-size-m">Mont Semibold</small>
     <small class="font-weight-bold font-size-m">Mont Bold</small>
@@ -129,67 +57,6 @@ See the [font family API](#font-families) for available CSS and HTML utilities.
 ## Type scale
 Texas Children's Design System uses a base-16 pixel font size on the web, with a type scale based on the following ratios.
 
-<style>
-  .typescale-box {
-    padding: 1rem 0 2rem 2rem;
-  }
-
-  .typescale-table {
-    width: 100%;
-  }
-
-  .typescale-table td {
-    vertical-align: bottom;
-    line-height: 1;
-  }
-
-  .typescale-table td:nth-child(1) {
-    font-family: var(--tcds-font-monospace);
-    font-size: var(--tcds-font-size-xs);
-    text-align: right;
-    padding: 0 1rem 8px 0;
-    width: 0%;
-  }
-
-  .typescale-table td:nth-child(2) {
-    padding-block: 1.5rem .5rem;
-    border-bottom: 1px solid var(--tcds-color-baby-blue-2);
-    position: relative;
-
-    &::before {
-      content: "&nbsp;";
-      visibility: hidden;
-    }
-
-    span {
-      position: absolute;
-      left: 0;
-      right: 0;
-      white-space: nowrap;
-      overflow: hidden;
-      /* text-overflow: ellipsis; */
-
-      &::after {
-        content: "";
-        position: absolute;
-        width: 100px;
-        height: 100%;
-        right: 0;
-        top: 0;
-        background-image: linear-gradient(90deg, rgb(0 0 0 / 0%), var(--tcds-color-background) 85%);
-      }
-    }
-  }
-
-  .typescale-table td:nth-child(3) {
-    font-family: var(--tcds-font-monospace);
-    font-size: var(--tcds-font-size-xs);
-    padding-inline: 1rem;
-    width: 0%;
-    text-transform: uppercase;
-  }
-</style>
-
 <!--twig
 {% set typescale = {
   "4xl": 6,
@@ -205,40 +72,36 @@ Texas Children's Design System uses a base-16 pixel font size on the web, with a
 
 <tcds-tabs>
   <tcds-tab label="Calluna">
-    <div class="typescale-box bg-secondary">
-      <table class="typescale-table">
+    <table class="typescale-chart bg-secondary font-serif">
+      <tr>
+        <th class="visually-hidden">Size in points</th>
+        <th class="visually-hidden">Visual example</th>
+        <th class="visually-hidden">Size token</th>
+      </tr>
+      {% for size, value in typescale %}
         <tr>
-          <th class="visually-hidden">Size in points</th>
-          <th class="visually-hidden">Visual example</th>
-          <th class="visually-hidden">Size token</th>
+          <td>{{ value }}:1</td>
+          <td class="font-size-{{ size }}"><span>The difference is life changing and it starts with you.</span></td>
+          <td>{{ size }}</td>
         </tr>
-        {% for size, value in typescale %}
-          <tr>
-            <td>{{ value }}:1</td>
-            <td class="font-size-{{ size }}"><span>The difference is life changing and it starts with you.</span></td>
-            <td>{{ size }}</td>
-          </tr>
-        {% endfor %}
-      </table>
-    </div>
+      {% endfor %}
+    </table>
   </tcds-tab>
   <tcds-tab label="Mont">
-    <div class="typescale-box bg-secondary">
-      <table class="typescale-table font-sans-serif">
+    <table class="typescale-chart bg-secondary font-sans-serif">
+      <tr>
+        <th class="visually-hidden">Size in points</th>
+        <th class="visually-hidden">Visual example</th>
+        <th class="visually-hidden">Size token</th>
+      </tr>
+      {% for size, value in typescale %}
         <tr>
-          <th class="visually-hidden">Size in points</th>
-          <th class="visually-hidden">Visual example</th>
-          <th class="visually-hidden">Size token</th>
+          <td>{{ value }}:1</td>
+          <td class="font-size-{{ size }}"><span>The difference is life changing and it starts with you.</span></td>
+          <td>{{ size }}</td>
         </tr>
-        {% for size, value in typescale %}
-          <tr>
-            <td>{{ value }}:1</td>
-            <td class="font-size-{{ size }}"><span>The difference is life changing and it starts with you.</span></td>
-            <td>{{ size }}</td>
-          </tr>
-        {% endfor %}
-      </table>
-    </div>
+      {% endfor %}
+    </table>
   </tcds-tab>
 </tcds-tabs>
 twig-->
@@ -251,24 +114,11 @@ twig-->
 
 See the [font size API](#font-sizes) for available CSS and HTML utilities.
 
+### Heading elements
+* Include all style specifications for each heading (not just font size)
+
 ## Type color
 In most cases, type color is handled automatically by the containing element, but you can further adjust it with [color utilities](/brand/color).
-
-<style>
-.color-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1.5rem;
-  font-family: var(--tcds-font-ui);
-  font-size: var(--tcds-font-size-xs);
-  margin: 2rem 0;
-}
-
-.color-item {
-  padding: 2rem;
-  border-radius: var(--tcds-border-radius-m);
-}
-</style>
 
 <!--twig
 {% set schemes = [
@@ -302,9 +152,9 @@ In most cases, type color is handled automatically by the containing element, bu
   },
 ] %}
 
-<div class="color-grid">
+<div class="type-color-demo">
   {% for scheme in schemes %}
-    <div class="color-item bg-{{ scheme.scheme }}" data-theme="{{ scheme.theme }}">
+    <div class="type-color-demo__item bg-{{ scheme.scheme }}" data-theme="{{ scheme.theme }}">
       {{ scheme.text }} text on a {{ scheme.background }} background with a <a href="#">{{ scheme.link }} link</a>.
     </div>
   {% endfor %}
@@ -316,6 +166,13 @@ twig-->
 **Type color is not decorative.** Color plays an important role in conveying meaning and carries specific connotations within our brand. Red is reserved for display headlines and taglines, and should not be used for routine section headings or anywhere in standard body copy (except for links).
 
 **Stick to navy for body copy, and red for primary headlines and links.** Alternatively, if using navy as a background color, use white for text and baby blue links.
+
+## Line length
+* 80 ch
+
+## Text alignment
+* Don't center large text
+* Never right-align text in left-to-right languages except for data inside of tables
 
 ## API
 Prefixes and tokens are combined to create HTML utilities (example: <code>class="font-serif"</code>) or CSS variables (example: <code>var(--tcds-font-size-2xl)</code>).
@@ -504,3 +361,23 @@ For accessibility reasons, font sizes are set in `rem`s (see [WCAG 2.2 Technique
     </tr>
   </tbody>
 </table>
+
+### Text alignment
+<table class="doc-table doc-table--typography">
+  <thead>
+    <tr>
+      <th style="width: 25ch">Class name prefix</th>
+      <th style="width: 25ch">Token</th>
+      <th style="width: 25ch">Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="white-space: nowrap"><code>.text-</code></td>
+      <td><code>center</code></td>
+      <td><code>center</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<small>**Note:** [Breakpoint conditionals](/layout/breakpoints#conditional-utility-classes) are available for the these classes (`above` only, e.g. `class="text-center@above:m"`).</small>

@@ -1,0 +1,137 @@
+.typography-demo {
+  position: relative;
+  z-index: 1;
+  padding: 3rem;
+  border-radius: var(--tcds-border-radius-l);
+
+  p {
+    &:nth-of-type(1) {
+      span {
+        &:nth-of-type(2) {
+          color: var(--tcds-color-primary);
+          position: relative;
+
+          sup {
+            position: relative;
+            left: -.75rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+.typeface-demo {
+  padding: 4rem 3rem;
+  margin-bottom: 1.5rem;
+  display: grid;
+  align-items: center;
+
+  @media (min-width: 720px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  p {
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(2, max-content);
+    gap: 0 1ch;
+
+    span {
+      grid-column: 1 / -1;
+    }
+  }
+
+  ul {
+    margin: 2rem 0 0 2rem;
+
+    @media (min-width: 720px) {
+      margin: 0;
+    }
+
+    ::marker {
+      color: var(--tcds-color-primary);
+      font-size: 1.5rem;
+      line-height: 0;
+    }
+  }
+
+  li {
+    @media (min-width: 720px) {
+      padding-left: 1rem;
+    }
+  }
+}
+
+.typescale-chart {
+  font-size: var(--tcds-font-size-xs);
+  padding: 2rem;
+  width: 100%;
+
+  td {
+    vertical-align: bottom;
+    line-height: 1;
+
+    &:nth-child(1) {
+      font-family: var(--tcds-font-monospace);
+      text-align: right;
+      padding: 0 1rem 8px 0;
+      width: 0%;
+    }
+
+    &:nth-child(2) {
+      padding-block: 1.5rem .5rem;
+      border-bottom: 1px dashed var(--tcds-shade-medium);
+      position: relative;
+
+      &::before {
+        content: "&nbsp;";
+        visibility: hidden;
+      }
+
+      span {
+        position: absolute;
+        left: 0;
+        right: 0;
+        white-space: nowrap;
+        overflow: hidden;
+        // text-overflow: ellipsis;
+
+        &::after {
+          content: "";
+          width: 100px;
+          height: 100%;
+          position: absolute;
+          right: 0;
+          top: 0;
+          background-image: linear-gradient(90deg, rgb(0 0 0 / 0%), var(--tcds-color-background) 85%);
+        }
+      }
+    }
+
+    &:nth-child(3) {
+      font-family: var(--tcds-font-monospace);
+      padding-inline: 1rem;
+      width: 0%;
+      text-transform: uppercase;
+    }
+  }
+}
+
+.type-color-demo {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  font-family: var(--tcds-font-ui);
+  font-size: var(--tcds-font-size-xs);
+  margin: 2rem 0;
+
+  @media (min-width: 720px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  &__item {
+    padding: 2rem;
+    border-radius: var(--tcds-border-radius-m);
+  }
+}
