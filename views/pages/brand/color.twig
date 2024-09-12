@@ -4,40 +4,6 @@ file and run the gulp process to compile (either `gulp` or `npm run dev`). #}
 {% block body %}
 <h2 id="palette">Palette</h2>
 <p>Texas Children&#39;s Design System provides a standardized, brand-compliant color palette. It uses a semantic naming system to help in the selection of colors that are thematically consistent and contextually meaningful.</p>
-<style>
-.color-palette {
-  font-family: var(--tcds-font-sans-serif);
-  margin: 1rem 0 3rem;
-}
-
-.color-palette code {
-  background: none;
-  border: none;
-}
-
-.color-palette dt {
-  font-weight: normal;
-}
-
-.color-palette .hex {
-  font-weight: bold;
-}
-
-.color-palette .cmyk {
-  color: var(--tcds-color-gray-3);
-  font-size: var(--tcds-font-size-small);
-}
-
-.swatch {
-  aspect-ratio: 2 / 1;
-  border-radius: 10px;
-}
-
-.swatch--white {
-  box-shadow: 0 5px 10px -2px rgba(0, 0, 0, .05);
-}
-</style>
-
 
 {% set colors = {
   "Primary": [
@@ -108,23 +74,20 @@ file and run the gulp process to compile (either `gulp` or `npm run dev`). #}
   ]
 } %}
 
-<div class="color-palette grid column-gap-m row-gap-xs" style="--grid-columns: 3">
-  {% for category, palette in colors %}
-    <div class="column-full">
-      <p class="font-weight-bold" style="margin-top: 2rem">{{ category }}</p>
-    </div>
+{% for category, palette in colors %}
+  <h3>{{ category }}</h3>
+
+  <dl class="color-palette">
     {% for color in palette %}
-      <div class="column-1 flex flex--column flex--no-wrap gap-xs">
-        <div class="swatch swatch--{{ color.token }}" style="background: var(--tcds-color-{{ color.token }})"></div>
-        <code>{{ color.token }}</code>
-        <span class="hex">
-          <span class="visually-hidden">Hex code</span> {{ color.hex }}
-        </span>
-        {% if color.cmyk %}
-          <span class="cmyk">{{ color.cmyk }}</span>
-        {% endif %}
+      <div class="color-palette__item">
+        <div class="color-palette__swatch" style="background: var(--tcds-color-{{ color.token }})"></div>
+        <dt><code>{{ color.token }}</code></dt>
+        <dd>
+          <b>{{ color.hex }}</b>
+          <span>{{ color.cmyk }}</span>
+        </dd>
       </div>
     {% endfor %}
-  {% endfor %}
-</div>
+  </dl>
+{% endfor %}
 {% endblock %}

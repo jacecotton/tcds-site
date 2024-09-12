@@ -13,7 +13,7 @@ file and run the gulp process to compile (either `gulp` or `npm run dev`). #}
   <p class="font-ui font-size-xs font-weight-semibold">Button or small text</p>
 </div>
 
-<p>The above demonstrates an effective visual hierarchy through the combination of <a href="#type-scale">type size</a> and <a href="#typefaces">weight</a>, as well as brand identity and tone through <a href="#typefaces">typeface</a> and <a href="#type-color">color</a>.</p>
+<p>The above reflects brand identity and tone through <a href="#typefaces">typeface</a> and <a href="#type-color">color</a>, as well as effective visual hierarchy through the combination of <a href="#type-scale">type size</a> and <a href="#typefaces">weight</a>.</p>
 <h2 id="typefaces">Typefaces</h2>
 <p>Texas Children&#39;s typefaces include the serif <a href="https://fonts.adobe.com/fonts/calluna">Calluna</a> and the sans-serif <a href="https://www.fontfabric.com/fonts/mont/">Mont</a>.</p>
 <div class="typeface-demo bg-secondary">
@@ -104,6 +104,7 @@ file and run the gulp process to compile (either `gulp` or `npm run dev`). #}
 <h3 id="heading-elements">Heading elements</h3>
 <ul>
 <li>Include all style specifications for each heading (not just font size)</li>
+<li>Utility classes do exist (document in API?)</li>
 </ul>
 <h2 id="type-color">Type color</h2>
 <p>In most cases, type color is handled automatically by the containing element, but you can further adjust it with <a href="/brand/color">color utilities</a>.</p>
@@ -157,8 +158,12 @@ file and run the gulp process to compile (either `gulp` or `npm run dev`). #}
 </ul>
 <h2 id="text-alignment">Text alignment</h2>
 <ul>
-<li>Don&#39;t center large text</li>
+<li>Don&#39;t center long lines of text at large font sizes</li>
 <li>Never right-align text in left-to-right languages except for data inside of tables</li>
+</ul>
+<h2 id="numerals">Numerals</h2>
+<ul>
+<li>Lining numerals, never oldstyle, tabular nums if table data (<code>.font-variant-tabular-nums</code>).</li>
 </ul>
 <h2 id="api">API</h2>
 <p>Prefixes and tokens are combined to create HTML utilities (example: <code>class="font-serif"</code>) or CSS variables (example: <code>var(--tcds-font-size-2xl)</code>).</p>

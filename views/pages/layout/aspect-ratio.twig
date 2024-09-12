@@ -2,55 +2,51 @@
 file and run the gulp process to compile (either `gulp` or `npm run dev`). #}
 {% extends "@tc/base.twig" %}
 {% block body %}
-<p>WORK IN PROGRESS</p>
+{% set aspect_ratios = [
+  {
+    token: "square",
+    value: "1 : 1",
+    description: "Most useful for illustrations and profile pictures, which are often fully rounded. Also best for Hero images and video backgrounds at <a href=\"/layout/breakpoints\">extra small breakpoints</a> and below.",
+  },
+  {
+    token: "landscape",
+    value: "4 : 3",
+    description: "Best for regular photography.",
+  },
+  {
+    token: "portrait",
+    value: "3 : 4",
+    description: "Best for regular photography.",
+  },
+  {
+    token: "widescreen",
+    value: "16 : 9",
+    description: "Best for Hero images and video backgrounds at medium breakpoints and below.",
+  },
+  {
+    token: "ultrawide",
+    value: "21 : 9",
+    description: "Best for Hero images and video backgrounds at breakpoints above medium.",
+  },
+] %}
+
+<dl class="aspect-ratio-chart">
+  {% for aspect_ratio in aspect_ratios %}
+    <div>
+      <dt><code>{{ aspect_ratio.token }}</code></dt>
+      <dd style="aspect-ratio: var(--tcds-aspect-ratio-{{ aspect_ratio.token }})">
+        {{ aspect_ratio.value }}
+      </dd>
+    </div>
+  {% endfor %}
+</dl>
+
+
 <ul>
 <li>Used for thumbnail images, hero component, card component?</li>
 <li>Start using for image styles<ul>
 <li>Replace all the ones we have currently with ones based on a combination between <a href="/layout/space-and-size">macro sizes</a> and the following aspect ratios (or maybe just square, landscape, and portrait?)</li>
 </ul>
 </li>
-</ul>
-
-{% set aspect_ratios = [
-  {
-    token: "square",
-    value: "1 / 1",
-    description: "Most useful for illustrations and profile pictures, which are often fully rounded. Also best for Hero images and video backgrounds at <a href=\"/layout/breakpoints\">extra small breakpoints</a> and below.",
-  },
-  {
-    token: "landscape",
-    value: "4 / 3",
-    description: "Best for regular photography.",
-  },
-  {
-    token: "portrait",
-    value: "3 / 4",
-    description: "Best for regular photography.",
-  },
-  {
-    token: "widescreen",
-    value: "16 / 9",
-    description: "Best for Hero images and video backgrounds at medium breakpoints and below.",
-  },
-  {
-    token: "ultrawide",
-    value: "21 / 9",
-    description: "Best for Hero images and video backgrounds at breakpoints above medium.",
-  },
-] %}
-
-<table class="doc-table">
-  {% for aspect_ratio in aspect_ratios %}
-    <tr>
-      <td><code>{{ aspect_ratio.token }}</code></td>
-      <td style="white-space: nowrap"><code>{{ aspect_ratio.value }}</code></td>
-      <td>{{ aspect_ratio.description|raw }}</td>
-    </tr>
-  {% endfor %}
-</table>
-
-
-<ul>
-<li>can access via custom props</li>
 </ul>
 {% endblock %}

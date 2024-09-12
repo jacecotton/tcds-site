@@ -1,0 +1,27 @@
+.aspect-ratio-chart {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1rem;
+  font-family: var(--tcds-font-ui);
+  font-variant: tabular-nums;
+  margin: 2rem 0;
+
+  div {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: .5rem;
+  }
+
+  dt {
+    font-size: var(--tcds-font-size-xs);
+  }
+
+  dd {
+    width: 100%;
+    background: var(--tcds-color-baby-blue);
+    border-radius: var(--tcds-border-radius-m);
+    display: grid;
+    place-items: center;
+  }
+}

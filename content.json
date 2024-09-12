@@ -8,7 +8,7 @@
         "display_title": "Texas Children's Design System",
         "description": "Texas Children's Design System is the single source of truth for web design and front-end development at Texas Children's. It provides a centralized library of web components, design resources, and best practice guidelines, aiming to enhance consistency, standardization, and time-to-launch for web projects at Texas Children's.",
         "route": "/",
-        "template": "index",
+        "template": "/index",
         "menu_title": "Overview"
       },
       {
@@ -18,7 +18,7 @@
         "display_title": "Installation",
         "meta_title": "Installation",
         "menu_title": "Installation",
-        "description": "Default description",
+        "description": "",
         "route": "/installation"
       },
       {
@@ -28,7 +28,7 @@
         "display_title": "Contributing",
         "meta_title": "Contributing",
         "menu_title": "Contributing",
-        "description": "Default description",
+        "description": "",
         "route": "/contributing"
       }
     ]
@@ -68,7 +68,7 @@
         "display_title": "Logos",
         "meta_title": "Logos",
         "menu_title": "Logos",
-        "description": "Default description",
+        "description": "",
         "route": "/brand/logos"
       },
       {
@@ -123,7 +123,7 @@
         "display_title": "Space and size",
         "meta_title": "Space and size",
         "menu_title": "Space and size",
-        "description": "Default description",
+        "description": "",
         "route": "/layout/space-and-size"
       },
       {
@@ -145,191 +145,237 @@
         "menu_title": "Overview",
         "description": "Components are reusable building blocks for creating pages and interfaces. They are intended to be configurable, content-agnostic, and context-aware, while also being consistent and predictable. Using a component-based approach to building pages and interfaces, you can more quickly and easily deliver consistent, quality-controlled experiences to end users.",
         "route": "/components",
-        "template": "components/index",
+        "template": "/components/index",
         "display_title": "Components",
         "meta_title": "Components"
       },
       {
-        "title": "Accordion",
-        "description": "Accordions collapse content under headings, allowing users to selectively toggle the content according to their interest.",
-        "display_title": "Accordion",
-        "meta_title": "Accordion",
-        "menu_title": "Accordion",
-        "route": "/components/accordion"
+        "title": "Content",
+        "description": "Content components are themselves pieces of content, rendered in a specific manner.",
+        "display_title": "Content",
+        "meta_title": "Content",
+        "menu_title": "Content",
+        "route": "/components/content",
+        "template": "/components/content/index",
+        "pages": [
+          {
+            "title": "Accordion",
+            "description": "Accordions collapse content under headings, allowing users to selectively toggle the content according to their interest.",
+            "display_title": "Accordion",
+            "meta_title": "Accordion",
+            "menu_title": "Accordion",
+            "route": "/components/content/accordion"
+          },
+          {
+            "title": "Block quote",
+            "description": "Block quotes are used to display extended quotations. They are visually highlighted to draw the reader's attention.",
+            "display_title": "Block quote",
+            "meta_title": "Block quote",
+            "menu_title": "Block quote",
+            "route": "/components/content/block-quote"
+          },
+          {
+            "title": "Callout",
+            "published": false,
+            "display_title": "Callout",
+            "meta_title": "Callout",
+            "menu_title": "Callout",
+            "description": "",
+            "route": "/components/content/callout"
+          },
+          {
+            "title": "Card",
+            "published": false,
+            "display_title": "Card",
+            "meta_title": "Card",
+            "menu_title": "Card",
+            "description": "",
+            "route": "/components/content/card"
+          },
+          {
+            "title": "Carousel",
+            "description": "Carousels rotate through slides of content, allowing users to advance forward or backward, play or pause, and select specific slides from a row of indicator buttons.",
+            "display_title": "Carousel",
+            "meta_title": "Carousel",
+            "menu_title": "Carousel",
+            "route": "/components/content/carousel"
+          },
+          {
+            "title": "Details",
+            "published": false,
+            "display_title": "Details",
+            "meta_title": "Details",
+            "menu_title": "Details",
+            "description": "",
+            "route": "/components/content/details"
+          },
+          {
+            "title": "Gallery",
+            "published": false,
+            "display_title": "Gallery",
+            "meta_title": "Gallery",
+            "menu_title": "Gallery",
+            "description": "",
+            "route": "/components/content/gallery"
+          },
+          {
+            "title": "Icon",
+            "published": false,
+            "display_title": "Icon",
+            "meta_title": "Icon",
+            "menu_title": "Icon",
+            "description": "",
+            "route": "/components/content/icon"
+          },
+          {
+            "title": "Separator",
+            "description": "Separators, also known as horizontal rules (HRs) or dividers, indicate a thematic break between sections of content.",
+            "published": false,
+            "display_title": "Separator",
+            "meta_title": "Separator",
+            "menu_title": "Separator",
+            "route": "/components/content/separator"
+          }
+        ]
       },
       {
-        "title": "Alert Bar",
-        "description": "The Alert Bar is a banner located at the top of the page that categorizes alerts, enabling users to explore details or dismiss them as needed.",
-        "display_title": "Alert Bar",
-        "meta_title": "Alert Bar",
-        "menu_title": "Alert Bar",
-        "route": "/components/alert-bar"
+        "title": "Interface",
+        "description": "Interface components are used to create interactive interfaces.",
+        "display_title": "Interface",
+        "meta_title": "Interface",
+        "menu_title": "Interface",
+        "route": "/components/interface",
+        "template": "/components/interface/index",
+        "pages": [
+          {
+            "title": "Alert Bar",
+            "description": "The Alert Bar is a banner located at the top of the page that categorizes alerts, enabling users to explore details or dismiss them as needed.",
+            "display_title": "Alert Bar",
+            "meta_title": "Alert Bar",
+            "menu_title": "Alert Bar",
+            "route": "/components/interface/alert-bar"
+          },
+          {
+            "title": "Button",
+            "description": "Buttons allow users to trigger an action with a single tap, click, or keypress. They are useful to call attention to some action or to provide controls for an interface or form. Links navigate users to another page, and can be styled to look like buttons.",
+            "display_title": "Button",
+            "meta_title": "Button",
+            "menu_title": "Button",
+            "route": "/components/interface/button"
+          },
+          {
+            "title": "Dialog",
+            "published": false,
+            "display_title": "Dialog",
+            "meta_title": "Dialog",
+            "menu_title": "Dialog",
+            "description": "",
+            "route": "/components/interface/dialog"
+          },
+          {
+            "title": "Tabs",
+            "description": "Tabs allow users to switch between panels of content from a horizontal list of labels. They enable quick comparison between different pieces of content within the same context and of the same information type.",
+            "display_title": "Tabs",
+            "meta_title": "Tabs",
+            "menu_title": "Tabs",
+            "route": "/components/interface/tabs"
+          }
+        ]
       },
       {
-        "title": "Block quote",
-        "description": "Block quotes are used to display extended quotations. They are visually highlighted to draw the reader's attention.",
-        "display_title": "Block quote",
-        "meta_title": "Block quote",
-        "menu_title": "Block quote",
-        "route": "/components/block-quote"
+        "title": "Layout",
+        "description": "Layout components are used to create layouts.",
+        "display_title": "Layout",
+        "meta_title": "Layout",
+        "menu_title": "Layout",
+        "route": "/components/layout",
+        "template": "/components/layout/index",
+        "pages": [
+          {
+            "title": "Grid",
+            "published": false,
+            "display_title": "Grid",
+            "meta_title": "Grid",
+            "menu_title": "Grid",
+            "description": "",
+            "route": "/components/layout/grid"
+          }
+        ]
       },
       {
-        "title": "Button",
-        "description": "Buttons allow users to trigger an action with a single tap, click, or keypress. They are useful to call attention to some action or to provide controls for an interface or form. Links navigate users to another page, and can be styled to look like buttons.",
-        "display_title": "Button",
-        "meta_title": "Button",
-        "menu_title": "Button",
-        "route": "/components/button"
+        "title": "Marketing",
+        "description": "Marketing components are used to display content in a marketing-driven way.",
+        "display_title": "Marketing",
+        "meta_title": "Marketing",
+        "menu_title": "Marketing",
+        "route": "/components/marketing",
+        "template": "/components/marketing/index",
+        "pages": [
+          {
+            "title": "Section",
+            "description": "The Section component creates a boxed container with a full-bleed background and vertical padding, useful for creating distinct sections on landing pages, as well as large introductory sections such as heroes and profile mastheads. Accordingly, it also increases the font size of paragraphs and list items.",
+            "display_title": "Section",
+            "meta_title": "Section",
+            "menu_title": "Section",
+            "route": "/components/marketing/section"
+          }
+        ]
       },
       {
-        "title": "Callout",
-        "published": false,
-        "display_title": "Callout",
-        "meta_title": "Callout",
-        "menu_title": "Callout",
-        "description": "Default description",
-        "route": "/components/callout"
-      },
-      {
-        "title": "Card",
-        "published": false,
-        "display_title": "Card",
-        "meta_title": "Card",
-        "menu_title": "Card",
-        "description": "Default description",
-        "route": "/components/card"
-      },
-      {
-        "title": "Carousel",
-        "description": "Carousels rotate through slides of content, allowing users to advance forward or backward, play or pause, and select specific slides from a row of indicator buttons.",
-        "display_title": "Carousel",
-        "meta_title": "Carousel",
-        "menu_title": "Carousel",
-        "route": "/components/carousel"
-      },
-      {
-        "title": "Details",
-        "published": false,
-        "display_title": "Details",
-        "meta_title": "Details",
-        "menu_title": "Details",
-        "description": "Default description",
-        "route": "/components/details"
-      },
-      {
-        "title": "Dialog",
-        "published": false,
-        "display_title": "Dialog",
-        "meta_title": "Dialog",
-        "menu_title": "Dialog",
-        "description": "Default description",
-        "route": "/components/dialog"
-      },
-      {
-        "title": "Form elements",
-        "published": false,
-        "display_title": "Form elements",
-        "meta_title": "Form elements",
-        "menu_title": "Form elements",
-        "description": "Default description",
-        "route": "/components/form-elements"
-      },
-      {
-        "title": "Gallery",
-        "published": false,
-        "display_title": "Gallery",
-        "meta_title": "Gallery",
-        "menu_title": "Gallery",
-        "description": "Default description",
-        "route": "/components/gallery"
-      },
-      {
-        "title": "Grid",
-        "published": false,
-        "display_title": "Grid",
-        "meta_title": "Grid",
-        "menu_title": "Grid",
-        "description": "Default description",
-        "route": "/components/grid"
-      },
-      {
-        "title": "Icon",
-        "published": false,
-        "display_title": "Icon",
-        "meta_title": "Icon",
-        "menu_title": "Icon",
-        "description": "Default description",
-        "route": "/components/icon"
-      },
-      {
-        "title": "Map",
-        "published": false,
-        "display_title": "Map",
-        "meta_title": "Map",
-        "menu_title": "Map",
-        "description": "Default description",
-        "route": "/components/map"
-      },
-      {
-        "title": "Quick links",
-        "published": false,
-        "display_title": "Quick links",
-        "meta_title": "Quick links",
-        "menu_title": "Quick links",
-        "description": "Default description",
-        "route": "/components/quick-links"
-      },
-      {
-        "title": "Section",
-        "description": "The Section component creates a boxed container with a full-bleed background and vertical padding, useful for creating distinct sections on landing pages, as well as large introductory sections such as heroes and profile mastheads. Accordingly, it also increases the font size of paragraphs and list items.",
-        "display_title": "Section",
-        "meta_title": "Section",
-        "menu_title": "Section",
-        "route": "/components/section"
-      },
-      {
-        "title": "Separator",
-        "description": "Separators, also known as horizontal rules (HRs) or dividers, indicate a thematic break between sections of content.",
-        "published": false,
-        "display_title": "Separator",
-        "meta_title": "Separator",
-        "menu_title": "Separator",
-        "route": "/components/separator"
-      },
-      {
-        "title": "Site footer",
-        "published": false,
-        "display_title": "Site footer",
-        "meta_title": "Site footer",
-        "menu_title": "Site footer",
-        "description": "Default description",
-        "route": "/components/site-footer"
-      },
-      {
-        "title": "Site header",
-        "published": false,
-        "display_title": "Site header",
-        "meta_title": "Site header",
-        "menu_title": "Site header",
-        "description": "Default description",
-        "route": "/components/site-header"
-      },
-      {
-        "title": "Submenu",
-        "published": false,
-        "display_title": "Submenu",
-        "meta_title": "Submenu",
-        "menu_title": "Submenu",
-        "description": "Default description",
-        "route": "/components/submenu"
-      },
-      {
-        "title": "Tabs",
-        "description": "Tabs allow users to switch between panels of content from a horizontal list of labels. They enable quick comparison between different pieces of content within the same context and of the same information type.",
-        "display_title": "Tabs",
-        "meta_title": "Tabs",
-        "menu_title": "Tabs",
-        "route": "/components/tabs"
+        "title": "Navigation",
+        "description": "Navigation components help facilitate navigation across the site, like menus, headers, and footers.",
+        "display_title": "Navigation",
+        "meta_title": "Navigation",
+        "menu_title": "Navigation",
+        "route": "/components/navigation",
+        "template": "/components/navigation/index",
+        "pages": [
+          {
+            "title": "Map",
+            "published": false,
+            "display_title": "Map",
+            "meta_title": "Map",
+            "menu_title": "Map",
+            "description": "",
+            "route": "/components/navigation/map"
+          },
+          {
+            "title": "Quick links",
+            "published": false,
+            "display_title": "Quick links",
+            "meta_title": "Quick links",
+            "menu_title": "Quick links",
+            "description": "",
+            "route": "/components/navigation/quick-links"
+          },
+          {
+            "title": "Site footer",
+            "published": false,
+            "display_title": "Site footer",
+            "meta_title": "Site footer",
+            "menu_title": "Site footer",
+            "description": "",
+            "route": "/components/navigation/site-footer"
+          },
+          {
+            "title": "Site header",
+            "published": false,
+            "display_title": "Site header",
+            "meta_title": "Site header",
+            "menu_title": "Site header",
+            "description": "",
+            "route": "/components/navigation/site-header"
+          },
+          {
+            "title": "Submenu",
+            "published": false,
+            "display_title": "Submenu",
+            "meta_title": "Submenu",
+            "menu_title": "Submenu",
+            "description": "",
+            "route": "/components/navigation/submenu"
+          }
+        ]
       }
     ]
   },
@@ -341,7 +387,7 @@
         "menu_title": "Overview",
         "description": "Texas Children's is committed to providing intuitive and pleasant digital experiences to users of diverse abilities and backgrounds.",
         "route": "/accessibility",
-        "template": "accessibility/index",
+        "template": "/accessibility/index",
         "display_title": "Accessibility",
         "meta_title": "Accessibility"
       },
@@ -351,7 +397,7 @@
         "display_title": "Testing",
         "meta_title": "Testing",
         "menu_title": "Testing",
-        "description": "Default description",
+        "description": "",
         "route": "/accessibility/testing"
       },
       {

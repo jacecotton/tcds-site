@@ -22,6 +22,22 @@
             {% else %}
               <span>{{ page.menu_title }}</span>
             {% endif %}
+
+            {% if page.pages %}
+              <ul>
+                {% for page in page.pages %}
+                  <li>
+                    {% if page.published != false %}
+                      <a href="{{ page.route }}" {{ page.route == route ? 'class="active"' }}>
+                        {{ page.menu_title }}
+                      </a>
+                    {% else %}
+                      <span>{{ page.menu_title }}</span>
+                    {% endif %}
+                  </li>
+                {% endfor %}
+              </ul>
+            {% endif %}
           </li>
         {% endfor %}
       </ul>

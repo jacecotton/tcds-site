@@ -13,7 +13,8 @@
 
   th, td {
     padding: .5rem;
-    font-family: var(--tcds-font-monospace);
+    font-family: var(--tcds-font-ui);
+    font-variant: tabular-nums;
   }
 
   th {

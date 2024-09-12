@@ -73,7 +73,8 @@
     line-height: 1;
 
     &:nth-child(1) {
-      font-family: var(--tcds-font-monospace);
+      font-family: var(--tcds-font-ui);
+      font-variant: tabular-nums;
       text-align: right;
       padding: 0 1rem 8px 0;
       width: 0%;
@@ -110,7 +111,7 @@
     }
 
     &:nth-child(3) {
-      font-family: var(--tcds-font-monospace);
+      font-family: var(--tcds-font-ui);
       padding-inline: 1rem;
       width: 0%;
       text-transform: uppercase;

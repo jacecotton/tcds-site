@@ -1,0 +1,34 @@
+.color-palette {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem 2rem;
+  font-family: var(--tcds-font-ui);
+  margin: 1rem 0 3rem;
+
+  &__item {
+    margin-bottom: 1rem;
+
+    &, dd {
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+      gap: .5rem;
+    }
+
+    code {
+      background: none;
+      border: 0;
+    }
+
+    span {
+      color: var(--tcds-color-gray-3);
+      font-size: var(--tcds-font-size-s);
+    }
+  }
+
+  &__swatch {
+    aspect-ratio: 2 / 1;
+    border-radius: var(--tcds-border-radius-m);
+    width: 100%;
+  }
+}

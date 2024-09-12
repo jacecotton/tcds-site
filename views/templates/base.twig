@@ -20,7 +20,7 @@
   {{ include("@tc/partials/site-header.twig") }}
 
   <section class="tcds-section tcds-section--raised tcds-section--masthead bg-secondary bg-logo" data-theme="auto">
-    <h1 class="accent--inline-start">
+    <h1>
       {% if display_title == "" %}
         <span class="visually-hidden">{{ title }}</span>
       {% else %}
@@ -37,7 +37,7 @@
     {% endif %}
   </section>
 
-  <div class="max-width page-content">
+  <div class="max-width page__content">
     {{ include("@tc/partials/side-menu.twig") }}
 
     <main>

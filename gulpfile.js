@@ -21,7 +21,7 @@ import webpack from "webpack-stream";
 
 const tasks = {
   pages: () => {
-    return src("./pages/**/*.md")
+    return src("./src/pages/**/*.md")
       .pipe(frontmatter({remove: true}))
       .pipe(markdown())
       .pipe(rename(path => path.extname = ".twig"))
@@ -173,7 +173,7 @@ task("fonts", tasks.fonts);
 task("images", tasks.images);
 
 task("watch", function watcher() {
-  watch("./pages/", tasks.pages);
+  watch("./src/pages/", tasks.pages);
   watch("./src/styles/", tasks.styles);
   watch("./src/scripts/", tasks.javascript);
   watch("./src/images/", tasks.images);

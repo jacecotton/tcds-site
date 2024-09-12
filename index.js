@@ -19,46 +19,54 @@ app.use(express.static(join(resolve(), "public")));
 
 content.forEach((category) => {
   category.pages.forEach((page) => {
-    app.get(page.route, (req, res) => {
-      const reject = () => {
-        res.setHeader("www-authenticate", "Basic");
-        res.sendStatus(401);
-      };
+    app.get(page.route, (req, res) => handler(req, res, category, page));
 
-      const authorization = req.headers.authorization;
-
-      if(!authorization) {
-        return reject();
-      }
-
-      const [username, password] = Buffer.from(authorization.replace("Basic", ""), "base64").toString().split(":");
-
-      if(!(username === "reviewer" && password === "1919")) {
-        return reject();
-      }
-
-      twing.render(`pages${page.template ? `/${page.template}` : page.route}.twig`, {
-        title: page.title,
-        display_title: page.display_title,
-        meta_title: page.meta_title,
-        menu_title: page.menu_title,
-        description: page.description,
-        category: category.title,
-        route: page.route,
-        content: content,
-      }).then((output) => {
-        res.end(output);
-      }).catch((error) => {
-        handle404(res);
-        console.log(error);
+    if("pages" in page) {
+      page.pages.forEach((page) => {
+        app.get(page.route, (req, res) => handler(req, res, category, page));
       });
-    });
+    }
   });
 });
 
 app.use((req, res) => {
   handle404(res);
 });
+
+function handler(req, res, category, page) {
+  const reject = () => {
+    res.setHeader("www-authenticate", "Basic");
+    res.sendStatus(401);
+  };
+
+  const authorization = req.headers.authorization;
+
+  if(!authorization) {
+    return reject();
+  }
+
+  const [username, password] = Buffer.from(authorization.replace("Basic", ""), "base64").toString().split(":");
+
+  if(!(username === "reviewer" && password === "1919")) {
+    return reject();
+  }
+
+  twing.render(`pages${page.template ? `/${page.template}` : page.route}.twig`, {
+    title: page.title,
+    display_title: page.display_title,
+    meta_title: page.meta_title,
+    menu_title: page.menu_title,
+    description: page.description,
+    category: category.title,
+    route: page.route,
+    content: content,
+  }).then((output) => {
+    res.end(output);
+  }).catch((error) => {
+    handle404(res);
+    console.log(error);
+  });
+}
 
 function handle404(res) {
   res.status(404);

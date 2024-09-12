@@ -14,3 +14,5 @@ import "@txch/tcds/dist/site-header";
 import "@txch/tcds/dist/side-menu";
 
 import "./lib/prism.js";
+
+import "./external-links.js";
