@@ -39,7 +39,7 @@ twig-->
 ## Best practices
 **Use with general caution.** Even when properly implemented, research shows that users seldom interact with carousels, especially beyond the first slide ([1](https://erikrunyon.com/2013/01/carousel-interaction-stats/ "Carousel Interaction Stats — Erik Runyon")). Furthermore, carousels have a high [interaction cost](https://www.nngroup.com/articles/interaction-cost-definition/ "Interaction cost – Nielsen Norman Group"), potentially causing inconvenience ([2](https://www.nngroup.com/articles/auto-forwarding/ "Auto-Forwarding Carousels and Accordions Annoy Users and Reduce Visibility Nielsen Norman Group")).
 
-**Curate relevant and high quality content for each slide.** Carousel content that the user perceives to be irrelevant, redundant, or unhelpful will discourage them from investigating and interacting further. This can contribute to a [banner blindness](https://www.nngroup.com/articles/tunnel-vision-and-selective-attention/ "Tunnel Vision and Selective Attention – Nielsen Norman Group") that will reduce perception and engagement of carousels elsewhere on the website ([3](https://www.smashingmagazine.com/2016/07/ten-requirements-for-making-home-page-carousels-work-for-end-users/ "10 Requirements For Making Home Page Carousels Work For End Users (If Needed) - Smashing Magazine")).
+**Curate relevant and high quality content for each slide.** Carousel content that the user perceives to be irrelevant, redundant, or unhelpful may discourage them from investigating and interacting further. This can contribute to a [banner blindness](https://www.nngroup.com/articles/tunnel-vision-and-selective-attention/ "Tunnel Vision and Selective Attention – Nielsen Norman Group") that could reduce perception and engagement of carousels elsewhere on the website ([3](https://www.smashingmagazine.com/2016/07/ten-requirements-for-making-home-page-carousels-work-for-end-users/ "10 Requirements For Making Home Page Carousels Work For End Users (If Needed) - Smashing Magazine")).
 
 **Prioritize slide order, and limit the number of slides.** Most users will not see all the content in a carousel ([3](https://www.smashingmagazine.com/2016/07/ten-requirements-for-making-home-page-carousels-work-for-end-users/ "10 Requirements For Making Home Page Carousels Work For End Users (If Needed) - Smashing Magazine")). Put the most important and engaging slides first, and avoid adding too many slides to begin with (as the more there are, the less likely they are to be discovered).
 
@@ -348,6 +348,43 @@ twig-->
 }) }}
 twig-->
 
+### Styling
+<!--twig
+{{ include("@tc/includes/api.twig", {
+  custom_properties: [
+    {
+      name: "--tcds-carousel-slide-gap",
+      syntax: "<length>",
+      description: "The space between slides. Type is undeclared so math functions are valid.",
+      default: "0",
+    },
+    {
+      name: "--tcds-carousel-slide-size",
+      syntax: "<dimension>",
+      description: "The inline size (width) of each slide. <code>auto</code> will size the slides to their respective contents. Type is undeclared so math functions are valid.",
+      default: "100%",
+    },
+    {
+      name: "--tcds-carousel-viewport-align-items",
+      syntax: "<keyword>",
+      description: "The cross axis (vertical) alignment of the slides. Must be any valid <a href=\"https://developer.mozilla.org/en-US/docs/Web/CSS/align-items\"><code>align-items</code></a> value.",
+      default: "center",
+    },
+    {
+      name: "--tcds-carousel-navigation-justify",
+      syntax: "<keyword>",
+      description: "The main axis (horizontal) justification of carousel navigation controls (arrows and indicators). Must be any valid <a href=\"https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content\"><code>justify-content</code></a> value.",
+      default: "center",
+    },
+  ],
+}) }}
+twig-->
+
+## Resources
+This component was architected in conformance with [ARIA Authoring Practices (APG) for carousel pattern](https://www.w3.org/WAI/ARIA/apg/patterns/carousel/).
+
+Source code on GitHub ([carousel](https://github.com/jacecotton/tcds/blob/main/src/02-components/carousel/), [slide](https://github.com/jacecotton/tcds/blob/main/src/02-components/carousel/slide/))
+
 <!--
 Other design system/pattern library implementations:
 https://styleguide.audi.com/document/2442#/-/slideshow
@@ -358,8 +395,3 @@ https://getbootstrap.com/docs/4.3/components/carousel/
 https://www.w3.org/TR/wai-aria-practices/#carousel
 https://a11y-101.com/development/carousels
 -->
-
-## Resources
-This component was architected in conformance with [ARIA Authoring Practices (APG) for carousel pattern](https://www.w3.org/WAI/ARIA/apg/patterns/carousel/).
-
-Source code on GitHub ([carousel](https://github.com/jacecotton/tcds/blob/main/src/02-components/carousel/), [slide](https://github.com/jacecotton/tcds/blob/main/src/02-components/carousel/slide/))

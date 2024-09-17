@@ -61,4 +61,24 @@
       </tr>
     {% endfor %}
   {% endif %}
+  {% if custom_properties %}
+    <tr>
+      <th colspan="5">CSS custom properties</th>
+    </tr>
+    <tr>
+      <th colspan="3">Name</th>
+      <th>Syntax</th>
+      <th>Default</th>
+    </tr>
+    {% for custom_property in custom_properties %}
+      <tr>
+        <td style="white-space: nowrap" colspan="3"><code>{{ custom_property.name }}</code></td>
+        <td><code>{{ custom_property.syntax }}</code></td>
+        <td><code>{{ custom_property.default }}</code></td>
+      </tr>
+      <tr>
+        <td colspan="5">{{ custom_property.description|raw }}</td>
+      </tr>
+    {% endfor %}
+  {% endif %}
 </table>
