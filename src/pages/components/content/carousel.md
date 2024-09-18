@@ -354,14 +354,14 @@ twig-->
   custom_properties: [
     {
       name: "--tcds-carousel-slide-gap",
-      syntax: "<length>",
-      description: "The space between slides. Type is undeclared so math functions are valid.",
+      syntax: "<calc-value>",
+      description: "The space between slides.",
       default: "0",
     },
     {
       name: "--tcds-carousel-slide-size",
-      syntax: "<dimension>",
-      description: "The inline size (width) of each slide. <code>auto</code> will size the slides to their respective contents. Type is undeclared so math functions are valid.",
+      syntax: "<calc-value>",
+      description: "The inline size (width) of each slide. <code>auto</code> will size the slides to their respective contents.",
       default: "100%",
     },
     {

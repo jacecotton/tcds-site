@@ -106,6 +106,13 @@ Texas Children's Design System uses a base-16 pixel font size on the web, with a
 </tcds-tabs>
 twig-->
 
+<details>
+  <summary>Technical notes</summary>
+
+* Calluna is a naturally small font, so it is scaled up 112% to better match Mont. In code, this is done with the `text-size-adjust` CSS property on the `@font-face` declaration.
+* A known issue currently exists with Mont allotting excessive descender space, making it impossible to perfectly vertically center it. This can be demonstrated by toggling between the tabs above. There is a [CSSWG working draft](https://drafts.csswg.org/css-inline-3/#leading-trim) for `text-box-trim`/`text-box-edge` which could address this in the future, but [no browser implements it yet](https://caniuse.com/css-text-box-trim).
+</details>
+
 **Extra large 4 (4XL) and 3XL are considered reserved and use cases should be reported.** Generally, these sizes are far too large for the web. In rare and highly specific instances, they're used for promotional displays like in splash pages and certain [Hero](/components/hero) variants.
 
 **2XL and XL should be reserved for section headings.** Heading elements (H1 and H2) help organize content and structure a page layout, so subordinate elements, like components, should not have text that competes with them (see [&sect; Heading elements](#heading-elements)). With rare exception, stick to large (L) and smaller when designing components and templates.
@@ -115,8 +122,100 @@ twig-->
 See the [font size API](#font-sizes) for available CSS and HTML utilities.
 
 ### Heading elements
-* Include all style specifications for each heading (not just font size)
-* Utility classes do exist (document in API?)
+<!--twig
+{% set headings = [
+  {
+    name: "Heading 1",
+    utility: "h1",
+    font: "Calluna",
+    font_token: "headings",
+    size: "2xl",
+    weight: "Semibold",
+    line_height: "s",
+    letter_spacing: "-0.05",
+  },
+  {
+    name: "Heading 2",
+    utility: "h2",
+    font: "Calluna",
+    font_token: "headings",
+    size: "xl",
+    weight: "Semibold",
+    line_height: "s",
+    letter_spacing: "-0.0125",
+  },
+  {
+    name: "Heading 3",
+    utility: "h3",
+    font: "Mont",
+    font_token: "subheadings",
+    size: "l",
+    weight: "Semibold",
+    line_height: "s",
+    letter_spacing: "0",
+  },
+  {
+    name: "Heading 4",
+    utility: "h4",
+    font: "Mont",
+    font_token: "subheadings",
+    size: "ml",
+    weight: "Bold",
+    line_height: "s",
+    letter_spacing: "0",
+  },
+  {
+    name: "Heading 5",
+    utility: "h5",
+    font: "Mont",
+    font_token: "subheadings",
+    size: "m",
+    weight: "Bold",
+    line_height: "s",
+    letter_spacing: "0",
+  },
+  {
+    name: "Heading 6",
+    utility: "h6",
+    font: "Mont",
+    font_token: "subheadings",
+    size: "s",
+    weight: "Bold",
+    line_height: "s",
+    letter_spacing: "0",
+  },
+] %}
+
+<div class="headings-chart font-variant-tabular-nums">
+  {% for heading in headings %}
+    <div class="headings-chart__heading">
+      <h4 class="{{ heading.utility }}">{{ heading.name }}</h4>
+      <dl>
+        <div>
+          <dt>Font family</dt>
+          <dd>{{ heading.font }}</dd>
+        </div>
+        <div>
+          <dt>Size</dt>
+          <dd>{{ heading.size|upper }}</dd>
+        </div>
+        <div>
+          <dt>Weight</dt>
+          <dd>{{ heading.weight }}</dd>
+        </div>
+        <div>
+          <dt>Line height</dt>
+          <dd>{{ heading.line_height|upper }}</dd>
+        </div>
+        <div>
+          <dt>Letter spacing</dt>
+          <dd>{{ heading.letter_spacing }}</dd>
+        </div>
+      </dl>
+    </div>
+  {% endfor %}
+</div>
+twig-->
 
 ## Type color
 In most cases, type color is handled automatically by the containing element, but you can further adjust it with [color utilities](/brand/color).
@@ -168,15 +267,19 @@ twig-->
 
 **Stick to navy for body copy, and red for primary headlines and links.** Alternatively, if using navy as a background color, use white for text and baby blue links.
 
-## Line length
-* 80 ch
+## Text justification
+**Avoid right-justifying text in left-to-right languages.** Exceptions include data inside of tables, footnotes or similar captions, and the last column of list items where the first column is left-justified and the middle column(s) are center-justified.
 
-## Text alignment
-* Don't center long lines of text at large font sizes
-* Never right-align text in left-to-right languages except for data inside of tables
+**Avoid centering lengthy paragraphs and multiple lines of large text.** Multiple lines of large text should be avoided regardless. Centered paragraphs are allowed, but should be kept to a minimum.
+
+See [text align API](#text-alignment) for available CSS utilities.
 
 ## Numerals
-* Lining numerals, never oldstyle, tabular nums if table data (`.font-variant-tabular-nums`).
+**Never use oldstyle numerals (<span style="font-variant-numeric: oldstyle-nums">0, 1, 2, 3, 4</span>, ...)** Oldstyle numerals are default in Calluna, but the Design System's codebase enforces lining numerals (0, 1, 2, 3, 4, ...)
+
+**Use tabular numerals for presenting data (<span class="font-variant-tabular-nums font-ui">0, 1, 2, 3, 4</span>, ...)**. Tabular numerals have identical horizontal widths (monospacing), which is especially useful where numbers may vertically align or substitute each other, like with list markers, table cells, or timers.
+
+See [font variant API](#font-variant) for available CSS utilities.
 
 ## API
 Prefixes and tokens are combined to create HTML utilities (example: <code>class="font-serif"</code>) or CSS variables (example: <code>var(--tcds-font-size-2xl)</code>).
@@ -385,3 +488,21 @@ For accessibility reasons, font sizes are set in `rem`s (see [WCAG 2.2 Technique
 </table>
 
 <small>**Note:** [Breakpoint conditionals](/layout/breakpoints#conditional-utility-classes) are available for the these classes (`above` only, e.g. `class="text-center@above:m"`).</small>
+
+### Font variant
+<table class="doc-table doc-table--typography">
+  <thead>
+    <tr>
+      <th style="width: 25ch">Class name prefix</th>
+      <th style="width: 25ch">Token</th>
+      <th style="width: 25ch">Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="white-space: nowrap"><code>.font-variant-</code></td>
+      <td><code>tabular-nums</code></td>
+      <td><code>lining-nums tabular-nums</code></td>
+    </tr>
+  </tbody>
+</table>

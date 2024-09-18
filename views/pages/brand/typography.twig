@@ -97,15 +97,113 @@ file and run the gulp process to compile (either `gulp` or `npm run dev`). #}
 </tcds-tabs>
 
 
+<details>
+  <summary>Technical notes</summary>
+
+<ul>
+<li>Calluna is a naturally small font, so it is scaled up 112% to better match Mont. In code, this is done with the <code>text-size-adjust</code> CSS property on the <code>@font-face</code> declaration.</li>
+<li>A known issue currently exists with Mont allotting excessive descender space, making it impossible to perfectly vertically center it. This can be demonstrated by toggling between the tabs above. There is a <a href="https://drafts.csswg.org/css-inline-3/#leading-trim">CSSWG working draft</a> for <code>text-box-trim</code>/<code>text-box-edge</code> which could address this in the future, but <a href="https://caniuse.com/css-text-box-trim">no browser implements it yet</a>.</details></li>
+</ul>
 <p><strong>Extra large 4 (4XL) and 3XL are considered reserved and use cases should be reported.</strong> Generally, these sizes are far too large for the web. In rare and highly specific instances, they&#39;re used for promotional displays like in splash pages and certain <a href="/components/hero">Hero</a> variants.</p>
 <p><strong>2XL and XL should be reserved for section headings.</strong> Heading elements (H1 and H2) help organize content and structure a page layout, so subordinate elements, like components, should not have text that competes with them (see <a href="#heading-elements">&sect; Heading elements</a>). With rare exception, stick to large (L) and smaller when designing components and templates.</p>
 <p><strong>Medium-large (ML) should be reserved for article ledes.</strong> A lede is an introduction to the rest of the article&#39;s copy, and thus only has a slight bump from medium (M) text (hence &quot;medium-large&quot; instead of &quot;<i>n</i>th-large&quot;). Before using it, see if M or L fits your use case, as there&#39;s clearer differentiation between those and other sizes compared to ML.</p>
 <p>See the <a href="#font-sizes">font size API</a> for available CSS and HTML utilities.</p>
 <h3 id="heading-elements">Heading elements</h3>
-<ul>
-<li>Include all style specifications for each heading (not just font size)</li>
-<li>Utility classes do exist (document in API?)</li>
-</ul>
+
+{% set headings = [
+  {
+    name: "Heading 1",
+    utility: "h1",
+    font: "Calluna",
+    font_token: "headings",
+    size: "2xl",
+    weight: "Semibold",
+    line_height: "s",
+    letter_spacing: "-0.05",
+  },
+  {
+    name: "Heading 2",
+    utility: "h2",
+    font: "Calluna",
+    font_token: "headings",
+    size: "xl",
+    weight: "Semibold",
+    line_height: "s",
+    letter_spacing: "-0.0125",
+  },
+  {
+    name: "Heading 3",
+    utility: "h3",
+    font: "Mont",
+    font_token: "subheadings",
+    size: "l",
+    weight: "Semibold",
+    line_height: "s",
+    letter_spacing: "0",
+  },
+  {
+    name: "Heading 4",
+    utility: "h4",
+    font: "Mont",
+    font_token: "subheadings",
+    size: "ml",
+    weight: "Bold",
+    line_height: "s",
+    letter_spacing: "0",
+  },
+  {
+    name: "Heading 5",
+    utility: "h5",
+    font: "Mont",
+    font_token: "subheadings",
+    size: "m",
+    weight: "Bold",
+    line_height: "s",
+    letter_spacing: "0",
+  },
+  {
+    name: "Heading 6",
+    utility: "h6",
+    font: "Mont",
+    font_token: "subheadings",
+    size: "s",
+    weight: "Bold",
+    line_height: "s",
+    letter_spacing: "0",
+  },
+] %}
+
+<div class="headings-chart font-variant-tabular-nums">
+  {% for heading in headings %}
+    <div class="headings-chart__heading">
+      <h4 class="{{ heading.utility }}">{{ heading.name }}</h4>
+      <dl>
+        <div>
+          <dt>Font family</dt>
+          <dd>{{ heading.font }}</dd>
+        </div>
+        <div>
+          <dt>Size</dt>
+          <dd>{{ heading.size|upper }}</dd>
+        </div>
+        <div>
+          <dt>Weight</dt>
+          <dd>{{ heading.weight }}</dd>
+        </div>
+        <div>
+          <dt>Line height</dt>
+          <dd>{{ heading.line_height|upper }}</dd>
+        </div>
+        <div>
+          <dt>Letter spacing</dt>
+          <dd>{{ heading.letter_spacing }}</dd>
+        </div>
+      </dl>
+    </div>
+  {% endfor %}
+</div>
+
+
 <h2 id="type-color">Type color</h2>
 <p>In most cases, type color is handled automatically by the containing element, but you can further adjust it with <a href="/brand/color">color utilities</a>.</p>
 
@@ -152,19 +250,14 @@ file and run the gulp process to compile (either `gulp` or `npm run dev`). #}
 <p><strong>Do not arbitrarily change type color.</strong> Type color is already carefully considered and implemented in the Design System&#39;s global stylesheet and for each of its components and utilities. Do not use color merely for emphasis or adjusting placement in the visual hierarchy.</p>
 <p><strong>Type color is not decorative.</strong> Color plays an important role in conveying meaning and carries specific connotations within our brand. Red is reserved for display headlines and taglines, and should not be used for routine section headings or anywhere in standard body copy (except for links).</p>
 <p><strong>Stick to navy for body copy, and red for primary headlines and links.</strong> Alternatively, if using navy as a background color, use white for text and baby blue links.</p>
-<h2 id="line-length">Line length</h2>
-<ul>
-<li>80 ch</li>
-</ul>
-<h2 id="text-alignment">Text alignment</h2>
-<ul>
-<li>Don&#39;t center long lines of text at large font sizes</li>
-<li>Never right-align text in left-to-right languages except for data inside of tables</li>
-</ul>
+<h2 id="text-justification">Text justification</h2>
+<p><strong>Avoid right-justifying text in left-to-right languages.</strong> Exceptions include data inside of tables, footnotes or similar captions, and the last column of list items where the first column is left-justified and the middle column(s) are center-justified.</p>
+<p><strong>Avoid centering lengthy paragraphs and multiple lines of large text.</strong> Multiple lines of large text should be avoided regardless. Centered paragraphs are allowed, but should be kept to a minimum.</p>
+<p>See <a href="#text-alignment">text align API</a> for available CSS utilities.</p>
 <h2 id="numerals">Numerals</h2>
-<ul>
-<li>Lining numerals, never oldstyle, tabular nums if table data (<code>.font-variant-tabular-nums</code>).</li>
-</ul>
+<p><strong>Never use oldstyle numerals (<span style="font-variant-numeric: oldstyle-nums">0, 1, 2, 3, 4</span>, ...)</strong> Oldstyle numerals are default in Calluna, but the Design System&#39;s codebase enforces lining numerals (0, 1, 2, 3, 4, ...)</p>
+<p><strong>Use tabular numerals for presenting data (<span class="font-variant-tabular-nums font-ui">0, 1, 2, 3, 4</span>, ...)</strong>. Tabular numerals have identical horizontal widths (monospacing), which is especially useful where numbers may vertically align or substitute each other, like with list markers, table cells, or timers.</p>
+<p>See <a href="#font-variant">font variant API</a> for available CSS utilities.</p>
 <h2 id="api">API</h2>
 <p>Prefixes and tokens are combined to create HTML utilities (example: <code>class="font-serif"</code>) or CSS variables (example: <code>var(--tcds-font-size-2xl)</code>).</p>
 <h3 id="font-families">Font families</h3>
@@ -350,7 +443,7 @@ file and run the gulp process to compile (either `gulp` or `npm run dev`). #}
   </tbody>
 </table>
 
-<h3 id="text-alignment-1">Text alignment</h3>
+<h3 id="text-alignment">Text alignment</h3>
 <table class="doc-table doc-table--typography">
   <thead>
     <tr>
@@ -369,4 +462,21 @@ file and run the gulp process to compile (either `gulp` or `npm run dev`). #}
 </table>
 
 <p><small><strong>Note:</strong> <a href="/layout/breakpoints#conditional-utility-classes">Breakpoint conditionals</a> are available for the these classes (<code>above</code> only, e.g. <code>class=&quot;text-center@above:m&quot;</code>).</small></p>
+<h3 id="font-variant">Font variant</h3>
+<table class="doc-table doc-table--typography">
+  <thead>
+    <tr>
+      <th style="width: 25ch">Class name prefix</th>
+      <th style="width: 25ch">Token</th>
+      <th style="width: 25ch">Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="white-space: nowrap"><code>.font-variant-</code></td>
+      <td><code>tabular-nums</code></td>
+      <td><code>lining-nums tabular-nums</code></td>
+    </tr>
+  </tbody>
+</table>
 {% endblock %}

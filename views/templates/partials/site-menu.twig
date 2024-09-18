@@ -1,5 +1,5 @@
 <nav>
-  <ul>
+  <ul role="list">
     {% for category in content %}
       <li>
         <a href="{{ category.pages|filter(i => i.published != false)|first.route }}">{{ category.title }}</a>
