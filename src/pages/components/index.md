@@ -23,6 +23,11 @@ As a site developer, you may be tasked with implementing the Design System on a 
 
 Most components are [custom elements](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements), using the [Web Components API](https://developer.mozilla.org/en-US/docs/Web/API/Web_components). The API table will contain details for a custom element's available attributes and slots, and if applicable, JavaScript methods and properties.
 
+Further technical documentation is housed on the wiki for the Design System's GitHub repository:
+
+* [**A primer on Web Components**](https://github.com/jacecotton/tcds/wiki/A-primer-on-Web-Components)
+* [**How to read component API tables**](https://github.com/jacecotton/tcds/wiki/How-to-read-component-API-tables)
+
 ## For maintainers
 This documentation site serves a dual purpose: living documentation and a testing suite. It consumes a fresh install of the Design System, and displays each component in all pertinent configurations on dedicated pages.
 

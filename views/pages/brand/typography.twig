@@ -63,7 +63,7 @@ file and run the gulp process to compile (either `gulp` or `npm run dev`). #}
 
 <tcds-tabs>
   <tcds-tab label="Calluna">
-    <table class="typescale-chart bg-secondary font-serif">
+    <table class="table--semantic typescale-chart bg-secondary font-serif">
       <tr>
         <th class="visually-hidden">Size in points</th>
         <th class="visually-hidden">Visual example</th>
@@ -79,7 +79,7 @@ file and run the gulp process to compile (either `gulp` or `npm run dev`). #}
     </table>
   </tcds-tab>
   <tcds-tab label="Mont">
-    <table class="typescale-chart bg-secondary font-sans-serif">
+    <table class="table--semantic typescale-chart bg-secondary font-sans-serif">
       <tr>
         <th class="visually-hidden">Size in points</th>
         <th class="visually-hidden">Visual example</th>
@@ -177,21 +177,21 @@ file and run the gulp process to compile (either `gulp` or `npm run dev`). #}
   {% for heading in headings %}
     <div class="headings-chart__heading">
       <h4 class="{{ heading.utility }}">{{ heading.name }}</h4>
-      <dl>
+      <dl class="dl--semantic">
         <div>
           <dt>Font family</dt>
           <dd>{{ heading.font }}</dd>
         </div>
         <div>
-          <dt>Size</dt>
+          <dt>Size <a href="#font-sizes" title="See API details"><tcds-icon icon="info"></tcds-icon></a></dt>
           <dd>{{ heading.size|upper }}</dd>
         </div>
         <div>
-          <dt>Weight</dt>
+          <dt>Weight <a href="#font-weights" title="See API details"><tcds-icon icon="info"></tcds-icon></a></dt>
           <dd>{{ heading.weight }}</dd>
         </div>
         <div>
-          <dt>Line height</dt>
+          <dt>Line height <a href="#line-heights" title="See API details"><tcds-icon icon="info"></tcds-icon></a></dt>
           <dd>{{ heading.line_height|upper }}</dd>
         </div>
         <div>
@@ -258,6 +258,8 @@ file and run the gulp process to compile (either `gulp` or `npm run dev`). #}
 <p><strong>Never use oldstyle numerals (<span style="font-variant-numeric: oldstyle-nums">0, 1, 2, 3, 4</span>, ...)</strong> Oldstyle numerals are default in Calluna, but the Design System&#39;s codebase enforces lining numerals (0, 1, 2, 3, 4, ...)</p>
 <p><strong>Use tabular numerals for presenting data (<span class="font-variant-tabular-nums font-ui">0, 1, 2, 3, 4</span>, ...)</strong>. Tabular numerals have identical horizontal widths (monospacing), which is especially useful where numbers may vertically align or substitute each other, like with list markers, table cells, or timers.</p>
 <p>See <a href="#font-variant">font variant API</a> for available CSS utilities.</p>
+<h2 id="ligatures">Ligatures</h2>
+<p><strong>Do not use ligatures.</strong> All ligatures are disabled by the Design System&#39;s codebase.</p>
 <h2 id="api">API</h2>
 <p>Prefixes and tokens are combined to create HTML utilities (example: <code>class="font-serif"</code>) or CSS variables (example: <code>var(--tcds-font-size-2xl)</code>).</p>
 <h3 id="font-families">Font families</h3>

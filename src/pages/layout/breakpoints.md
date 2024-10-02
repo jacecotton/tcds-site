@@ -35,7 +35,7 @@ Texas Children's Design System provides the following standard breakpoints.
   },
 ] %}
 
-<table class="breakpoint-chart table--semantic bg-secondary" id="chart">
+<table class="breakpoint-chart table--semantic bg-secondary font-variant-tabular-nums" id="chart">
   <caption><b>Note:</b> Proportional, not to scale</caption>
   {% for breakpoint in breakpoints %}
     <tr>

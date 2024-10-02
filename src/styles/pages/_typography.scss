@@ -192,6 +192,12 @@
           border-inline-end: 1px solid var(--tcds-color-navy);
           padding-inline-end: 1rem;
         }
+
+        tcds-icon {
+          color: var(--tcds-color-gray-3);
+          position: relative;
+          top: -1px;
+        }
       }
 
       dd {

@@ -80,7 +80,7 @@ Texas Children's Design System provides a standardized, brand-compliant color pa
 {% for category, palette in colors %}
   <h3>{{ category }}</h3>
 
-  <dl class="color-palette">
+  <dl class="color-palette dl--semantic font-variant-tabular-nums">
     {% for color in palette %}
       <div class="color-palette__item">
         <div class="color-palette__swatch" style="background: var(--tcds-color-{{ color.token }})"></div>

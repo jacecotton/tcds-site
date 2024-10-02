@@ -33,7 +33,7 @@ description: The Design System provides a set of standard aspect ratios, based o
   },
 ] %}
 
-<dl class="aspect-ratio-chart">
+<dl class="aspect-ratio-chart font-variant-tabular-nums dl--semantic">
   {% for aspect_ratio in aspect_ratios %}
     <div>
       <dt><code>{{ aspect_ratio.token }}</code></dt>

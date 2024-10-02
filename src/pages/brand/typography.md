@@ -72,7 +72,7 @@ Texas Children's Design System uses a base-16 pixel font size on the web, with a
 
 <tcds-tabs>
   <tcds-tab label="Calluna">
-    <table class="typescale-chart bg-secondary font-serif">
+    <table class="table--semantic typescale-chart bg-secondary font-serif">
       <tr>
         <th class="visually-hidden">Size in points</th>
         <th class="visually-hidden">Visual example</th>
@@ -88,7 +88,7 @@ Texas Children's Design System uses a base-16 pixel font size on the web, with a
     </table>
   </tcds-tab>
   <tcds-tab label="Mont">
-    <table class="typescale-chart bg-secondary font-sans-serif">
+    <table class="table--semantic typescale-chart bg-secondary font-sans-serif">
       <tr>
         <th class="visually-hidden">Size in points</th>
         <th class="visually-hidden">Visual example</th>
@@ -190,21 +190,21 @@ See the [font size API](#font-sizes) for available CSS and HTML utilities.
   {% for heading in headings %}
     <div class="headings-chart__heading">
       <h4 class="{{ heading.utility }}">{{ heading.name }}</h4>
-      <dl>
+      <dl class="dl--semantic">
         <div>
           <dt>Font family</dt>
           <dd>{{ heading.font }}</dd>
         </div>
         <div>
-          <dt>Size</dt>
+          <dt>Size <a href="#font-sizes" title="See API details"><tcds-icon icon="info"></tcds-icon></a></dt>
           <dd>{{ heading.size|upper }}</dd>
         </div>
         <div>
-          <dt>Weight</dt>
+          <dt>Weight <a href="#font-weights" title="See API details"><tcds-icon icon="info"></tcds-icon></a></dt>
           <dd>{{ heading.weight }}</dd>
         </div>
         <div>
-          <dt>Line height</dt>
+          <dt>Line height <a href="#line-heights" title="See API details"><tcds-icon icon="info"></tcds-icon></a></dt>
           <dd>{{ heading.line_height|upper }}</dd>
         </div>
         <div>
@@ -280,6 +280,9 @@ See [text align API](#text-alignment) for available CSS utilities.
 **Use tabular numerals for presenting data (<span class="font-variant-tabular-nums font-ui">0, 1, 2, 3, 4</span>, ...)**. Tabular numerals have identical horizontal widths (monospacing), which is especially useful where numbers may vertically align or substitute each other, like with list markers, table cells, or timers.
 
 See [font variant API](#font-variant) for available CSS utilities.
+
+## Ligatures
+**Do not use ligatures.** All ligatures are disabled by the Design System's codebase.
 
 ## API
 Prefixes and tokens are combined to create HTML utilities (example: <code>class="font-serif"</code>) or CSS variables (example: <code>var(--tcds-font-size-2xl)</code>).

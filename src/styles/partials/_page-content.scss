@@ -2,13 +2,13 @@
   display: grid;
   grid-template-columns: 300px 1fr;
   grid-template-areas: "main main";
-  gap: 3rem;
   margin: var(--tcds-micro-xl) 0;
 }
 
 .page__content:has(.tcds-side-menu) {
   @media (min-width: 1280px) {
     grid-template-areas: "side-menu main";
+    gap: 3rem;
   }
 }
 
