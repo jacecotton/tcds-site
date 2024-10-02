@@ -1,6 +1,6 @@
 import express from "express";
 import {join, resolve} from "path";
-import content from "./content.json" assert {type: "json"};
+import content from "./content.json" with {type: "json"};
 
 import {TwingEnvironment, TwingLoaderFilesystem} from "twing";
 import TwingDrupalFilters from "twing-drupal-filters";
