@@ -2,5 +2,66 @@
 file and run the gulp process to compile (either `gulp` or `npm run dev`). #}
 {% extends "@tc/base.twig" %}
 {% block body %}
+<pre><code class="language-html">&lt;article class=&quot;tcds-card tcds-card--lite&quot;&gt;
+  &lt;figure class=&quot;tcds-card__image&quot;&gt;
+    &lt;img src=&quot;&quot; alt=&quot;&quot;&gt;
+  &lt;/figure&gt;
+  &lt;div class=&quot;tcds-card__content&quot;&gt;
+    &lt;h3 class=&quot;tcds-card__title&quot;&gt;&lt;a href=&quot;...&quot;&gt;My card title&lt;/a&gt;&lt;/h3&gt;
+    &lt;div class=&quot;tcds-card__description&quot;&gt;
+      &lt;p&gt;
+        My card description.
+      &lt;/p&gt;
+    &lt;/div&gt;
+    &lt;footer class=&quot;tcds-card__links&quot;&gt;
+      &lt;tcds-icon icon=&quot;external&quot;&gt;&lt;/tcds-icon&gt; US News
+    &lt;/footer&gt;
+  &lt;/div&gt;
+&lt;/article&gt;
+</code></pre>
+<p>VS</p>
+<pre><code class="language-html">&lt;tcds-card variant=&quot;lite&quot;&gt;
+  #shadow-root
+  |  &lt;article&gt;
+  |    &lt;figure part=&quot;image&quot;&gt;
+  |      &lt;slot name=&quot;image&quot;&gt;&lt;/slot&gt;
+  |    &lt;/figure&gt;
+  |    &lt;div part=&quot;content&quot;&gt;
+  |      &lt;h3 part=&quot;title&quot;&gt;
+  |        &lt;slot name=&quot;title&quot;&gt;&lt;/slot&gt;
+  |      &lt;/h3&gt;
+  |      &lt;div part=&quot;description&quot;&gt;
+  |        &lt;slot name=&quot;description&quot;&gt;&lt;/slot&gt;
+  |      &lt;/div&gt;
+  |    &lt;/div&gt;
+  |  &lt;/article&gt;
 
+  &lt;img slot=&quot;image&quot; src=&quot;&quot; alt=&quot;&quot;&gt;
+  &lt;a slot=&quot;title&quot; href=&quot;...&quot;&gt;My card title&lt;/a&gt;
+  &lt;p slot=&quot;description&quot;&gt;...&lt;/p&gt;
+&lt;/tcds-card&gt;
+</code></pre>
+<p>VARIANTS:</p>
+<ul>
+<li>Default: white background, box shadow, border radius on entire card, padding on interior content</li>
+<li>Lite: no background, no box shadow, border radius only on image/figure area, no padding on interior content</li>
+<li>CTA: Center title, no description slot, no footer slot, &quot;Learn more&quot; secondary button auto-add. Responsively, image goes to left, title left-justified, &quot;Learn more&quot; button disappears but arrow stays. CURRENTLY CALLED: Business Entity Landing Page variant</li>
+<li>Profile: Image is circled, 1/3 width of the card, centered, and straddled over the top; title is sans-serif bold and centered, also smaller; &quot;View profile&quot; secondary link is auto-added, centered. Description slot optional; length should be no more than a single line, text is centered.</li>
+<li>Spotlight: content area is translucent navy background, overlaid at the bottom of the image area which expands to the full dimensions of the card; on mobile, content area is put beneath the image and is made solid navy</li>
+<li>Orientation<ul>
+<li>Vertical (default): image on top of content</li>
+<li>Horizontal: image to left of content</li>
+<li>Auto: responsive (mobile = horizontal, desktop = vertical, as in location map card)</li>
+</ul>
+</li>
+</ul>
+<p>SPECS:</p>
+<ul>
+<li>Quick links can be added to footer (as in location map card)</li>
+<li>Should work well with modals</li>
+<li>Entire surface should be clickable, image grows on hover</li>
+<li>Meta slot for dates</li>
+<li>Tags in top right corner of image area (placed over angled gradient) for classifications</li>
+<li>Eyebrow inside of heading element (like &quot;Texas Children&#39;s&quot; in location cards)</li>
+</ul>
 {% endblock %}

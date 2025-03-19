@@ -1,0 +1,19 @@
+{# DO NOT EDIT. This file was compiled from Markdown; please edit the source .md
+file and run the gulp process to compile (either `gulp` or `npm run dev`). #}
+{% extends "@tc/base.twig" %}
+{% block body %}
+<p><tcds-icon icon="error" style="--tcds-icon-size: 5rem; color: var(--tcds-color-red)"></tcds-icon></p>
+<h2 id="under-construction">Under construction</h2>
+<p>Please check back later.</p>
+
+{% embed "@tc/includes/example.twig" with {full_screen: "true"} %}
+{% block content %}
+<tcds-section variant="masthead" class="bg-secondary bg-logo">
+  <h2>
+    <small>Example eyebrow</small>
+    Example headline text
+  </h2>
+</tcds-section>
+{% endblock %}
+{% endembed %}
+{% endblock %}

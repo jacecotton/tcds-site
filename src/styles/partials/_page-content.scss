@@ -19,6 +19,8 @@ main {
 }
 
 .tcds-side-menu {
+  font-size: var(--tcds-font-size-rem);
+  
   @media (max-width: 1280px) {
     position: fixed;
     left: 1rem;

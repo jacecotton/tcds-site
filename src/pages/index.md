@@ -3,7 +3,7 @@ category: Introduction
 title: Overview
 meta_title:
 display_title: Texas Children's Design System
-description: Texas Children's Design System is the single source of truth for web design and front-end development at Texas Children's. It provides a centralized library of web components, design resources, and best practice guidelines, aiming to enhance consistency, standardization, and time-to-launch for web projects at Texas Children's.
+description: Texas Children's Design System is the single source of truth for web design and frontend development at Texas Children's. It aims to provide a state-of-the-art library of web components, design and development resources, and best practice guidelines, to enhance consistency, standardization, and time-to-launch for web projects at Texas Children's.
 route: /
 template: index
 ---
@@ -16,6 +16,12 @@ Texas Children's Design System is a <b>work in progress</b>. Please check back f
 In the meantime, check out our progress and feel free to leave feedback on our [GitHub repo](https://github.com/jacecotton/tcds/issues) or send it directly to [jxcotton@texaschildrens.org](mailto:jxcotton@texaschildrens.org).
 
 ## What this Design System is
+<!-- **A centralized, single source of truth.**
+
+**An adaptable, living system.** Things change, purposes expand, new tools are added. Beyond that, the DS is designed to be flexible to the individual needs of downstream projects, while still providing consistency and compliance.
+
+**Robust and documented.** Self-consistency, leveraging state-of-the-art techniques, compliance with everything from performance to accessibility to user experience best practices. -->
+
 TBD...
 
 ## What this Design System is not

@@ -1,0 +1,160 @@
+{# DO NOT EDIT. This file was compiled from Markdown; please edit the source .md
+file and run the gulp process to compile (either `gulp` or `npm run dev`). #}
+{% extends "@tc/base.twig" %}
+{% block body %}
+<p><tcds-icon icon="error" style="--tcds-icon-size: 5rem; color: var(--tcds-color-red)"></tcds-icon></p>
+<h2 id="under-construction">Under construction</h2>
+<p>Please check back later.</p>
+
+{% embed "@tc/includes/example.twig" %}
+{% block content %}
+<p>
+  Today, TB remains the leading infectious cause of death globally.
+  Each year, 10.6 million people develop TB. Of this group, 1.3 million
+  people on average die annually. Furthermore,
+  <tcds-fn-ref aria-details="who pediatrics">about 1 million children develop TB
+  and 225,000 die on average each year – that’s one child every four
+  seconds.</tcds-fn-ref> Of the children who die from TB,
+  <tcds-fn-ref aria-details="pediatrics">96% were never diagnosed or
+  had the opportunity to receive treatment.</tcds-fn-ref>
+</p>
+
+<p>
+  Not everyone who is infected with TB develops the disease, though.
+  <tcds-fn-ref aria-details="emerg-infect-dis">Approximately 25% of
+  the world’s population have at some time in their lives been infected
+  with TB,</tcds-fn-ref> but they don’t develop the disease or present
+  outward symptoms. People with latent, asymptomatic TB can, however,
+  spread the bacteria to others.
+</p>
+
+<tcds-fn-list>
+  <ol>
+    <li id="who">
+      World Health Organization. (2024, October 29). Tuberculosis. WHO.int.
+      <a href="https://www.who.int/news-room/fact-sheets/detail/tuberculosis">
+      https://www.who.int/news-room/fact-sheets/detail/tuberculosis</a>
+    </li>
+    <li id="pediatrics">
+      Bonnet, Maryline, et al. (2023). Mortality and Cause of Death in Children
+      With Presumptive Disseminated Tuberculosis. Pediatrics, 151(4),
+      e2022057912. <a href="https://doi.org/10.1542/peds.2022-057912">
+      doi: 10.1542/peds.2022-057912</a>.
+    </li>
+    <li id="emerg-infect-dis">
+      Haddad MB, Raz KM, Lash TL, Hill AN, Kammerer JS, Winston CA, Castro KG,
+      Gandhi NR, Navin TR. Simple Estimates for Local Prevalence of Latent
+      Tuberculosis Infection, United States, 2011-2015. Emerg Infect Dis. 2018
+      Oct;24(10):1930-1933. <a href="https://doi.org/10.3201/eid2410.180716">
+      doi: 10.3201/eid2410.180716</a>. PMID: 30226174; PMCID: PMC6154166.
+    </li>
+  </ol>
+</tcds-fn-list>
+{% endblock %}
+{% block code %}
+<p>
+  Today, TB remains the leading infectious cause of death globally.
+  Each year, 10.6 million people develop TB. Of this group, 1.3 million
+  people on average die annually. Furthermore,
+  <tcds-fn-ref aria-details="who">about 1 million children develop TB
+  and 225,000 die on average each year – that’s one child every four
+  seconds.</tcds-fn-ref> Of the children who die from TB,
+  <tcds-fn-ref aria-details="pediatrics">96% were never diagnosed or
+  had the opportunity to receive treatment.</tcds-fn-ref>
+</p>
+
+<p>
+  Not everyone who is infected with TB develops the disease, though.
+  <tcds-fn-ref aria-details="emerg-infect-dis">Approximately 25% of
+  the world’s population have at some time in their lives been infected
+  with TB,</tcds-fn-ref> but they don’t develop the disease or present
+  outward symptoms. People with latent, asymptomatic TB can, however,
+  spread the bacteria to others.
+</p>
+
+<tcds-fn-list>
+  <ol>
+    <li id="who">World Health Organization. (2024, October 29). Tube...</li>
+    <li id="pediatrics">Bonnet, Maryline, et al. (2023). Mortality a...</li>
+    <li id="emerg-infect-dis">Haddad MB, Raz KM, Lash TL, Hill AN, K...</li>
+  </ol>
+</tcds-fn-list>
+{% endblock %}
+{% endembed %}
+
+
+<h2 id="guidance">Guidance</h2>
+<h3 id="best-practices">Best practices</h3>
+<p><strong>Use footnotes sparingly.</strong> Too many footnotes may interfere with reading and distract users.</p>
+<p><strong>Stick to citations and disclaimers, avoid asides and parentheticals.</strong>  Footnotes are best for content that is obligatory to mention, but strictly optional to read. Due to the <a href="https://www.nngroup.com/articles/interaction-cost-definition/">interaction cost</a> associated with footnotes (clicking, jumping, extra reading, and then scrolling back), asides and explanatory notes are best either worked into the main prose, presented in a <a href="/components/content/callout">Callout</a>, or omitted.</p>
+<p><strong>Place footnote references outside of all punctuation.</strong> You can ensure this by placing the closing reference tag in HTML after punctuation (see <a href="#usage">&sect; Usage</a>).</p>
+<p><strong>Footnotes must be referenced in related content.</strong> Footnotes do not stand on their own; they are directly connected to sentences or sentence fragments via references.</p>
+<h3 id="usage">Usage</h3>
+<p>In HTML, footnotes themselves are marked up as <code>li</code> elements inside an ordered list (<code>ol</code>) placed inside a <code>tcds-fn-list</code> element. Each <code>li</code> should have a unique <code>id</code>.</p>
+<p>Footnote references are added to copy by wrapping the relevant text in <code>tcds-fn-ref</code> tags, which should then have an <code>aria-details</code> attribute set to the <code>id</code> of the associated footnote <code>li</code>.</p>
+
+{% embed "@tc/includes/example.twig" %}
+{% block content %}
+<p>
+  <tcds-fn-ref aria-details="example">This is a sentence which has a
+  footnote associated with it.</tcds-fn-ref>
+</p>
+
+<tcds-fn-list>
+  <ol>
+    <li id="example">This is a footnote associated with the above sentence.</li>
+  </ol>
+</tcds-fn-list>
+{% endblock %}
+{% endembed %}
+
+
+<p>The <code>tcds-fn-ref</code> and <code>ol</code> elements keep track of the numbering for you, in order to avoid manual re-indexing in the event a footnote is added, removed, or rearranged.</p>
+<h4 id="multiple-references-per-footnote">Multiple references per footnote</h4>
+<p>You may reference the same footnote multiple times by using the same <code>aria-details</code> attribute across each <code>tcds-fn-ref</code> instance.</p>
+
+{% embed "@tc/includes/example.twig" %}
+{% block content %}
+<p>
+  <tcds-fn-ref aria-details="multi-example">This is a sentence which
+  has a footnote associated with it.</tcds-fn-ref> And <tcds-fn-ref
+  aria-details="another">this is a sentence with another
+  footnote.</tcds-fn-ref> And now <tcds-fn-ref aria-details="multi-example">
+  this is another with a reference to the same footnote as the first.</tcds-fn-ref>
+</p>
+
+<tcds-fn-list>
+  <ol>
+    <li id="multi-example">
+      This is a footnote associated with the first and third above sentences.
+    </li>
+    <li id="another">
+      This is a footnote associated with the second sentence.
+    </li>
+  </ol>
+</tcds-fn-list>
+{% endblock %}
+{% endembed %}
+
+
+<p>The return link inside the footnote (↵) will always link back to the first reference only.</p>
+<h2 id="documentation">Documentation</h2>
+<h3 id="accessibility">Accessibility</h3>
+<p>Each reference has an <code>aria-details</code> attribute pointing to an <code>li</code> inside an ordered list. Without JavaScript, there will be no superscript numbered jump link, but the footnote itself will still be accessible inside the <code>ol</code>, and screen reader software will announce when a piece of text is &quot;further detailed&quot; by that footnote.</p>
+<p>When the custom elements are upgraded via JavaScript, the following occurs:</p>
+<ul>
+<li>An <code>id</code> is added to the <code>tcds-fn-ref</code> element, generated from the <code>id</code> of the associated <code>li</code> and appended with <code>-ref</code>. This allows the reference to be linked back to from the footnote.</li>
+<li>An anchor (<code>a</code>) element is added to create a jump link to the reference, with an ARIA <code>role</code> of <code>doc-noteref</code> and a visually hidden text fragment indicating to screen readers that it is a footnote.</li>
+<li>In the <code>tcds-fn-list</code>, an <code>aside</code> sectioning element is generated with an ARIA <code>role</code> of <code>doc-endnotes</code> and labeled by a visually hidden heading element. The heading level of this element is determined by incrementing from the immediately previous heading level to preserve a logical and valid content outline.</li>
+<li>Inside each footnote <code>li</code>, a link is appended to jump back to the reference to allow users to easily return to the main content. This link (↵) has an ARIA <code>role</code> of <code>doc-backlink</code> and an <code>aria-label</code> of <code>&quot;Return to associated passage&quot;</code>.</li>
+</ul>
+<h3 id="known-issues">Known issues</h3>
+<details>
+  <summary>To-do</summary>
+
+<ul>
+<li>It should be possible to associate multiple references with a single sentence or clause, e.g.<sup>1, 2</sup> This should be made possible in the event <code>aria-details</code> contains a space-separated list of idents.</li>
+<li>Explore the possibility of pinpoint citations (perhaps a <code>pincite</code> attribute), appended to the reference number and separated by a colon.</li>
+<li>Further testing with screen readers must be done, particularly with respect to the use of <code>aria-details</code> to associate references with footnotes (<a href="https://a11ysupport.io/tech/aria/aria-details_attribute">latest available public data for user agent implementation</a> is 2 years old, see <a href="https://a11ysupport.io/tests/tech__aria__aria-details">tests</a>).</details></li>
+</ul>
+{% endblock %}

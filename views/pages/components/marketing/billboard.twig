@@ -1,0 +1,81 @@
+{# DO NOT EDIT. This file was compiled from Markdown; please edit the source .md
+file and run the gulp process to compile (either `gulp` or `npm run dev`). #}
+{% extends "@tc/base.twig" %}
+{% block body %}
+<p><tcds-icon icon="error" style="--tcds-icon-size: 5rem; color: var(--tcds-color-red)"></tcds-icon></p>
+<h2 id="under-construction">Under construction</h2>
+<p>Please check back later.</p>
+
+{% embed "@tc/includes/example.twig" with {full_screen: "true"} %}
+{% block content %}
+<tcds-section variant="billboard" class="bg-secondary bg-logo">
+  <picture slot="secondary">
+    <source type="image/webp" srcset="https://www.texaschildrens.org/sites/tc/files/styles/webp/public/2023-05/Hero%20image%20-%20mobile_1.png.webp?itok=0I_Mrn8j" media="(max-width: 896px)">
+    <img src="https://www.texaschildrens.org/sites/tc/files/styles/webp/public/2023-05/Hero%20image%20-%20desktop.png.webp?itok=HD3aAhDC" alt="">
+  </picture>
+
+  <h2 slot="primary">
+    <small>Example eyebrow</small>
+    Example headline text
+  </h2>
+
+  <p slot="primary">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua.
+  </p>
+
+  <a slot="cta" is="tcds-link-button" size="large" href="#">Primary action</a>
+  <a slot="cta" is="tcds-link-button" size="large" variant="secondary" href="#">Secondary action</a>
+</tcds-section>
+{% endblock %}
+{% block code %}
+<tcds-section variant="billboard" class="bg-secondary bg-logo">
+  <picture slot="secondary">
+    <source type="image/webp" srcset="..." media="(max-width: 896px)">
+    <img src="..." alt="">
+  </picture>
+
+  <h2 slot="primary">
+    <small>Example eyebrow</small>
+    Example headline text
+  </h2>
+
+  <p slot="primary">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua.
+  </p>
+
+  <a slot="cta" is="tcds-link-button" size="large" href="#">Primary action</a>
+  <a slot="cta" is="tcds-link-button" size="large" variant="secondary" href="#">Secondary action</a>
+</tcds-section>
+{% endblock %}
+{% endembed %}
+
+
+<h2 id="guidance">Guidance</h2>
+<h3 id="best-practices">Best practices</h3>
+<p><strong>Make the headline bold and compelling.</strong> Use slogans, taglines, etc., to attract attention. Consider another component for literal headline text, like the name of the page.</p>
+<p><strong>Make the supporting text succinct.</strong></p>
+<p><strong>Write compelling action labels.</strong></p>
+<hr>
+<!-- 
+* Affiliate ribbon for brand associations right-aligned and at bottom
+* Foreground image/secondary area — options for:
+  * `float` or `sink` for responsive strategy (float goes to top, bleeds into full width; sink goes to bottom, does not bleed, is constrained by block and bottom padding, and `::slotted` images get border radius)
+  * Can bleed and/or clip `top`, `bottom`, `side`, or `full` to determine how/whether secondary content is constrained
+    * If `top`, `bottom`, or `full`, the secondary content is centered relative to all other content in the section, and if taller than the rest of the content, will visibly overflow the section. Unless `clip` of `top|bottom|full`, in which case the secondary content will bleed past the interior padding, but not visibly overflow past the section.
+      * Block padding may need to be applied to `[part=primary]` and `[part=secondary]` redundantly, that way we can exempt `[part=secondary]` based on `[bleed]` and/or `[clip]`.
+    * If `side` or `full`, secondary content is flush on the left edge of the secondary area (or right if reversed), and then if the content is too wide, will continue overflowing past the `max-width` container on the right (or left if reversed), but will be clipped by the overall `tcds-section`.
+      * Can simply `unset` the `max-width` of the `::slotted` image, however this will usually make the section really tall. To fix, need to somehow tell the section to only size to the primary content, and ignore the secondary content (`position: absolute`?)
+
+
+Billboards with video backgrounds are called jumbotrons (name of Site Studio component's variant). The jumbotron modifier increases the size of the eyebrow and heading to look like the current TC.org homepage hero (you can't have this extra large text without the video background—otherwise that would imply you're probably misusing one or the other). Also, the billboard is now sized *to* the aspect-ratio of the video background (normally a full-bleed background has `object-fit: cover`).
+
+* Note that the sizing-to-the-background's-aspect-ratio thing is being discussed as a potential generic variant for the Section component (see &sect; Sketch).
+
+Billboards with full-bleed backgrounds (images or videos) changes the responsive strategy a little bit. Instead of the paragraph remaining overlaid on the background, it gets kicked down to a full-bleed, white-background box beneath the image or video + heading. The eyebrow + heading remains overlaid on the background video or image, but is aligned to the bottom of its container, with a small dark gradient at the bottom to ensure sufficient contrast.
+
+Actually, the image/text area arrangement can be reversed (think the Texas map pin animation).
+
+Also, the "text" area can have arbitrary content (think the location card slider on the home page). -->
+{% endblock %}

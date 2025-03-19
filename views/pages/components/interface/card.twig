@@ -1,0 +1,231 @@
+{# DO NOT EDIT. This file was compiled from Markdown; please edit the source .md
+file and run the gulp process to compile (either `gulp` or `npm run dev`). #}
+{% extends "@tc/base.twig" %}
+{% block body %}
+<p><tcds-icon icon="error" style="--tcds-icon-size: 5rem; color: var(--tcds-color-red)"></tcds-icon></p>
+<h2 id="under-construction">Under construction</h2>
+<p>Please check back later.</p>
+
+{% embed "@tc/includes/example.twig" %}
+{% block content %}
+<div class="width-constrainer">
+  <tcds-card>
+    <img slot="image" src="https://voiceofnursing.org/wp-content/uploads/2023/05/051923VONNakeishaA640-550x314.jpg" alt="" width="550" height="314">
+    <a slot="title" href="#card-example-basic">Voice of Nursing: Nakeisha Archer named AORN National President-elect</a>
+    <p slot="description">
+      Dr. Nakeisha Archer, RN, Director of Perioperative Services at Texas Children’s Pavilion for Women, was recently named President-elect of the Association of periOperative Registered Nurses (AORN). 
+    </p>
+  </tcds-card>
+</div>
+{% endblock %}
+{% block code %}
+<tcds-card>
+  <img slot="image" src="...">
+  <a slot="title" href="...">
+    Voice of Nursing: Nakeisha Archer named AORN National President-elect
+  </a>
+  <p slot="description">
+    Dr. Nakeisha Archer, RN, Director of Perioperative Services at Texas
+    Children’s Pavilion for Women, was recently named President-elect of
+    the Association of periOperative Registered Nurses (AORN). 
+  </p>
+</tcds-card>
+{% endblock %}
+{% endembed %}
+
+
+<h2 id="guidance">Guidance</h2>
+<h3 id="best-practices">Best practices</h3>
+<p><strong>Avoid overloading cards with content.</strong> Cards are meant to display snippets and serve as teasers, not as layout containers for full content. If even the teaser content is lengthy, consider rewriting it to be shorter. Avoid truncating content with ellipses.</p>
+<p><strong>Choose the right variant for the context.</strong> For example, if default cards clutter an interface, consider a <a href="#lite-variant">lite card</a>; to optimize vertical space, consider a <a href="#orientation">horizontal card</a>; if using cards to enumerate more than a few subtopics, consider <a href="#icon-variant">icon cards</a>.</p>
+<p><strong>Use heading elements for card titles if appropriate.</strong> If cards help to outline a page&#39;s overall content, use the semantically appropriate heading element. The component stylesheet will ensure the title&#39;s style remains consistent no matter the element used.</p>
+<h2 id="documentation">Documentation</h2>
+<h3 id="usage">Usage</h3>
+<h4 id="orientation">Orientation</h4>
+<p>Cards have two available orientations: vertical (image above content) and horizontal (image left of content).</p>
+<ul>
+<li>By default, cards are vertical. On small screens, cards become horizontal, but will switch back to vertical if the card&#39;s container (such as a sidebar or carousel slide) is too small.</li>
+<li>Cards try to fill the full width of their containers, though vertical cards have a maximum width of 640px. Vertical cards also have a larger padding above 325px.</li>
+</ul>
+<p>You can lock a card&#39;s orientation by setting the <a href="#orientation-attribute"><code>orientation</code> attribute</a> to either <code>vertical</code> or <code>horizontal</code>.</p>
+
+{% embed "@tc/includes/example.twig" with {line_highlight: "1"} %}
+{% block content %}
+<tcds-card orientation="horizontal">
+  <img slot="image" src="https://voiceofnursing.org/wp-content/uploads/2023/05/051923VONNakeishaA640-550x314.jpg" alt="" width="550" height="314">
+  <a slot="title" href="#card-example-orientation">Voice of Nursing: Nakeisha Archer named AORN National President-elect</a>
+  <p slot="description">
+    Dr. Nakeisha Archer, RN, Director of Perioperative Services at Texas Children’s Pavilion for Women, was recently named President-elect of the Association of periOperative Registered Nurses (AORN). 
+  </p>
+</tcds-card>
+{% endblock %}
+{% block code %}
+<tcds-card orientation="horizontal">
+  <img slot="image" src="...">
+  <a slot="title" href="...">
+    Voice of Nursing: Nakeisha Archer named AORN National President-elect
+  </a>
+  <p slot="description">
+    Dr. Nakeisha Archer, RN, Director of Perioperative Services at Texas
+    Children’s Pavilion for Women, was recently named President-elect of
+    the Association of periOperative Registered Nurses (AORN). 
+  </p>
+</tcds-card>
+{% endblock %}
+{% endembed %}
+
+
+<h4 id="lite-variant">Lite variant</h4>
+<p>The lite variant provides a simplified card design. It can help reduce visual noise if needed, and may work better on darker backgrounds. In HTML, you can use it by adding <code>lite</code> to the <a href="#variant-attribute"><code>variant</code> attribute</a>.</p>
+
+{% embed "@tc/includes/example.twig" with {line_highlight: "1"} %}
+{% block content %}
+<div class="width-constrainer">
+  <tcds-card variant="lite">
+    <img slot="image" src="https://voiceofnursing.org/wp-content/uploads/2023/05/051923VONNakeishaA640-550x314.jpg" alt="" width="550" height="314">
+    <a slot="title" href="#card-example-lite">Voice of Nursing: Nakeisha Archer named AORN National President-elect</a>
+    <p slot="description">
+      Dr. Nakeisha Archer, RN, Director of Perioperative Services at Texas Children’s Pavilion for Women, was recently named President-elect of the Association of periOperative Registered Nurses (AORN). 
+    </p>
+  </tcds-card>
+</div>
+{% endblock %}
+{% block code %}
+<tcds-card variant="lite">
+  <img slot="image" src="...">
+  <a slot="title" href="...">
+    Voice of Nursing: Nakeisha Archer named AORN National President-elect
+  </a>
+  <p slot="description">
+    Dr. Nakeisha Archer, RN, Director of Perioperative Services at Texas
+    Children’s Pavilion for Women, was recently named President-elect of
+    the Association of periOperative Registered Nurses (AORN). 
+  </p>
+</tcds-card>
+{% endblock %}
+{% endembed %}
+
+
+<h4 id="centered-variant">Centered variant</h4>
+<p>The centered variant works best for cards with more sparse content, such as those used for enumerating services, subtopics, etc. rather than longer content snippets. In HTML, you can use it by adding <code>centered</code> to the <code>variant</code> attribute.</p>
+<p>This variant is not available for horizontal cards.</p>
+
+{% embed "@tc/includes/example.twig" with {line_highlight: "1"} %}
+{% block content %}
+<div class="width-constrainer">
+  <tcds-card variant="centered">
+    <img slot="image" src="https://www.texaschildrens.org/sites/tc/files/styles/coh_small_landscape_webp/public/2025-01/Research-topic2-Ependymoma.jpg.webp" alt="" width="600" height="336">
+    <a slot="title" href="#card-example-centered">Ependymoma</a>
+    <p slot="description">
+      New therapies are improving outcomes for children with ependymoma. Our goal is to develop effective treatments that can significantly enhance the quality of life and survival rates for these young patients.
+    </p>
+  </tcds-card>
+</div>
+{% endblock %}
+{% block code %}
+<tcds-card variant="centered">
+  <img slot="image" src="...">
+  <a slot="title" href="...">Ependymoma</a>
+  <p slot="description">
+    New therapies are improving outcomes for children with ependymoma. Our
+    goal is to develop effective treatments that can significantly enhance
+    the quality of life and survival rates for these young patients.
+  </p>
+</tcds-card>
+{% endblock %}
+{% endembed %}
+
+
+<h4 id="custom-footer">Custom footer</h4>
+<p>By default, a card&#39;s footer has a &quot;Learn more&quot; call-to-action (CTA) label. In HTML, the label can be changed by setting the <a href="#cta-attribute"><code>cta</code> attribute</a>. You can omit the CTA label by setting the attribute to an empty string.</p>
+
+{% embed "@tc/includes/example.twig" with {line_highlight: "1"} %}
+{% block content %}
+<div class="width-constrainer">
+  <tcds-card cta="">
+    <img slot="image" src="https://voiceofnursing.org/wp-content/uploads/2023/05/051923VONNakeishaA640-550x314.jpg" alt="" width="550" height="314">
+    <a slot="title" href="#card-example-basic">Voice of Nursing: Nakeisha Archer named AORN National President-elect</a>
+    <p slot="description">
+      Dr. Nakeisha Archer, RN, Director of Perioperative Services at Texas Children’s Pavilion for Women, was recently named President-elect of the Association of periOperative Registered Nurses (AORN).
+    </p>
+  </tcds-card>
+</div>
+{% endblock %}
+{% block code %}
+<tcds-card cta="">
+  <img slot="image" src="...">
+  <a slot="title" href="...">
+    Voice of Nursing: Nakeisha Archer named AORN National President-elect
+  </a>
+  <p slot="description">
+    Dr. Nakeisha Archer, RN, Director of Perioperative Services at Texas
+    Children’s Pavilion for Women, was recently named President-elect of
+    the Association of periOperative Registered Nurses (AORN).
+  </p>
+</tcds-card>
+{% endblock %}
+{% endembed %}
+
+
+<p>You can also insert arbitrary content, such as multiple links, into the footer. In HTML, you can do this with the <a href="#footer-slot"><code>footer</code> slot</a> (which will override the <code>cta</code> attribute).</p>
+
+{% embed "@tc/includes/example.twig" with {line_highlight: "11-12"} %}
+{% block content %}
+<div class="width-constrainer">
+  <tcds-card>
+    <img slot="image" src="https://voiceofnursing.org/wp-content/uploads/2023/05/051923VONNakeishaA640-550x314.jpg" alt="" width="550" height="314">
+    <a slot="title" href="#card-example-basic">Voice of Nursing: Nakeisha Archer named AORN National President-elect</a>
+    <p slot="description">
+      Dr. Nakeisha Archer, RN, Director of Perioperative Services at Texas Children’s Pavilion for Women, was recently named President-elect of the Association of periOperative Registered Nurses (AORN). 
+    </p>
+    <a slot="footer" is="tcds-link-button" href="#custom-footer-example-primary">Link 1</a>
+    <a slot="footer" is="tcds-link-button" variant="secondary" href="#custom-footer-example-secondary">Link 2</a>
+  </tcds-card>
+</div>
+{% endblock %}
+{% block code %}
+<tcds-card>
+  <img slot="image" src="...">
+  <a slot="title" href="...">
+    Voice of Nursing: Nakeisha Archer named AORN National President-elect
+  </a>
+  <p slot="description">
+    Dr. Nakeisha Archer, RN, Director of Perioperative Services at Texas
+    Children’s Pavilion for Women, was recently named President-elect of
+    the Association of periOperative Registered Nurses (AORN). 
+  </p>
+  <a slot="footer" is="tcds-link-button" href="...">Link 1</a>
+  <a slot="footer" is="tcds-link-button" variant="secondary" href="...">Link 2</a>
+</tcds-card>
+{% endblock %}
+{% endembed %}
+
+
+<p>VARIANTS:</p>
+<ul>
+<li>CTA: Center title, no description slot, no footer slot, &quot;Learn more&quot; secondary button auto-add. Responsively, image goes to left, title left-justified, &quot;Learn more&quot; button disappears but arrow stays. CURRENTLY CALLED: Business Entity Landing Page variant</li>
+<li>Profile: Image is circled, 1/3 width of the card, centered, and straddled over the top; title is sans-serif bold and centered, also smaller; &quot;View profile&quot; secondary link is auto-added, centered. Description slot optional; length should be no more than a single line, text is centered.<ul>
+<li>+lite: like the profile &quot;cards&quot; used for the Taylor Lab and Data Science Hub</li>
+</ul>
+</li>
+<li>Spotlight: content area is translucent navy background, overlaid at the bottom of the image area which expands to the full dimensions of the card; on mobile, content area is put beneath the image and is made solid navy</li>
+<li>Icon card: default CTA becomes primary button</li>
+</ul>
+<p>SPECS:</p>
+<ul>
+<li>If the link is an external link, instead of a secondary button, there is an &quot;[external icon] [hostname of external website]&quot; badge added to the footer to indicate an external jump.</li>
+<li>Should work well with quick links added to footer (as in location map card).<ul>
+<li>In horizontal cards, quick links should be beneath both the image and text, spanning the full width of the card.</li>
+</ul>
+</li>
+<li>Meta slot for dates</li>
+<li>Tags in top right corner of image area (placed over angled gradient) for classifications</li>
+<li>Eyebrow inside of heading element (like &quot;Texas Children&#39;s&quot; in location cards)<ul>
+<li>This is done by adding a span inside a heading element. Note that heading elements are not required. To add them, put the <code>slot=&quot;title&quot;</code> on a heading element, and the <code>a</code> element inside the heading element.<ul>
+<li>Styling should look for whatever has <code>slot=title</code>, and handle the link surfacing and de-visualization of the link irrespective of whether a heading is used in combination.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+{% endblock %}

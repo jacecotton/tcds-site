@@ -12,7 +12,7 @@ const twing = new TwingEnvironment(loader);
 TwingDrupalFilters(twing);
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3003;
 const host = process.env.HOST || "localhost";
 
 app.use(express.static(join(resolve(), "public")));
@@ -28,6 +28,50 @@ content.forEach((category) => {
     }
   });
 });
+
+/** MOCK API */
+
+const data = [
+  { title: 'Example title #1', link: '#example-1' },
+  { title: 'Example title #2', link: '#example-2' },
+  { title: 'Example title #3', link: '#example-3' },
+  { title: 'Example title #4', link: '#example-4' },
+  { title: 'Example title #5', link: '#example-5' },
+  { title: 'Example title #6', link: '#example-6' },
+  { title: 'Example title #7', link: '#example-7' },
+  { title: 'Example title #8', link: '#example-8' },
+  { title: 'Example title #9', link: '#example-9' },
+  { title: 'Example title #10', link: '#example-10' },
+];
+
+app.get("/path/to/endpoint", (req, res) => {
+  const {page} = req.query;
+
+  if(!page) {
+    return res.json(data);
+  }
+
+  const pageNumber = parseInt(page, 10);
+
+  if(isNaN(pageNumber) || pageNumber < 1) {
+    return res.status(400).json({error: "Invalid page parameter (must be positive whole number)"});
+  }
+
+  const resultsPerPage = 5;
+  const startIndex = (pageNumber - 1) * resultsPerPage;
+  const endIndex = startIndex + resultsPerPage;
+
+  const paginatedData = data.slice(startIndex, endIndex);
+  
+  res.json({
+    totalResults: data.length,
+    currentPage: pageNumber,
+    resultsPerPage: resultsPerPage,
+    results: paginatedData,
+  });
+});
+
+/** END MOCK API */
 
 app.use((req, res) => {
   handle404(res);

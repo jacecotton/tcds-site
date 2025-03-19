@@ -1,0 +1,84 @@
+{# DO NOT EDIT. This file was compiled from Markdown; please edit the source .md
+file and run the gulp process to compile (either `gulp` or `npm run dev`). #}
+{% extends "@tc/base.twig" %}
+{% block body %}
+<p><tcds-icon icon="error" style="--tcds-icon-size: 5rem; color: var(--tcds-color-red)"></tcds-icon></p>
+<h2 id="under-construction">Under construction</h2>
+<p>Please check back later.</p>
+
+{% embed "@tc/includes/example.twig" with {full_screen: true} %}
+{% block content %}
+<tcds-section>
+  <h2>This is a section</h2>
+  <p>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+    eiusmod tempor incididunt ut labore et dolore magna aliqua.
+  </p>
+</tcds-section>
+{% endblock %}
+{% endembed %}
+
+
+<h2 id="best-practices">Best practices</h2>
+<h3 id="when-to-use">When to use</h3>
+<p><strong>On landing and home pages.</strong> The Section component is a good option for distinguishing sections of content on full-width landing pages.</p>
+<details>
+  <summary>For developers and maintainers</summary>
+
+<p><strong>To build other components and page templates.</strong> Sections are highly versatile and extensible, allowing you to use them as a base for things like profile mastheads, article ledes, footers, etc.</p>
+</details>
+
+<h3 id="when-not-to-use">When not to use</h3>
+<p><strong>On interior content pages.</strong> The Section component is not a generic wrapper for content, and should not be used inside containers that are already internally boxed. Consider using a <a href="/components/callout">Callout</a> for this purpose.</p>
+<h2 id="usage">Usage</h2>
+<h3 id="backgrounds">Backgrounds</h3>
+<p>To add a background color to a section, use a <a href="/brand/color#utilities">background utility</a>. Note that colors are referenced by their semantic theme alias (&quot;primary&quot; is pink/red, &quot;secondary&quot; is blue/navy, etc.)</p>
+
+{% embed "@tc/includes/example.twig" with {
+  full_screen: true,
+  line_highlight: "1",
+} %}
+{% block content %}
+<tcds-section class="bg-secondary">
+  <p>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+    eiusmod tempor incididunt ut labore et dolore magna aliqua.
+  </p>
+</tcds-section>
+{% endblock %}
+{% endembed %}
+
+
+<p>To use a dark theme, combine the background utility with a <code>data-theme</code> attribute of <code>dark</code> (or <code>auto</code> to follow the user&#39;s system preference).</p>
+
+{% embed "@tc/includes/example.twig" with {
+  full_screen: true,
+  line_highlight: "1",
+} %}
+{% block content %}
+<tcds-section class="bg-secondary" data-theme="dark">
+  <p>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+    eiusmod tempor incididunt ut labore et dolore magna aliqua.
+  </p>
+</tcds-section>
+{% endblock %}
+{% endembed %}
+
+
+<p>To add a <a href="/brand/logos">Texas Children&#39;s logomark</a> flourish, add the <a href="/brand/logos">background utility</a>.</p>
+
+{% embed "@tc/includes/example.twig" with {
+  full_screen: true,
+  line_highlight: "1",
+} %}
+{% block content %}
+<tcds-section class="bg-secondary bg-logo">
+  <p>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+    eiusmod tempor incididunt ut labore et dolore magna aliqua.
+  </p>
+</tcds-section>
+{% endblock %}
+{% endembed %}
+{% endblock %}

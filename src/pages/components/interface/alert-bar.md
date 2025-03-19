@@ -5,6 +5,11 @@ parent: Interface
 description: The Alert Bar is a banner located at the top of the page that categorizes alerts, enabling users to explore details or dismiss them as needed.
 ---
 
+<tcds-icon icon="error" style="--tcds-icon-size: 5rem; color: var(--tcds-color-red)"></tcds-icon>
+
+## Under construction
+Please check back later.
+
 <!--twig
 {% embed "@tc/includes/example.twig" with {full_screen: true} %}
 {% block content %}

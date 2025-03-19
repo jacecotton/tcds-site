@@ -4,14 +4,21 @@ category: Brand
 description: Good typography communicates ideas clearly and reinforces our brand. To these ends, the Design System provides styles that establish clear visual hierarchy, consistency, and rhythm, while reflecting brand identity and tone.
 ---
 
+<tcds-icon icon="error" style="--tcds-icon-size: 5rem; color: var(--tcds-color-red)"></tcds-icon>
+
+## Under construction
+Please check back later.
+
+----
+
 <div class="typography-demo bg-secondary bg-logo line-height-xs">
   <p class="font-weight-semibold">
     <span class="font-subheadings font-size-xl">The difference is</span><br>
     <span class="font-display font-size-3xl">
-      life changing <sup class="font-size-m">&trade;</sup>
+      life changing <sup class="font-size-rem">&trade;</sup>
     </span>
   </p>
-  <p class="font-copy font-size-m">At <b>Texas Children's Hospital</b>, we're proud to be recognized as one of the nation's best children's hospitals.</p>
+  <p class="font-copy font-size-rem">At <b>Texas Children's Hospital</b>, we're proud to be recognized as one of the nation's best children's hospitals.</p>
   <p class="font-ui font-size-xs font-weight-semibold">Button or small text</p>
 </div>
 
@@ -23,8 +30,8 @@ Texas Children's typefaces include the serif [Calluna](https://fonts.adobe.com/f
 <div class="typeface-demo bg-secondary">
   <p class="font-serif line-height-xs">
     <span class="font-size-3xl">Calluna</span>
-    <small class="font-weight-semibold font-size-m">Calluna Semibold</small>
-    <small class="font-weight-bold font-size-m">Calluna Bold</small>
+    <small class="font-weight-semibold font-size-rem">Calluna Semibold</small>
+    <small class="font-weight-bold font-size-rem">Calluna Bold</small>
   </p>
   <ul class="font-ui font-weight-semibold font-size-s">
     <li>Display text (slogans, taglines)</li>
@@ -36,8 +43,8 @@ Texas Children's typefaces include the serif [Calluna](https://fonts.adobe.com/f
 <div class="typeface-demo bg-secondary">
   <p class="font-sans-serif line-height-xs">
     <span class="font-size-3xl">Mont</span>
-    <small class="font-weight-semibold font-size-m">Mont Semibold</small>
-    <small class="font-weight-bold font-size-m">Mont Bold</small>
+    <small class="font-weight-semibold font-size-rem">Mont Semibold</small>
+    <small class="font-weight-bold font-size-rem">Mont Bold</small>
   </p>
   <ul class="font-ui font-weight-semibold font-size-s">
     <li>Complementary lockup text</li>
@@ -64,8 +71,9 @@ Texas Children's Design System uses a base-16 pixel font size on the web, with a
   "2xl": 3,
   "xl": 2,
   "l": 1.5,
-  "ml": 1.125,
-  "m": 1,
+  "ml": 1.25,
+  "m": 1.125,
+  "rem": 1,
   "s": 0.875,
   "xs": 0.8125,
 } %}
@@ -179,7 +187,7 @@ See the [font size API](#font-sizes) for available CSS and HTML utilities.
     utility: "h6",
     font: "Mont",
     font_token: "subheadings",
-    size: "s",
+    size: "rem",
     weight: "Bold",
     line_height: "s",
     letter_spacing: "0",
@@ -384,8 +392,8 @@ For accessibility reasons, font sizes are set in `rem`s (see [WCAG 2.2 Technique
   </thead>
   <tbody>
     <tr>
-      <td rowspan="9" style="white-space: nowrap"><code>.font-size-</code></td>
-      <td rowspan="9" style="white-space: nowrap"><code>--tcds-font-size-</code></td>
+      <td rowspan="10" style="white-space: nowrap"><code>.font-size-</code></td>
+      <td rowspan="10" style="white-space: nowrap"><code>--tcds-font-size-</code></td>
       <td><code>xs</code></td>
       <td><code>0.8125rem</code></td>
       <td><code>9.75pt</code></td>
@@ -396,14 +404,19 @@ For accessibility reasons, font sizes are set in `rem`s (see [WCAG 2.2 Technique
       <td><code>10.50pt</code></td>
     </tr>
     <tr>
-      <td><code>m</code></td>
+      <td><code>rem</code></td>
       <td><code>1.0000rem</code></td>
       <td><code>12.00pt</code></td>
     </tr>
     <tr>
-      <td><code>ml</code></td>
+      <td><code>m</code></td>
       <td><code>1.1250rem</code></td>
       <td><code>13.50pt</code></td>
+    </tr>
+    <tr>
+      <td><code>ml</code></td>
+      <td><code>1.2500rem</code></td>
+      <td><code>15.00pt</code></td>
     </tr>
     <tr>
       <td><code>l</code></td>

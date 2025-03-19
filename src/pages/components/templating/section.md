@@ -1,20 +1,25 @@
 ---
 title: Section
 category: Components
-parent: Marketing
+parent: Templating
 description: The Section component creates a boxed container with a full-bleed background and vertical padding, useful for creating distinct sections on landing pages, as well as large introductory sections such as heroes and profile mastheads. Accordingly, it also increases the font size of paragraphs and list items.
 ---
+
+<tcds-icon icon="error" style="--tcds-icon-size: 5rem; color: var(--tcds-color-red)"></tcds-icon>
+
+## Under construction
+Please check back later.
 
 <!--twig
 {% embed "@tc/includes/example.twig" with {full_screen: true} %}
 {% block content %}
-<section class="tcds-section">
+<tcds-section>
   <h2>This is a section</h2>
   <p>
     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
     eiusmod tempor incididunt ut labore et dolore magna aliqua.
   </p>
-</section>
+</tcds-section>
 {% endblock %}
 {% endembed %}
 twig-->
@@ -42,12 +47,12 @@ To add a background color to a section, use a [background utility](/brand/color#
   line_highlight: "1",
 } %}
 {% block content %}
-<section class="tcds-section bg-secondary">
+<tcds-section class="bg-secondary">
   <p>
     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
     eiusmod tempor incididunt ut labore et dolore magna aliqua.
   </p>
-</section>
+</tcds-section>
 {% endblock %}
 {% endembed %}
 twig-->
@@ -60,12 +65,12 @@ To use a dark theme, combine the background utility with a `data-theme` attribut
   line_highlight: "1",
 } %}
 {% block content %}
-<section class="tcds-section bg-secondary" data-theme="dark">
+<tcds-section class="bg-secondary" data-theme="dark">
   <p>
     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
     eiusmod tempor incididunt ut labore et dolore magna aliqua.
   </p>
-</section>
+</tcds-section>
 {% endblock %}
 {% endembed %}
 twig-->
@@ -78,12 +83,12 @@ To add a [Texas Children's logomark](/brand/logos) flourish, add the [background
   line_highlight: "1",
 } %}
 {% block content %}
-<section class="tcds-section bg-secondary bg-logo">
+<tcds-section class="bg-secondary bg-logo">
   <p>
     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
     eiusmod tempor incididunt ut labore et dolore magna aliqua.
   </p>
-</section>
+</tcds-section>
 {% endblock %}
 {% endembed %}
 twig-->

@@ -2,6 +2,32 @@
 file and run the gulp process to compile (either `gulp` or `npm run dev`). #}
 {% extends "@tc/base.twig" %}
 {% block body %}
+<h2 id="grid-vs-flex-layouts">Grid vs. flex layouts</h2>
+<p>The Design System offers both a grid layout component and a flex layout component, based on <a href="">CSS Grid</a> and <a href="">CSS Flex</a> respectively. Each have their own distinct benefits and should be chosen based on the particular use case.</p>
+<details>
+  <summary>Sketch</summary>
+
+<p>Highly visual, very simple illustrations and animations about the fundamental differences between grids and flex layouts.</p>
+<ul>
+<li>Grids define rows and columns, and children generally fall within the &quot;tracks&quot; defined by the grid container. They can span multiple rows and columns, but otherwise must abide by the layout defined by the parent. (Animation idea: lines drawn for columns and rows; items fill in one at a time, uniform size/spans; some items start to span multiple columns, forcing items over into new rows, abiding by the track definitions.)</li>
+<li>Flex layouts attempt to force items onto rows; define how items are positioned within a row (space-between, space-around, etc.); can kick off into new rows, but those rows aren&#39;t defined; items can center within their rows without respect to other rows, in other words there are no column tracks.<ul>
+<li>Animation idea 1: blocks that stack vertically - they then are forced onto one row, but extend past their container at first, before being squeezed to confine to the width of the flex parent as part of the animation; each block starts with <code>flex: 1 0</code>, but then adapt to a <code>fit-content</code> width, then the animation cycles through <code>space-between</code>, <code>space-around</code>, etc.</details></li>
+</ul>
+</li>
+</ul>
+<p>Grid layouts are defined by a <strong>grid container</strong>, which specifies a strict 2-dimensional layout (using rows and columns), which each child element, <strong>grid items</strong>, must abide by (and fall into automatically).</p>
+<p>Rows and columns create layout-wide <strong>grid tracks</strong> (illustrated by the dashed lines below) that determine placement and relative alignment. A grid item can span multiple rows and columns.</p>
+<blockquote>
+<p>INSERT GRID ANIMATION</p>
+</blockquote>
+<p>A grid container can specify multi-column and/or multi-row <strong>grid areas</strong> for a grid item to fill.</p>
+<blockquote>
+<p>INSERT GRID ILLUSTRATION
+(demoing grid areas/holy grail)</p>
+</blockquote>
+<p>Grid layouts are best for complicated or macro-level layouts, where strict adherence to a centrally specified layout is desired.</p>
+<hr>
+<p>Flex layouts are controlled by a parent <strong>flexbox</strong>, which attempts to fit and align any child elements, <strong>flex items</strong>, along 1 dimension only (either row or column), according to a number of <abbr title="Simple rules to inform complicated decisions.">heuristics</abbr> available to and specified by the author or designer.</p>
 <h2 id="grid-layout">Grid layout</h2>
 <p>A grid layout defines columns, rows, and regions within which elements can reside and be <a href="#positioning">positioned</a>.</p>
 <p>Typically, layouts should use a 12-column grid, with regions that span columns and rows as needed.</p>
@@ -161,6 +187,10 @@ file and run the gulp process to compile (either `gulp` or `npm run dev`). #}
 </ul>
 <h3 id="floating">Floating</h3>
 <p>Floating is neither positioning nor alignment, but rather describes how surrounding content should flow around an element.</p>
+<h2 id="max-width-containers">Max width containers</h2>
+<p>The utility class <code>.max-width</code> defines a centered container with a <code>max-width</code> of <code>--tcds-max-width</code>, set by default to <code>--tcds-site-container-max-width</code>, which is 1000px.</p>
+<p>The <code>.max-width</code> container can be used with different widths to create a centered, constrained width, responsive container, by redefining <code>--tcds-max-width</code> to whatever you want.</p>
+<p>This is why the class is named <code>.max-width</code> and not <code>.site-max-width</code>.</p>
 <h2 id="references">References</h2>
 <ul>
 <li><a href="https://fluent2.microsoft.design/layout">https://fluent2.microsoft.design/layout</a></li>

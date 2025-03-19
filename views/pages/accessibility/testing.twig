@@ -2,5 +2,17 @@
 file and run the gulp process to compile (either `gulp` or `npm run dev`). #}
 {% extends "@tc/base.twig" %}
 {% block body %}
-
+<p><tcds-icon icon="error" style="--tcds-icon-size: 5rem; color: var(--tcds-color-red)"></tcds-icon></p>
+<h2 id="under-construction">Under construction</h2>
+<p>Please check back later.</p>
+<hr>
+<ul>
+<li>Try to test with <a href="https://webaim.org/projects/screenreadersurvey10/#primary">the most popular assistive user agents</a>, such as JAWS and NVDA. Do not rely solely on testing with system software, such as Apple&#39;s VoiceOver, which <a href="https://www.powermapper.com/tests/screen-readers/aria/">tends to have higher compliance with accessibility protocols</a> but lower market share, and thus is a less accurate representation of the typical user experience.</li>
+<li><a href="https://www.a11yproject.com/checklist/">https://www.a11yproject.com/checklist/</a></li>
+<li><a href="https://aria-at.w3.org/test-plan-report/370">https://aria-at.w3.org/test-plan-report/370</a> do tests like this (record results)</li>
+</ul>
+<h2 id="resources">Resources</h2>
+<ul>
+<li><a href="https://a11ysupport.io/">Accessibility Support</a> (like caniuse.com but for assistive user agents)</li>
+</ul>
 {% endblock %}

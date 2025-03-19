@@ -19,7 +19,7 @@
 <body class="page-{{ title|clean_class }} category-{{ category|clean_class }} line-numbers">
   {{ include("@tc/partials/site-header.twig") }}
 
-  <section class="tcds-section tcds-section--raised tcds-section--masthead bg-secondary bg-logo" data-theme="auto">
+  <tcds-section data-theme="auto" class="bg-secondary bg-logo" variant="raised masthead">
     <h1>
       {% if display_title == "" %}
         <span class="visually-hidden">{{ title }}</span>
@@ -35,7 +35,7 @@
         {{ description }}
       </p>
     {% endif %}
-  </section>
+  </tcds-section>
 
   <div class="max-width page__content">
     {{ include("@tc/partials/side-menu.twig") }}

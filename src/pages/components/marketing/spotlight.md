@@ -1,0 +1,22 @@
+---
+title: Spotlight
+category: Components
+parent: Marketing
+description: Spotlights are used to highlight a video.
+---
+<tcds-icon icon="error" style="--tcds-icon-size: 5rem; color: var(--tcds-color-red)"></tcds-icon>
+
+## Under construction
+Please check back later.
+
+<!-- 
+How to handle what's currently called the Video Text component?
+
+What's going on here in generic Section terms is:
+* All the content is centered. The text above the play button is just the section's normal heading.
+* The section's height is now sized to the background image's proportions—something I assume we're not doing by default, but instead we're normally applying `object-fit: cover` to the background image.
+  * Sizing the section to the aspect ratio of the background image should be an option in any event, so maybe a variant here.
+* A large, centered play button is added to the section's dropzone for arbitrary content beneath the main heading. This play button activates a separately-added dialog/modal, the dropzone of which is added a YouTube embed.
+* A translucent navy footer is added to the bottom of the section for a centered, lede-sized paragraph. Not sure how to handle here.
+
+In any event, all of this sounds like something that should be composable with primitives, but something editors shouldn't have to assemble themselves each time. It's also a little complicated/fragile for a helper. So, this should be doable as a non-custom Site Studio component, video modal included and everything. Only fields editors should have to worry about is title, footer description, youtube link, and cover image (only if desired to be different from maxresdefault.jpg). -->

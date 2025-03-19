@@ -109,7 +109,7 @@ const tasks = {
   styles: () => {
     return src("./src/styles/**/*.scss")
       .pipe(sass({
-        includePaths: ["node_modules"],
+        includePaths: ["../", "node_modules"],
         outputStyle: "compressed",
         importer: jsonsass(),
       }))
@@ -132,12 +132,12 @@ const tasks = {
               test: /\.js$/,
               exclude: /(node_modules)/,
               use: [
-                {
-                  loader: "babel-loader",
-                  options: {
-                    presets: ["@babel/preset-env"],
-                  },
-                }
+                // {
+                //   loader: "babel-loader",
+                //   options: {
+                //     presets: ["@babel/preset-env"],
+                //   },
+                // }
               ],
             },
           ],
@@ -145,6 +145,7 @@ const tasks = {
         resolve: {
           alias: {
             "@txch": resolve(join(), "./node_modules/@txch/"),
+            // "@txch": resolve(join(), "../"),
           },
         },
         output: {

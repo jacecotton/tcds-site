@@ -1,0 +1,31 @@
+.width-constrainer {
+  width: 350px;
+  position: relative;
+
+  &::before,
+  &::after {
+    position: absolute;
+  }
+
+  &::before {
+    content: "";
+    inset: -1.5rem;
+    border-right: 2px dashed rgb(255 0 0 / 20%);
+    animation: width-constrainer-shrink .3s;
+
+    @keyframes width-constrainer-shrink {
+      from {
+        right: -5rem;
+      }
+    }
+  }
+
+  &::after {
+    content: "--- width container ---";
+    font-family: var(--tcds-font-monospace);
+    font-size: var(--tcds-font-size-xs);
+    text-align: center;
+    width: 100%;
+    top: -1.25rem;
+  }
+}

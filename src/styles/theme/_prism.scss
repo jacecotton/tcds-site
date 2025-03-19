@@ -100,4 +100,11 @@
       color: #2d73bc;
     }
   }
+
+  .code-toolbar > .toolbar > .toolbar-item > span {
+    box-shadow: none;
+    background: none;
+    font-family: var(--tcds-font-ui);
+    font-weight: var(--tcds-font-weight-bold);
+  }
 }

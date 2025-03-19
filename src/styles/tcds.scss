@@ -1,1 +1,5 @@
-@use "@txch/tcds" as *;
+// Use this when pointing to a local copy of the design system.
+@use "tcds/" as *;
+
+// Use this when importing from node_packages.
+// @use "@txch/tcds" as *;

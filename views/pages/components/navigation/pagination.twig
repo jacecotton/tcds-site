@@ -1,0 +1,44 @@
+{# DO NOT EDIT. This file was compiled from Markdown; please edit the source .md
+file and run the gulp process to compile (either `gulp` or `npm run dev`). #}
+{% extends "@tc/base.twig" %}
+{% block body %}
+<tcds-pagination endpoint="/path/to/endpoint?page=%i" items="items.nodes" type="paged" load-next="eager" results-per-page="5">
+  <template>
+    <li>
+      <a href="{link}">{title}</a>
+    </li>
+  </template>
+
+  <ul slot="results" class="tcds-grid">
+    
+      {% set items = [
+        {
+          "title": "Example title #1",
+          "link": "#example-1",
+        },
+        {
+          "title": "Example title #2",
+          "link": "#example-2",
+        },
+        {
+          "title": "Example title #3",
+          "link": "#example-3",
+        },
+        {
+          "title": "Example title #4",
+          "link": "#example-4",
+        },
+        {
+          "title": "Example title #5",
+          "link": "#example-5",
+        },
+      ] %}
+      {% for item in items %}
+        <li>
+          <a href="{{ item.link }}">{{ item.title }}</a>
+        </li>
+      {% endfor %}
+    
+  </ul>
+</tcds-pagination>
+{% endblock %}

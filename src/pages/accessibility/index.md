@@ -17,21 +17,26 @@ While accessibility efforts are often focused on accommodating individuals with 
 This requires consideration both for chronic medical conditions and temporary or non-medical obstacles. Some of the most common medical conditions impacting the design and development of a website include but are not limited to the following:
 
 <tcds-accordion>
-  <tcds-accordion-section label="Visual impairment">
+  <tcds-accordion-section>
+    <h3 slot="title">Visual impairment</h3>
     <p>
       Users with visual impairment, such as low vision or color perception, often use assistive technology such as screen readers, dictation software, or braille displays. They may set certain system or browser preferences, such as increasing font size, zoom level, or contrast.
     </p>
   </tcds-accordion-section>
-  <tcds-accordion-section label="Audiological conditions">
+  <tcds-accordion-section>
+    <h3 slot="title">Audiological conditions</h3>
     <p>Users with audiological conditions, such as hearing loss or audio processing disorders, often require captions or text transcriptions for video and audio.</p>
   </tcds-accordion-section>
-  <tcds-accordion-section label="Cognitive and learning disabilities">
+  <tcds-accordion-section>
+    <h3 slot="title">Cognitive and learning disabilities</h3>
     <p>Users with cognitive and learning disabilities are best served with designs that are consistent and well-organized with multi-modal functionality.</p>
   </tcds-accordion-section>
-  <tcds-accordion-section label="Photosensitive conditions">
+  <tcds-accordion-section>
+    <h3 slot="title">Photosensitive conditions</h3>
     <p>Users with photosensitive conditions, such as vestibular disorders or epilepsy, can have visual triggers, especially from digital displays. Users with these conditions are best served with designs that limit on-screen motion and avoid rapid changes in light.</p>
   </tcds-accordion-section>
-  <tcds-accordion-section label="Motor function impairments">
+  <tcds-accordion-section>
+    <h3 slot="title">Motor function impairments</h3>
     <p>Users with motor function impairments, such as cerebral palsy or muscular dystrophy, may use input methods and navigation tools that are different from—or a subset of—the traditional keyboard, mouse, or touch screen. Examples include joysticks, eye trackers, and dictation software.</p>
   </tcds-accordion-section>
 </tcds-accordion>
@@ -39,13 +44,16 @@ This requires consideration both for chronic medical conditions and temporary or
 As you may note, *all users* benefit from *each* of the best practices mentioned above—not just those with medical conditions. Beyond these, temporary or non-medical obstacles include but are not limited to the following:
 
 <tcds-accordion>
-  <tcds-accordion-section label="Environmental factors">
+  <tcds-accordion-section>
+    <h3 slot="title">Environmental factors</h3>
     <p>Environmental factors such as poor internet connection, bright sunlight, etc. can impact accessibility. Users in this category benefit from pages that are lightweight, performant, and make good use of contrast to withstand changes in environmental light.</p>
   </tcds-accordion-section>
-  <tcds-accordion-section label="Device capability">
+  <tcds-accordion-section>
+    <h3 slot="title">Device capability</h3>
     <p>Device features such as limited screen size, processing power, bandwidth, etc. can impact accessibility. Users in this category also benefit from pages that are lightweight and performant, as well as responsive and fault-tolerant.</p>
   </tcds-accordion-section>
-  <tcds-accordion-section label="Background">
+  <tcds-accordion-section>
+    <h3 slot="title">Background</h3>
     <p>Background, such as age or culture, can impact understanding of abstract conventions in web design, such as <a href="/brand/icons">iconographic symbolism</a>, as well as metaphorical terms like "<a href="/components/accordion">accordion</a>". Use caution when employing conceptual abstractions, as they may not be universally well-understood.</p>
   </tcds-accordion-section>
 </tcds-accordion>
@@ -60,3 +68,9 @@ The Design System always seeks to provide relevant accessibility guidance just a
 * [Practical Reasons for Digital Accessibility — Section508.gov](https://www.section508.gov/manage/benefits-of-accessibility/)
 * [Web Content Accessibility Guidelines (WCAG) 2.1 — W3C.org](https://www.w3.org/TR/WCAG21/)
 * [WebAIM: Web Accessibility in Mind](https://webaim.org/)
+
+<!--
+refs
+https://www.w3.org/WAI/people-use-web/abilities-barriers/#cognitive
+https://intopia.digital/wp-content/uploads/2023/10/Intopia-WCAG-2.2-Map-Portrait-Mode.pdf
+-->

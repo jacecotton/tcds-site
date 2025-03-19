@@ -32,24 +32,33 @@ file and run the gulp process to compile (either `gulp` or `npm run dev`). #}
 {% endembed %}
 
 
-<h2 id="best-practices">Best practices</h2>
-<p><strong>Use with general caution.</strong> Even when properly implemented, research shows that users seldom interact with carousels, especially beyond the first slide (<a href="https://erikrunyon.com/2013/01/carousel-interaction-stats/" title="Carousel Interaction Stats — Erik Runyon">1</a>). Furthermore, carousels have a high <a href="https://www.nngroup.com/articles/interaction-cost-definition/" title="Interaction cost – Nielsen Norman Group">interaction cost</a>, potentially causing inconvenience (<a href="https://www.nngroup.com/articles/auto-forwarding/" title="Auto-Forwarding Carousels and Accordions Annoy Users and Reduce Visibility Nielsen Norman Group">2</a>).</p>
-<p><strong>Curate relevant and high quality content for each slide.</strong> Carousel content that the user perceives to be irrelevant, redundant, or unhelpful may discourage them from investigating and interacting further. This can contribute to a <a href="https://www.nngroup.com/articles/tunnel-vision-and-selective-attention/" title="Tunnel Vision and Selective Attention – Nielsen Norman Group">banner blindness</a> that could reduce perception and engagement of carousels elsewhere on the website (<a href="https://www.smashingmagazine.com/2016/07/ten-requirements-for-making-home-page-carousels-work-for-end-users/" title="10 Requirements For Making Home Page Carousels Work For End Users (If Needed) - Smashing Magazine">3</a>).</p>
-<p><strong>Prioritize slide order, and limit the number of slides.</strong> Most users will not see all the content in a carousel (<a href="https://www.smashingmagazine.com/2016/07/ten-requirements-for-making-home-page-carousels-work-for-end-users/" title="10 Requirements For Making Home Page Carousels Work For End Users (If Needed) - Smashing Magazine">3</a>). Put the most important and engaging slides first, and avoid adding too many slides to begin with (as the more there are, the less likely they are to be discovered).</p>
-<p><strong>Allow sufficient time between slides.</strong> If playable, the <a href="#auto-forwarding">timing</a> interval should be based on a generous approximation of how long the slide with the most content takes to understand and interact with.</p>
-<p><strong>Do not use blocks of text as slide content.</strong> Stick to content that is quick to scan and easy to understand, like images, block quotes, and cards.</p>
-<h3 id="when-to-use">When to use</h3>
-<p><strong>When presenting a series of sample or interchangeable content.</strong> Examples include decorative pictures or testimonials. Only use a carousel for presenting content that users were not likely searching for when they navigated to the page, and may only be interested in consuming in a passive manner.</p>
-<h3 id="when-not-to-use">When not to use</h3>
-<p><strong>When presenting important or user goal-oriented content.</strong> Because slides are not labeled, users are unlikely to find content buried in carousels if they&#39;re looking for it. Furthermore, users are highly likely to miss content they may be looking for if the carousel autoplays (<a href="https://www.nngroup.com/articles/auto-forwarding/" title="Auto-Forwarding Carousels and Accordions Annoy Users and Reduce Visibility Nielsen Norman Group">2</a>).</p>
-<p><strong>A different component better fits the use case.</strong> Carousels are often useful to condense content into one container, and then progressively or selectively disclose it. If the content of a slide is supposed to serve a user goal, consider a different component that achieves a similar purpose, such as:</p>
+<h2 id="guidance">Guidance</h2>
+<h3 id="best-practices">Best practices</h3>
+<p><strong>Use with caution.</strong> <tcds-fn-ref aria-details="runyon-2013">Users seldom interact with carousels, even when implemented properly.</tcds-fn-ref> <tcds-fn-ref aria-details="nngroup-auto-forwarding">The inherent <a href="https://www.nngroup.com/articles/interaction-cost-definition/" title="Interaction cost – Nielsen Norman Group">interaction cost</a> of carousels can degrade user experience,</tcds-fn-ref> especially with goal-oriented content.</p>
+<p><strong>Curate relevant, quality carousel content.</strong> <tcds-fn-ref aria-details="smag-2016">Unhelpful or unattractive content may discourage further investigation and encourage <a href="https://www.nngroup.com/articles/tunnel-vision-and-selective-attention/" title="Tunnel Vision and Selective Attention – Nielsen Norman Group">banner blindness</a> for carousels.</tcds-fn-ref> Consider, however, that helpful content is likely <a href="#when-not-to-use">better served by something else</a>.</p>
+<p><strong>Limit the number of slides and prioritize their order.</strong> Account for the fact that <tcds-fn-ref aria-details="smag-2016">most users miss most carousel content.</tcds-fn-ref></p>
+<p><strong>Allow sufficient time between slides.</strong> If playable, base the <a href="#auto-forwarding">timing</a> on a generous approximation of how long the most content-dense slide takes to understand and interact with.</p>
+<p><strong>Avoid blocks of text as slide content.</strong> Stick to content that is quickly scanned and easily understood, like images and cards (without blurbs).</p>
+<h4 id="when-to-use">When to use</h4>
+<p><strong>To present a series of sample or interchangeable content.</strong> For example, a decorative picture slideshow or a feed for related articles. Limit use of carousels to content that users were not likely searching for, and may only be passively interested in.</p>
+<h4 id="when-not-to-use">When not to use</h4>
+<p><strong>To present important or goal-oriented content.</strong> Especially because slides are not labeled, users looking for something specific are less likely to find it if it&#39;s buried in a carousel. <tcds-fn-ref aria-details="nngroup-auto-forwarding">Autoplaying carousels further increase the likelihood of missed content.</tcds-fn-ref></p>
+<p><strong>When a different component is a better fit.</strong> Carousels are useful to condense content into one container, then allow it to be progressively or selectively disclosed. If the content is goal-oriented, consider a different disclosure component, such as:</p>
 <ul>
-<li><a href="/components/tabs">Tabs</a>, useful for quick comparison between different content of the same information type.</li>
-<li><a href="/components/accordion">Accordion</a>, useful for collapsing multiple sections of content under headers, allowing users to quickly scan a page and choose whether or not to see the content.</li>
+<li><a href="/components/interface/tabs">Tabs</a>, useful for quick comparison or selection between different pieces of content of the same information type.</li>
+<li><a href="/components/content/accordion">Accordion</a>, useful for associating hidden content with descriptive headings, allowing users to more quickly scan a page and choose whether to see the content.</li>
 </ul>
-<p>Note that both the above components label their sections, imparting <a href="https://www.nngroup.com/articles/information-scent/" title="Information scent – Nielsen Norman Group">information scent</a> that makes it more likely a user will find what they&#39;re looking for if it&#39;s contained therein.</p>
-<h2 id="usage">Usage</h2>
-<h3 id="auto-forwarding">Auto-forwarding</h3>
+<p>Note that both the above components label their sections, imparting <a href="https://www.nngroup.com/articles/information-scent/" title="Information scent – Nielsen Norman Group">information scent</a> that increases the likelihood of users finding what they&#39;re looking for.</p>
+<tcds-fn-list>
+  <ol>
+    <li id="runyon-2013"><a href="https://erikrunyon.com/2013/01/carousel-interaction-stats/">Carousel Interaction Stats</a> - Erik Runyon (2013)</li>
+    <li id="nngroup-auto-forwarding"><a href="https://www.nngroup.com/articles/auto-forwarding/">Auto-Forwarding Carousels and Accordions Annoy Users and Reduce Visibility</a> - Nielsen Norman Group (2013)</li>
+    <li id="smag-2016"><a href="https://www.smashingmagazine.com/2016/07/ten-requirements-for-making-home-page-carousels-work-for-end-users/">10 Requirements For Making Home Page Carousels Work For End Users (If Needed)</a> - Smashing Magazine (2016)</li>
+  </ol>
+</tcds-fn-list>
+
+<h3 id="usage">Usage</h3>
+<h4 id="auto-forwarding">Auto-forwarding</h4>
 <p>To allow the user to play (auto-forward) the carousel, specify a timing interval. In HTML, this is done with the <a href="#timing-attribute"><code>timing</code> attribute</a> (value in seconds). A button will appear that toggles between play and pause when clicked.</p>
 <p>By default, the user will have to click the play button for the carousel to begin auto-forwarding. To have it play by default (subject to <a href="#usability-checklist">certain conditions</a>), toggle on the initial &quot;playing&quot; state (via the <a href="#playing-attribute"><code>playing</code> attribute</a> in HTML).</p>
 
@@ -83,7 +92,7 @@ file and run the gulp process to compile (either `gulp` or `npm run dev`). #}
 {% endembed %}
 
 
-<h3 id="multiple-slides">Multiple slides</h3>
+<h4 id="multiple-slides">Multiple slides</h4>
 <p>Sometimes you may want to show multiple slides in the viewport at once, like when displaying a series of teaser cards. In HTML, this is done via the <a href="#multiple-attribute"><code>multiple</code> attribute</a>.</p>
 <p>You cannot explicitly set the number of slides you want to appear at once, but you can adjust the slide size and gap values to your specific use case (see the <a href="#styling">styling API</a>, or the example below).</p>
 
@@ -124,7 +133,7 @@ file and run the gulp process to compile (either `gulp` or `npm run dev`). #}
 
 
 <p>For responsiveness, adjusting the slide sizes involves setting the <em>initial</em> size, which is fixed (400px in the example above) and the <em>minimum</em> size, which is relative (70% of the viewport in the example above). Under the hood, this is done with the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/min"><code>min()</code> function</a> (picks the smallest calculated value between two). You can also set the slide size to <code>auto</code> which will adapt each slide to the content.</p>
-<h3 id="default-selected">Default selected</h3>
+<h4 id="default-selected">Default selected</h4>
 <p>You can change which slide is selected by default by toggling on its &quot;selected&quot; state (via the <a href="#selected-attribute"><code>selected</code> attribute</a> in HTML).</p>
 
 {% embed "@tc/includes/example.twig" with {line_highlight: 5} %}
@@ -157,7 +166,7 @@ file and run the gulp process to compile (either `gulp` or `npm run dev`). #}
 {% endembed %}
 
 
-<h3 id="control-position">Control position</h3>
+<h4 id="control-position">Control position</h4>
 <p>By default, the indicator buttons and navigation arrows are placed beneath the slides and horizontally centered. You can also place them on top of the slides and shifted to the right by setting the <a href="#navigation-attribute"><code>navigation</code> attribute</a> to <code>top right</code>.</p>
 
 {% embed "@tc/includes/example.twig" with {line_highlight: 1} %}
@@ -190,8 +199,9 @@ file and run the gulp process to compile (either `gulp` or `npm run dev`). #}
 {% endembed %}
 
 
-<h2 id="accessibility">Accessibility</h2>
-<h3 id="usability-checklist">Usability checklist</h3>
+<h2 id="documentation">Documentation</h2>
+<h3 id="accessibility">Accessibility</h3>
+<h4 id="usability">Usability</h4>
 <p>The UX behavior of the carousel is as follows.</p>
 <details>
   <summary>Checklist</summary>
@@ -249,11 +259,12 @@ file and run the gulp process to compile (either `gulp` or `npm run dev`). #}
 </div>
 </details>
 
-<h3 id="screen-reader-behavior">Screen reader behavior</h3>
+<h4 id="screen-reader-behavior">Screen reader behavior</h4>
+<p>Screen readers will announce that a carousel is a carousel through the <code>aria-roledescription</code>.</p>
 <p>When the carousel is not playing, the element that contains the slides has an <code>aria-live</code> attribute of <code>polite</code>. The result is that, when using a screen reader, after a new slide becomes visible (by selecting an indicator or arrow button), it is read to the user after the user becomes idle (so as to not interrupt other announcements).</p>
 <p>However, if a carousel is playing, <code>aria-live</code> is set to <code>off</code> so that changes are not announced. The user would have to focus inside the carousel for the slide contents to be read, at which point the carousel will pause itself due to the received focus. This is to limit intrusiveness and interruptions, and simplify the screen reader experience.</p>
-<h2 id="api">API</h2>
-<h3 id="tcds-carousel"><code>tcds-carousel</code></h3>
+<h3 id="api">API</h3>
+<h4 id="tcds-carousel"><code>tcds-carousel</code></h4>
 
 {{ include("@tc/includes/api.twig", {
   attributes: [
@@ -320,7 +331,7 @@ file and run the gulp process to compile (either `gulp` or `npm run dev`). #}
 }) }}
 
 
-<h3 id="tcds-slide"><code>tcds-slide</code></h3>
+<h4 id="tcds-slide"><code>tcds-slide</code></h4>
 
 {{ include("@tc/includes/api.twig", {
   attributes: [
@@ -342,7 +353,7 @@ file and run the gulp process to compile (either `gulp` or `npm run dev`). #}
 }) }}
 
 
-<h3 id="styling">Styling</h3>
+<h4 id="styling">Styling</h4>
 
 {{ include("@tc/includes/api.twig", {
   custom_properties: [
@@ -374,9 +385,11 @@ file and run the gulp process to compile (either `gulp` or `npm run dev`). #}
 }) }}
 
 
-<h2 id="resources">Resources</h2>
-<p>This component was architected in conformance with <a href="https://www.w3.org/WAI/ARIA/apg/patterns/carousel/">ARIA Authoring Practices (APG) for carousel pattern</a>.</p>
-<p>Source code on GitHub (<a href="https://github.com/jacecotton/tcds/blob/main/src/02-components/carousel/">carousel</a>, <a href="https://github.com/jacecotton/tcds/blob/main/src/02-components/carousel/slide/">slide</a>)</p>
+<h3 id="resources">Resources</h3>
+<ul>
+<li>Baseline conformance document: <a href="https://www.w3.org/WAI/ARIA/apg/patterns/carousel/">ARIA Authoring Practices (APG) for carousel pattern</a></li>
+<li>Source code on GitHub (<a href="https://github.com/jacecotton/tcds/blob/main/src/02-components/carousel/">carousel</a>, <a href="https://github.com/jacecotton/tcds/blob/main/src/02-components/carousel/slide/">slide</a>)</li>
+</ul>
 <!--
 Other design system/pattern library implementations:
 https://styleguide.audi.com/document/2442#/-/slideshow

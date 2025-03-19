@@ -5,6 +5,11 @@ parent: Interface
 description: Tabs allow users to switch between panels of content from a horizontal list of labels. They enable quick comparison between different pieces of content within the same context and of the same information type.
 ---
 
+<tcds-icon icon="error" style="--tcds-icon-size: 5rem; color: var(--tcds-color-red)"></tcds-icon>
+
+## Under construction
+Please check back later.
+
 <!--twig
 {% embed "@tc/includes/example.twig" %}
 {% block content %}
